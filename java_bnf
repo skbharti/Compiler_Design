@@ -1,3 +1,4 @@
+
 Java Syntax Specification
 Programs
 
@@ -9,11 +10,8 @@ Declarations
 
     <import declarations> ::= <import declaration> | <import declarations> <import declaration>
 
-    <import declaration> ::= <single type import declaration> | <type import on demand declaration>
-
+    <import declaration> ::= <single type import declaration>
     <single type import declaration> ::= import <type name> ;
-
-    <type import on demand declaration> ::= import <package name> . * ;
 
     <type declarations> ::= <type declaration> | <type declarations> <type declaration>
 
@@ -23,7 +21,7 @@ Declarations
 
     <class modifiers> ::= <class modifier> | <class modifiers> <class modifier>
 
-    <class modifier> ::= public | abstract | final
+    <class modifier> ::= public | abstract
 
     <super> ::= extends <class type>
 
@@ -41,21 +39,17 @@ Declarations
 
     <static initializer> ::= static <block>
 
-    <constructor declaration> ::= <constructor modifiers>? <constructor declarator> <throws>? <constructor body>
+    <constructor declaration> ::= <constructor modifiers>? <constructor declarator>  <constructor body>
 
     <constructor modifiers> ::= <constructor modifier> | <constructor modifiers> <constructor modifier>
 
-    <constructor modifier> ::= public | protected | private
+    <constructor modifier> ::= public | private
 
     <constructor declarator> ::= <simple type name> ( <formal parameter list>? )
 
     <formal parameter list> ::= <formal parameter> | <formal parameter list> , <formal parameter>
 
     <formal parameter> ::= <type> <variable declarator id>
-
-    <throws> ::= throws <class type list>
-
-    <class type list> ::= <class type> | <class type list> , <class type>
 
     <constructor body> ::= { <explicit constructor invocation>? <block statements>? }
 
@@ -65,7 +59,7 @@ Declarations
 
     <field modifiers> ::= <field modifier> | <field modifiers> <field modifier>
 
-    <field modifier> ::= public | protected | private | static | final | transient | volatile
+    <field modifier> ::= public | private | static
 
     <variable declarators> ::= <variable declarator> | <variable declarators> , <variable declarator>
 
@@ -77,13 +71,13 @@ Declarations
 
     <method declaration> ::= <method header> <method body>
 
-    <method header> ::= <method modifiers>? <result type> <method declarator> <throws>?
+    <method header> ::= <method modifiers>? <result type> <method declarator> 
 
     <result type> ::= <type> | void
 
     <method modifiers> ::= <method modifier> | <method modifiers> <method modifier>
 
-    <method modifier> ::= public | protected | private | static | abstract | final | synchronized | native
+    <method modifier> ::= public | private | static | abstract
 
     <method declarator> ::= <identifier> ( <formal parameter list>? )
 
@@ -105,9 +99,9 @@ Declarations
 
     <constant declaration> ::= <constant modifiers> <type> <variable declarator>
 
-    <constant modifiers> ::= public | static | final
+    <constant modifiers> ::= public | static
 
-    <abstract method declaration>::= <abstract method modifiers>? <result type> <method declarator> <throws>? ;
+    <abstract method declaration>::= <abstract method modifiers>? <result type> <method declarator> ;
 
     <abstract method modifiers> ::= <abstract method modifier> | <abstract method modifiers> <abstract method modifier>
 
@@ -127,9 +121,9 @@ Types
 
     <numeric type> ::= <integral type> | <floating-point type>
 
-    <integral type> ::= byte | short | int | long | char
+    <integral type> ::= int | char
 
-    <floating-point type> ::= float | double
+    <floating-point type> ::= float 
 
     <reference type> ::= <class or interface type> | <array type>
 
@@ -153,17 +147,12 @@ Blocks and Commands
 
     <local variable declaration> ::= <type> <variable declarators>
 
-    <statement> ::= <statement without trailing substatement> | <labeled statement> | <if then statement> | <if then else statement> | <while statement> | <for statement>
+    <statement> ::= <statement without trailing substatement> | <if then statement> | <if then else statement> | <while statement> | <for statement>
 
     <statement no short if> ::= <statement without trailing substatement> | <labeled statement no short if> | <if then else statement no short if> | <while statement no short if> | <for statement no short if>
 
-    <statement without trailing substatement> ::= <block> | <empty statement> | <expression statement> | <switch statement> | <do statement> | <break statement> | <continue statement> | <return statement> | <synchronized statement> | <throws statements> | <try statement>
-
+    <statement without trailing substatement> ::= <block> | <empty statement> | <expression statement> | <break statement> | <continue statement> | <return statement> 
     <empty statement> ::= ;
-
-    <labeled statement> ::= <identifier> : <statement>
-
-    <labeled statement no short if> ::= <identifier> : <statement no short if>
 
     <expression statement> ::= <statement expression> ;
 
@@ -175,23 +164,9 @@ Blocks and Commands
 
     <if then else statement no short if> ::= if ( <expression> ) <statement no short if> else <statement no short if>
 
-    <switch statement> ::= switch ( <expression> ) <switch block>
-
-    <switch block> ::= { <switch block statement groups>? <switch labels>? }
-
-    <switch block statement groups> ::= <switch block statement group> | <switch block statement groups> <switch block statement group>
-
-    <switch block statement group> ::= <switch labels> <block statements>
-
-    <switch labels> ::= <switch label> | <switch labels> <switch label>
-
-    <switch label> ::= case <constant expression> : | default :
-
     <while statement> ::= while ( <expression> ) <statement>
 
     <while statement no short if> ::= while ( <expression> ) <statement no short if>
-
-    <do statement> ::= do <statement> while ( <expression> ) ;
 
     <for statement> ::= for ( <for init>? ; <expression>? ; <for update>? ) <statement>
 
@@ -209,18 +184,6 @@ Blocks and Commands
 
     <return statement> ::= return <expression>? ;
 
-    <throws statement> ::= throw <expression> ;
-
-    <synchronized statement> ::= synchronized ( <expression> ) <block>
-
-    <try statement> ::= try <block> <catches> | try <block> <catches>? <finally>
-
-    <catches> ::= <catch clause> | <catches> <catch clause>
-
-    <catch clause> ::= catch ( <formal parameter> ) <block>
-
-    <finally > ::= finally <block>
-
 Expressions
 
     <constant expression> ::= <expression>
@@ -233,7 +196,7 @@ Expressions
 
     <left hand side> ::= <expression name> | <field access> | <array access>
 
-    <assignment operator> ::= = | *= | /= | %= | += | -= | <<= | >>= | >>>= | &= | ^= | |=
+    <assignment operator> ::= = | *= | /= | %= | += | -= | <<= | >>= | &= | ^= | |=
 
     <conditional expression> ::= <conditional or expression> | <conditional or expression> ? <expression> : <conditional expression>
 
@@ -311,13 +274,9 @@ Tokens
 
     <literal> ::= <integer literal> | <floating-point literal> | <boolean literal> | <character literal> | <string literal> | <null literal>
 
-    <integer literal> ::= <decimal integer literal> | <hex integer literal> | <octal integer literal>
+    <integer literal> ::= <decimal integer literal> 
 
     <decimal integer literal> ::= <decimal numeral> <integer type suffix>?
-
-    <hex integer literal> ::= <hex numeral> <integer type suffix>?
-
-    <octal integer literal> ::= <octal numeral> <integer type suffix>?
 
     <integer type suffix> ::= l | L
 
@@ -328,14 +287,6 @@ Tokens
     <digit> ::= 0 | <non zero digit>
 
     <non zero digit> ::= 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
-
-    <hex numeral> ::= 0 x <hex digit> | 0 X <hex digit> | <hex numeral> <hex digit>
-
-    <hex digit> :: = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | a | b | c | d | e | f | A | B | C | D | E | F
-
-    <octal numeral> ::= 0 <octal digit> | <octal numeral> <octal digit>
-
-    <octal digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7
 
     <floating-point literal> ::= <digits> . <digits>? <exponent part>? <float type suffix>?
 
@@ -349,7 +300,7 @@ Tokens
 
     <sign> ::= + | -
 
-    <float type suffix> ::= f | F | d | D
+    <float type suffix> ::= f | F |
 
     <boolean literal> ::= true | false
 
@@ -365,11 +316,4 @@ Tokens
 
     <null literal> ::= null
 
-    <keyword> ::= abstract | boolean | break | byte | case | catch | char | class | const | continue | default | do | double | else | extends | final | finally | float | for | goto | if | implements | import | instanceof | int | interface | long | native | new | package | private | protected | public | return | short | static | super | switch | synchronized | this | throw | throws | transient | try | void | volatile | while 
-
-
-The character set for Java is Unicode, a 16-bit character set. This is the set denoted by <input character>. Unicode effectively contains the familiar 7-bit ASCII characters as a subset, and includes "escape code" designations of the form \udddd (where each d is from <hex digit>). In the extended BNF for Java the optional appearance of X is written X?, and the iterative appearance of X is written {X}.
-
-The syntax category <identifier> consists of strings that must start with a letter - including underscore (_) and dollar sign ($) - followed by any number of letters and digits. Characters of numerous international languages are recognized as "letters" in Java. A Java letter is a character for which the method Character.isJavaLetter returns true. A Java letter-or-digit is a character for which the method Character.isJaveLetterOrDigit returns true. Also, <identifier> includes none of the keywords given above - these are reserved words in Java.
-
-The only BNF extention used here is the optional construct which is written with '?' added as a suffix to a terminal or non-terminal. Note that '*', '{', and '}' are all terminal symbols. This BNF definition does not address such pragmatic issues as comment conventions and the use of "white space" to delimit tokens. This BNF also does not express numerous "context-sensitive" restrictions on syntax. For instance, type use of identifiers must be consistent with the required declarations, there are size limitations on numerical literals, etc.
+    <keyword> ::= abstract | boolean | break | char | class | continue | else | extends | float | for | if | implements | import | instanceof | int | interface | new | package | private  | public | return | static | super | this | void | while 
