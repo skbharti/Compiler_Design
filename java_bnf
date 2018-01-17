@@ -1,33 +1,27 @@
-
 Java Syntax Specification
 Programs
 
-    <compilation unit> ::= <package declaration>? <import declarations>? <type declarations>?
+    <compilation unit> ::= <import declarations>? <type declarations>?
 
 Declarations
-
-    <package declaration> ::= package <package name> ;
 
     <import declarations> ::= <import declaration> | <import declarations> <import declaration>
 
     <import declaration> ::= <single type import declaration>
+
     <single type import declaration> ::= import <type name> ;
 
     <type declarations> ::= <type declaration> | <type declarations> <type declaration>
 
-    <type declaration> ::= <class declaration> | <interface declaration> | ;
+    <type declaration> ::= <class declaration> | ;
 
-    <class declaration> ::= <class modifiers>? class <identifier> <super>? <interfaces>? <class body>
+    <class declaration> ::= <class modifiers>? class <identifier> <super>? <class body>
 
     <class modifiers> ::= <class modifier> | <class modifiers> <class modifier>
 
     <class modifier> ::= public | abstract
 
     <super> ::= extends <class type>
-
-    <interfaces> ::= implements <interface type list>
-
-    <interface type list> ::= <interface type> | <interface type list> , <interface type>
 
     <class body> ::= { <class body declarations>? }
 
@@ -83,30 +77,6 @@ Declarations
 
     <method body> ::= <block> | ;
 
-    <interface declaration> ::= <interface modifiers>? interface <identifier> <extends interfaces>? <interface body>
-
-    <interface modifiers> ::= <interface modifier> | <interface modifiers> <interface modifier>
-
-    <interface modifier> ::= public | abstract
-
-    <extends interfaces> ::= extends <interface type> | <extends interfaces> , <interface type>
-
-    <interface body> ::= { <interface member declarations>? }
-
-    <interface member declarations> ::= <interface member declaration> | <interface member declarations> <interface member declaration>
-
-    <interface member declaration> ::= <constant declaration> | <abstract method declaration>
-
-    <constant declaration> ::= <constant modifiers> <type> <variable declarator>
-
-    <constant modifiers> ::= public | static
-
-    <abstract method declaration>::= <abstract method modifiers>? <result type> <method declarator> ;
-
-    <abstract method modifiers> ::= <abstract method modifier> | <abstract method modifiers> <abstract method modifier>
-
-    <abstract method modifier> ::= public | abstract
-
     <array initializer> ::= { <variable initializers>? , ? }
 
     <variable initializers> ::= <variable initializer> | <variable initializers> , <variable initializer>
@@ -125,14 +95,10 @@ Types
 
     <floating-point type> ::= float 
 
-    <reference type> ::= <class or interface type> | <array type>
-
-    <class or interface type> ::= <class type> | <interface type>
+    <reference type> ::= <class type> | <array type>
 
     <class type> ::= <type name>
-
-    <interface type> ::= <type name>
-
+    
     <array type> ::= <type> [ ]
 
 Blocks and Commands
@@ -248,7 +214,7 @@ Expressions
 
     <argument list> ::= <expression> | <argument list> , <expression>
 
-    <array creation expression> ::= new <primitive type> <dim exprs> <dims>? | new <class or interface type> <dim exprs> <dims>?
+    <array creation expression> ::= new <primitive type> <dim exprs> <dims>? | new <class type> <dim exprs> <dims>?
 
     <dim exprs> ::= <dim expr> | <dim exprs> <dim expr>
 
@@ -260,9 +226,7 @@ Expressions
 
 Tokens
 
-    <package name> ::= <identifier> | <package name> . <identifier>
-
-    <type name> ::= <identifier> | <package name> . <identifier>
+    <type name> ::= <identifier>
 
     <simple type name> ::= <identifier>
 
@@ -316,4 +280,4 @@ Tokens
 
     <null literal> ::= null
 
-    <keyword> ::= abstract | boolean | break | char | class | continue | else | extends | float | for | if | implements | import | instanceof | int | interface | new | package | private  | public | return | static | super | this | void | while 
+    <keyword> ::= abstract | boolean | break | char | class | continue | else | extends | float | for | if | implements | import | instanceof | int | new | private  | public | return | static | super | this | void | while 
