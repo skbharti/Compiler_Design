@@ -1,283 +1,387 @@
-Java Syntax Specification
-Programs
+//Java Syntax Specification
+//Programs
 
-    <compilation unit> ::= <import declarations>? <type declarations>?
+    compilation_unit : import_declarations? type_declarations?
 
-Declarations
+//Declarations
 
-    <import declarations> ::= <import declaration> | <import declarations> <import declaration>
+    import_declarations : import_declaration | 
+                              import_declarations import_declaration
 
-    <import declaration> ::= <single type import declaration>
+    import_declaration : single_type_import_declaration
 
-    <single type import declaration> ::= import <type name> ;
+    single_type_import_declaration : import type_name ;
 
-    <type declarations> ::= <type declaration> | <type declarations> <type declaration>
+    type_declarations : type_declaration | 
+                            type_declarations type_declaration
 
-    <type declaration> ::= <class declaration> | ;
+    type_declaration : class_declaration | ;
 
-    <class declaration> ::= <class modifiers>? class <identifier> <super>? <class body>
+    class_declaration : class_modifiers? class identifier super? class_body
 
-    <class modifiers> ::= <class modifier> | <class modifiers> <class modifier>
+    class_modifiers : class_modifier | 
+                          class_modifiers class_modifier
 
-    <class modifier> ::= public | abstract
+    class_modifier : public | abstract
 
-    <super> ::= extends <class type>
+    super : extends class_type
 
-    <class body> ::= { <class body declarations>? }
+    class_body : { class_body_declarations? }
 
-    <class body declarations> ::= <class body declaration> | <class body declarations> <class body declaration>
+    class_body_declarations : class_body_declaration |
+                                 class_body_declarations class_body_declaration
 
-    <class body declaration> ::= <class member declaration> | <static initializer> | <constructor declaration>
+    class_body_declaration : class_member_declaration | 
+                                 static_initializer | 
+                                 constructor_declaration
 
-    <class member declaration> ::= <field declaration> | <method declaration>
+    class_member_declaration : field_declaration | 
+                                   method_declaration
 
-    <static initializer> ::= static <block>
+    static_initializer : static block
 
-    <constructor declaration> ::= <constructor modifiers>? <constructor declarator>  <constructor body>
+    constructor_declaration : constructor_modifiers? constructor_declarator  constructor_body
 
-    <constructor modifiers> ::= <constructor modifier> | <constructor modifiers> <constructor modifier>
+    constructor_modifiers : constructor_modifier | 
+                                constructor_modifiers constructor_modifier
 
-    <constructor modifier> ::= public | private
+    constructor_modifier : public | private
 
-    <constructor declarator> ::= <simple type name> ( <formal parameter list>? )
+    constructor_declarator : simple_type_name ( formal_parameter_list? )
 
-    <formal parameter list> ::= <formal parameter> | <formal parameter list> , <formal parameter>
+    formal_parameter_list : formal_parameter | 
+                                formal_parameter_list , formal_parameter
 
-    <formal parameter> ::= <type> <variable declarator id>
+    formal_parameter : type variable_declarator_id
 
-    <constructor body> ::= { <explicit constructor invocation>? <block statements>? }
+    constructor_body : { explicit_constructor_invocation? block_statements? }
 
-    <explicit constructor invocation>::= this ( <argument list>? ) | super ( <argument list>? )
+    explicit_constructor_invocation: this ( argument_list? ) | 
+                                         super ( argument_list? )
 
-    <field declaration> ::= <field modifiers>? <type> <variable declarators> ;
+    field_declaration : field_modifiers? type variable_declarators ;
 
-    <field modifiers> ::= <field modifier> | <field modifiers> <field modifier>
+    field_modifiers : field_modifier | 
+                          field_modifiers field_modifier
 
-    <field modifier> ::= public | private | static
+    field_modifier : public | private | static
 
-    <variable declarators> ::= <variable declarator> | <variable declarators> , <variable declarator>
+    variable_declarators : variable_declarator | 
+                               variable_declarators , variable_declarator
 
-    <variable declarator> ::= <variable declarator id> | <variable declarator id> = <variable initializer>
+    variable_declarator : variable_declarator_id | 
+                              variable_declarator_id = variable_initializer
 
-    <variable declarator id> ::= <identifier> | <variable declarator id> [ ]
+    variable_declarator_id : identifier | <
+                                 variable_declarator_id> [ ]
 
-    <variable initializer> ::= <expression> | <array initializer>
+    variable_initializer : expression | array_initializer
 
-    <method declaration> ::= <method header> <method body>
+    method_declaration : method_header method_body
 
-    <method header> ::= <method modifiers>? <result type> <method declarator> 
+    method_header : method_modifiers? result_type method_declarator 
 
-    <result type> ::= <type> | void
+    result_type : type | void
 
-    <method modifiers> ::= <method modifier> | <method modifiers> <method modifier>
+    method_modifiers : method_modifier | 
 
-    <method modifier> ::= public | private | static | abstract
+                           method_modifiers method_modifier
 
-    <method declarator> ::= <identifier> ( <formal parameter list>? )
+    method_modifier : public | private | static | abstract
 
-    <method body> ::= <block> | ;
+    method_declarator : identifier ( formal_parameter_list? )
 
-    <array initializer> ::= { <variable initializers>? , ? }
+    method_body : block | ;
 
-    <variable initializers> ::= <variable initializer> | <variable initializers> , <variable initializer>
+    array_initializer : { variable_initializers? , ? }
 
-    <variable initializer> ::= <expression> | <array initializer>
+    variable_initializers : variable_initializer | 
+                                variable_initializers , variable_initializer
+
+    variable_initializer : expression | array_initializer
 
 Types
 
-    <type> ::= <primitive type> | <reference type>
+    type : primitive_type | reference_type
 
-    <primitive type> ::= <numeric type> | boolean
+    primitive_type : numeric_type | boolean
 
-    <numeric type> ::= <integral type> | <floating-point type>
+    numeric_type : integral_type | <floating_point_type>
 
-    <integral type> ::= int | char
+    integral_type : int | char
 
-    <floating-point type> ::= float 
+    floating_point_type : float 
 
-    <reference type> ::= <class type> | <array type>
+    reference_type : class_type | array_type
 
-    <class type> ::= <type name>
+    class_type : type_name
     
-    <array type> ::= <type> [ ]
+    array_type : type [ ]
 
-Blocks and Commands
+Blocks_and Commands
 
-    <block> ::= { <block statements>? }
+    block : { block_statements? }
 
-    <block statements> ::= <block statement> | <block statements> <block statement>
+    block_statements : block_statement | 
+                           block_statements block_statement
 
-    <block statement> ::= <local variable declaration statement> | <statement>
+    block_statement : local_variable_declaration_statement | 
+                          statement
 
-    <local variable declaration statement> ::= <local variable declaration> ;
+    local_variable_declaration_statement : local_variable_declaration ;
 
-    <local variable declaration> ::= <type> <variable declarators>
+    local_variable_declaration : type variable_declarators
 
-    <statement> ::= <statement without trailing substatement> | <if then statement> | <if then else statement> | <while statement> | <for statement>
+    statement : statement_without_trailing_substatement | 
+                    if_then_statement |
+                    if_then_else_statement | 
+                    while_statement | 
+                    for_statement
 
-    <statement no short if> ::= <statement without trailing substatement> | <labeled statement no short if> | <if then else statement no short if> | <while statement no short if> | <for statement no short if>
+    statement_no_short_if : statement_without_trailing_substatement | 
+                                labeled_statement_no_short_if | 
+                                if_then_else_statement_no_short_if | 
+                                while_statement_no_short_if | 
+                                for_statement_no_short_if
 
-    <statement without trailing substatement> ::= <block> | <empty statement> | <expression statement> | <break statement> | <continue statement> | <return statement> 
-    <empty statement> ::= ;
+    statement_without_trailing_substatement : block | 
+                                                  empty_statement | 
+                                                  expression_statement | 
+                                                  break_statement | 
+                                                  continue_statement | 
+                                                  return_statement 
+    empty_statement : ;
 
-    <expression statement> ::= <statement expression> ;
+    expression_statement : statement_expression ;
 
-    <statement expression> ::= <assignment> | <preincrement expression> | <postincrement expression> | <predecrement expression> | <postdecrement expression> | <method invocation> | <class instance creation expression>
+    statement_expression : assignment | 
+                               preincrement_expression | 
+                               postincrement_expression | 
+                               predecrement_expression | 
+                               postdecrement_expression | 
+                               method_invocation | 
+                               class_instance_creation_expression
 
-    <if then statement>::= if ( <expression> ) <statement>
+    if_then_statement: if ( expression ) statement
 
-    <if then else statement>::= if ( <expression> ) <statement no short if> else <statement>
+    if_then_else_statement: if ( expression ) statement_no_short_if 
+                                else statement
 
-    <if then else statement no short if> ::= if ( <expression> ) <statement no short if> else <statement no short if>
+    if_then_else_statement_no_short_if : if ( expression ) 
+                                             statement_no_short_if 
+                                             else statement_no_short_if
 
-    <while statement> ::= while ( <expression> ) <statement>
+    while_statement : while ( expression ) statement
 
-    <while statement no short if> ::= while ( <expression> ) <statement no short if>
+    while_statement_no_short_if : while ( expression ) 
+                                      statement_no_short_if
 
-    <for statement> ::= for ( <for init>? ; <expression>? ; <for update>? ) <statement>
+    for_statement : for ( for_init? ; expression? ; for_update? ) 
+                        statement
 
-    <for statement no short if> ::= for ( <for init>? ; <expression>? ; <for update>? ) <statement no short if>
+    for_statement_no_short_if : for ( for_init? ; expression? ; for_update? ) 
+                                    statement_no_short_if
 
-    <for init> ::= <statement expression list> | <local variable declaration>
+    for_init : statement_expression_list | 
+                   local_variable_declaration
 
-    <for update> ::= <statement expression list>
+    for_update : statement_expression_list
 
-    <statement expression list> ::= <statement expression> | <statement expression list> , <statement expression>
+    statement_expression_list : statement_expression | 
+                                    statement_expression_list , statement_expression
 
-    <break statement> ::= break <identifier>? ;
+    break_statement : break identifier? ;
 
-    <continue statement> ::= continue <identifier>? ;
+    continue_statement : continue identifier? ;
 
-    <return statement> ::= return <expression>? ;
+    return_statement : return expression? ;
 
 Expressions
 
-    <constant expression> ::= <expression>
+    constant_expression : expression
 
-    <expression> ::= <assignment expression>
+    expression : assignment_expression
 
-    <assignment expression> ::= <conditional expression> | <assignment>
+    assignment_expression : conditional_expression | 
+                                assignment
 
-    <assignment> ::= <left hand side> <assignment operator> <assignment expression>
+    assignment : left_hand_side assignment_operator assignment_expression
 
-    <left hand side> ::= <expression name> | <field access> | <array access>
+    left_hand_side : expression_name | field_access | array_access
 
-    <assignment operator> ::= = | *= | /= | %= | += | -= | <<= | >>= | &= | ^= | |=
+    assignment_operator : = | *= | /= | %= | += | -= | <<= | >>= | &= | ^= | |=
 
-    <conditional expression> ::= <conditional or expression> | <conditional or expression> ? <expression> : <conditional expression>
+    conditional_expression : conditional_or_expression | 
+                                 conditional_or_expression ? expression : conditional_expression
 
-    <conditional or expression> ::= <conditional and expression> | <conditional or expression> || <conditional and expression>
+    conditional_or_expression : conditional_and_expression | 
+                                    conditional_or_expression || conditional_and_expression
 
-    <conditional and expression> ::= <inclusive or expression> | <conditional and expression> && <inclusive or expression>
+    conditional_and_expression : inclusive_or_expression | 
+                                     conditional_and_expression && inclusive_or_expression
 
-    <inclusive or expression> ::= <exclusive or expression> | <inclusive or expression> | <exclusive or expression>
+    inclusive_or_expression : exclusive_or_expression | 
+                                  inclusive_or_expression | 
+                                  exclusive_or_expression
 
-    <exclusive or expression> ::= <and expression> | <exclusive or expression> ^ <and expression>
+    exclusive_or_expression : and_expression | 
+                                  exclusive_or_expression ^ and_expression
 
-    <and expression> ::= <equality expression> | <and expression> & <equality expression>
+    and_expression : equality_expression | 
+                         and_expression & equality_expression
 
-    <equality expression> ::= <relational expression> | <equality expression> == <relational expression> | <equality expression> != <relational expression>
+    equality_expression : relational_expression | 
+                              equality_expression == relational_expression | 
+                              equality_expression != relational_expression
 
-    <relational expression> ::= <shift expression> | <relational expression> < <shift expression> | <relational expression> > <shift expression> | <relational expression> <= <shift expression> | <relational expression> >= <shift expression> | <relational expression> instanceof <reference type>
+    relational_expression : shift_expression | 
+                                relational_expression < shift_expression | 
+                                relational_expression > shift_expression  | 
+                                relational_expression <= shift_expression | 
+                                relational_expression >= shift_expression | 
+                                relational_expression instanceof reference_type
 
-    <shift expression> ::= <additive expression> | <shift expression> << <additive expression> | <shift expression> >> <additive expression> | <shift expression> >>> <additive expression>
+    shift_expression : additive_expression | 
+                           shift_expression << additive_expression |
+                           shift_expression >> additive_expression | 
+                           shift_expression >>> additive_expression
 
-    <additive expression> ::= <multiplicative expression> | <additive expression> + <multiplicative expression> | <additive expression> - <multiplicative expression>
+    additive_expression : multiplicative_expression | 
+                              additive_expression + multiplicative_expression | 
+                              additive_expression - multiplicative_expression
 
-    <multiplicative expression> ::= <unary expression> | <multiplicative expression> * <unary expression> | <multiplicative expression> / <unary expression> | <multiplicative expression> % <unary expression>
+    multiplicative_expression : unary_expression | 
+                                    multiplicative_expression * unary_expression | 
+                                    multiplicative_expression / unary_expression | 
+                                    multiplicative_expression % unary_expression
 
-    <cast expression> ::= ( <primitive type> ) <unary expression> | ( <reference type> ) <unary expression not plus minus>
+    cast_expression : ( primitive_type ) unary_expression |
+                          ( reference_type ) unary_expression_not_plus_minus
 
-    <unary expression> ::= <preincrement expression> | <predecrement expression> | + <unary expression> | - <unary expression> | <unary expression not plus minus>
+    unary_expression : preincrement_expression | 
+                           predecrement_expression | 
+                           + unary_expression | 
+                           - unary_expression | 
+                           unary_expression_not_plus_minus
 
-    <predecrement expression> ::= -- <unary expression>
+    predecrement_expression : -- unary_expression
 
-    <preincrement expression> ::= ++ <unary expression>
+    preincrement_expression : ++ unary_expression
 
-    <unary expression not plus minus> ::= <postfix expression> | ~ <unary expression> | ! <unary expression> | <cast expression>
+    unary_expression_not_plus_minus : postfix_expression | 
+                                          ~ unary_expression | 
+                                          ! unary_expression | 
+                                          cast_expression
 
-    <postdecrement expression> ::= <postfix expression> --
+    postdecrement_expression : postfix_expression --
 
-    <postincrement expression> ::= <postfix expression> ++
+    postincrement_expression : postfix_expression ++
 
-    <postfix expression> ::= <primary> | <expression name> | <postincrement expression> | <postdecrement expression>
+    postfix_expression : primary | 
+                             expression_name | 
+                             postincrement_expression | 
+                             postdecrement_expression
 
-    <method invocation> ::= <method name> ( <argument list>? ) | <primary> . <identifier> ( <argument list>? ) | super . <identifier> ( <argument list>? )
+    method_invocation : method_name ( argument_list? ) | 
+                            primary . identifier ( argument_list? ) | 
+                            super . identifier ( argument_list? )
 
-    <field access> ::= <primary> . <identifier> | super . <identifier>
+    field_access : primary . identifier | 
+                       super . identifier
 
-    <primary> ::= <primary no new array> | <array creation expression>
+    primary : primary_no_new_array | 
+                  array_creation_expression
 
-    <primary no new array> ::= <literal> | this | ( <expression> ) | <class instance creation expression> | <field access> | <method invocation> | <array access>
+    primary_no_new_array : literal | 
+                               this | ( expression ) | 
+                               class_instance_creation_expression | 
+                               field_access | 
+                               method_invocation | 
+                               array_access
 
-    <class instance creation expression> ::= new <class type> ( <argument list>? )
+    class_instance_creation_expression : new class_type ( argument_list? )
 
-    <argument list> ::= <expression> | <argument list> , <expression>
+    argument_list : expression | 
+                        argument_list , expression
 
-    <array creation expression> ::= new <primitive type> <dim exprs> <dims>? | new <class type> <dim exprs> <dims>?
+    array_creation_expression : new primitive_type dim_exprs dims? | 
+                                    new class_type dim_exprs dims?
 
-    <dim exprs> ::= <dim expr> | <dim exprs> <dim expr>
+    dim_exprs : dim_expr | 
+                    dim_exprs dim_expr
 
-    <dim expr> ::= [ <expression> ]
+    dim_expr : [ expression ]
 
-    <dims> ::= [ ] | <dims> [ ]
+    dims : [ ] | dims [ ]
 
-    <array access> ::= <expression name> [ <expression> ] | <primary no new array> [ <expression>]
+    array_access : expression_name [ expression ] | 
+                       primary_no_new_array [ expression]
 
 Tokens
 
-    <type name> ::= <identifier>
+    type_name : identifier
 
-    <simple type name> ::= <identifier>
+    simple_type_name : identifier
 
-    <expression name> ::= <identifier> | <ambiguous name> . <identifier>
+    expression_name : identifier | 
+                          ambiguous_name . identifier
 
-    <method name> ::= <identifier> | <ambiguous name>. <identifier>
+    method_name : identifier | 
+                      ambiguous_name. identifier
 
-    <ambiguous name>::= <identifier> | <ambiguous name>. <identifier>
+    ambiguous_name: identifier | 
+                        ambiguous_name. identifier
 
-    <literal> ::= <integer literal> | <floating-point literal> | <boolean literal> | <character literal> | <string literal> | <null literal>
+    literal : integer_literal | 
+                  floating_point_literal |
+                  boolean_literal | 
+                  character_literal | 
+                  string_literal | 
+                  null_literal
 
-    <integer literal> ::= <decimal integer literal> 
+    integer_literal : decimal_integer_literal 
 
-    <decimal integer literal> ::= <decimal numeral> <integer type suffix>?
+    decimal_integer_literal : decimal_numeral integer_type_suffix?
 
-    <integer type suffix> ::= l | L
+    integer_type_suffix : 'l' | 'L' 
+    decimal_numeral : '0' | non_zero_digit digits?
 
-    <decimal numeral> ::= 0 | <non zero digit> <digits>?
+    digits : digit | digits digit
 
-    <digits> ::= <digit> | <digits> <digit>
+    digit : '0' | non_zero_digit
 
-    <digit> ::= 0 | <non zero digit>
+    non_zero_digit : '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' 
+    floating_point_literal : digits . digits? exponent_part? float_type_suffix?
 
-    <non zero digit> ::= 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+    digits exponent_part? float_type_suffix?
 
-    <floating-point literal> ::= <digits> . <digits>? <exponent part>? <float type suffix>?
+    exponent_part : exponent_indicator signed_integer
 
-    <digits> <exponent part>? <float type suffix>?
+    exponent_indicator : 'e' | 'E' 
+    signed_integer : sign? digits
 
-    <exponent part> ::= <exponent indicator> <signed integer>
+    sign : '+' | '-'
 
-    <exponent indicator> ::= e | E
+    FLOAT_TYPE_SUFFIX : 'f' | 'F' |
 
-    <signed integer> ::= <sign>? <digits>
+    BOOLEAN_LITERAL : 'true' | 'false'
 
-    <sign> ::= + | -
+    character_literal : '\ single_character '\ |
+                            '\ escape_sequence '\
 
-    <float type suffix> ::= f | F |
+    single_character : input_character except '\ and \
 
-    <boolean literal> ::= true | false
+    string_literal : " string_characters?"
 
-    <character literal> ::= ' <single character> ' | ' <escape sequence> '
+    string_characters : string_character | 
+                            string_characters string_character
 
-    <single character> ::= <input character> except ' and \
+    string_character : input_character except " and \ | 
+                           escape_character
 
-    <string literal> ::= " <string characters>?"
+    null_literal : null
 
-    <string characters> ::= <string character> | <string characters> <string character>
-
-    <string character> ::= <input character> except " and \ | <escape character>
-
-    <null literal> ::= null
-
-    <keyword> ::= abstract | boolean | break | char | class | continue | else | extends | float | for | if | implements | import | instanceof | int | new | private  | public | return | static | super | this | void | while 
+    KEYWORD : 'abstract' | 'boolean' | 'break' | 'char' | 'class' | 'continue' |
+                  'else' | 'extends' | 'float' | 'for' | 'if' | 'implements' | 'import' | 
+                  'instanceof' | 'int' | 'new' | 'private'  | 'public' | 'return' | 
+                  'static' | 'super' | 'this' | 'void' | 'while' 
