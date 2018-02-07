@@ -12,6 +12,6 @@ public class ConditionalJumpIRTuple extends ThreeAddressTuple {
 
     public String toString()
     {
-        return "if" + arg0 + " istrue then " + arg1 + " " + result;
+        return "if " + arg0 + " istrue then " + arg1 + " " + result;
     }
 }
