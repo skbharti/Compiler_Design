@@ -1,12 +1,12 @@
 package IRCode;
 
-public class AssignmentIRTuple extends FourAddressTuple {
+public class AssignmentIRTuple extends ThreeAddressTuple {
 
-    public AssignmentIRTuple(Object op, Object res, Object a0, Object a1){
-        opcode = op;
-        result = res;
-        arg0 = a0;
-        arg1 = a1;
+    public AssignmentIRTuple(Object opcode, Object assignVariable, Object oprand0, Object oprand1){
+        opcode = opcode;
+        arg0 = oprand0;
+        arg1 = oprand1;
+        result = assignVariable;
     }
 
     @Override

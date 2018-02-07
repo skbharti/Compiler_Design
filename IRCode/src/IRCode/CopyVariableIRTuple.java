@@ -1,6 +1,6 @@
 package IRCode;
 
-public class CopyVariableIRTuple extends FourAddressTuple {
+public class CopyVariableIRTuple extends ThreeAddressTuple {
 
     public CopyVariableIRTuple(Object a0, Object res) {
         opcode = null;

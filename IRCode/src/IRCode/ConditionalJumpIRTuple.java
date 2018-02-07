@@ -1,6 +1,6 @@
 package IRCode;
 
-public class ConditionalJumpIRTuple extends FourAddressTuple{
+public class ConditionalJumpIRTuple extends ThreeAddressTuple {
 
     //if x is true goto LABEL
     public ConditionalJumpIRTuple(Object x, Object label) {
@@ -12,6 +12,6 @@ public class ConditionalJumpIRTuple extends FourAddressTuple{
 
     public String toString()
     {
-        return opcode + " " + arg0 + " " + arg1 + " " + result;
+        return "if" + arg0 + " istrue then " + arg1 + " " + result;
     }
 }

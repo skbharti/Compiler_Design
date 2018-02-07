@@ -1,6 +1,6 @@
 package IRCode;
 
-public class UnconditionalJumpIRTuple extends FourAddressTuple {
+public class UnconditionalJumpIRTuple extends ThreeAddressTuple {
 
     public UnconditionalJumpIRTuple(Object label)
     {

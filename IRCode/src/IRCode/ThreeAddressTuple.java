@@ -1,6 +1,6 @@
 package IRCode;
 
-public abstract class FourAddressTuple {
+public abstract class ThreeAddressTuple {
 
     // Operation result = arg0 op arg1
     protected Object opcode;
