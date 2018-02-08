@@ -2,7 +2,7 @@ copy, a, 2
 copy, b, 7
 add, a, a, b
 leq, c, a, 50
-iftrue, c, goto, foo
+is true, c, goto, foo
 call, foo, null, null
 return, null
 label, foo

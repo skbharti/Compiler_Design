@@ -2,16 +2,26 @@ package IRCode;
 
 public class ConditionalJumpIRTuple extends ThreeAddressTuple {
 
-    //if x is true goto LABEL
-    public ConditionalJumpIRTuple(Object x, Object label) {
-        opcode = "iftrue";       
-        arg0 = x;             //x
-        arg1 = "goto";        //goto
+    public ConditionalJumpIRTuple(Object op, Object operand0, Object operand1, Object label) {
+        opcode = op;
+        arg0 = operand0;             //x
+        arg1 = operand1;        //goto
+        result = label;       //LABEL
+    }
+
+    public ConditionalJumpIRTuple(Object op, Object operand0, Object label) {
+        opcode = op;
+        arg0 = operand0;             //x
+        arg1 = "null";        //goto
         result = label;       //LABEL
     }
 
     public String toString()
     {
-        return "if " + arg0 + " istrue then " + arg1 + " " + result;
+        if(arg1.toString().contentEquals("null"))
+            return "if " + arg0 + " " + opcode + " then goto " + result;
+        else
+            return "if " + arg0 + " " + opcode + " "+ arg1 + " then goto " + result;
+
     }
 }

@@ -2,6 +2,14 @@ package IRCode;
 
 public class ReturnIRTuple extends ThreeAddressTuple {
 
+
+    public ReturnIRTuple(){
+        opcode = "return";
+        arg0 = null;
+        arg1 = null;
+        result = null;
+    }
+
     public ReturnIRTuple(Object a0){
         opcode = "return";
         arg0 = a0;
@@ -11,7 +19,7 @@ public class ReturnIRTuple extends ThreeAddressTuple {
 
     @Override
     public String toString() {
-        if(arg0 == null)
+        if(arg0.toString().contentEquals("null"))
             return opcode+"";
         else
             return opcode+" "+arg0;

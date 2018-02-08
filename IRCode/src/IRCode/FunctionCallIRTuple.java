@@ -11,8 +11,12 @@ public class FunctionCallIRTuple extends ThreeAddressTuple {
 
     @Override
     public String toString() {
-        if(result == null)
-            return opcode+" "+arg0+"("+arg1+")";
+        if(result.toString().contentEquals("null")) {
+            if(arg1.toString().contentEquals("null"))
+                return opcode + " " + arg0 + "()";
+            else
+                return opcode + " " + arg0 + "(" + arg1 + ")";
+        }
         else
             return result+" = "+opcode+" "+arg0+"("+arg1+")";
     }

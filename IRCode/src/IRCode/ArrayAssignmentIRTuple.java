@@ -11,7 +11,7 @@ public class ArrayAssignmentIRTuple extends ThreeAddressTuple {
 
     @Override
     public String toString() {
-        if(((String)opcode).contentEquals("ArrToVar"))
+        if(opcode.toString().contentEquals("ArrToVar"))
             return result+" = "+arg0+" ["+arg1+"]";
         else
             return arg0+"["+arg1+"] = "+result;

@@ -2,7 +2,7 @@ package IRCode;
 
 public class NewArrayIRTuple extends ThreeAddressTuple {
 
-    public NewArrayIRTuple(Object arrayType, Object count, Object assignVariable){
+    public NewArrayIRTuple(Object assignVariable, Object arrayType, Object count){
         opcode = "new";
         arg0 = arrayType;
         arg1 = count;
@@ -11,6 +11,10 @@ public class NewArrayIRTuple extends ThreeAddressTuple {
 
     @Override
     public String toString() {
-        return result+" = "+opcode+" "+arg0+"["+arg1+"]";
+        if(arg1.toString().contentEquals("null"))
+            return result+" = "+opcode+" "+arg0+"[]";
+
+        else
+            return result+" = "+opcode+" "+arg0+"["+arg1+"]";
     }
 }
