@@ -2,25 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50d02c0f-ab9f-4ac1-bace-a401ba17854c" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/IRCode/src/CodeGen.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/IRCode/src/IRCode/ThreeAddCode.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/IRCode/src/helperclasses/ArgumentVariable.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/IRCode/src/helperclasses/Constants.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/IRCode/src/symboltables/SymbolTable.java" />
-      <change beforePath="$PROJECT_DIR$/IRCode/src/IRCode/ArrayAssignmentIRTuple.java" afterPath="$PROJECT_DIR$/IRCode/src/IRCode/ArrayAssignmentIRTuple.java" />
-      <change beforePath="$PROJECT_DIR$/IRCode/src/IRCode/AssignmentIRTuple.java" afterPath="$PROJECT_DIR$/IRCode/src/IRCode/AssignmentIRTuple.java" />
-      <change beforePath="$PROJECT_DIR$/IRCode/src/IRCode/ConditionalJumpIRTuple.java" afterPath="$PROJECT_DIR$/IRCode/src/IRCode/ConditionalJumpIRTuple.java" />
-      <change beforePath="$PROJECT_DIR$/IRCode/src/IRCode/CopyIRTuple.java" afterPath="$PROJECT_DIR$/IRCode/src/IRCode/CopyIRTuple.java" />
-      <change beforePath="$PROJECT_DIR$/IRCode/src/IRCode/FunctionCallIRTuple.java" afterPath="$PROJECT_DIR$/IRCode/src/IRCode/FunctionCallIRTuple.java" />
-      <change beforePath="$PROJECT_DIR$/IRCode/src/IRCode/LabelIRTuple.java" afterPath="$PROJECT_DIR$/IRCode/src/IRCode/LabelIRTuple.java" />
-      <change beforePath="$PROJECT_DIR$/IRCode/src/IRCode/MainClass.java" afterPath="$PROJECT_DIR$/IRCode/src/IRCode/MainClass.java" />
-      <change beforePath="$PROJECT_DIR$/IRCode/src/IRCode/NewArrayIRTuple.java" afterPath="$PROJECT_DIR$/IRCode/src/IRCode/NewArrayIRTuple.java" />
-      <change beforePath="$PROJECT_DIR$/IRCode/src/IRCode/PrintIRTuple.java" afterPath="$PROJECT_DIR$/IRCode/src/IRCode/PrintIRTuple.java" />
-      <change beforePath="$PROJECT_DIR$/IRCode/src/IRCode/ReturnIRTuple.java" afterPath="$PROJECT_DIR$/IRCode/src/IRCode/ReturnIRTuple.java" />
-      <change beforePath="$PROJECT_DIR$/IRCode/src/IRCode/ThreeAddressTuple.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/IRCode/src/IRCode/UnaryAssignmentIRTuple.java" afterPath="$PROJECT_DIR$/IRCode/src/IRCode/UnaryAssignmentIRTuple.java" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/IRCode/src/CodeGen.java" afterPath="$PROJECT_DIR$/IRCode/src/CodeGen.java" />
+      <change beforePath="$PROJECT_DIR$/IRCode/src/IRCode/ThreeAddCode.java" afterPath="$PROJECT_DIR$/IRCode/src/IRCode/ThreeAddCode.java" />
       <change beforePath="$PROJECT_DIR$/IRCode/src/IRCode/UnconditionalJumpIRTuple.java" afterPath="$PROJECT_DIR$/IRCode/src/IRCode/UnconditionalJumpIRTuple.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,11 +19,10 @@
       <file leaf-file-name="MainClass.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/MainClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="162">
+              <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2251#2265#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -48,8 +31,8 @@
       <file leaf-file-name="ThreeAddCode.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/ThreeAddCode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="738">
-              <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+            <state relative-caret-position="-243">
+              <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
               <folding>
                 <element signature="e#258#259#0" expanded="true" />
                 <element signature="e#287#288#0" expanded="true" />
@@ -72,11 +55,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CodeGen.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CodeGen.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/IRCode/src/CodeGen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="477">
+              <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -84,15 +67,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SymbolTable.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/IRCode/src/symboltables/SymbolTable.java">
+      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/IRCode/src/helperclasses/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-              <folding>
-                <element signature="e#97#98#0" expanded="true" />
-                <element signature="e#130#131#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="81">
+              <caret line="12" column="32" lean-forward="false" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -107,11 +87,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReturnIRTuple.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/ReturnIRTuple.java">
+      <file leaf-file-name="LabelIRTuple.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/LabelIRTuple.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="1" column="47" lean-forward="false" selection-start-line="1" selection-start-column="47" selection-end-line="1" selection-end-column="47" />
+            <state relative-caret-position="36">
+              <caret line="2" column="46" lean-forward="false" selection-start-line="2" selection-start-column="46" selection-end-line="2" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -121,7 +101,7 @@
         <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/UnaryAssignmentIRTuple.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="90">
-              <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -130,8 +110,28 @@
       <file leaf-file-name="UnconditionalJumpIRTuple.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/UnconditionalJumpIRTuple.java">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="6" column="14" lean-forward="true" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NewArrayIRTuple.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/NewArrayIRTuple.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="4" column="23" lean-forward="true" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ReturnIRTuple.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/ReturnIRTuple.java">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="18">
-              <caret line="1" column="58" lean-forward="false" selection-start-line="1" selection-start-column="58" selection-end-line="1" selection-end-column="58" />
+              <caret line="1" column="47" lean-forward="false" selection-start-line="1" selection-start-column="47" selection-end-line="1" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -169,7 +169,6 @@
       <list>
         <option value="$PROJECT_DIR$/IRCode/src/IRCode/ThreeAddressTuple.java" />
         <option value="$PROJECT_DIR$/IRCode/src/IRCode/AssignmentIRTuple.java" />
-        <option value="$PROJECT_DIR$/IRCode/src/IRCode/ArrayAssignmentIRTuple.java" />
         <option value="$PROJECT_DIR$/IRCode/src/IRCode/CopyIRTuple.java" />
         <option value="$PROJECT_DIR$/IRCode/src/IRCode/FunctionCallIRTuple.java" />
         <option value="$PROJECT_DIR$/IRCode/src/IRCode/LabelIRTuple.java" />
@@ -178,13 +177,14 @@
         <option value="$PROJECT_DIR$/IRCode/src/IRCode/PrintIRTuple.java" />
         <option value="$PROJECT_DIR$/IRCode/src/IRCode/ReturnIRTuple.java" />
         <option value="$PROJECT_DIR$/IRCode/src/IRCode/UnaryAssignmentIRTuple.java" />
-        <option value="$PROJECT_DIR$/IRCode/src/IRCode/UnconditionalJumpIRTuple.java" />
         <option value="$PROJECT_DIR$/IRCode/src/symboltables/SymbolTable.java" />
         <option value="$PROJECT_DIR$/IRCode/src/helperclasses/ArgumentVariable.java" />
-        <option value="$PROJECT_DIR$/IRCode/src/IRCode/ThreeAddCode.java" />
-        <option value="$PROJECT_DIR$/IRCode/src/CodeGen.java" />
         <option value="$PROJECT_DIR$/IRCode/src/helperclasses/Constants.java" />
         <option value="$PROJECT_DIR$/IRCode/src/IRCode/MainClass.java" />
+        <option value="$PROJECT_DIR$/IRCode/src/IRCode/ArrayAssignmentIRTuple.java" />
+        <option value="$PROJECT_DIR$/IRCode/src/IRCode/ThreeAddCode.java" />
+        <option value="$PROJECT_DIR$/IRCode/src/IRCode/UnconditionalJumpIRTuple.java" />
+        <option value="$PROJECT_DIR$/IRCode/src/CodeGen.java" />
       </list>
     </option>
   </component>
@@ -211,8 +211,6 @@
     </navigator>
     <panes>
       <pane id="AndroidView" />
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -249,6 +247,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -386,9 +386,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37062404" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24961948" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28538814" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Learn" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -400,8 +398,10 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24961948" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -412,6 +412,94 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/MainClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/ThreeAddCode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding>
+            <element signature="e#258#259#0" expanded="true" />
+            <element signature="e#287#288#0" expanded="true" />
+            <element signature="e#331#332#0" expanded="true" />
+            <element signature="e#367#368#0" expanded="true" />
+            <element signature="e#400#401#0" expanded="true" />
+            <element signature="e#429#430#0" expanded="true" />
+            <element signature="e#473#474#0" expanded="true" />
+            <element signature="e#509#510#0" expanded="true" />
+            <element signature="e#540#541#0" expanded="true" />
+            <element signature="e#567#568#0" expanded="true" />
+            <element signature="e#607#608#0" expanded="true" />
+            <element signature="e#639#640#0" expanded="true" />
+            <element signature="e#670#671#0" expanded="true" />
+            <element signature="e#697#698#0" expanded="true" />
+            <element signature="e#737#738#0" expanded="true" />
+            <element signature="e#769#770#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/PrintIRTuple.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="46" lean-forward="false" selection-start-line="1" selection-start-column="46" selection-end-line="1" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IRCode/src/symboltables/SymbolTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <element signature="e#97#98#0" expanded="true" />
+            <element signature="e#130#131#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/ReturnIRTuple.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="47" lean-forward="false" selection-start-line="1" selection-start-column="47" selection-end-line="1" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/UnaryAssignmentIRTuple.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/UnconditionalJumpIRTuple.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="58" lean-forward="false" selection-start-line="1" selection-start-column="58" selection-end-line="1" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IRCode/src/CodeGen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/ArrayAssignmentIRTuple.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
@@ -466,39 +554,50 @@
           <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2251#2265#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/ThreeAddressTuple.java">
+    <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/ThreeAddressTuple.java" />
+    <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/CopyIRTuple.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="19" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+        <state relative-caret-position="18">
+          <caret line="1" column="45" lean-forward="false" selection-start-line="1" selection-start-column="45" selection-end-line="1" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/AssignmentIRTuple.java">
+    <entry file="file://$PROJECT_DIR$/IRCode/src/symboltables/SymbolTable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        <state relative-caret-position="90">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <element signature="e#97#98#0" expanded="true" />
+            <element signature="e#130#131#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IRCode/src/helperclasses/ArgumentVariable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/ArrayAssignmentIRTuple.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+        <state relative-caret-position="126">
+          <caret line="7" column="14" lean-forward="false" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/CopyIRTuple.java">
+    <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/AssignmentIRTuple.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="45" lean-forward="false" selection-start-line="1" selection-start-column="45" selection-end-line="1" selection-end-column="45" />
+        <state relative-caret-position="36">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -511,6 +610,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/ConditionalJumpIRTuple.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="38" lean-forward="true" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/LabelIRTuple.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
@@ -519,11 +626,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/ConditionalJumpIRTuple.java">
+    <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/MainClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="38" lean-forward="true" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
-          <folding />
+        <state relative-caret-position="162">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -551,37 +660,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/UnconditionalJumpIRTuple.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="14" lean-forward="true" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/UnaryAssignmentIRTuple.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/UnconditionalJumpIRTuple.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="58" lean-forward="false" selection-start-line="1" selection-start-column="58" selection-end-line="1" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/IRCode/src/symboltables/SymbolTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding>
-            <element signature="e#97#98#0" expanded="true" />
-            <element signature="e#130#131#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/ThreeAddCode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="738">
-          <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+        <state relative-caret-position="-243">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
           <folding>
             <element signature="e#258#259#0" expanded="true" />
             <element signature="e#287#288#0" expanded="true" />
@@ -603,40 +701,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/IRCode/src/helperclasses/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="531">
-          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/IRCode/src/helperclasses/ArgumentVariable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/MainClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2251#2265#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/IRCode/src/CodeGen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="477">
+          <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IRCode/src/helperclasses/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="12" column="32" lean-forward="false" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>

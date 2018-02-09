@@ -4,8 +4,8 @@ public class UnconditionalJumpIRTuple extends ThreeAddCode{
     public UnconditionalJumpIRTuple(Object label)
     {
         opcode = "goto";
-        arg0 = null;
         arg1 = null;
+        arg0 = null;
         result = label;
     }
 
