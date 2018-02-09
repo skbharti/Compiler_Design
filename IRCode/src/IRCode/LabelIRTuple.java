@@ -1,6 +1,6 @@
-package IRCode;
+package IRCode.src.IRCode;
 
-public class LabelIRTuple extends ThreeAddressTuple {
+public class LabelIRTuple extends ThreeAddCode {
 
     public LabelIRTuple(Object labelName){
         arg0 = labelName;

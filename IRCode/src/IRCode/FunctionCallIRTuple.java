@@ -1,6 +1,5 @@
-package IRCode;
-
-public class FunctionCallIRTuple extends ThreeAddressTuple {
+package IRCode.src.IRCode;
+public class FunctionCallIRTuple extends ThreeAddCode {
 
     public FunctionCallIRTuple(Object functionName, Object paramValue, Object returnValue){
         opcode = "call";

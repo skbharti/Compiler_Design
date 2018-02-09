@@ -1,6 +1,5 @@
-package IRCode;
-
-public class ConditionalJumpIRTuple extends ThreeAddressTuple {
+package IRCode.src.IRCode;
+public class ConditionalJumpIRTuple extends ThreeAddCode {
 
     public ConditionalJumpIRTuple(Object op, Object operand0, Object operand1, Object label) {
         opcode = op;

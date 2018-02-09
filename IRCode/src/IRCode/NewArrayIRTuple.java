@@ -1,6 +1,5 @@
-package IRCode;
-
-public class NewArrayIRTuple extends ThreeAddressTuple {
+package IRCode.src.IRCode;
+public class NewArrayIRTuple extends ThreeAddCode {
 
     public NewArrayIRTuple(Object assignVariable, Object arrayType, Object count){
         opcode = "new";

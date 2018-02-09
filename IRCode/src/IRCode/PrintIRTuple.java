@@ -1,6 +1,5 @@
-package IRCode;
-
-public class PrintIRTuple extends ThreeAddressTuple {
+package IRCode.src.IRCode;
+public class PrintIRTuple extends ThreeAddCode {
 
     public PrintIRTuple(Object dataType, Object value){
         opcode = dataType;

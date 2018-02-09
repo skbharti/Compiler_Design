@@ -1,4 +1,4 @@
-package IRCode;
+package IRCode.src.IRCode;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -6,49 +6,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import static IRCode.src.helperclasses.Constants.*;
 public class MainClass {
 
-    public final static String COPY = "copy";
-    public final static String ADD = "add";
-    public final static String SUB = "sub";
-    public final static String MUL = "mul";
-    public final static String DIV = "div";
-    public final static String MOD = "mod";
-    public final static String LEQ = "leq";         // Less than Equal
-    public final static String AND = "and";
-    public final static String OR = "or";
-    public final static String LSL = "lsl";         // Logical Shift Left
-    public final static String LSR = "lsr";         // Logical Shift Right
-    public final static String EQU = "equ";         // Equal
-    public final static String NEQ = "neq";         // Not Equal
-    public final static String GTE = "gte";         // Greater than Equal
-    public final static String GT = "gt";           // Greater than
-    public final static String LTE = "lte";         // Less than Equal
-    public final static String LT = "lt";           // Less than
-    public final static String NOT = "not";
-    public final static String IFTRUE = "is true";   // Conditional Jump on True
-    public final static String IFFALSE = "is false";
-    public final static String IFGTE = "is gte";
-    public final static String IFGT = "is gt";
-    public final static String IFLTE = "is lte";
-    public final static String IFLT = "is lt";
-    public final static String IFNEQ = "is neq";
-    public final static String IFEQ = "is eq";
-    public final static String CALL = "call";
-    public final static String RETURN = "return";
-    public final static String LABEL = "label";
-    public final static String PRINT = "print";
-    public final static String NEW = "new";         // New Array creation
-
-    public static void printList(ArrayList<ThreeAddressTuple> list){
-        Iterator<ThreeAddressTuple> iterator = list.iterator();
+    private static void printList(ArrayList<ThreeAddCode> list){
+        Iterator<ThreeAddCode> iterator = list.iterator();
         while (iterator.hasNext()) {
-            ThreeAddressTuple t = iterator.next();
+            ThreeAddCode t = iterator.next();
             System.out.println(t.toString());
         }
     }
 
-    public static ThreeAddressTuple getIRTuple(String st[]){
+    public static ThreeAddCode getIRTuple(String st[]){
         switch (st[0]){
             case COPY:
                 return new CopyIRTuple((st[1]).trim(), (st[2]).trim());
@@ -98,11 +67,11 @@ public class MainClass {
         FileReader file = new FileReader("test.txt");
         BufferedReader br = new BufferedReader(file);
 
-        ArrayList<ThreeAddressTuple> iList = new ArrayList<ThreeAddressTuple>();
+        ArrayList<ThreeAddCode> iList = new ArrayList<ThreeAddCode>();
         String st;
         while ((st = br.readLine()) != null) {
             String tokens[] = st.split(",");
-            ThreeAddressTuple temp = getIRTuple(tokens);
+            ThreeAddCode temp = getIRTuple(tokens);
             iList.add(temp);
         }
 

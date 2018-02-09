@@ -1,6 +1,5 @@
-package IRCode;
-
-public class ReturnIRTuple extends ThreeAddressTuple {
+package IRCode.src.IRCode;
+public class ReturnIRTuple extends ThreeAddCode{
 
 
     public ReturnIRTuple(){

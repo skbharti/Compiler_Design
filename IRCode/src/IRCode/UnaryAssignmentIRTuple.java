@@ -1,6 +1,7 @@
-package IRCode;
+package IRCode.src.IRCode;
+import IRCode.src.IRCode.ThreeAddCode;
 
-public class UnaryAssignmentIRTuple extends ThreeAddressTuple {
+public class UnaryAssignmentIRTuple extends ThreeAddCode {
 
 
     // op a0 res    =>   res = ++ a0

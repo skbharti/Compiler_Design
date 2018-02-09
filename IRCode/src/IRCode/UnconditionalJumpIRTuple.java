@@ -1,6 +1,5 @@
-package IRCode;
-
-public class UnconditionalJumpIRTuple extends ThreeAddressTuple {
+package IRCode.src.IRCode;
+public class UnconditionalJumpIRTuple extends ThreeAddCode{
 
     public UnconditionalJumpIRTuple(Object label)
     {

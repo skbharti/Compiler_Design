@@ -1,6 +1,6 @@
-package IRCode;
+package IRCode.src.IRCode;
 
-public class ArrayAssignmentIRTuple extends ThreeAddressTuple {
+public class ArrayAssignmentIRTuple extends ThreeAddCode {
 
     public ArrayAssignmentIRTuple(Object assignType, Object pointer, Object index, Object assignVariable){
         opcode = assignType;

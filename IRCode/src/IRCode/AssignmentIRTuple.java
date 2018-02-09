@@ -1,6 +1,6 @@
-package IRCode;
+package IRCode.src.IRCode;
 
-public class AssignmentIRTuple extends ThreeAddressTuple {
+public class AssignmentIRTuple extends ThreeAddCode {
 
     public AssignmentIRTuple(Object op, Object assignVariable, Object oprand0, Object oprand1){
         opcode = op;

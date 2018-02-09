@@ -1,6 +1,5 @@
-package IRCode;
-
-public class CopyIRTuple extends ThreeAddressTuple {
+package IRCode.src.IRCode;
+public class CopyIRTuple extends ThreeAddCode {
 
     public CopyIRTuple(Object assignVariable, Object operand) {
         opcode = null;
