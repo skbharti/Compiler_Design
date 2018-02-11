@@ -1,5 +1,7 @@
 package IRCode.src.IRCode;
 
+import IRCode.src.FlowGraph.Tables;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -11,9 +13,11 @@ public class MainClass {
 
     private static void printList(ArrayList<ThreeAddCode> list){
         Iterator<ThreeAddCode> iterator = list.iterator();
+        //System.out.println(list);
         while (iterator.hasNext()) {
             ThreeAddCode t = iterator.next();
-            System.out.println(t.toString());
+            if(t != null)
+                System.out.println(t.toString());
         }
     }
 
@@ -75,7 +79,12 @@ public class MainClass {
             iList.add(temp);
         }
 
-        printList(iList);
+       // printList(iList);
+
+        Tables tb = new Tables(iList);
+        tb.RegisterAllocator();
+
+
     }
 
 }

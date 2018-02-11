@@ -1,10 +1,10 @@
 copy, a, 2
 copy, b, 7
-add, a, a, b
+add a, a, b
 leq, c, a, 50
-is true, c, goto, foo
+iftrue, c, goto, foo
 call, foo, null, null
-return, null
+return null
 label, foo
 print, a
-return, null
+return
