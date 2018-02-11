@@ -79,7 +79,7 @@ public class MainClass {
             iList.add(temp);
         }
 
-       // printList(iList);
+        printList(iList);
 
         Tables tb = new Tables(iList);
         tb.RegisterAllocator();

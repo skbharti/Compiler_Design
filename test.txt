@@ -1,21 +1,10 @@
 copy, a, 2
 copy, b, 7
 add, a, a, b
-add, b, a, b
-add, c, a, b
-add, d, a, b
-add, e, a, b
-add, f, a, b
-add, g, a, b
-add, h, a, b
-add, i, a, b
-add, j, a, b
-add, k, a, b
-leq, c, c, 50
-add, a, d, b
+leq, c, a, 50
+is true, c, goto, foo
 call, foo, null, null
 return, null
 label, foo
 print, a
-add, a, k, b
 return, null
