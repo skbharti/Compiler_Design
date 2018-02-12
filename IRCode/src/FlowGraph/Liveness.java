@@ -14,6 +14,7 @@ public class Liveness
     List<String> Variables;
     Hashtable<String, List<Integer>> Used;
     Hashtable<String , List<Integer> > Defined;
+    List<String> Arrays;
 
     public Liveness(List<ThreeAddCode> Instr)
     {
@@ -23,6 +24,9 @@ public class Liveness
         Defined = new Hashtable<String, List<Integer>>();
         FindVariablesUsesDefs();
     }
+
+
+
 
 
     public boolean Isnum( String s)
@@ -158,14 +162,32 @@ public class Liveness
             if(q instanceof ArrayAssignmentIRTuple)
             {
 
-                String var1 = (String) q.getArg1();
-                InsertInVariable(var1);
-                InsertInUsed(var1, i);
+                if(q.getOpcode().equals("ArrToVar"))
+                {
+                    String pointer = q.getArg0().toString();
+                    String index = q.getArg1().toString();
+                    String assignVariable = q.getResult().toString();
+                    InsertInVariable(pointer);
+                    InsertInVariable(index);
+                    InsertInVariable(assignVariable);
+                    InsertInUsed(pointer, i);
+                    InsertInUsed(index, i);
+                    InsertInDef(assignVariable, i);
 
-                String var2 = (String) q.getResult();
-                InsertInVariable(var2);
-                InsertInUsed(var2, i);
 
+                }
+                else
+                {
+                    String pointer = q.getArg0().toString();
+                    String index = q.getArg1().toString();
+                    String assignVariable = q.getResult().toString();
+                    InsertInVariable(pointer);
+                    InsertInVariable(index);
+                    InsertInVariable(assignVariable);
+                    InsertInUsed(assignVariable, i);
+                    InsertInUsed(index, i);
+                    InsertInUsed(assignVariable, i);
+                }
             }
 
             if(q instanceof AssignmentIRTuple)
@@ -222,9 +244,16 @@ public class Liveness
             if(q instanceof NewArrayIRTuple)
             {
                 String var1 = q.getArg1().toString();
+                String var2 = q.getResult().toString();
 
                 InsertInVariable(var1);
+                InsertInVariable(var2);
+
+
                 InsertInUsed(var1, i);
+                InsertInDef(var2, i);
+
+
             }
 
             if(q instanceof PrintIRTuple)
