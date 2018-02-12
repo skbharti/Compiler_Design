@@ -1,5 +1,6 @@
 package IRCode.src.FlowGraph;
 import IRCode.src.CodeGenerator.CodeGen;
+import IRCode.src.IRCode.MainClass;
 import IRCode.src.IRCode.ThreeAddCode;
 
 import java.io.BufferedWriter;
@@ -14,8 +15,8 @@ public class FullProgramRegAlloc
     BlockGraph GraphofBlock;
     List<Block>  BlocksList;
     List<RegTablePerLine> FullRegTable;
-    BufferedWriter writer;
-    CodeGen cg;
+    private static BufferedWriter writer = MainClass.writer;
+    private static CodeGen codegen = MainClass.codegen;
 
     public FullProgramRegAlloc(List<ThreeAddCode> Instr)
     {
@@ -23,13 +24,6 @@ public class FullProgramRegAlloc
         GraphofBlock = new BlockGraph();
         GraphofBlock.CreateGraph(Instr);
         BlocksList = GraphofBlock.Graph;
-        try {
-            writer = new BufferedWriter(new FileWriter("mips.s"));
-        }
-        catch (Exception e){
-            System.out.println("Error!");
-        }
-            cg = new CodeGen(writer);
     }
 
     public void FullRegAlloc()
@@ -63,7 +57,7 @@ public class FullProgramRegAlloc
 
             for (int i = 0; i < BlocksList.size(); i++)
             {
-                Tables tb = new Tables(BlocksList.get(i).ListOfInstructions, cg);
+                Tables tb = new Tables(BlocksList.get(i).ListOfInstructions);
                 tb.RegisterAllocator();
 
                 for (int j = 1; j <= 10; j++)
@@ -94,13 +88,6 @@ public class FullProgramRegAlloc
         {
             System.out.println(""+e);
         }
-        try {
-            writer.close();
-        }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-
     }
 
 

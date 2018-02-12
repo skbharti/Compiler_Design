@@ -1,36 +1,19 @@
 package IRCode.src.CodeGenerator;
 import IRCode.src.FlowGraph.AddrTableEntry;
-import IRCode.src.FlowGraph.FullProgramRegAlloc;
 import IRCode.src.IRCode.*;
 import IRCode.src.helperclasses.ArgumentVariable;
-import IRCode.src.symboltables.SymbolTable;
-
-import java.awt.*;
 import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Hashtable;
 
 import static IRCode.src.helperclasses.Constants.*;
 
 public class CodeGen {
-    private String output;
     private int count =0;
     private Hashtable<String,AddrTableEntry> curAddTable;
     private Hashtable<String,AddrTableEntry> preAddTable;
     private Hashtable<Integer,String> regTable;
-    public BufferedWriter writer;
-
-    public CodeGen(BufferedWriter writer) {
-
-        try {
-            this.writer = writer;
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-
-    }
+    private static BufferedWriter writer = MainClass.writer;
 
     public void generateMips(ThreeAddCode q, Hashtable<String,AddrTableEntry> curAddTable, Hashtable<String,AddrTableEntry> preAddTable, Hashtable<Integer,String> regTable, boolean store){
         try {
@@ -40,35 +23,35 @@ public class CodeGen {
 
             if(q instanceof AssignmentIRTuple)
             {
-                assignmentEvaluation((AssignmentIRTuple)q, writer);
+                assignmentEvaluation((AssignmentIRTuple)q);
             }
             else if(q instanceof FunctionCallIRTuple)
             {
-                functionCall(q, writer);
+                functionCall(q);
             }
             else if(q instanceof ReturnIRTuple)
             {
-                functionReturn((ReturnIRTuple)q, writer);
+                functionReturn((ReturnIRTuple)q);
             }
             else if(q instanceof UnaryAssignmentIRTuple)
             {
-                unaryAssignment((UnaryAssignmentIRTuple)q, writer);
+                unaryAssignment((UnaryAssignmentIRTuple)q);
             }
             else if(q instanceof UnconditionalJumpIRTuple)
             {
-                unconditonalJump((UnconditionalJumpIRTuple)q, writer);
+                unconditonalJump((UnconditionalJumpIRTuple)q);
             }
             else if(q instanceof ConditionalJumpIRTuple)
             {
-                conditonalJump((ConditionalJumpIRTuple)q, writer);
+                conditonalJump((ConditionalJumpIRTuple)q);
             }
             else if(q instanceof NewArrayIRTuple)
             {
-                newArrayInitialize((NewArrayIRTuple) q, writer);
+                newArrayInitialize((NewArrayIRTuple) q);
             }
             else if(q instanceof ArrayAssignmentIRTuple)
             {
-                arrayIndexLoad((ArrayAssignmentIRTuple) q, writer);
+                arrayIndexLoad((ArrayAssignmentIRTuple) q);
             }
 
             if(store){
@@ -81,17 +64,7 @@ public class CodeGen {
         }
     }
 
-    public void closeWriter(){
-        try {
-            //Close output file resources
-            if (writer != null)
-                writer.close();
-        }catch (IOException e){
-            System.out.println(e);
-        }
-    }
-
-    private void unconditonalJump (UnconditionalJumpIRTuple instr, BufferedWriter writer) throws IOException{
+    private void unconditonalJump (UnconditionalJumpIRTuple instr) throws IOException{
 
         // op=label arg1=labelname
         String instrMips = "j "+ (String) instr.getArg1()+"\n";
@@ -99,11 +72,11 @@ public class CodeGen {
         System.out.println("File written Successfully");
     }
 
-    private void assignmentEvaluation(AssignmentIRTuple instr, BufferedWriter writer) throws IOException{
+    private void assignmentEvaluation(AssignmentIRTuple instr) throws IOException{
         String op = (String)instr.getOpcode();
-        ArgumentVariable arg0 = new ArgumentVariable(instr.getArg0(),writer);
-        ArgumentVariable arg1 = new ArgumentVariable(instr.getArg1(),writer);
-        String stresult = (new ArgumentVariable(instr.getResult(),writer)).getValue(curAddTable);
+        ArgumentVariable arg0 = new ArgumentVariable(instr.getArg0());
+        ArgumentVariable arg1 = new ArgumentVariable(instr.getArg1());
+        String stresult = (new ArgumentVariable(instr.getResult())).getValue(curAddTable);
         String argstr0 = arg0.getValue(curAddTable), argstr1= arg1.getValue(curAddTable);
 
         if (arg0.type.equals("constant")) {
@@ -368,10 +341,10 @@ public class CodeGen {
         }
     }
 
-    private void arrayIndexAssignment(ThreeAddCode instr, BufferedWriter writer) throws IOException{
-        ArgumentVariable arg0 = new ArgumentVariable(instr.getArg0(),writer);
-        ArgumentVariable arg1 = new ArgumentVariable(instr.getArg1(),writer);
-        ArgumentVariable result = new ArgumentVariable(instr.getResult(),writer);
+    private void arrayIndexAssignment(ThreeAddCode instr) throws IOException{
+        ArgumentVariable arg0 = new ArgumentVariable(instr.getArg0());
+        ArgumentVariable arg1 = new ArgumentVariable(instr.getArg1());
+        ArgumentVariable result = new ArgumentVariable(instr.getResult());
         String argresult =result.getValue(curAddTable), argstr0 = arg0.getValue(curAddTable);
         if(arg0.type.equals("constant")) {
             writer.write("li " + "$s6" + "," + argstr0 + "\n");
@@ -396,14 +369,14 @@ public class CodeGen {
 
     }
 
-    private void newArrayInitialize(NewArrayIRTuple instr, BufferedWriter writer) throws IOException{
+    private void newArrayInitialize(NewArrayIRTuple instr) throws IOException{
         //Notes:
         //		$a0 - Holds the number of bytes
         //		$v0 - On return, holds the memory address (with address 0 holding the 4 byte length)
 
         String type = (String)instr.getArg0();
-        ArgumentVariable arg1 = new ArgumentVariable(instr.getArg1(),writer);
-        ArgumentVariable result = new ArgumentVariable(instr.getResult(),writer);
+        ArgumentVariable arg1 = new ArgumentVariable(instr.getArg1());
+        ArgumentVariable result = new ArgumentVariable(instr.getResult());
 
         //Store $ra on stack
         writer.write("addi $sp, $sp, -20\n");
@@ -443,11 +416,11 @@ public class CodeGen {
     }
 
 
-    private void unaryAssignment(UnaryAssignmentIRTuple instr, BufferedWriter writer) throws IOException{
+    private void unaryAssignment(UnaryAssignmentIRTuple instr) throws IOException{
         String op = (String)instr.getOpcode();
 
-        ArgumentVariable result = new ArgumentVariable(instr.getResult(),writer);
-        ArgumentVariable arg1 = new ArgumentVariable(instr.getArg1(),writer);
+        ArgumentVariable result = new ArgumentVariable(instr.getResult());
+        ArgumentVariable arg1 = new ArgumentVariable(instr.getArg1());
         String resultReg = result.getValue(curAddTable);
 
         //Handle arg1 -- Store the first parameter in the result register
@@ -475,9 +448,9 @@ public class CodeGen {
     }
 
 
-    private void conditonalJump(ConditionalJumpIRTuple instr, BufferedWriter writer) throws IOException{
-        String label = (new ArgumentVariable(instr.getResult(),writer)).getValue(curAddTable);
-        ArgumentVariable arg0 = new ArgumentVariable(instr.getArg0(),writer);
+    private void conditonalJump(ConditionalJumpIRTuple instr) throws IOException{
+        String label = (new ArgumentVariable(instr.getResult())).getValue(curAddTable);
+        ArgumentVariable arg0 = new ArgumentVariable(instr.getArg0());
         String opcode = instr.getOpcode().toString();
         switch (opcode){
             case IFTRUE:
@@ -499,8 +472,8 @@ public class CodeGen {
         }
     }
 
-    private void functionCall(ThreeAddCode instr, BufferedWriter writer) throws IOException{
-        String function = (new ArgumentVariable(instr.getArg0(),writer)).getValue(curAddTable);
+    private void functionCall(ThreeAddCode instr) throws IOException{
+        String function = (new ArgumentVariable(instr.getArg0())).getValue(curAddTable);
         if(function.equals("_system_exit"))
         {
             writer.write("jal " + function + "\n");
@@ -520,7 +493,7 @@ public class CodeGen {
         //Move return value into the result register
         if(!function.equals("print"))
         {
-            ArgumentVariable result = new ArgumentVariable(instr.getResult(),writer);
+            ArgumentVariable result = new ArgumentVariable(instr.getResult());
             writer.write("move " + result.getValue(curAddTable) + ", $v0\n");
         }
         //Restore $v0-$v1 from the stack
@@ -532,8 +505,8 @@ public class CodeGen {
         writer.write("addi $sp, $sp, 12\n");
     }
 
-    private void functionReturn(ReturnIRTuple instr, BufferedWriter writer) throws IOException{
-        ArgumentVariable arg0 = new ArgumentVariable(instr.getArg0(),writer);
+    private void functionReturn(ReturnIRTuple instr) throws IOException{
+        ArgumentVariable arg0 = new ArgumentVariable(instr.getArg0());
         if(arg0.type.equals("constant"))
             writer.write("li $v0, "+arg0.getValue(curAddTable)+"\n");
         else
@@ -541,10 +514,10 @@ public class CodeGen {
         writer.write("jr $ra\n");
     }
 
-    private void arrayIndexLoad(ArrayAssignmentIRTuple instr, BufferedWriter writer) throws IOException{
-        ArgumentVariable arg0 = new ArgumentVariable(instr.getArg0(),writer);
-        ArgumentVariable arg1 = new ArgumentVariable(instr.getArg1(),writer);
-        ArgumentVariable result = new ArgumentVariable(instr.getResult(),writer);
+    private void arrayIndexLoad(ArrayAssignmentIRTuple instr) throws IOException{
+        ArgumentVariable arg0 = new ArgumentVariable(instr.getArg0());
+        ArgumentVariable arg1 = new ArgumentVariable(instr.getArg1());
+        ArgumentVariable result = new ArgumentVariable(instr.getResult());
         String argstr0 = arg0.getValue(curAddTable), argstr1 = arg1.getValue(curAddTable);
         if(arg1.type.equals("constant")) {
             String tmp ="$s6";

@@ -1,7 +1,8 @@
 package IRCode.src.FlowGraph;
 
 import IRCode.src.CodeGenerator.CodeGen;
-import IRCode.src.IRCode.*;
+import IRCode.src.IRCode.MainClass;
+import IRCode.src.IRCode.ThreeAddCode;
 
 import java.util.Hashtable;
 import java.util.List;
@@ -14,18 +15,17 @@ public class Tables
     Hashtable<String, AddrTableEntry> PrevAddressTable;
     List<ThreeAddCode> InstructionList;
     Liveness InstrLiveness;
-    CodeGen codegen;
+    CodeGen codegen = MainClass.codegen;
     int MaxReg = 4;
 
 
-    public Tables(List<ThreeAddCode> Instr, CodeGen cg)
+    public Tables(List<ThreeAddCode> Instr)
     {
         InstructionList = Instr;
         RegesterTable = new Hashtable<Integer, String>();
         AddressTable = new Hashtable<String, AddrTableEntry>();
         PrevAddressTable = new Hashtable<String, AddrTableEntry>();
         InstrLiveness = new Liveness(Instr);
-        codegen = cg;
     }
 
 
@@ -90,12 +90,7 @@ public class Tables
             if(AddressTable.containsKey(newvar))
                 AddressTable.remove(newvar);
             AddressTable.put(newvar, tempentry);
-
             AddressTable.get(oldvar).DesetIsInReg();
-
-            //System.out.println("In Swap : " + RegesterTable);
-            //System.out.println(RegesterTable.get(n)+ "  "+ oldvar);
-
 
     }
 

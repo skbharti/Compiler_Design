@@ -1,11 +1,10 @@
 package IRCode.src.IRCode;
 
+import IRCode.src.CodeGenerator.CodeGen;
 import IRCode.src.FlowGraph.FullProgramRegAlloc;
 import IRCode.src.FlowGraph.Tables;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -13,6 +12,8 @@ import java.util.List;
 import static IRCode.src.helperclasses.Constants.*;
 public class MainClass {
 
+    public static BufferedWriter writer;
+    public static CodeGen codegen;
     private static void printList(ArrayList<ThreeAddCode> list){
         Iterator<ThreeAddCode> iterator = list.iterator();
         //System.out.println(list);
@@ -72,7 +73,6 @@ public class MainClass {
     public static void main(String args[]) throws IOException {
         FileReader file = new FileReader("test.txt");
         BufferedReader br = new BufferedReader(file);
-
         ArrayList<ThreeAddCode> iList = new ArrayList<ThreeAddCode>();
         String st;
         while ((st = br.readLine()) != null) {
@@ -82,11 +82,22 @@ public class MainClass {
         }
 
         printList(iList);
+        try {
+            writer = new BufferedWriter(new FileWriter("mips.s"));
+            codegen = new CodeGen();
+        }
+        catch (Exception e){
+            System.out.println("Error!");
+        }
 
         FullProgramRegAlloc f = new FullProgramRegAlloc(iList);
         f.FullRegAlloc();
 
-}
-
-
+        try {
+            writer.close();
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
 }
