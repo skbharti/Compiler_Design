@@ -1,14 +1,12 @@
 package IRCode.src.FlowGraph;
-import IRCode.src.CodeGen;
+import IRCode.src.CodeGenerator.CodeGen;
 import IRCode.src.IRCode.ThreeAddCode;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 public class FullProgramRegAlloc
 {
@@ -16,7 +14,8 @@ public class FullProgramRegAlloc
     BlockGraph GraphofBlock;
     List<Block>  BlocksList;
     List<RegTablePerLine> FullRegTable;
-    CodeGen cg =new CodeGen();
+    BufferedWriter writer;
+    CodeGen cg;
 
     public FullProgramRegAlloc(List<ThreeAddCode> Instr)
     {
@@ -24,15 +23,18 @@ public class FullProgramRegAlloc
         GraphofBlock = new BlockGraph();
         GraphofBlock.CreateGraph(Instr);
         BlocksList = GraphofBlock.Graph;
+        try {
+            writer = new BufferedWriter(new FileWriter("mips.s"));
+        }
+        catch (Exception e){
+            System.out.println("Error!");
+        }
+            cg = new CodeGen(writer);
     }
 
     public void FullRegAlloc()
     {
         try {
-
-            FileWriter fw = new FileWriter("mips.s");
-            BufferedWriter writer = new BufferedWriter(fw);
-
             Liveness lv = new Liveness(InstructionList);
             lv.FindVariablesUsesDefs();
             Iterator<String> iterator = lv.Variables.iterator();
@@ -60,7 +62,7 @@ public class FullProgramRegAlloc
                 {
                     if (tb.RegesterTable.containsKey(j))
                     {
-                        String temp = "sw $t"+(j-1) +" " + tb.RegesterTable.get(j);
+                        String temp = "sw $t"+(j-1) +" " + tb.RegesterTable.get(j)+"\n";
                         writer.write(temp);
                     }
 
@@ -70,7 +72,7 @@ public class FullProgramRegAlloc
                 {
                     if (tb.RegesterTable.containsKey(10+j+1))
                     {
-                        String temp = "sw  $s"+j +" " + tb.RegesterTable.get(j);
+                        String temp = "sw  $s"+j +" " + tb.RegesterTable.get(j)+"\n";
                         writer.write(temp);
                     }
 
@@ -83,6 +85,12 @@ public class FullProgramRegAlloc
         catch (IOException e)
         {
             System.out.println(""+e);
+        }
+        try {
+            writer.close();
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
         }
 
     }

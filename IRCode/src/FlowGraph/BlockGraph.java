@@ -52,7 +52,7 @@ public class BlockGraph
         for(int i = 0; i < Instr.size(); i++)
         {
             ThreeAddCode q = Instr.get(i);
-            System.out.println("In Graph : " + q.toString());
+//            System.out.println("In Graph : " + q.toString());
 
             if(q instanceof LabelIRTuple)
             {

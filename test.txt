@@ -1,7 +1,8 @@
-copy, a, 2
-copy, b, 7
+add, a, 2, 0
+add, b, 7, 0
 add, a, a, b
-leq, c, a, 50
+lte, c, a, 50
+new, ar, int, 2
 is true, c, goto, foo
 call, foo, null, null
 return, null

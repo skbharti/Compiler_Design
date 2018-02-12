@@ -18,7 +18,7 @@ public class ArgumentVariable {
     public String getValue(Hashtable<String,AddrTableEntry> curAddTable){
         if(type.equals("constant"))
             return value;
-        else {
+        else if(curAddTable.contains(value)){
             AddrTableEntry add = curAddTable.get(value);
             String regName = getRegName(add.getReg());
             if(add.getWriteToMemory()){
@@ -30,8 +30,9 @@ public class ArgumentVariable {
             }
             return regName;
         }
+        return "null";
     }
-    private String getRegName(int i){
+    public static String getRegName(int i){
         if (i <= 10)
             return "$t"+(i-1);
         else

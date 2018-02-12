@@ -1,9 +1,8 @@
 package IRCode.src.FlowGraph;
 
-import IRCode.src.CodeGen;
+import IRCode.src.CodeGenerator.CodeGen;
 import IRCode.src.IRCode.*;
 
-import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Set;
@@ -349,24 +348,24 @@ public class Tables
             RegTablePerLine tempTable = new RegTablePerLine();
             tempTable.RegTableEntry = RegesterTable;
 
-            System.out.println("Line : "+(i+1));
-            System.out.println("Register Table : "+ RegesterTable);
+//            System.out.println("Line : "+(i+1));
+//            System.out.println("Register Table : "+ RegesterTable);
             //System.out.println(AddressTable);
 
 
 
             //-------------------------------------------------------------------------------
 
-            Set<String> keys1 = PrevAddressTable.keySet();
-            System.out.print("Previous Address Table : ");
-            for(String key: keys1)
-            {
-                System.out.print(key);
-                System.out.print("  ");
-                System.out.print(PrevAddressTable.get(key).getIsInReg() );
-                System.out.print(" ; ");
-            }
-            System.out.println();
+//            Set<String> keys1 = PrevAddressTable.keySet();
+//            System.out.print("Previous Address Table : ");
+//            for(String key: keys1)
+//            {
+//                System.out.print(key);
+//                System.out.print("  ");
+//                System.out.print(PrevAddressTable.get(key).getIsInReg() );
+//                System.out.print(" ; ");
+//            }
+//            System.out.println();
 
             // ---------------------------------------------------------------------------------
 
@@ -380,6 +379,7 @@ public class Tables
 
 
             // Call the translater
+            codegen.generateMips(q, AddressTable, PrevAddressTable, RegesterTable, (i==InstructionList.size()-1));
 
 
             Set<String> keysTemp = AddressTable.keySet();
@@ -409,16 +409,16 @@ public class Tables
 
 
 
-            Set<String> keys2 = AddressTable.keySet();
-            System.out.print("Current Address Table : ");
-            for(String key: keys2)
-            {
-                System.out.print(key);
-                System.out.print("  ");
-                System.out.print(AddressTable.get(key).getIsInReg() );
-                System.out.print(" ; ");
-            }
-            System.out.println();
+//            Set<String> keys2 = AddressTable.keySet();
+//            System.out.print("Current Address Table : ");
+//            for(String key: keys2)
+//            {
+//                System.out.print(key);
+//                System.out.print("  ");
+//                System.out.print(AddressTable.get(key).getIsInReg() );
+//                System.out.print(" ; ");
+//            }
+//            System.out.println();
 
         }
 

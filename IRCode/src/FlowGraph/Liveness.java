@@ -14,7 +14,7 @@ public class Liveness
     List<String> Variables;
     Hashtable<String, List<Integer>> Used;
     Hashtable<String , List<Integer> > Defined;
-    Hashtable<String, Integer> Arrays;
+    Hashtable<String, Integer> Arrays = new Hashtable<String, Integer>();
 
     public Liveness(List<ThreeAddCode> Instr)
     {
@@ -23,12 +23,11 @@ public class Liveness
         Used = new Hashtable<String, List<Integer>>();
         Defined = new Hashtable<String, List<Integer>>();
         FindVariablesUsesDefs();
-        Arrays = new Hashtable<String, Integer>();
     }
 
     public void InsertInArrays(String ptr, String size)
     {
-        Arrays.put(ptr, 4*Integer.parseInt(size));
+        this.Arrays.put(ptr, 4*Integer.parseInt(size));
     }
 
     public boolean Isnum( String s)
@@ -247,7 +246,6 @@ public class Liveness
             {
                 String count = q.getArg1().toString();
                 String assignVariable = q.getResult().toString();
-
                 InsertInVariable(count);
                 InsertInVariable(assignVariable);
                 InsertInArrays(assignVariable, count);
