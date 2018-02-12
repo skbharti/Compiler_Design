@@ -39,18 +39,26 @@ public class FullProgramRegAlloc
             lv.FindVariablesUsesDefs();
             Iterator<String> iterator = lv.Variables.iterator();
 
+            writer.write(".text\n\n");
+
             while(iterator.hasNext())
             {
                 String s = iterator.next();
-                if(!lv.Arrays.contains(s))
+                if(!lv.Arrays.containsKey(s))
                 {
-                    System.out.println(s+": .word");
+                    String p =s+": .word";
+                    System.out.println(p);
+                    writer.write(p+"\n");
                 }
                 else
                 {
-                    System.out.println(s+": .space"+4*lv.Arrays.get(s));
+                    String p = s+": .space "+lv.Arrays.get(s);
+                    System.out.println(p);
+                    writer.write(p+"\n");
                 }
             }
+
+            writer.write("\n\nmain:\n\n");
 
 
             for (int i = 0; i < BlocksList.size(); i++)

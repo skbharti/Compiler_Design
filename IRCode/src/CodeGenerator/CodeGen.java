@@ -26,10 +26,8 @@ public class CodeGen {
 
         try {
             this.writer = writer;
-            writer.write(".text\n", 0, 6);
-            writer.write("main:\n", 0, 6);
-        }catch (IOException e){
-
+        }catch (Exception e){
+            System.out.println(e.getMessage());
         }
 
     }
@@ -110,7 +108,7 @@ public class CodeGen {
 
         if (arg0.type.equals("constant")) {
             if (arg1.type.equals("constant")) {
-                writer.write("li $s6"+argstr0+"\n");
+                writer.write("li $s6, "+argstr0+"\n");
                 applyOp(op,stresult,"$s6",argstr1,true,writer);
             }
             else

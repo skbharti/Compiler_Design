@@ -2,18 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50d02c0f-ab9f-4ac1-bace-a401ba17854c" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/IRCode/src/CodeGenerator/HelperFunctions.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/Readme.txt" />
-      <change beforePath="$PROJECT_DIR$/.idea/Compiler_Design.iml" afterPath="$PROJECT_DIR$/.idea/Compiler_Design.iml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/IRCode/src/CodeGen.java" afterPath="$PROJECT_DIR$/IRCode/src/CodeGenerator/CodeGen.java" />
-      <change beforePath="$PROJECT_DIR$/IRCode/src/FlowGraph/BlockGraph.java" afterPath="$PROJECT_DIR$/IRCode/src/FlowGraph/BlockGraph.java" />
+      <change beforePath="$PROJECT_DIR$/IRCode/src/CodeGenerator/CodeGen.java" afterPath="$PROJECT_DIR$/IRCode/src/CodeGenerator/CodeGen.java" />
       <change beforePath="$PROJECT_DIR$/IRCode/src/FlowGraph/FullProgramRegAlloc.java" afterPath="$PROJECT_DIR$/IRCode/src/FlowGraph/FullProgramRegAlloc.java" />
-      <change beforePath="$PROJECT_DIR$/IRCode/src/FlowGraph/Liveness.java" afterPath="$PROJECT_DIR$/IRCode/src/FlowGraph/Liveness.java" />
-      <change beforePath="$PROJECT_DIR$/IRCode/src/FlowGraph/Tables.java" afterPath="$PROJECT_DIR$/IRCode/src/FlowGraph/Tables.java" />
-      <change beforePath="$PROJECT_DIR$/IRCode/src/helperclasses/ArgumentVariable.java" afterPath="$PROJECT_DIR$/IRCode/src/helperclasses/ArgumentVariable.java" />
-      <change beforePath="$PROJECT_DIR$/test.txt" afterPath="$PROJECT_DIR$/test.txt" />
+      <change beforePath="$PROJECT_DIR$/mips.s" afterPath="$PROJECT_DIR$/mips.s" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,7 +15,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.27802408">
+    <splitter split-orientation="horizontal" split-proportion="0.55668145">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="BlockGraph.java" pinned="false" current-in-tab="false">
@@ -58,11 +50,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="FullProgramRegAlloc.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="FullProgramRegAlloc.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/IRCode/src/FlowGraph/FullProgramRegAlloc.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="345">
-                  <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+                <state relative-caret-position="391">
+                  <caret line="60" column="39" lean-forward="false" selection-start-line="60" selection-start-column="39" selection-end-line="60" selection-end-column="39" />
                   <folding />
                 </state>
               </provider>
@@ -71,18 +63,18 @@
           <file leaf-file-name="Tables.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/IRCode/src/FlowGraph/Tables.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-92">
+                <state relative-caret-position="-299">
                   <caret line="16" column="12" lean-forward="false" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="mips.s" pinned="false" current-in-tab="false">
+          <file leaf-file-name="mips.s" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/mips.s">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                <state relative-caret-position="161">
+                  <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -112,11 +104,11 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-          <file leaf-file-name="CodeGen.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="CodeGen.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/IRCode/src/CodeGenerator/CodeGen.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="343">
-                  <caret line="207" column="25" lean-forward="false" selection-start-line="207" selection-start-column="25" selection-end-line="207" selection-end-column="25" />
+                <state relative-caret-position="344">
+                  <caret line="111" column="40" lean-forward="false" selection-start-line="111" selection-start-column="40" selection-end-line="111" selection-end-column="40" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -144,11 +136,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Liveness.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="Liveness.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/IRCode/src/FlowGraph/Liveness.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="322">
-                  <caret line="251" column="0" lean-forward="false" selection-start-line="251" selection-start-column="0" selection-end-line="251" selection-end-column="0" />
+                <state relative-caret-position="278">
+                  <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
                   <folding>
                     <element signature="e#426#443#0" expanded="true" />
                     <element signature="e#791#792#0" expanded="true" />
@@ -202,6 +194,7 @@
       <find>baddi</find>
       <find>$sp</find>
       <find>sw</find>
+      <find>li</find>
     </findStrings>
     <replaceStrings>
       <replace>getOpCode</replace>
@@ -210,8 +203,8 @@
       <replace>ProgramArrayList</replace>
     </replaceStrings>
     <dirStrings>
-      <dir>$PROJECT_DIR$/IRCode/src</dir>
       <dir>$PROJECT_DIR$/IRCode</dir>
+      <dir>$PROJECT_DIR$/IRCode/src</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -250,11 +243,11 @@
         <option value="$PROJECT_DIR$/IRCode/src/FlowGraph/BlockGraph.java" />
         <option value="$PROJECT_DIR$/IRCode/src/FlowGraph/Tables.java" />
         <option value="$PROJECT_DIR$/IRCode/src/helperclasses/ArgumentVariable.java" />
-        <option value="$PROJECT_DIR$/IRCode/src/FlowGraph/FullProgramRegAlloc.java" />
         <option value="$PROJECT_DIR$/mips.s" />
-        <option value="$PROJECT_DIR$/IRCode/src/CodeGenerator/CodeGen.java" />
         <option value="$PROJECT_DIR$/test.txt" />
         <option value="$PROJECT_DIR$/IRCode/src/FlowGraph/Liveness.java" />
+        <option value="$PROJECT_DIR$/IRCode/src/FlowGraph/FullProgramRegAlloc.java" />
+        <option value="$PROJECT_DIR$/IRCode/src/CodeGenerator/CodeGen.java" />
       </list>
     </option>
   </component>
@@ -294,6 +287,12 @@
               <item name="Compiler_Design" type="b2602c69:ProjectViewProjectNode" />
               <item name="Compiler_Design" type="462c0819:PsiDirectoryNode" />
               <item name="IRCode" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Compiler_Design" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Compiler_Design" type="462c0819:PsiDirectoryNode" />
+              <item name="IRCode" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Compiler_Design" type="b2602c69:ProjectViewProjectNode" />
@@ -498,7 +497,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2857143" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2857143" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Floobits" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294335" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -510,7 +509,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3991276" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3991276" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -581,12 +580,6 @@
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/IRCode/src/FlowGraph/FullProgramRegAlloc.java</url>
-          <line>38</line>
-          <properties />
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/IRCode/src/FlowGraph/Liveness.java</url>
           <line>22</line>
           <properties />
@@ -610,6 +603,18 @@
           <properties />
           <option name="timeStamp" value="10" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/IRCode/src/FlowGraph/FullProgramRegAlloc.java</url>
+          <line>55</line>
+          <properties />
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/IRCode/src/FlowGraph/FullProgramRegAlloc.java</url>
+          <line>49</line>
+          <properties />
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/IRCode/src/FlowGraph/Liveness.java</url>
           <line>16</line>
@@ -617,7 +622,7 @@
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="11" />
+      <option name="time" value="14" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -910,14 +915,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/IRCode/src/FlowGraph/Tables.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-92">
-          <caret line="16" column="12" lean-forward="false" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/IRCode/src/FlowGraph/BlockGraph.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="573">
@@ -931,16 +928,6 @@
         <state relative-caret-position="207">
           <caret line="19" column="31" lean-forward="false" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/IRCode/src/CodeGenerator/CodeGen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="207" column="25" lean-forward="false" selection-start-line="207" selection-start-column="25" selection-end-line="207" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -978,31 +965,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mips.s">
+    <entry file="file://$PROJECT_DIR$/IRCode/src/FlowGraph/Liveness.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="278">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding>
+            <element signature="e#426#443#0" expanded="true" />
+            <element signature="e#791#792#0" expanded="true" />
+            <element signature="e#853#854#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IRCode/src/FlowGraph/Tables.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-299">
+          <caret line="16" column="12" lean-forward="false" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/IRCode/src/FlowGraph/FullProgramRegAlloc.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+        <state relative-caret-position="391">
+          <caret line="60" column="39" lean-forward="false" selection-start-line="60" selection-start-column="39" selection-end-line="60" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/IRCode/src/FlowGraph/Liveness.java">
+    <entry file="file://$PROJECT_DIR$/IRCode/src/CodeGenerator/CodeGen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="251" column="0" lean-forward="false" selection-start-line="251" selection-start-column="0" selection-end-line="251" selection-end-column="0" />
+        <state relative-caret-position="344">
+          <caret line="111" column="40" lean-forward="false" selection-start-line="111" selection-start-column="40" selection-end-line="111" selection-end-column="40" />
           <folding>
-            <element signature="e#426#443#0" expanded="true" />
-            <element signature="e#791#792#0" expanded="true" />
-            <element signature="e#853#854#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mips.s">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
