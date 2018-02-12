@@ -4,5 +4,8 @@ public class SymbolTable {
     public String getReg(String var){
         return "register";
     }
+    public void freeTemp(){
+        return;
+    }
 }
 

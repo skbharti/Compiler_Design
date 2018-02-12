@@ -1,6 +1,7 @@
 package IRCode.src.IRCode;
 
 public class ThreeAddCode {
+
         // Operation result = arg0 op arg1
         protected Object opcode;
         protected Object result;
