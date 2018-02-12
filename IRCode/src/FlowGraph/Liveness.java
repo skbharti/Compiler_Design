@@ -14,7 +14,7 @@ public class Liveness
     List<String> Variables;
     Hashtable<String, List<Integer>> Used;
     Hashtable<String , List<Integer> > Defined;
-    List<String> Arrays;
+    Hashtable<String, Integer> Arrays;
 
     public Liveness(List<ThreeAddCode> Instr)
     {
@@ -23,11 +23,13 @@ public class Liveness
         Used = new Hashtable<String, List<Integer>>();
         Defined = new Hashtable<String, List<Integer>>();
         FindVariablesUsesDefs();
+        Arrays = new Hashtable<String, Integer>();
     }
 
-
-
-
+    public void InsertInArrays(String ptr, String size)
+    {
+        Arrays.put(ptr, 4*Integer.parseInt(size));
+    }
 
     public boolean Isnum( String s)
     {
@@ -243,17 +245,14 @@ public class Liveness
 
             if(q instanceof NewArrayIRTuple)
             {
-                String var1 = q.getArg1().toString();
-                String var2 = q.getResult().toString();
+                String count = q.getArg1().toString();
+                String assignVariable = q.getResult().toString();
 
-                InsertInVariable(var1);
-                InsertInVariable(var2);
-
-
-                InsertInUsed(var1, i);
-                InsertInDef(var2, i);
-
-
+                InsertInVariable(count);
+                InsertInVariable(assignVariable);
+                InsertInArrays(assignVariable, count);
+                InsertInUsed(count, i);
+                InsertInDef(assignVariable, i);
             }
 
             if(q instanceof PrintIRTuple)

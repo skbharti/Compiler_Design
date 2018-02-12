@@ -1,11 +1,14 @@
 package IRCode.src.FlowGraph;
+import IRCode.src.CodeGen;
 import IRCode.src.IRCode.ThreeAddCode;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 public class FullProgramRegAlloc
 {
@@ -13,6 +16,7 @@ public class FullProgramRegAlloc
     BlockGraph GraphofBlock;
     List<Block>  BlocksList;
     List<RegTablePerLine> FullRegTable;
+    CodeGen cg =new CodeGen();
 
     public FullProgramRegAlloc(List<ThreeAddCode> Instr)
     {
@@ -29,11 +33,27 @@ public class FullProgramRegAlloc
             FileWriter fw = new FileWriter("mips.s");
             BufferedWriter writer = new BufferedWriter(fw);
 
+            Liveness lv = new Liveness(InstructionList);
+            lv.FindVariablesUsesDefs();
+            Iterator<String> iterator = lv.Variables.iterator();
+
+            while(iterator.hasNext())
+            {
+                String s = iterator.next();
+                if(!lv.Arrays.contains(s))
+                {
+                    System.out.println(s+": .word");
+                }
+                else
+                {
+                    System.out.println(s+": .space"+4*lv.Arrays.get(s));
+                }
+            }
 
 
             for (int i = 0; i < BlocksList.size(); i++)
             {
-                Tables tb = new Tables(BlocksList.get(i).ListOfInstructions);
+                Tables tb = new Tables(BlocksList.get(i).ListOfInstructions, cg);
                 tb.RegisterAllocator();
 
                 for (int j = 1; j <= 10; j++)

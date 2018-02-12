@@ -1,5 +1,6 @@
 package IRCode.src.FlowGraph;
 
+import IRCode.src.CodeGen;
 import IRCode.src.IRCode.*;
 
 import java.util.ArrayList;
@@ -14,19 +15,19 @@ public class Tables
     Hashtable<String, AddrTableEntry> PrevAddressTable;
     List<ThreeAddCode> InstructionList;
     Liveness InstrLiveness;
+    CodeGen codegen;
     int MaxReg = 4;
 
 
-
-    public Tables(List<ThreeAddCode> Instr)
+    public Tables(List<ThreeAddCode> Instr, CodeGen cg)
     {
         InstructionList = Instr;
         RegesterTable = new Hashtable<Integer, String>();
         AddressTable = new Hashtable<String, AddrTableEntry>();
         PrevAddressTable = new Hashtable<String, AddrTableEntry>();
         InstrLiveness = new Liveness(Instr);
+        codegen = cg;
     }
-
 
 
     public int getFreeRegister()

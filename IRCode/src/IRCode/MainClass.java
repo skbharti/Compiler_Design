@@ -1,5 +1,6 @@
 package IRCode.src.IRCode;
 
+import IRCode.src.FlowGraph.FullProgramRegAlloc;
 import IRCode.src.FlowGraph.Tables;
 
 import java.io.BufferedReader;
@@ -7,6 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import static IRCode.src.helperclasses.Constants.*;
 public class MainClass {
@@ -81,10 +83,10 @@ public class MainClass {
 
         printList(iList);
 
-        Tables tb = new Tables(iList);
-        tb.RegisterAllocator();
+        FullProgramRegAlloc f = new FullProgramRegAlloc(iList);
+        f.FullRegAlloc();
 
+}
 
-    }
 
 }
