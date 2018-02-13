@@ -48,7 +48,8 @@ public class CodeGen {
             }
             else if(q instanceof NewArrayIRTuple)
             {
-                newArrayInitialize((NewArrayIRTuple) q);
+////Do nothing only needed for dynamic memory allocation
+//                newArrayInitialize((NewArrayIRTuple) q);
             }
             else if(q instanceof ArrayAssignmentIRTuple)
             {
@@ -143,12 +144,12 @@ public class CodeGen {
                     bw.write("srl " + result + "," + arg0 + "," + arg1 + "\n");
                     break;
                 case GT:
-                    L1 = "@L"+(count++)+"\n";
-                    L2 = "@L"+(count++)+"\n";
+                    L1 = "_L"+(count++);
+                    L2 = "_L"+(count++);
 
                     //Check if we have 0 (false), if so, jump to new label L1 and store "1" in the resultReg
                     bw.write("sub "+result+", "+arg1+", "+arg0+"\n");
-                    bw.write("blez " + result + ", $zero,"  + L1 + "\n");
+                    bw.write("blez " + result + ", "  + L1 + "\n");
 
                     //Otherwise, fallthrough and store "-" in result reg
                     bw.write("add " + result + ", $zero, $zero\n");
@@ -159,12 +160,12 @@ public class CodeGen {
 
                     break;
                 case LTE:
-                    L1 = "@L"+(count++)+"\n";
-                    L2 = "@L"+(count++)+"\n";
+                    L1 = "_L"+(count++);
+                    L2 = "_L"+(count++);
 
                     //Check if we have 0 (false), if so, jump to new label L1 and store "1" in the resultReg
                     bw.write("sub "+result+", "+arg0+", "+arg1+"\n");
-                    bw.write("blez " + result + ", $zero,"  + L1 + "\n");
+                    bw.write("blez " + result + ", "  + L1 + "\n");
 
                     //Otherwise, fallthrough and store "-" in result reg
                     bw.write("add " + result + ", $zero, $zero\n");
@@ -175,8 +176,8 @@ public class CodeGen {
 
                     break;
                 case EQU:
-                    L1 = "@L"+(count++)+"\n";
-                    L2 = "@L"+(count++)+"\n";
+                    L1 = "_L"+(count++);
+                    L2 = "_L"+(count++);
 
                     //Check if we have 0 (false), if so, jump to new label L1 and store "1" in the resultReg
                     bw.write("beq " + arg0 + ", "+ arg1 +","  + L1 + "\n");
@@ -190,8 +191,8 @@ public class CodeGen {
 
                     break;
                 case NEQ:
-                    L1 = "@L"+(count++)+":\n";
-                    L2 = "@L"+(count++)+":\n";
+                    L1 = "_L"+(count++);
+                    L2 = "_L"+(count++);
 
                     //Check if we have 0 (false), if so, jump to new label L1 and store "1" in the resultReg
                     bw.write("bne " + arg0 + ", "+ arg1 +","  + L1 + "\n");
@@ -205,12 +206,12 @@ public class CodeGen {
 
                     break;
                 case GTE:
-                    L1 = "@L"+(count++)+"\n";
-                    L2 = "@L"+(count++)+"\n";
+                    L1 = "_L"+(count++);
+                    L2 = "_L"+(count++);
 
                     //Check if we have 0 (false), if so, jump to new label L1 and store "1" in the resultReg
                     bw.write("sub "+result+", "+arg1+", "+arg0+"\n");
-                    bw.write("bltz " + result + ", $zero,"  + L1 + "\n");
+                    bw.write("bltz " + result + ", "  + L1 + "\n");
 
                     //Otherwise, fallthrough and store "-" in result reg
                     bw.write("add " + result + ", $zero, $zero\n");
@@ -221,12 +222,12 @@ public class CodeGen {
 
                     break;
                 case LT:
-                    L1 = "@L"+(count++)+"\n";
-                    L2 = "@L"+(count++)+"\n";
+                    L1 = "_L"+(count++);
+                    L2 = "_L"+(count++);
 
                     //Check if we have 0 (false), if so, jump to new label L1 and store "1" in the resultReg
                     bw.write("sub "+result+", "+arg0+", "+arg1+"\n");
-                    bw.write("bltz " + result + ", $zero,"  + L1 + "\n");
+                    bw.write("bltz " + result + ", "  + L1 + "\n");
 
                     //Otherwise, fallthrough and store "-" in result reg
                     bw.write("add " + result + ", $zero, $zero\n");
@@ -263,12 +264,12 @@ public class CodeGen {
                     bw.write("mfhi "+ result+"\n");
                     break;
                 case GT:
-                    L1 = "@L"+(count++)+"\n";
-                    L2 = "@L"+(count++)+"\n";
+                    L1 = "_L"+(count++);
+                    L2 = "_L"+(count++);
 
                     //Check if we have 0 (false), if so, jump to new label L1 and store "1" in the resultReg
                     bw.write("sub "+result+", "+arg1+", "+arg0+"\n");
-                    bw.write("blez " + result + ", $zero,"  + L1 + "\n");
+                    bw.write("blez " + result + ", "  + L1 + "\n");
 
                     //Otherwise, fallthrough and store "-" in result reg
                     bw.write("add " + result + ", $zero, $zero\n");
@@ -279,12 +280,12 @@ public class CodeGen {
 
                     break;
                 case LTE:
-                    L1 = "@L"+(count++)+"\n";
-                    L2 = "@L"+(count++)+"\n";
+                    L1 = "_L"+(count++);
+                    L2 = "_L"+(count++);
 
                     //Check if we have 0 (false), if so, jump to new label L1 and store "1" in the resultReg
                     bw.write("sub "+result+", "+arg0+", "+arg1+"\n");
-                    bw.write("blez " + result + ", $zero,"  + L1 + "\n");
+                    bw.write("blez " + result + ", "  + L1 + "\n");
 
                     //Otherwise, fallthrough and store "-" in result reg
                     bw.write("add " + result + ", $zero, $zero\n");
@@ -301,8 +302,8 @@ public class CodeGen {
                     bw.write("or " + result + "," + arg0 + "," + arg1 + "\n");
                     break;
                 case EQU:
-                    L1 = "@L"+(count++)+"\n";
-                    L2 = "@L"+(count++)+"\n";
+                    L1 = "_L"+(count++);
+                    L2 = "_L"+(count++);
 
                     //Check if we have 0 (false), if so, jump to new label L1 and store "1" in the resultReg
                     bw.write("beq " + arg0 + ", "+ arg1 +","  + L1 + "\n");
@@ -316,8 +317,8 @@ public class CodeGen {
 
                     break;
                 case NEQ:
-                    L1 = "@L"+(count++)+"\n";
-                    L2 = "@L"+(count++)+"\n";
+                    L1 = "_L"+(count++);
+                    L2 = "_L"+(count++);
 
                     //Check if we have 0 (false), if so, jump to new label L1 and store "1" in the resultReg
                     bw.write("bne " + arg0 + ", "+ arg1 +","  + L1 + "\n");
@@ -331,12 +332,12 @@ public class CodeGen {
 
                     break;
                 case GTE:
-                    L1 = "@L"+(count++)+"\n";
-                    L2 = "@L"+(count++)+"\n";
+                    L1 = "_L"+(count++);
+                    L2 = "_L"+(count++);
 
                     //Check if we have 0 (false), if so, jump to new label L1 and store "1" in the resultReg
                     bw.write("sub "+result+", "+arg1+", "+arg0+"\n");
-                    bw.write("bltz " + result + ", $zero,"  + L1 + "\n");
+                    bw.write("bltz " + result + ", "  + L1 + "\n");
 
                     //Otherwise, fallthrough and store "-" in result reg
                     bw.write("add " + result + ", $zero, $zero\n");
@@ -347,12 +348,12 @@ public class CodeGen {
 
                     break;
                 case LT:
-                    L1 = "@L"+(count++)+"\n";
-                    L2 = "@L"+(count++)+"\n";
+                    L1 = "_L"+(count++);
+                    L2 = "_L"+(count++);
 
                     //Check if we have 0 (false), if so, jump to new label L1 and store "1" in the resultReg
                     bw.write("sub "+result+", "+arg0+", "+arg1+"\n");
-                    bw.write("bltz " + result + ", $zero,"  + L1 + "\n");
+                    bw.write("bltz " + result + ", "  + L1 + "\n");
 
                     //Otherwise, fallthrough and store "-" in result reg
                     bw.write("add " + result + ", $zero, $zero\n");
@@ -459,8 +460,8 @@ public class CodeGen {
 
         if(op.equals("!"))
         {
-            String L1 = "@L1\n";
-            String L2 = "@L2\n";
+            String L1 = "_L1\n";
+            String L2 = "_L2\n";
 
             //Check if we have 0 (false), if so, jump to new label L1 and store "1" in the resultReg
             writer.write("beq " + resultReg + ", $zero, " + L1 + "\n");

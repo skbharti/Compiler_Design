@@ -12,7 +12,7 @@ public class HelperFunctions {
 
     public static String printIntegerFromRegister(String input){
         String mipscode = "li $v0, 1\n" +
-                    "mv $a0, "+input+"\n"+
+                    "move $a0, "+input+"\n"+
                     "syscall\n";
 
         return mipscode;

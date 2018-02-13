@@ -1,5 +1,6 @@
 package IRCode.src.FlowGraph;
 import IRCode.src.CodeGenerator.CodeGen;
+import IRCode.src.IRCode.LabelIRTuple;
 import IRCode.src.IRCode.MainClass;
 import IRCode.src.IRCode.ThreeAddCode;
 
@@ -33,7 +34,7 @@ public class FullProgramRegAlloc
             lv.FindVariablesUsesDefs();
             Iterator<String> iterator = lv.Variables.iterator();
 
-            writer.write(".text\n\n");
+            writer.write(".data\n\n");
 
             while(iterator.hasNext())
             {
@@ -52,11 +53,13 @@ public class FullProgramRegAlloc
                 }
             }
 
-            writer.write("\n\nmain:\n\n");
+            writer.write("\n.text\n\nmain:\n\n");
 
 
             for (int i = 0; i < BlocksList.size(); i++)
             {
+                if(BlocksList.get(i).ListOfInstructions.get(0) instanceof LabelIRTuple && ( (BlocksList.get(i).getListOfInstructions().get(0))).getArg0().equals("exit"))
+                    continue;
                 Tables tb = new Tables(BlocksList.get(i).ListOfInstructions);
                 tb.RegisterAllocator();
 
