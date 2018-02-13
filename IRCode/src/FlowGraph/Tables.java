@@ -16,7 +16,7 @@ public class Tables
     List<ThreeAddCode> InstructionList;
     Liveness InstrLiveness;
     CodeGen codegen = MainClass.codegen;
-    int MaxReg = 4;
+    int MaxReg = 16;
 
 
     public Tables(List<ThreeAddCode> Instr)
@@ -342,15 +342,11 @@ public class Tables
 
             RegTablePerLine tempTable = new RegTablePerLine();
             tempTable.RegTableEntry = RegesterTable;
-
+//
 //            System.out.println("Line : "+(i+1));
 //            System.out.println("Register Table : "+ RegesterTable);
-            //System.out.println(AddressTable);
-
-
-
-            //-------------------------------------------------------------------------------
-
+//            System.out.println(AddressTable);
+//
 //            Set<String> keys1 = PrevAddressTable.keySet();
 //            System.out.print("Previous Address Table : ");
 //            for(String key: keys1)
@@ -402,18 +398,6 @@ public class Tables
                 PrevAddressTable.put(key, tempentry);
             }
 
-
-
-//            Set<String> keys2 = AddressTable.keySet();
-//            System.out.print("Current Address Table : ");
-//            for(String key: keys2)
-//            {
-//                System.out.print(key);
-//                System.out.print("  ");
-//                System.out.print(AddressTable.get(key).getIsInReg() );
-//                System.out.print(" ; ");
-//            }
-//            System.out.println();
 
         }
 

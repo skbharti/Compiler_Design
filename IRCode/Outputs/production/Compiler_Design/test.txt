@@ -1,0 +1,11 @@
+add, a, 2, 0
+add, b, 7, 0
+add, a, a, b
+lte, c, a, 50
+new, ar, int, 2
+is true, c, goto, foo
+call, foo, null, null
+call, exit, null, null
+label, foo
+print, a
+return, null

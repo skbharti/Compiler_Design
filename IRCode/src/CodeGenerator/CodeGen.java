@@ -5,6 +5,7 @@ import IRCode.src.helperclasses.ArgumentVariable;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.Hashtable;
+import java.util.Set;
 
 import static IRCode.src.helperclasses.Constants.*;
 
@@ -53,15 +54,41 @@ public class CodeGen {
             {
                 arrayIndexLoad((ArrayAssignmentIRTuple) q);
             }
+            else if (q instanceof LabelIRTuple)
+                labelDefine((LabelIRTuple) q);
+            else if(q instanceof PrintIRTuple)
+                printMips((PrintIRTuple)q);
 
-            if(store){
-                for (int i : regTable.keySet()){
-                    writer.write("sw "+ArgumentVariable.getRegName(i)+", "+regTable.get(i)+"\n");
-                }
-            }
         }catch (IOException e){
             System.out.println(""+e);
         }
+    }
+
+    private void printMips(PrintIRTuple instr) throws IOException{
+        ArgumentVariable arg0 = new ArgumentVariable(instr.getArg0());
+        writer.write("addi $sp, $sp, -12\n");
+        //Store $v0-$v1 on the stack for taking return value
+        writer.write("sw $a0, 8($sp)\n");
+        writer.write("sw $v0, 4($sp)\n");
+        writer.write("sw $v1, 0($sp)\n");
+
+        if (arg0.type.equals("constant"))
+            writer.write(HelperFunctions.printIntegerFromString(arg0.getValue(curAddTable)));
+        else if(!arg0.getValue(curAddTable).equals("null"))
+            writer.write(HelperFunctions.printIntegerFromRegister(arg0.getValue(curAddTable)));
+        else {
+            System.out.println("error in arguments to print");
+            writer.write(HelperFunctions.printExitCode()); //Error
+        }
+        //Restore $v0-$v1 from the stack
+        writer.write("lw $v0, 4($sp)\n");
+        writer.write("lw $v1, 0($sp)\n");
+        writer.write("lw $a0, 8($sp)\n");
+        writer.write("addi $sp, $sp, 12\n");
+
+    }
+    private void labelDefine(LabelIRTuple q) throws IOException{
+        writer.write( q.getArg0()+":\n");
     }
 
     private void unconditonalJump (UnconditionalJumpIRTuple instr) throws IOException{
@@ -69,14 +96,15 @@ public class CodeGen {
         // op=label arg1=labelname
         String instrMips = "j "+ (String) instr.getArg1()+"\n";
         writer.write(instrMips);
-        System.out.println("File written Successfully");
+
     }
 
     private void assignmentEvaluation(AssignmentIRTuple instr) throws IOException{
         String op = (String)instr.getOpcode();
         ArgumentVariable arg0 = new ArgumentVariable(instr.getArg0());
         ArgumentVariable arg1 = new ArgumentVariable(instr.getArg1());
-        String stresult = (new ArgumentVariable(instr.getResult())).getValue(curAddTable);
+        ArgumentVariable res = new ArgumentVariable(instr.getResult());
+        String stresult = res.getValue(curAddTable);
         String argstr0 = arg0.getValue(curAddTable), argstr1= arg1.getValue(curAddTable);
 
         if (arg0.type.equals("constant")) {
@@ -115,8 +143,8 @@ public class CodeGen {
                     bw.write("srl " + result + "," + arg0 + "," + arg1 + "\n");
                     break;
                 case GT:
-                    L1 = "@L"+(count++)+":\n";
-                    L2 = "@L"+(count++)+":\n";
+                    L1 = "@L"+(count++)+"\n";
+                    L2 = "@L"+(count++)+"\n";
 
                     //Check if we have 0 (false), if so, jump to new label L1 and store "1" in the resultReg
                     bw.write("sub "+result+", "+arg1+", "+arg0+"\n");
@@ -125,14 +153,14 @@ public class CodeGen {
                     //Otherwise, fallthrough and store "-" in result reg
                     bw.write("add " + result + ", $zero, $zero\n");
                     bw.write("j " + L2 + "\n");
-                    bw.write(L1 + "\n");
+                    bw.write(L1 + ":\n");
                     bw.write("addi " + result + ", $zero, 1\n");
-                    bw.write(L2 + "\n");
+                    bw.write(L2 + ":\n");
 
                     break;
                 case LTE:
-                    L1 = "@L"+(count++)+":\n";
-                    L2 = "@L"+(count++)+":\n";
+                    L1 = "@L"+(count++)+"\n";
+                    L2 = "@L"+(count++)+"\n";
 
                     //Check if we have 0 (false), if so, jump to new label L1 and store "1" in the resultReg
                     bw.write("sub "+result+", "+arg0+", "+arg1+"\n");
@@ -141,14 +169,14 @@ public class CodeGen {
                     //Otherwise, fallthrough and store "-" in result reg
                     bw.write("add " + result + ", $zero, $zero\n");
                     bw.write("j " + L2 + "\n");
-                    bw.write(L1 + "\n");
+                    bw.write(L1 + ":\n");
                     bw.write("addi " + result + ", $zero, 1\n");
-                    bw.write(L2 + "\n");
+                    bw.write(L2 + ":\n");
 
                     break;
                 case EQU:
-                    L1 = "@L"+(count++)+":\n";
-                    L2 = "@L"+(count++)+":\n";
+                    L1 = "@L"+(count++)+"\n";
+                    L2 = "@L"+(count++)+"\n";
 
                     //Check if we have 0 (false), if so, jump to new label L1 and store "1" in the resultReg
                     bw.write("beq " + arg0 + ", "+ arg1 +","  + L1 + "\n");
@@ -156,9 +184,9 @@ public class CodeGen {
                     //Otherwise, fallthrough and store "-" in result reg
                     bw.write("add " + result + ", $zero, $zero\n");
                     bw.write("j " + L2 + "\n");
-                    bw.write(L1 + "\n");
+                    bw.write(L1 + ":\n");
                     bw.write("addi " + result + ", $zero, 1\n");
-                    bw.write(L2 + "\n");
+                    bw.write(L2 + ":\n");
 
                     break;
                 case NEQ:
@@ -171,14 +199,14 @@ public class CodeGen {
                     //Otherwise, fallthrough and store "-" in result reg
                     bw.write("add " + result + ", $zero, $zero\n");
                     bw.write("j " + L2 + "\n");
-                    bw.write(L1 + "\n");
+                    bw.write(L1 + ":\n");
                     bw.write("addi " + result + ", $zero, 1\n");
-                    bw.write(L2 + "\n");
+                    bw.write(L2 + ":\n");
 
                     break;
                 case GTE:
-                    L1 = "@L"+(count++)+":\n";
-                    L2 = "@L"+(count++)+":\n";
+                    L1 = "@L"+(count++)+"\n";
+                    L2 = "@L"+(count++)+"\n";
 
                     //Check if we have 0 (false), if so, jump to new label L1 and store "1" in the resultReg
                     bw.write("sub "+result+", "+arg1+", "+arg0+"\n");
@@ -187,14 +215,14 @@ public class CodeGen {
                     //Otherwise, fallthrough and store "-" in result reg
                     bw.write("add " + result + ", $zero, $zero\n");
                     bw.write("j " + L2 + "\n");
-                    bw.write(L1 + "\n");
+                    bw.write(L1 + ":\n");
                     bw.write("addi " + result + ", $zero, 1\n");
-                    bw.write(L2 + "\n");
+                    bw.write(L2 + ":\n");
 
                     break;
                 case LT:
-                    L1 = "@L"+(count++)+":\n";
-                    L2 = "@L"+(count++)+":\n";
+                    L1 = "@L"+(count++)+"\n";
+                    L2 = "@L"+(count++)+"\n";
 
                     //Check if we have 0 (false), if so, jump to new label L1 and store "1" in the resultReg
                     bw.write("sub "+result+", "+arg0+", "+arg1+"\n");
@@ -203,9 +231,9 @@ public class CodeGen {
                     //Otherwise, fallthrough and store "-" in result reg
                     bw.write("add " + result + ", $zero, $zero\n");
                     bw.write("j " + L2 + "\n");
-                    bw.write(L1 + "\n");
+                    bw.write(L1 + ":\n");
                     bw.write("addi " + result + ", $zero, 1\n");
-                    bw.write(L2 + "\n");
+                    bw.write(L2 + ":\n");
 
                     break;
                 default:
@@ -235,8 +263,8 @@ public class CodeGen {
                     bw.write("mfhi "+ result+"\n");
                     break;
                 case GT:
-                    L1 = "@L"+(count++)+":\n";
-                    L2 = "@L"+(count++)+":\n";
+                    L1 = "@L"+(count++)+"\n";
+                    L2 = "@L"+(count++)+"\n";
 
                     //Check if we have 0 (false), if so, jump to new label L1 and store "1" in the resultReg
                     bw.write("sub "+result+", "+arg1+", "+arg0+"\n");
@@ -245,14 +273,14 @@ public class CodeGen {
                     //Otherwise, fallthrough and store "-" in result reg
                     bw.write("add " + result + ", $zero, $zero\n");
                     bw.write("j " + L2 + "\n");
-                    bw.write(L1 + "\n");
+                    bw.write(L1 + ":\n");
                     bw.write("addi " + result + ", $zero, 1\n");
-                    bw.write(L2 + "\n");
+                    bw.write(L2 + ":\n");
 
                     break;
                 case LTE:
-                    L1 = "@L"+(count++)+":\n";
-                    L2 = "@L"+(count++)+":\n";
+                    L1 = "@L"+(count++)+"\n";
+                    L2 = "@L"+(count++)+"\n";
 
                     //Check if we have 0 (false), if so, jump to new label L1 and store "1" in the resultReg
                     bw.write("sub "+result+", "+arg0+", "+arg1+"\n");
@@ -261,9 +289,9 @@ public class CodeGen {
                     //Otherwise, fallthrough and store "-" in result reg
                     bw.write("add " + result + ", $zero, $zero\n");
                     bw.write("j " + L2 + "\n");
-                    bw.write(L1 + "\n");
+                    bw.write(L1 + ":\n");
                     bw.write("addi " + result + ", $zero, 1\n");
-                    bw.write(L2 + "\n");
+                    bw.write(L2 + ":\n");
 
                     break;
                 case AND:
@@ -273,8 +301,8 @@ public class CodeGen {
                     bw.write("or " + result + "," + arg0 + "," + arg1 + "\n");
                     break;
                 case EQU:
-                    L1 = "@L"+(count++)+":\n";
-                    L2 = "@L"+(count++)+":\n";
+                    L1 = "@L"+(count++)+"\n";
+                    L2 = "@L"+(count++)+"\n";
 
                     //Check if we have 0 (false), if so, jump to new label L1 and store "1" in the resultReg
                     bw.write("beq " + arg0 + ", "+ arg1 +","  + L1 + "\n");
@@ -282,14 +310,14 @@ public class CodeGen {
                     //Otherwise, fallthrough and store "-" in result reg
                     bw.write("add " + result + ", $zero, $zero\n");
                     bw.write("j " + L2 + "\n");
-                    bw.write(L1 + "\n");
+                    bw.write(L1 + ":\n");
                     bw.write("addi " + result + ", $zero, 1\n");
-                    bw.write(L2 + "\n");
+                    bw.write(L2 + ":\n");
 
                     break;
                 case NEQ:
-                    L1 = "@L"+(count++)+":\n";
-                    L2 = "@L"+(count++)+":\n";
+                    L1 = "@L"+(count++)+"\n";
+                    L2 = "@L"+(count++)+"\n";
 
                     //Check if we have 0 (false), if so, jump to new label L1 and store "1" in the resultReg
                     bw.write("bne " + arg0 + ", "+ arg1 +","  + L1 + "\n");
@@ -297,14 +325,14 @@ public class CodeGen {
                     //Otherwise, fallthrough and store "-" in result reg
                     bw.write("add " + result + ", $zero, $zero\n");
                     bw.write("j " + L2 + "\n");
-                    bw.write(L1 + "\n");
+                    bw.write(L1 + ":\n");
                     bw.write("addi " + result + ", $zero, 1\n");
-                    bw.write(L2 + "\n");
+                    bw.write(L2 + ":\n");
 
                     break;
                 case GTE:
-                    L1 = "@L"+(count++)+":\n";
-                    L2 = "@L"+(count++)+":\n";
+                    L1 = "@L"+(count++)+"\n";
+                    L2 = "@L"+(count++)+"\n";
 
                     //Check if we have 0 (false), if so, jump to new label L1 and store "1" in the resultReg
                     bw.write("sub "+result+", "+arg1+", "+arg0+"\n");
@@ -313,14 +341,14 @@ public class CodeGen {
                     //Otherwise, fallthrough and store "-" in result reg
                     bw.write("add " + result + ", $zero, $zero\n");
                     bw.write("j " + L2 + "\n");
-                    bw.write(L1 + "\n");
+                    bw.write(L1 + ":\n");
                     bw.write("addi " + result + ", $zero, 1\n");
-                    bw.write(L2 + "\n");
+                    bw.write(L2 + ":\n");
 
                     break;
                 case LT:
-                    L1 = "@L"+(count++)+":\n";
-                    L2 = "@L"+(count++)+":\n";
+                    L1 = "@L"+(count++)+"\n";
+                    L2 = "@L"+(count++)+"\n";
 
                     //Check if we have 0 (false), if so, jump to new label L1 and store "1" in the resultReg
                     bw.write("sub "+result+", "+arg0+", "+arg1+"\n");
@@ -329,9 +357,9 @@ public class CodeGen {
                     //Otherwise, fallthrough and store "-" in result reg
                     bw.write("add " + result + ", $zero, $zero\n");
                     bw.write("j " + L2 + "\n");
-                    bw.write(L1 + "\n");
+                    bw.write(L1 + ":\n");
                     bw.write("addi " + result + ", $zero, 1\n");
-                    bw.write(L2 + "\n");
+                    bw.write(L2 + ":\n");
 
                     break;
                 default:
@@ -431,8 +459,8 @@ public class CodeGen {
 
         if(op.equals("!"))
         {
-            String L1 = "@L1:\n";
-            String L2 = "@L2:\n";
+            String L1 = "@L1\n";
+            String L2 = "@L2\n";
 
             //Check if we have 0 (false), if so, jump to new label L1 and store "1" in the resultReg
             writer.write("beq " + resultReg + ", $zero, " + L1 + "\n");
@@ -440,43 +468,51 @@ public class CodeGen {
             //Otherwise, fallthrough and store "-" in result reg
             writer.write("add " + resultReg + ", $zero, $zero\n");
             writer.write("j " + L2 + "\n");
-            writer.write(L1 + "\n");
+            writer.write(L1 + ":\n");
             writer.write("addi " + resultReg + ", $zero, 1\n");
-            writer.write(L2 + "\n");
+            writer.write(L2 + ":\n");
         }
         writer.write("move " + result.getValue(curAddTable) + ", " + resultReg + "\n");
     }
 
 
     private void conditonalJump(ConditionalJumpIRTuple instr) throws IOException{
-        String label = (new ArgumentVariable(instr.getResult())).getValue(curAddTable);
+        String label = instr.getResult().toString();
         ArgumentVariable arg0 = new ArgumentVariable(instr.getArg0());
         String opcode = instr.getOpcode().toString();
         switch (opcode){
             case IFTRUE:
                 writer.write("beq "+arg0.getValue(curAddTable)+", $zero, "+label+"\n");
+                break;
             case IFFALSE:
                 writer.write("bne "+arg0.getValue(curAddTable)+", $zero, "+label+"\n");
+                break;
             case IFLT:
                 writer.write("bltz "+arg0.getValue(curAddTable)+", $zero, "+label+"\n");
+                break;
             case IFLTE:
                 writer.write("blez "+arg0.getValue(curAddTable)+", $zero, "+label+"\n");
+                break;
             case IFGT:
                 writer.write("bgtz "+arg0.getValue(curAddTable)+", $zero, "+label+"\n");
+                break;
             case IFGTE:
                 writer.write("bgez "+arg0.getValue(curAddTable)+", $zero, "+label+"\n");
+                break;
             case IFNEQ:
                 writer.write("bne "+arg0.getValue(curAddTable)+", $zero, "+label+"\n");
+                break;
             case IFEQ:
                 writer.write("beq "+arg0.getValue(curAddTable)+", $zero, "+label+"\n");
+                break;
         }
     }
 
     private void functionCall(ThreeAddCode instr) throws IOException{
-        String function = (new ArgumentVariable(instr.getArg0())).getValue(curAddTable);
-        if(function.equals("_system_exit"))
+        String function = instr.getArg0().toString();
+        if(function.equals("exit"))
         {
-            writer.write("jal " + function + "\n");
+            writer.write(HelperFunctions.printExitCode());
             return;
         }
         //Assuming all variables as global and no parameters
@@ -494,7 +530,8 @@ public class CodeGen {
         if(!function.equals("print"))
         {
             ArgumentVariable result = new ArgumentVariable(instr.getResult());
-            writer.write("move " + result.getValue(curAddTable) + ", $v0\n");
+            if (!result.getValue(curAddTable).equals("null"))
+                writer.write("move " + result.getValue(curAddTable) + ", $v0\n");
         }
         //Restore $v0-$v1 from the stack
         writer.write("lw $v0, 4($sp)\n");
@@ -507,10 +544,12 @@ public class CodeGen {
 
     private void functionReturn(ReturnIRTuple instr) throws IOException{
         ArgumentVariable arg0 = new ArgumentVariable(instr.getArg0());
-        if(arg0.type.equals("constant"))
-            writer.write("li $v0, "+arg0.getValue(curAddTable)+"\n");
-        else
-            writer.write("mov $v0, "+arg0.getValue(curAddTable)+"\n");
+        if(!arg0.getValue(curAddTable).equals("null")) {
+            if (arg0.type.equals("constant"))
+                writer.write("li $v0, " + arg0.getValue(curAddTable) + "\n");
+            else
+                writer.write("move $v0, " + arg0.getValue(curAddTable) + "\n");
+        }
         writer.write("jr $ra\n");
     }
 

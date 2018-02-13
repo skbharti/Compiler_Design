@@ -64,7 +64,7 @@ public class FullProgramRegAlloc
                 {
                     if (tb.RegesterTable.containsKey(j))
                     {
-                        String temp = "sw $t"+(j-1) +" " + tb.RegesterTable.get(j)+"\n";
+                        String temp = "sw $t"+(j-1) +", " + tb.RegesterTable.get(j)+"\n";
                         writer.write(temp);
                     }
 
@@ -74,7 +74,7 @@ public class FullProgramRegAlloc
                 {
                     if (tb.RegesterTable.containsKey(10+j+1))
                     {
-                        String temp = "sw  $s"+j +" " + tb.RegesterTable.get(j)+"\n";
+                        String temp = "sw  $s"+j +", " + tb.RegesterTable.get(j)+"\n";
                         writer.write(temp);
                     }
 
