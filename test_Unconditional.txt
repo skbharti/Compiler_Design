@@ -1,0 +1,28 @@
+add, a, 8, 0		
+add, b, 6, 0
+new, ar, int, 2
+varToArr, a, ar, 0
+mul, c, a, b
+varToArr, c, ar, 1
+arrToVar, d, ar, 1 	
+sub, e, d, a
+goto, foo
+print, a 		
+print, b 		
+print, c 		
+print, d 		
+print, e 		
+is eq, c, d, foo
+print, a 	
+print, b 	
+print, c 	
+print, d 	
+print, e 	
+label, foo
+print, b 	
+print, c 	
+print, d
+label, exit
+
+# finally should print 6,48,48
+

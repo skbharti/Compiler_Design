@@ -1,0 +1,7 @@
+copy, a, 2
+copy, b, 7
+call, foo, null, b
+print, b
+return null
+label, foo
+return, a

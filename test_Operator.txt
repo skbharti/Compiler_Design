@@ -1,0 +1,32 @@
+add, a, 8, 0
+add, b, 6, 0
+sub, c, a, b
+mul, d, c, c
+div, e, c, c
+mod, f, a, 3
+lte, g, a, f
+not, h, c
+neq, i, h, c
+lsl, j, d, 2
+lsr, k, j, 1
+equ, l, c, 2
+gte, m, a, b
+and, n, d, 0
+and, o, n, d
+print, a 	
+print, b	
+print, c	
+print, d 	
+print, e 	
+print, f 	
+print, g 	
+print, h 	
+print, i 	
+print, j 	
+print, k 	
+print, l 	
+print, m 	
+print, n 	
+print, o	
+
+# finally should print 8,6,2,4,1,2,0,0,1,4,2,1,1,0,1
