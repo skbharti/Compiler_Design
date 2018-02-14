@@ -53,7 +53,10 @@ public class CodeGen {
             }
             else if(q instanceof ArrayAssignmentIRTuple)
             {
-                arrayIndexLoad((ArrayAssignmentIRTuple) q);
+                if (q.getOpcode().equals(ARRTOVAR))
+                    arrayIndexLoad((ArrayAssignmentIRTuple) q);
+                else
+                    arrayIndexAssignment((ArrayAssignmentIRTuple)q);
             }
             else if (q instanceof LabelIRTuple)
                 labelDefine((LabelIRTuple) q);
@@ -374,10 +377,10 @@ public class CodeGen {
         }
     }
 
-    private void arrayIndexAssignment(ThreeAddCode instr) throws IOException{
-        ArgumentVariable arg0 = new ArgumentVariable(instr.getArg0());
-        ArgumentVariable arg1 = new ArgumentVariable(instr.getArg1());
-        ArgumentVariable result = new ArgumentVariable(instr.getResult());
+    private void arrayIndexAssignment(ArrayAssignmentIRTuple instr) throws IOException{
+        ArgumentVariable result = new ArgumentVariable(instr.getArg0());
+        ArgumentVariable arg0 = new ArgumentVariable(instr.getArg1());
+        ArgumentVariable arg1 = new ArgumentVariable(instr.getResult());
         String argresult =result.getValue(curAddTable), argstr0 = arg0.getValue(curAddTable);
         if(arg0.type.equals("constant")) {
             writer.write("li " + "$s6" + "," + argstr0 + "\n");
