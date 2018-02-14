@@ -1,0 +1,7 @@
+add, a, 5, 0
+add, b, 3, 0
+add, c, a, b
+print, a
+print, b
+print, c
+label, exit

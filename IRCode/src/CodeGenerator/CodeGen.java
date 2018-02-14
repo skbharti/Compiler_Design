@@ -73,10 +73,14 @@ public class CodeGen {
         writer.write("sw $v0, 4($sp)\n");
         writer.write("sw $v1, 0($sp)\n");
 
-        if (arg0.type.equals("constant"))
+        if (arg0.type.equals("constant")) {
             writer.write(HelperFunctions.printIntegerFromString(arg0.getValue(curAddTable)));
-        else if(!arg0.getValue(curAddTable).equals("null"))
+            writer.write(HelperFunctions.printString("newline"));
+        }
+        else if(!arg0.getValue(curAddTable).equals("null")) {
             writer.write(HelperFunctions.printIntegerFromRegister(arg0.getValue(curAddTable)));
+            writer.write(HelperFunctions.printString("newline"));
+        }
         else {
             System.out.println("error in arguments to print");
             writer.write(HelperFunctions.printExitCode()); //Error
@@ -555,6 +559,7 @@ public class CodeGen {
     }
 
     private void arrayIndexLoad(ArrayAssignmentIRTuple instr) throws IOException{
+        String assignmentType = instr.getOpcode().toString();
         ArgumentVariable arg0 = new ArgumentVariable(instr.getArg0());
         ArgumentVariable arg1 = new ArgumentVariable(instr.getArg1());
         ArgumentVariable result = new ArgumentVariable(instr.getResult());

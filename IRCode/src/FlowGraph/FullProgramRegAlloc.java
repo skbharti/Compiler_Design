@@ -52,7 +52,7 @@ public class FullProgramRegAlloc
                     writer.write(p+"\n");
                 }
             }
-
+            writer.write("newline: .asciiz \"\\n\"\n");
             writer.write("\n.text\n\nmain:\n\n");
 
 

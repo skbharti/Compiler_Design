@@ -1,5 +1,7 @@
 package IRCode.src.IRCode;
 
+import static IRCode.src.helperclasses.Constants.*;
+
 public class ArrayAssignmentIRTuple extends ThreeAddCode {
 
     public ArrayAssignmentIRTuple(Object assignType, Object pointer, Object index, Object assignVariable){
@@ -11,7 +13,7 @@ public class ArrayAssignmentIRTuple extends ThreeAddCode {
 
     @Override
     public String toString() {
-        if(opcode.toString().contentEquals("ArrToVar"))
+        if(opcode.toString().contentEquals(ARRTOVAR))
             return result+" = "+arg0+" ["+arg1+"]";
         else
             return arg0+"["+arg1+"] = "+result;

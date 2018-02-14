@@ -33,5 +33,7 @@ public class Constants {
     public final static String LABEL = "label";
     public final static String PRINT = "print";
     public final static String NEW = "new";         // New Array creation
+    public final static String ARRTOVAR = "arrToVar";
+    public final static String VARTOARR = "varToArr";
 
 }

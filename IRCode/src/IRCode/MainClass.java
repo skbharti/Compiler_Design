@@ -65,13 +65,18 @@ public class MainClass {
                 return new PrintIRTuple((st[0]).trim(),(st[1]).trim());
             case NEW:
                 return new NewArrayIRTuple((st[1]).trim(), (st[2]).trim(), (st[3]).trim());
+            case ARRTOVAR:
+                return new ArrayAssignmentIRTuple(ARRTOVAR,(st[1]).trim(), (st[2]).trim(), (st[3]).trim());
+            case VARTOARR:
+                return new ArrayAssignmentIRTuple(VARTOARR,(st[1]).trim(), (st[2]).trim(), (st[3]).trim());
+
             default:
                 return null;
         }
     }
 
     public static void main(String args[]) throws IOException {
-        FileReader file = new FileReader("test.txt");
+        FileReader file = new FileReader("test1.txt");
         BufferedReader br = new BufferedReader(file);
         ArrayList<ThreeAddCode> iList = new ArrayList<ThreeAddCode>();
         String st;
