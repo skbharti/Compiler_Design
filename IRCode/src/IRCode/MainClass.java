@@ -2,7 +2,6 @@ package IRCode.src.IRCode;
 
 import IRCode.src.CodeGenerator.CodeGen;
 import IRCode.src.FlowGraph.FullProgramRegAlloc;
-import IRCode.src.FlowGraph.Tables;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -76,7 +75,7 @@ public class MainClass {
     }
 
     public static void main(String args[]) throws IOException {
-        FileReader file = new FileReader("test1.txt");
+        FileReader file = new FileReader("IRCode/Test/test1.txt");
         BufferedReader br = new BufferedReader(file);
         ArrayList<ThreeAddCode> iList = new ArrayList<ThreeAddCode>();
         String st;
