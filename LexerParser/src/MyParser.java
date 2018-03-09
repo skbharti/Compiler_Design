@@ -3,14 +3,13 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 
 public class MyParser {
     public static final String INPUT_FILE = "input";
     public static boolean start =  false;
     public static String sentence = "";
+    public static BufferedWriter writer;
 
     public static void main(String args[]) {
         FileInputStream fileInputStream;
@@ -35,7 +34,30 @@ public class MyParser {
         ParseTree tree = parser.compilationUnit();
         ParseTreeWalker walker = new ParseTreeWalker();
         MyJavaListener listener = new MyJavaListener();
+        sentence = "<p> "+JavaParser.CompilationUnitContext.class.getSimpleName()+" </p>";
+
+        try {
+            writer = new BufferedWriter(new FileWriter("tree_output.html"));
+            writer.write("<!DOCTYPE html>\n" +
+                    "<html>\n" +
+                    "<body>\n");
+        }
+        catch (Exception e){
+            System.out.println("Output File Not Found Error!");
+        }
+
         walker.walk(listener,tree);
-        System.out.println(tree.toStringTree(parser));
+
+        try {
+            writer.write(sentence);
+            writer.write("</body>\n" +
+                    "</html>");
+            writer.close();
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        System.out.println("Derivation Generated. Kindly check root folder for html file!");
     }
 }

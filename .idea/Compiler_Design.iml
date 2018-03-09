@@ -6,10 +6,11 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Lexer/src" isTestSource="false" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/Lexer/gen" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/LexerParser/src" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/LexerParser/gen" isTestSource="false" generated="true" />
       <excludeFolder url="file://$MODULE_DIR$/IRCode/.idea" />
-      <excludeFolder url="file://$MODULE_DIR$/Lexer" />
+      <excludeFolder url="file://$MODULE_DIR$/LexerParser" />
+      <excludeFolder url="file://$MODULE_DIR$/test" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -1,4 +1,6 @@
-public class RemoveDuplicateInArrayExample{  
+package test;
+
+public class RemoveDuplicateInArrayExample{
 public static int removeDuplicateElements(int arr[], int n){  
         if (n==0 || n==1){  
             return n;  

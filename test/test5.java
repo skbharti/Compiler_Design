@@ -1,4 +1,6 @@
-public class BubbleSortExample {  
+package test;
+
+public class BubbleSortExample {
     static void bubbleSort(int[] arr) {  
         int n = arr.length;  
         int temp = 0;  
