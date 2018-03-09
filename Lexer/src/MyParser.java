@@ -1,6 +1,7 @@
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -32,6 +33,9 @@ public class MyParser {
         CommonTokenStream tokenStream = new CommonTokenStream(lexer);
         JavaParser parser = new JavaParser(tokenStream);
         ParseTree tree = parser.compilationUnit();
+        ParseTreeWalker walker = new ParseTreeWalker();
+        MyJavaListener listener = new MyJavaListener();
+        walker.walk(listener,tree);
         System.out.println(tree.toStringTree(parser));
     }
 }
