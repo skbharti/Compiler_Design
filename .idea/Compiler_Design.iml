@@ -9,7 +9,8 @@
       <sourceFolder url="file://$MODULE_DIR$/LexerParser/src" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/LexerParser/gen" isTestSource="false" generated="true" />
       <excludeFolder url="file://$MODULE_DIR$/IRCode/.idea" />
-      <excludeFolder url="file://$MODULE_DIR$/LexerParser" />
+      <excludeFolder url="file://$MODULE_DIR$/IRCode/src/parserclasses" />
+      <excludeFolder url="file://$MODULE_DIR$/IRCode/src/symboltables" />
       <excludeFolder url="file://$MODULE_DIR$/test" />
     </content>
     <orderEntry type="inheritedJdk" />
