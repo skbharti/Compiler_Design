@@ -1,4 +1,4 @@
-// Generated from /media/shubham/GyanSangraha/Courses/CS335/Compiler_Design/Lexer/src/Java.g4 by ANTLR 4.7
+// Generated from /Users/karthikeyan/Desktop/Changes/Compiler_Design/LexerParser/src/Java.g4 by ANTLR 4.7
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;

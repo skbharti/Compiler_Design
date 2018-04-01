@@ -1,4 +1,4 @@
-// Generated from /media/shubham/GyanSangraha/Courses/CS335/Compiler_Design/Lexer/src/Java.g4 by ANTLR 4.7
+// Generated from /Users/karthikeyan/Desktop/Changes/Compiler_Design/LexerParser/src/Java.g4 by ANTLR 4.7
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -16,6 +16,16 @@ public interface JavaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitLiteral(JavaParser.LiteralContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link JavaParser#typeType}.
+	 * @param ctx the parse tree
+	 */
+	void enterTypeType(JavaParser.TypeTypeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaParser#typeType}.
+	 * @param ctx the parse tree
+	 */
+	void exitTypeType(JavaParser.TypeTypeContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JavaParser#type}.
 	 * @param ctx the parse tree

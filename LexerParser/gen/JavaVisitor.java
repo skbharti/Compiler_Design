@@ -1,4 +1,4 @@
-// Generated from /media/shubham/GyanSangraha/Courses/CS335/Compiler_Design/Lexer/src/Java.g4 by ANTLR 4.7
+// Generated from /Users/karthikeyan/Desktop/Changes/Compiler_Design/LexerParser/src/Java.g4 by ANTLR 4.7
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -15,6 +15,12 @@ public interface JavaVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitLiteral(JavaParser.LiteralContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link JavaParser#typeType}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTypeType(JavaParser.TypeTypeContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link JavaParser#type}.
 	 * @param ctx the parse tree

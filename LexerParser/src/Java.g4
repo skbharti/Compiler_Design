@@ -55,6 +55,7 @@ Total lexer+parser time 30844ms.
 // Modified ANTLR format Java BNF for Compiler Design [CS335]
 grammar Java;
 
+
 /*
  * Productions from §3 (Lexical Structure)
  */
@@ -71,6 +72,11 @@ literal
 /*
  * Productions from §4 (Types, Values, and Variables)
  */
+
+typeType
+    :  (classOrInterfaceType | primitiveType) ('[' ']')*
+    ;
+
 
 type
 	:	primitiveType
@@ -289,7 +295,7 @@ classMemberDeclaration
 	;
 
 fieldDeclaration
-	:	fieldModifier* variableDeclaratorList ';'
+	:	fieldModifier* typeType variableDeclaratorList ';'
 	;
 
 fieldModifier
@@ -351,11 +357,11 @@ formalParameters
 	;
 
 formalParameter
-	:	variableDeclaratorId
+	:	typeType variableDeclaratorId
 	;
 
 lastFormalParameter
-	:	'...' variableDeclaratorId
+	:	typeType '...' variableDeclaratorId
 	|	formalParameter
 	;
 
@@ -474,7 +480,7 @@ localVariableDeclarationStatement
 	;
 
 localVariableDeclaration
-	:	variableDeclaratorList
+	:	typeType variableDeclaratorList
 	;
 
 statement

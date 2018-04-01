@@ -2,10 +2,229 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50d02c0f-ab9f-4ac1-bace-a401ba17854c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/LexerParser/src/MyJavaListener.java" afterPath="$PROJECT_DIR$/LexerParser/src/MyJavaListener.java" />
-      <change beforePath="$PROJECT_DIR$/LexerParser/src/MyParser.java" afterPath="$PROJECT_DIR$/LexerParser/src/MyParser.java" />
-      <change beforePath="$PROJECT_DIR$/tree_output.html" afterPath="$PROJECT_DIR$/tree_output.html" />
+      <change beforePath="$PROJECT_DIR$/Output/.floo" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/.flooignore" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/.idea/Compiler_Design.iml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/.idea/misc.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/.idea/modules.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/.idea/uiDesigner.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/.idea/vcs.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/.idea/workspace.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/DemoTest/risc.gimple" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/DemoTest/test_BasicBlock.c.004t.gimple" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/DemoTest/x86.gimple" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/IRCode.iml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/Test/test.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/Test/test1.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/Test/test_ArrayLoops.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/Test/test_FunctionCallAndExit.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/Test/test_FunctionCallWithReturn.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/Test/test_Operator.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/Test/test_Unconditional.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/src/CodeGenerator/CodeGen.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/src/CodeGenerator/HelperFunctions.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/src/FlowGraph/AddrTableEntry.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/src/FlowGraph/Block.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/src/FlowGraph/BlockGraph.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/src/FlowGraph/FullProgramRegAlloc.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/src/FlowGraph/Liveness.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/src/FlowGraph/RegTablePerLine.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/src/FlowGraph/Tables.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/src/IRCode/ArrayAssignmentIRTuple.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/src/IRCode/AssignmentIRTuple.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/src/IRCode/ConditionalJumpIRTuple.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/src/IRCode/CopyIRTuple.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/src/IRCode/FunctionCallIRTuple.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/src/IRCode/LabelIRTuple.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/src/IRCode/MainClass.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/src/IRCode/NewArrayIRTuple.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/src/IRCode/PrintIRTuple.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/src/IRCode/ReturnIRTuple.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/src/IRCode/ThreeAddCode.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/src/IRCode/UnaryAssignmentIRTuple.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/src/IRCode/UnconditionalJumpIRTuple.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/src/helperclasses/ArgumentVariable.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/src/helperclasses/Constants.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/src/symboltables/SymbolTable.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/Java.g4" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/Java.tokens" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaBaseListener.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaBaseVisitor.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaLexer.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaLexer.tokens" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaListener.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$AdditiveExpressionContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$AmbiguousNameContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$AndExpressionContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ArgumentListContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ArrayAccessContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ArrayAccess_lf_primaryContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ArrayAccess_lfno_primaryContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ArrayCreationExpressionContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ArrayInitializerContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ArrayTypeContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$AssignmentContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$AssignmentExpressionContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$AssignmentOperatorContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$BasicForStatementContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$BasicForStatementNoShortIfContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$BlockContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$BlockStatementContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$BlockStatementsContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$BreakStatementContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$CastExpressionContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ClassBodyContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ClassBodyDeclarationContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ClassDeclarationContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ClassInstanceCreationExpressionContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ClassInstanceCreationExpression_lf_primaryContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ClassInstanceCreationExpression_lfno_primaryContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ClassMemberDeclarationContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ClassModifierContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ClassOrInterfaceTypeContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ClassTypeContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ClassType_lf_classOrInterfaceTypeContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ClassType_lfno_classOrInterfaceTypeContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$CompilationUnitContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ConditionalAndExpressionContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ConditionalExpressionContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ConditionalOrExpressionContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ConstantDeclarationContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ConstantExpressionContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ConstantModifierContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ConstructorBodyContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ConstructorDeclarationContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ConstructorDeclaratorContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ConstructorModifierContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ContinueStatementContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$DimExprContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$DimExprsContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$DimsContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ElementValueArrayInitializerContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ElementValueContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ElementValueListContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ElementValuePairContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ElementValuePairListContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$EmptyStatementContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$EqualityExpressionContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ExclusiveOrExpressionContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ExplicitConstructorInvocationContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ExpressionContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ExpressionNameContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ExpressionStatementContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$FieldAccessContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$FieldAccess_lf_primaryContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$FieldAccess_lfno_primaryContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$FieldDeclarationContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$FieldModifierContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$FloatingPointTypeContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ForInitContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ForStatementContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ForStatementNoShortIfContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ForUpdateContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$FormalParameterContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$FormalParameterListContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$FormalParametersContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$IfThenElseStatementContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$IfThenElseStatementNoShortIfContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$IfThenStatementContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ImportDeclarationContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$InclusiveOrExpressionContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$InferredFormalParameterListContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$InstanceInitializerContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$IntegralTypeContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$LabeledStatementContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$LabeledStatementNoShortIfContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$LastFormalParameterContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$LeftHandSideContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$LiteralContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$LocalVariableDeclarationContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$LocalVariableDeclarationStatementContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$MethodBodyContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$MethodDeclarationContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$MethodDeclaratorContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$MethodHeaderContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$MethodInvocationContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$MethodInvocation_lf_primaryContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$MethodInvocation_lfno_primaryContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$MethodModifierContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$MethodNameContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$MethodReferenceContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$MethodReference_lf_primaryContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$MethodReference_lfno_primaryContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$MultiplicativeExpressionContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$NormalClassDeclarationContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$NumericTypeContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$PackageDeclarationContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$PackageNameContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$PackageOrTypeNameContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$PostDecrementExpressionContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$PostDecrementExpression_lf_postfixExpressionContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$PostIncrementExpressionContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$PostIncrementExpression_lf_postfixExpressionContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$PostfixExpressionContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$PreDecrementExpressionContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$PreIncrementExpressionContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$PrimaryContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$PrimaryNoNewArrayContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$PrimaryNoNewArray_lf_arrayAccessContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$PrimaryNoNewArray_lf_primaryContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$PrimaryNoNewArray_lf_primary_lf_arrayAccess_lf_primaryContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$PrimaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primaryContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$PrimaryNoNewArray_lfno_arrayAccessContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$PrimaryNoNewArray_lfno_primaryContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$PrimaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primaryContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$PrimaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primaryContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$PrimitiveTypeContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ReceiverParameterContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ReferenceTypeContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$RelationalExpressionContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ResultContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ReturnStatementContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$ShiftExpressionContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$SimpleTypeNameContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$SingleStaticImportDeclarationContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$SingleTypeImportDeclarationContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$StatementContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$StatementExpressionContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$StatementExpressionListContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$StatementNoShortIfContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$StatementWithoutTrailingSubstatementContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$StaticImportOnDemandDeclarationContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$StaticInitializerContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$SuperclassContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$TypeArgumentContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$TypeArgumentListContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$TypeArgumentsContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$TypeArgumentsOrDiamondContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$TypeBoundContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$TypeContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$TypeDeclarationContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$TypeImportOnDemandDeclarationContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$TypeNameContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$TypeParameterContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$TypeParameterListContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$TypeParametersContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$TypeTypeContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$TypeVariableContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$UnaryExpressionContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$UnaryExpressionNotPlusMinusContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$VariableDeclaratorContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$VariableDeclaratorIdContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$VariableDeclaratorListContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$VariableInitializerContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$VariableInitializerListContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$WhileStatementContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$WhileStatementNoShortIfContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$WildcardBoundsContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser$WildcardContext.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaParser.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/JavaVisitor.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/MyJavaListener.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/MyParser.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/antlr4.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/input" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Output/tree_output.html" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,95 +234,15 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="MyParser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/LexerParser/src/MyParser.java">
+    <leaf>
+      <file leaf-file-name="Java.g4" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/LexerParser/src/Java.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1315">
-              <caret line="60" column="89" lean-forward="false" selection-start-line="60" selection-start-column="89" selection-end-line="60" selection-end-column="89" />
+            <state relative-caret-position="125">
+              <caret line="1193" column="10" lean-forward="true" selection-start-line="1193" selection-start-column="10" selection-end-line="1193" selection-end-column="10" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#0#22341#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test4.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/test4.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test5.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/test5.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tree_output.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tree_output.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1058">
-              <caret line="60" column="124" lean-forward="false" selection-start-line="60" selection-start-column="124" selection-end-line="60" selection-end-column="124" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test2.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/test2.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="16" column="12" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="36" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainClass.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/MainClass.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2208">
-              <caret line="104" column="9" lean-forward="false" selection-start-line="99" selection-start-column="8" selection-end-line="104" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CodeGen.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/IRCode/src/CodeGenerator/CodeGen.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1472">
-              <caret line="72" column="45" lean-forward="false" selection-start-line="72" selection-start-column="8" selection-end-line="72" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MyJavaListener.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/LexerParser/src/MyJavaListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="759">
-              <caret line="37" column="58" lean-forward="false" selection-start-line="37" selection-start-column="58" selection-end-line="37" selection-end-column="58" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="input" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/input">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -215,12 +354,13 @@
         <option value="$PROJECT_DIR$/LexerParser/src/MyJavaListener.java" />
         <option value="$PROJECT_DIR$/LexerParser/src/MyParser.java" />
         <option value="$PROJECT_DIR$/input" />
+        <option value="$PROJECT_DIR$/LexerParser/src/Java.g4" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="width" value="960" />
-    <option name="height" value="1057" />
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1280" />
+    <option name="height" value="800" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -240,9 +380,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -261,16 +398,14 @@
               <item name="LexerParser" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Compiler_Design" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Compiler_Design" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -278,7 +413,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/antlr-4.7.1-complete.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -293,6 +428,7 @@
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/LexerParser" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/Lexer/src" />
       <recent name="$PROJECT_DIR$/Lexer" />
@@ -454,24 +590,25 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1600" y="30" width="1600" height="1770" extended-state="0" />
+    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32697046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32666665" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2857143" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28533334" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Floobits" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294335" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294335" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32933334" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.263125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19765624" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -480,35 +617,12 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3991276" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24961948" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3991276" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32697046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2857143" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Floobits" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294335" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32881773" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Learn" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -630,13 +744,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/AssignmentIRTuple.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="52" lean-forward="false" selection-start-line="2" selection-start-column="52" selection-end-line="2" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/CopyIRTuple.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
@@ -669,7 +776,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
           <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -786,7 +892,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="205">
           <caret line="52" column="30" lean-forward="false" selection-start-line="52" selection-start-column="30" selection-end-line="52" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -808,7 +913,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="558">
           <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -844,7 +948,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="14" column="25" lean-forward="false" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -867,7 +970,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="486">
           <caret line="36" column="31" lean-forward="false" selection-start-line="36" selection-start-column="31" selection-end-line="36" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -879,19 +981,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Lexer/src/Main.java" />
-    <entry file="jar://$USER_HOME$/Downloads/antlr-4.7.1-complete.jar!/org/antlr/v4/runtime/Parser.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="325" column="0" lean-forward="false" selection-start-line="325" selection-start-column="0" selection-end-line="325" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$USER_HOME$/Downloads/antlr-4.7.1-complete.jar!/org/antlr/v4/runtime/Parser.class" />
     <entry file="file://$PROJECT_DIR$/Lexer/src/MyParserListener.java" />
     <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/MainClass.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2208">
           <caret line="104" column="9" lean-forward="false" selection-start-line="99" selection-start-column="8" selection-end-line="104" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -899,7 +994,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1472">
           <caret line="72" column="45" lean-forward="false" selection-start-line="72" selection-start-column="8" selection-end-line="72" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -907,7 +1001,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
           <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -915,7 +1008,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
           <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -923,7 +1015,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="759">
           <caret line="37" column="58" lean-forward="false" selection-start-line="37" selection-start-column="58" selection-end-line="37" selection-end-column="58" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -931,9 +1022,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1315">
           <caret line="60" column="89" lean-forward="false" selection-start-line="60" selection-start-column="89" selection-end-line="60" selection-end-column="89" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -941,7 +1029,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1058">
           <caret line="60" column="124" lean-forward="false" selection-start-line="60" selection-start-column="124" selection-end-line="60" selection-end-column="124" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -949,7 +1036,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="368">
           <caret line="16" column="12" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="36" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -957,7 +1043,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
           <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LexerParser/src/Java.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="1193" column="10" lean-forward="true" selection-start-line="1193" selection-start-column="10" selection-end-line="1193" selection-end-column="10" />
+          <folding>
+            <element signature="e#0#22341#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
