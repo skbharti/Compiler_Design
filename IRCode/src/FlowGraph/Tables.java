@@ -3,7 +3,9 @@ package IRCode.src.FlowGraph;
 import IRCode.src.CodeGenerator.CodeGen;
 import IRCode.src.IRCode.MainClass;
 import IRCode.src.IRCode.ThreeAddCode;
+import IRCode.src.helperclasses.ArgumentVariable;
 
+import java.io.IOException;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Set;
@@ -64,6 +66,25 @@ public class Tables
         }
 
     }
+
+
+
+
+    public boolean isVariable(String value){
+        if(value == null)
+            return  false;
+        if(value.equals("null") )
+        {
+            return false;
+        }
+        try {
+            double d = Double.parseDouble(value);
+            return false;
+        } catch (NumberFormatException e) {
+            return true;
+        }
+    }
+
 
 
 
@@ -207,14 +228,14 @@ public class Tables
                 }
                 else{
 
-                    regnum = GetDeadReg(linenum);
-                    if (regnum != -1 && regnum != 0)
+//                    regnum = GetDeadReg(linenum);
+//                    if (regnum != -1 && regnum != 0)
+//                    {
+//                        String oldvar = RegesterTable.get(regnum).toString();
+//                        SwapInRegAddrTables(regnum, oldvar, var);
+//                    }
+//                    else
                     {
-                        String oldvar = RegesterTable.get(regnum).toString();
-                        SwapInRegAddrTables(regnum, oldvar, var);
-                    }
-                    else
-                        {
                         regnum = FartestNextUse(linenum, exceptnum1, exceptnum2);
                         String oldvar = RegesterTable.get(regnum).toString();
                         SwapInRegAddrTables(regnum, oldvar, var);
@@ -232,13 +253,13 @@ public class Tables
             }
             else
             {
-                regnum = GetDeadReg(linenum);
-                if (regnum != -1 && regnum != 0)
-                {
-                    String oldvar = RegesterTable.get(regnum).toString();
-                    SwapInRegAddrTables(regnum, oldvar, var);
-                }
-                else
+//                regnum = GetDeadReg(linenum);
+//                if (regnum != -1 && regnum != 0)
+//                {
+//                    String oldvar = RegesterTable.get(regnum).toString();
+//                    SwapInRegAddrTables(regnum, oldvar, var);
+//                }
+//                else
                     {
                     regnum = FartestNextUse(linenum, exceptnum1, exceptnum2);
                     //System.out.println("Register number fartest : "+regnum);
@@ -255,8 +276,7 @@ public class Tables
 
 
 
-    public void RegisterAllocator()
-    {
+    public void RegisterAllocator()   {
         for(int i = 0; i< InstructionList.size(); i++)
         {
             int flag = 0;
@@ -270,6 +290,7 @@ public class Tables
             String var2 = null;
             String res = null;
 
+            //System.out.println(q.getArg0().toString());
             if(q.getArg0() != null)
              var1 = q.getArg0().toString();
 
@@ -293,12 +314,13 @@ public class Tables
                 if(AddressTable.containsKey(res) && AddressTable.get(res).getIsInReg() )
                 {
                     regnum3 =  AddressTable.get(res).getReg();
+                    System.out.println(i +" Regnum3 :" + regnum3);
                 }
                 else
                     {
 
 
-                        if (InstrLiveness.Variables.contains(var1) && CheckIfDead(var1, i) && AddressTable.containsKey(var1)) {
+                        if (false && InstrLiveness.Variables.contains(var1) && CheckIfDead(var1, i) && AddressTable.containsKey(var1)) {
                             //System.out.println("Var1 id dead in Line " + (i+1) );
                             regnum3 = regnum1;
 
@@ -316,7 +338,7 @@ public class Tables
                             AddressTable.put(res, tempentry);
 
 
-                        } else if (InstrLiveness.Variables.contains(var2) && CheckIfDead(var2, i) && AddressTable.containsKey(var2)) {
+                        } else if (false && InstrLiveness.Variables.contains(var2) && CheckIfDead(var2, i) && AddressTable.containsKey(var2)) {
                             // System.out.println("Var2 id dead in Line " + (i+1) );
                             regnum3 = regnum2;
                             AddressTable.get(var2).setWriteToMemory();
@@ -332,7 +354,9 @@ public class Tables
 
                             AddressTable.put(res, tempentry);
 
-                        } else {
+                        }
+
+                        else {
                             regnum3 = AllocateRegister(res, i, regnum1, regnum2);
                         }
 
@@ -366,6 +390,58 @@ public class Tables
             if(flag == 2 && regnum3 != -1)
                 SwapInRegAddrTables1(regnum3, var2, res);
 
+
+
+
+            try{
+                for(String Key: AddressTable.keySet()){
+                    if (AddressTable.get(Key).getWriteToMemory())
+                        MainClass.writer.write("sw "+ArgumentVariable.getRegName(PrevAddressTable.get(Key).getReg())+" "+Key+"\n");
+                }}catch (IOException e){
+
+            }
+
+
+try {
+    String arg0 = (String) q.getArg0();
+    String arg1 = (String) q.getArg1();
+    if (isVariable(arg0) && !PrevAddressTable.containsKey(arg0) && AddressTable.containsKey(arg0))
+        MainClass.writer.write("lw " + ArgumentVariable.getRegName(AddressTable.get(arg0).getReg()) + " " + arg0 + "\n");
+    if (isVariable(arg1) && !this.PrevAddressTable.containsKey(arg1) && AddressTable.containsKey(arg1))
+        MainClass.writer.write("lw " + ArgumentVariable.getRegName(AddressTable.get(arg1).getReg()) + " " + arg1 + "\n");
+}catch (IOException e){
+
+}
+
+
+            if(i == InstructionList.size()-1)
+            {
+                try {
+
+
+                    for (int j = 1; j <= 10; j++) {
+                        if (RegesterTable.containsKey(j)) {
+                            String temp = "sw $t" + (j - 1) + ", " + RegesterTable.get(j) + "\n";
+                            MainClass.writer.write(temp);
+                        }
+
+                    }
+
+                    for (int j = 0; j < 6; j++) {
+                        if (RegesterTable.containsKey(10 + j + 1)) {
+                            String temp = "sw  $s" + j + ", " + RegesterTable.get(10+j+1) + "\n";
+                            MainClass.writer.write(temp);
+                        }
+
+                    }
+
+                }
+                catch (IOException e)
+                {
+                    System.out.println(e);
+                }
+
+            }
 
 
 

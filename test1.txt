@@ -1,3 +1,4 @@
+add, z, 0, 1
 add, c, 0, 10
 add, a0, 0 ,1
 add, a1, 0 ,1
@@ -31,8 +32,8 @@ add, a28, 0, 2
 add, a29, 0, 0
 add, a30, 0, 0
 add, a31, 0, 1
-gt, c, 0, D_1759
-goto, D_1760
+is gt, c, 0, D_1759
+is gt, z, 0, D_1760
 label, D_1759
 add, D_1761, a0, a1
 add, D_1762, D_1761, a2
@@ -46,7 +47,7 @@ add, D_1769, D_1768, a9
 add, D_1770, D_1769, a10
 add, D_1771, D_1770, a11
 add, D_1772, D_1771, a12
-add, D_1773, D_1772, a13
+add, D_1773, D_1772, a0
 add, D_1774, D_1773, a14
 add, D_1775, D_1774, a15
 add, D_1776, D_1775, a16
@@ -65,8 +66,8 @@ add, D_1788, D_1787, a28
 add, D_1789, D_1788, a29
 add, D_1790, D_1789, a30
 add, b_0, D_1790, a31
-add, b, 0, b_0
-goto, D_1792
+add, b, b_0, 0
+is gt, z, 0, D_1792
 label, D_1760
 add, D_1793, a0, a1
 add, D_1794, D_1793, a2
@@ -98,11 +99,8 @@ add, D_1819, D_1818, a27
 add, D_1820, D_1819, a28
 add, D_1821, D_1820, a29
 add, D_1822, D_1821, a30
-add, b_1, D_1822, a31;
-add, b, 0, b_1
+add, b_1, D_1822, a31
+add, b, b_1, 0
 label, D_1792
 print, b
 add, D_1824, 0, 0
-return, D_1824
-
-

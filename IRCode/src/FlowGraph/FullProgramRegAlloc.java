@@ -1,8 +1,6 @@
 package IRCode.src.FlowGraph;
 import IRCode.src.CodeGenerator.CodeGen;
-import IRCode.src.IRCode.LabelIRTuple;
-import IRCode.src.IRCode.MainClass;
-import IRCode.src.IRCode.ThreeAddCode;
+import IRCode.src.IRCode.*;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -41,7 +39,7 @@ public class FullProgramRegAlloc
                 String s = iterator.next();
                 if(!lv.Arrays.containsKey(s))
                 {
-                    String p =s+": .word";
+                    String p =s+": .word 0";
                     System.out.println(p);
                     writer.write(p+"\n");
                 }
@@ -63,26 +61,29 @@ public class FullProgramRegAlloc
                 Tables tb = new Tables(BlocksList.get(i).ListOfInstructions);
                 tb.RegisterAllocator();
 
-                for (int j = 1; j <= 10; j++)
+                int sz  = BlocksList.get(i).ListOfInstructions.size();
+
+                if ( !(BlocksList.get(i).ListOfInstructions.get(sz-1) instanceof ConditionalJumpIRTuple || BlocksList.get(i).ListOfInstructions.get(sz-1) instanceof UnconditionalJumpIRTuple) )
                 {
-                    if (tb.RegesterTable.containsKey(j))
+                    for (int j = 1; j <= 10; j++)
                     {
-                        String temp = "sw $t"+(j-1) +", " + tb.RegesterTable.get(j)+"\n";
-                        writer.write(temp);
+                        if (tb.RegesterTable.containsKey(j))
+                        {
+                            String temp = "sw $t" + (j - 1) + ", " + tb.RegesterTable.get(j) + "\n";
+                            writer.write(temp);
+                        }
                     }
 
-                }
-
-                for (int j = 0; j < 6; j++)
-                {
-                    if (tb.RegesterTable.containsKey(10+j+1))
+                    for (int j = 0; j < 6; j++)
                     {
-                        String temp = "sw  $s"+j +", " + tb.RegesterTable.get(j)+"\n";
-                        writer.write(temp);
+                        if (tb.RegesterTable.containsKey(10 + j + 1))
+                        {
+                            String temp = "sw  $s" + j + ", " + tb.RegesterTable.get(10 + j + 1) + "\n";
+                            writer.write(temp);
+                        }
+
                     }
-
                 }
-
             }
 
 

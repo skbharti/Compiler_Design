@@ -5,7 +5,6 @@ import IRCode.src.helperclasses.ArgumentVariable;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.Hashtable;
-import java.util.Set;
 
 import static IRCode.src.helperclasses.Constants.*;
 
@@ -16,11 +15,17 @@ public class CodeGen {
     private Hashtable<Integer,String> regTable;
     private static BufferedWriter writer = MainClass.writer;
 
+
+
     public void generateMips(ThreeAddCode q, Hashtable<String,AddrTableEntry> curAddTable, Hashtable<String,AddrTableEntry> preAddTable, Hashtable<Integer,String> regTable, boolean store){
         try {
             this.curAddTable = curAddTable;
             this.preAddTable = preAddTable;
             this.regTable = regTable;
+
+
+
+
 
             if(q instanceof AssignmentIRTuple)
             {
@@ -49,7 +54,7 @@ public class CodeGen {
             else if(q instanceof NewArrayIRTuple)
             {
 ////Do nothing only needed for dynamic memory allocation
-//                newArrayInitialize((NewArrayIRTuple) q);
+  //           newArrayInitialize((NewArrayIRTuple) q);
             }
             else if(q instanceof ArrayAssignmentIRTuple)
             {
@@ -378,29 +383,28 @@ public class CodeGen {
     }
 
     private void arrayIndexAssignment(ArrayAssignmentIRTuple instr) throws IOException{
-        ArgumentVariable result = new ArgumentVariable(instr.getArg0());
-        ArgumentVariable arg0 = new ArgumentVariable(instr.getArg1());
-        ArgumentVariable arg1 = new ArgumentVariable(instr.getResult());
-        String argresult =result.getValue(curAddTable), argstr0 = arg0.getValue(curAddTable);
-        if(arg0.type.equals("constant")) {
-            writer.write("li " + "$s6" + "," + argstr0 + "\n");
-            argstr0 = "$s6";
+        ArgumentVariable pointer = new ArgumentVariable(instr.getArg0());
+        ArgumentVariable index = new ArgumentVariable(instr.getArg1());
+        ArgumentVariable result = new ArgumentVariable(instr.getResult());
+        String argresult =result.getValue(curAddTable), indexstr = index.getValue(curAddTable);
+        if(index.type.equals("constant")) {
+            writer.write("li " + "$s6" + "," + indexstr + "\n");
+            indexstr = "$s6";
         }
-        writer.write("sll "+argstr0+","+argstr0+", 2\n");
-        writer.write("addi "+argstr0+", "+argstr0+", 4\n");
-        writer.write("add "+argresult+", "+argresult+", "+argstr0+"\n");
-        if(arg1.type.equals("constant")) {
+        writer.write("sll "+indexstr+","+indexstr+", 2\n");
+        writer.write("addi "+indexstr+", "+indexstr+", 4\n");
+       // writer.write("add "+argresult+", "+argresult+", "+argstr0+"\n");
+        if(result.type.equals("constant")) {
             String tmp = "$s7";
-            writer.write("li " + tmp + "," + argstr0 + "\n");
-            writer.write("sw " + tmp + ", 0(" + argresult + ")\n");
+            writer.write("li " + tmp + "," + result + "\n");
+            writer.write("sw " + tmp + ", "+instr.getArg0().toString()+"(" + indexstr + ")\n");
         }
         else {
-            writer.write("sw " + arg1.getValue(curAddTable) + ", 0(" + argresult + ")\n");
+            writer.write("sw " + result.getValue(curAddTable) + ", "+instr.getArg0().toString()+"(" + indexstr + ")\n");
         }
-        writer.write("sub "+argresult+", "+argresult+", "+argstr0+"\n");
-        if (!arg0.type.equals("constant")){
-            writer.write("addi "+argstr0+", "+argstr0+", -4\n");
-            writer.write("srl "+argstr0+", "+argstr0+", 2\n");
+        if (!index.type.equals("constant")){
+            writer.write("addi "+indexstr+", "+indexstr+", -4\n");
+            writer.write("srl "+indexstr+", "+indexstr+", 2\n");
         }
 
     }
@@ -496,16 +500,16 @@ public class CodeGen {
                 writer.write("bne "+arg0.getValue(curAddTable)+", $zero, "+label+"\n");
                 break;
             case IFLT:
-                writer.write("bltz "+arg0.getValue(curAddTable)+", $zero, "+label+"\n");
+                writer.write("bltz "+arg0.getValue(curAddTable)+", "+label+"\n");
                 break;
             case IFLTE:
-                writer.write("blez "+arg0.getValue(curAddTable)+", $zero, "+label+"\n");
+                writer.write("blez "+arg0.getValue(curAddTable)+", "+label+"\n");
                 break;
             case IFGT:
-                writer.write("bgtz "+arg0.getValue(curAddTable)+", $zero, "+label+"\n");
+                writer.write("bgtz "+arg0.getValue(curAddTable)+", "+label+"\n");
                 break;
             case IFGTE:
-                writer.write("bgez "+arg0.getValue(curAddTable)+", $zero, "+label+"\n");
+                writer.write("bgez "+arg0.getValue(curAddTable)+", "+label+"\n");
                 break;
             case IFNEQ:
                 writer.write("bne "+arg0.getValue(curAddTable)+", $zero, "+label+"\n");
@@ -574,10 +578,7 @@ public class CodeGen {
         }
         writer.write("sll "+argstr1+","+argstr1+", 2\n");
         writer.write("addi "+argstr1+", "+argstr1+", 4\n");
-        writer.write("add "+argstr0+", "+argstr0+", "+argstr1+"\n");
-        writer.write("lw "+result.getValue(curAddTable)+", 0("+argstr0+")\n");
-
-        writer.write("sub "+argstr0+", "+argstr0+", "+argstr1+"\n");
+        writer.write("lw "+result.getValue(curAddTable)+", "+instr.getArg0().toString()+"("+argstr1+")\n");
         if (!arg1.type.equals("constant")){
             writer.write("addi "+argstr1+", "+argstr1+", -4\n");
             writer.write("srl "+argstr1+", "+argstr1+", 2\n");
