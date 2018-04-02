@@ -61,12 +61,12 @@ grammar Java;
  */
 
 literal
-	:	IntegerLiteral
-	|	FloatingPointLiteral
-	|	BooleanLiteral
-	|	CharacterLiteral
-	|	StringLiteral
-	|	NullLiteral
+	:	IntegerLiteral	#java1
+	|	FloatingPointLiteral	#java2
+	|	BooleanLiteral	#java3
+	|	CharacterLiteral	#java4
+	|	StringLiteral	#java5
+	|	NullLiteral	#java6
 	;
 
 /*
@@ -79,97 +79,97 @@ typeType
 
 
 type
-	:	primitiveType
-	|	referenceType
+	:	primitiveType	#java7
+	|	referenceType	#java8
 	;
 
 primitiveType
-	:	numericType
-	|	'boolean'
+	:	numericType	#java9
+	|	'boolean'	#java10
 	;
 
 numericType
-	:	integralType
-	|	floatingPointType
+	:	integralType	#java11
+	|	floatingPointType	#java12
 	;
 
 integralType
-	:	'int'
-	|	'char'
+	:	'int'	#java13
+	|	'char'	#java14
 	;
 
 floatingPointType
-	:	'float'
+	:	'float'	#java15
 	;
 
 referenceType
-	:	classOrInterfaceType
-	|	typeVariable
-	|	arrayType
+	:	classOrInterfaceType	#java16
+	|	typeVariable	#java17
+	|	arrayType	#java18
 	;
 
 classOrInterfaceType
 	:	(	classType_lfno_classOrInterfaceType
 		)
 		(	classType_lf_classOrInterfaceType
-		)*
+		)*	#java19
 	;
 
 classType
-	:	Identifier typeArguments?
-	|	classOrInterfaceType '.' Identifier typeArguments?
+	:	Identifier typeArguments?	#java20
+	|	classOrInterfaceType '.' Identifier typeArguments?	#java21
 	;
 
 classType_lf_classOrInterfaceType
-	:	'.' Identifier typeArguments?
+	:	'.' Identifier typeArguments?	#java22
 	;
 
 classType_lfno_classOrInterfaceType
-	:	Identifier typeArguments?
+	:	Identifier typeArguments?	#java23
 	;
 
 typeVariable
-	:	Identifier
+	:	Identifier	#java24
 	;
 
 arrayType
-	:	primitiveType dims
-	|	classOrInterfaceType dims
-	|	typeVariable dims
+	:	primitiveType dims	#java25
+	|	classOrInterfaceType dims	#java26
+	|	typeVariable dims	#java27
 	;
 
 dims
-	:	'[' ']' ('[' ']')*
+	:	'[' ']' ('[' ']')*	#java28
 	;
 
 typeParameter
-	:	Identifier typeBound?
+	:	Identifier typeBound?	#java29
 	;
 
 typeBound
-	:	'extends' typeVariable
+	:	'extends' typeVariable	#java30
 	;
 
 typeArguments
-	:	'<' typeArgumentList '>'
+	:	'<' typeArgumentList '>'	#java31
 	;
 
 typeArgumentList
-	:	typeArgument (',' typeArgument)*
+	:	typeArgument (',' typeArgument)*	#java32
 	;
 
 typeArgument
-	:	referenceType
-	|	wildcard
+	:	referenceType	#java33
+	|	wildcard	#java34
 	;
 
 wildcard
-	:	'?' wildcardBounds?
+	:	'?' wildcardBounds?	#java35
 	;
 
 wildcardBounds
-	:	'extends' referenceType
-	|	'super' referenceType
+	:	'extends' referenceType	#java36
+	|	'super' referenceType	#java37
 	;
 
 /*
@@ -177,32 +177,32 @@ wildcardBounds
  */
 
 packageName
-	:	Identifier
-	|	packageName '.' Identifier
+	:	Identifier	#java38
+	|	packageName '.' Identifier	#java39
 	;
 
 typeName
-	:	Identifier
-	|	packageOrTypeName '.' Identifier
+	:	Identifier	#java40
+	|	packageOrTypeName '.' Identifier	#java41
 	;
 
 packageOrTypeName
-	:	Identifier
-	|	packageOrTypeName '.' Identifier
+	:	Identifier	#java42
+	|	packageOrTypeName '.' Identifier	#java43
 	;
 
 expressionName
-	:	Identifier
-	|	ambiguousName '.' Identifier
+	:	Identifier	#java44
+	|	ambiguousName '.' Identifier	#java45
 	;
 
 methodName
-	:	Identifier
+	:	Identifier	#java46
 	;
 
 ambiguousName
-	:	Identifier
-	|	ambiguousName '.' Identifier
+	:	Identifier	#java47
+	|	ambiguousName '.' Identifier	#java48
 	;
 
 /*
@@ -210,39 +210,39 @@ ambiguousName
  */
 
 compilationUnit
-	:	packageDeclaration? importDeclaration* typeDeclaration* EOF
+	:	packageDeclaration? importDeclaration* typeDeclaration* EOF	#java49
 	;
 
 packageDeclaration
-	:	'package' Identifier ('.' Identifier)* ';'
+	:	'package' Identifier ('.' Identifier)* ';'	#java50
 	;
 
 importDeclaration
-	:	singleTypeImportDeclaration
-	|	typeImportOnDemandDeclaration
-	|	singleStaticImportDeclaration
-	|	staticImportOnDemandDeclaration
+	:	singleTypeImportDeclaration	#java51
+	|	typeImportOnDemandDeclaration	#java52
+	|	singleStaticImportDeclaration	#java53
+	|	staticImportOnDemandDeclaration	#java54
 	;
 
 singleTypeImportDeclaration
-	:	'import' typeName ';'
+	:	'import' typeName ';'	#java55
 	;
 
 typeImportOnDemandDeclaration
-	:	'import' packageOrTypeName '.' '*' ';'
+	:	'import' packageOrTypeName '.' '*' ';'	#java56
 	;
 
 singleStaticImportDeclaration
-	:	'import' 'static' typeName '.' Identifier ';'
+	:	'import' 'static' typeName '.' Identifier ';'	#java57
 	;
 
 staticImportOnDemandDeclaration
-	:	'import' 'static' typeName '.' '*' ';'
+	:	'import' 'static' typeName '.' '*' ';'	#java58
 	;
 
 typeDeclaration
-	:	classDeclaration
-	|	';'
+	:	classDeclaration	#java59
+	|	';'	#java60
 	;
 
 /*
@@ -250,165 +250,165 @@ typeDeclaration
  */
 
 classDeclaration
-	:	normalClassDeclaration
+	:	normalClassDeclaration	#java61
 	;
 
 normalClassDeclaration
-	:	classModifier* 'class' Identifier typeParameters? superclass? classBody
+	:	classModifier* 'class' Identifier typeParameters? superclass? classBody	#java62
 	;
 
 classModifier
-	:	'public'
-	|	'private'
-	|	'abstract'
-	|	'static'
+	:	'public'	#java63
+	|	'private'	#java64
+	|	'abstract'	#java65
+	|	'static'	#java66
 	;
 
 typeParameters
-	:	'<' typeParameterList '>'
+	:	'<' typeParameterList '>'	#java67
 	;
 
 typeParameterList
-	:	typeParameter (',' typeParameter)*
+	:	typeParameter (',' typeParameter)*	#java68
 	;
 
 superclass
-	:	'extends' classType
+	:	'extends' classType	#java69
 	;
 
 classBody
-	:	'{' classBodyDeclaration* '}'
+	:	'{' classBodyDeclaration* '}'	#java70
 	;
 
 classBodyDeclaration
-	:	classMemberDeclaration
-	|	instanceInitializer
-	|	staticInitializer
-	|	constructorDeclaration
+	:	classMemberDeclaration	#java71
+	|	instanceInitializer	#java72
+	|	staticInitializer	#java73
+	|	constructorDeclaration	#java74
 	;
 
 classMemberDeclaration
-	:	fieldDeclaration
-	|	methodDeclaration
-	|	classDeclaration
-	|	';'
+	:	fieldDeclaration	#java75
+	|	methodDeclaration	#java76
+	|	classDeclaration	#java77
+	|	';'	#java78
 	;
 
 fieldDeclaration
-	:	fieldModifier* typeType variableDeclaratorList ';'
+	:	fieldModifier* typeType variableDeclaratorList ';'	#java79
 	;
 
 fieldModifier
-	:	'public'
-	|	'private'
-	|	'static'
+	:	'public'	#java80
+	|	'private'	#java81
+	|	'static'	#java82
 	;
 
 variableDeclaratorList
-	:	variableDeclarator (',' variableDeclarator)*
+	:	variableDeclarator (',' variableDeclarator)*	#java83
 	;
 
 variableDeclarator
-	:	variableDeclaratorId ('=' variableInitializer)?
+	:	variableDeclaratorId ('=' variableInitializer)?	#java84
 	;
 
 variableDeclaratorId
-	:	Identifier dims?
+	:	Identifier dims?	#java85
 	;
 
 variableInitializer
-	:	expression
-	|	arrayInitializer
+	:	expression	#java86
+	|	arrayInitializer	#java87
 	;
 
 methodDeclaration
-	:	methodModifier* methodHeader methodBody
+	:	methodModifier* methodHeader methodBody	#java88
 	;
 
 methodModifier
-	:	'public'
-	|	'private'
-	|	'abstract'
-	|	'static'
+	:	'public'	#java89
+	|	'private'	#java90
+	|	'abstract'	#java91
+	|	'static'	#java92
 	;
 
 methodHeader
-	:	result methodDeclarator
-	|	typeParameters methodDeclarator
+	:	result methodDeclarator	#java93
+	|	typeParameters methodDeclarator	#java94
 	;
 
 result
-	:	'void'
-	|	type
+	:	'void'	#java95
+	|	type	#java96
 	;
 
 methodDeclarator
-	:	Identifier '(' formalParameterList? ')' dims?
+	:	Identifier '(' formalParameterList? ')' dims?	#java97
 	;
 
 formalParameterList
-	:	formalParameters ',' lastFormalParameter
-	|	lastFormalParameter
+	:	formalParameters ',' lastFormalParameter	#java98
+	|	lastFormalParameter	#java99
 	;
 
 formalParameters
-	:	formalParameter (',' formalParameter)*
-	|	receiverParameter (',' formalParameter)*
+	:	formalParameter (',' formalParameter)*	#java100
+	|	receiverParameter (',' formalParameter)*	#java101
 	;
 
 formalParameter
-	:	typeType variableDeclaratorId
+	:	typeType variableDeclaratorId	#java102
 	;
 
 lastFormalParameter
-	:	typeType '...' variableDeclaratorId
-	|	formalParameter
+	:	typeType '...' variableDeclaratorId	#java103
+	|	formalParameter	#java104
 	;
 
 receiverParameter
-	:	(Identifier '.')? 'this'
+	:	(Identifier '.')? 'this'	#java105
 	;
 
 
 methodBody
-	:	block
-	|	';'
+	:	block	#java106
+	|	';'	#java107
 	;
 
 instanceInitializer
-	:	block
+	:	block	#java108
 	;
 
 staticInitializer
-	:	'static' block
+	:	'static' block	#java109
 	;
 
 constructorDeclaration
-	:	constructorModifier* constructorDeclarator constructorBody
+	:	constructorModifier* constructorDeclarator constructorBody	#java110
 	;
 
 constructorModifier
-	:	'public'
-	|	'private'
+	:	'public'	#java111
+	|	'private'	#java112
 	;
 
 constructorDeclarator
-	:	typeParameters? simpleTypeName '(' formalParameterList? ')'
+	:	typeParameters? simpleTypeName '(' formalParameterList? ')'	#java113
 	;
 
 simpleTypeName
-	:	Identifier
+	:	Identifier	#java114
 	;
 
 constructorBody
-	:	'{' explicitConstructorInvocation? blockStatements? '}'
+	:	'{' explicitConstructorInvocation? blockStatements? '}'	#java115
 	;
 
 explicitConstructorInvocation
-	:	typeArguments? 'this' '(' argumentList? ')' ';'
-	|	typeArguments? 'super' '(' argumentList? ')' ';'
-	|	expressionName '.' typeArguments? 'super' '(' argumentList? ')' ';'
-	|	primary '.' typeArguments? 'super' '(' argumentList? ')' ';'
+	:	typeArguments? 'this' '(' argumentList? ')' ';'	#java116
+	|	typeArguments? 'super' '(' argumentList? ')' ';'	#java117
+	|	expressionName '.' typeArguments? 'super' '(' argumentList? ')' ';'	#java118
+	|	primary '.' typeArguments? 'super' '(' argumentList? ')' ';'	#java119
 	;
 
 /*
@@ -416,33 +416,33 @@ explicitConstructorInvocation
  */
 
 constantDeclaration
-	:	constantModifier* variableDeclaratorList ';'
+	:	constantModifier* variableDeclaratorList ';'	#java120
 	;
 
 constantModifier
-	:	'public'
-	|	'static'
+	:	'public'	#java121
+	|	'static'	#java122
 	;
 
 elementValuePairList
-	:	elementValuePair (',' elementValuePair)*
+	:	elementValuePair (',' elementValuePair)*	#java123
 	;
 
 elementValuePair
-	:	Identifier '=' elementValue
+	:	Identifier '=' elementValue	#java124
 	;
 
 elementValue
-	:	conditionalExpression
-	|	elementValueArrayInitializer
+	:	conditionalExpression	#java125
+	|	elementValueArrayInitializer	#java126
 	;
 
 elementValueArrayInitializer
-	:	'{' elementValueList? ','? '}'
+	:	'{' elementValueList? ','? '}'	#java127
 	;
 
 elementValueList
-	:	elementValue (',' elementValue)*
+	:	elementValue (',' elementValue)*	#java128
 	;
 
 /*
@@ -450,11 +450,11 @@ elementValueList
  */
 
 arrayInitializer
-	:	'{' variableInitializerList? ','? '}'
+	:	'{' variableInitializerList? ','? '}'	#java129
 	;
 
 variableInitializerList
-	:	variableInitializer (',' variableInitializer)*
+	:	variableInitializer (',' variableInitializer)*	#java130
 	;
 
 /*
@@ -462,138 +462,138 @@ variableInitializerList
  */
 
 block
-	:	'{' blockStatements? '}'
+	:	'{' blockStatements? '}'	#java131
 	;
 
 blockStatements
-	:	blockStatement blockStatement*
+	:	blockStatement blockStatement*	#java132
 	;
 
 blockStatement
-	:	localVariableDeclarationStatement
-	|	classDeclaration
-	|	statement
+	:	localVariableDeclarationStatement	#java133
+	|	classDeclaration	#java134
+	|	statement	#java135
 	;
 
 localVariableDeclarationStatement
-	:	localVariableDeclaration ';'
+	:	localVariableDeclaration ';'	#java136
 	;
 
 localVariableDeclaration
-	:	typeType variableDeclaratorList
+	:	typeType variableDeclaratorList	#java137
 	;
 
 statement
-	:	statementWithoutTrailingSubstatement
-	|	labeledStatement
-	|	ifThenStatement
-	|	ifThenElseStatement
-	|	whileStatement
-	|	forStatement
+	:	statementWithoutTrailingSubstatement	#java138
+	|	labeledStatement	#java139
+	|	ifThenStatement	#java140
+	|	ifThenElseStatement	#java141
+	|	whileStatement	#java142
+	|	forStatement	#java143
 	;
 
 statementNoShortIf
-	:	statementWithoutTrailingSubstatement
-	|	labeledStatementNoShortIf
-	|	ifThenElseStatementNoShortIf
-	|	whileStatementNoShortIf
-	|	forStatementNoShortIf
+	:	statementWithoutTrailingSubstatement	#java144
+	|	labeledStatementNoShortIf	#java145
+	|	ifThenElseStatementNoShortIf	#java146
+	|	whileStatementNoShortIf	#java147
+	|	forStatementNoShortIf	#java148
 	;
 
 statementWithoutTrailingSubstatement
-	:	block
-	|	emptyStatement
-	|	expressionStatement
-	|	breakStatement
-	|	continueStatement
-	|	returnStatement
+	:	block	#java149
+	|	emptyStatement	#java150
+	|	expressionStatement	#java151
+	|	breakStatement	#java152
+	|	continueStatement	#java153
+	|	returnStatement	#java154
 	;
 
 emptyStatement
-	:	';'
+	:	';'	#java155
 	;
 
 labeledStatement
-	:	Identifier ':' statement
+	:	Identifier ':' statement	#java156
 	;
 
 labeledStatementNoShortIf
-	:	Identifier ':' statementNoShortIf
+	:	Identifier ':' statementNoShortIf	#java157
 	;
 
 expressionStatement
-	:	statementExpression ';'
+	:	statementExpression ';'	#java158
 	;
 
 statementExpression
-	:	assignment
-	|	preIncrementExpression
-	|	preDecrementExpression
-	|	postIncrementExpression
-	|	postDecrementExpression
-	|	methodInvocation
-	|	classInstanceCreationExpression
+	:	assignment	#java159
+	|	preIncrementExpression	#java160
+	|	preDecrementExpression	#java161
+	|	postIncrementExpression	#java162
+	|	postDecrementExpression	#java163
+	|	methodInvocation	#java164
+	|	classInstanceCreationExpression	#java165
 	;
 
 ifThenStatement
-	:	'if' '(' expression ')' statement
+	:	'if' '(' expression ')' statement	#java166
 	;
 
 ifThenElseStatement
-	:	'if' '(' expression ')' statementNoShortIf 'else' statement
+	:	'if' '(' expression ')' statementNoShortIf 'else' statement	#java167
 	;
 
 ifThenElseStatementNoShortIf
-	:	'if' '(' expression ')' statementNoShortIf 'else' statementNoShortIf
+	:	'if' '(' expression ')' statementNoShortIf 'else' statementNoShortIf	#java168
 	;
 
 whileStatement
-	:	'while' '(' expression ')' statement
+	:	'while' '(' expression ')' statement	#java169
 	;
 
 whileStatementNoShortIf
-	:	'while' '(' expression ')' statementNoShortIf
+	:	'while' '(' expression ')' statementNoShortIf	#java170
 	;
 
 forStatement
-	:	basicForStatement
+	:	basicForStatement	#java171
 	;
 
 forStatementNoShortIf
-	:	basicForStatementNoShortIf
+	:	basicForStatementNoShortIf	#java172
 	;
 
 basicForStatement
-	:	'for' '(' forInit? ';' expression? ';' forUpdate? ')' statement
+	:	'for' '(' forInit? ';' expression? ';' forUpdate? ')' statement	#java173
 	;
 
 basicForStatementNoShortIf
-	:	'for' '(' forInit? ';' expression? ';' forUpdate? ')' statementNoShortIf
+	:	'for' '(' forInit? ';' expression? ';' forUpdate? ')' statementNoShortIf	#java174
 	;
 
 forInit
-	:	statementExpressionList
-	|	localVariableDeclaration
+	:	statementExpressionList	#java175
+	|	localVariableDeclaration	#java176
 	;
 
 forUpdate
-	:	statementExpressionList
+	:	statementExpressionList	#java177
 	;
 
 statementExpressionList
-	:	statementExpression (',' statementExpression)*
+	:	statementExpression (',' statementExpression)*	#java178
 	;
 
 breakStatement
-	:	'break' Identifier? ';'
+	:	'break' Identifier? ';'	#java179
 	;
 
 continueStatement
-	:	'continue' Identifier? ';'
+	:	'continue' Identifier? ';'	#java180
 	;
 
 returnStatement
-	:	'return' expression? ';'
+	:	'return' expression? ';'	#java181
 	;
 
 /*
@@ -605,123 +605,123 @@ primary
 		|	arrayCreationExpression
 		)
 		(	primaryNoNewArray_lf_primary
-		)*
+		)*	#java182
 	;
 
 primaryNoNewArray
-	:	literal
-	|	typeName ('[' ']')* '.' 'class'
-	|	'void' '.' 'class'
-	|	'this'
-	|	typeName '.' 'this'
-	|	'(' expression ')'
-	|	classInstanceCreationExpression
-	|	fieldAccess
-	|	arrayAccess
-	|	methodInvocation
-	|	methodReference
+	:	literal	#java183
+	|	typeName ('[' ']')* '.' 'class'	#java184
+	|	'void' '.' 'class'	#java185
+	|	'this'	#java186
+	|	typeName '.' 'this'	#java187
+	|	'(' expression ')'	#java188
+	|	classInstanceCreationExpression	#java189
+	|	fieldAccess	#java190
+	|	arrayAccess	#java191
+	|	methodInvocation	#java192
+	|	methodReference	#java193
 	;
 
 primaryNoNewArray_lf_arrayAccess
-	:
+	:	#java194
 	;
 
 primaryNoNewArray_lfno_arrayAccess
-	:	literal
-	|	typeName ('[' ']')* '.' 'class'
-	|	'void' '.' 'class'
-	|	'this'
-	|	typeName '.' 'this'
-	|	'(' expression ')'
-	|	classInstanceCreationExpression
-	|	fieldAccess
-	|	methodInvocation
-	|	methodReference
+	:	literal	#java195
+	|	typeName ('[' ']')* '.' 'class'	#java196
+	|	'void' '.' 'class'	#java197
+	|	'this'	#java198
+	|	typeName '.' 'this'	#java199
+	|	'(' expression ')'	#java200
+	|	classInstanceCreationExpression	#java201
+	|	fieldAccess	#java202
+	|	methodInvocation	#java203
+	|	methodReference	#java204
 	;
 
 primaryNoNewArray_lf_primary
-	:	classInstanceCreationExpression_lf_primary
-	|	fieldAccess_lf_primary
-	|	arrayAccess_lf_primary
-	|	methodInvocation_lf_primary
-	|	methodReference_lf_primary
+	:	classInstanceCreationExpression_lf_primary	#java205
+	|	fieldAccess_lf_primary	#java206
+	|	arrayAccess_lf_primary	#java207
+	|	methodInvocation_lf_primary	#java208
+	|	methodReference_lf_primary	#java209
 	;
 
 primaryNoNewArray_lf_primary_lf_arrayAccess_lf_primary
-	:
+	:	#java210
 	;
 
 primaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primary
-	:	classInstanceCreationExpression_lf_primary
-	|	fieldAccess_lf_primary
-	|	methodInvocation_lf_primary
-	|	methodReference_lf_primary
+	:	classInstanceCreationExpression_lf_primary	#java211
+	|	fieldAccess_lf_primary	#java212
+	|	methodInvocation_lf_primary	#java213
+	|	methodReference_lf_primary	#java214
 	;
 
 primaryNoNewArray_lfno_primary
-	:	literal
-	|	typeName ('[' ']')* '.' 'class'
-	|	'void' '.' 'class'
-	|	'this'
-	|	typeName '.' 'this'
-	|	'(' expression ')'
-	|	classInstanceCreationExpression_lfno_primary
-	|	fieldAccess_lfno_primary
-	|	arrayAccess_lfno_primary
-	|	methodInvocation_lfno_primary
-	|	methodReference_lfno_primary
+	:	literal	#java215
+	|	typeName ('[' ']')* '.' 'class'	#java216
+	|	'void' '.' 'class'	#java217
+	|	'this'	#java218
+	|	typeName '.' 'this'	#java219
+	|	'(' expression ')'	#java220
+	|	classInstanceCreationExpression_lfno_primary	#java221
+	|	fieldAccess_lfno_primary	#java222
+	|	arrayAccess_lfno_primary	#java223
+	|	methodInvocation_lfno_primary	#java224
+	|	methodReference_lfno_primary	#java225
 	;
 
 primaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primary
-	:
+	:	#java226
 	;
 
 primaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primary
-	:	literal
-	|	typeName ('[' ']')* '.' 'class'
-	|	'void' '.' 'class'
-	|	'this'
-	|	typeName '.' 'this'
-	|	'(' expression ')'
-	|	classInstanceCreationExpression_lfno_primary
-	|	fieldAccess_lfno_primary
-	|	methodInvocation_lfno_primary
-	|	methodReference_lfno_primary
+	:	literal	#java227
+	|	typeName ('[' ']')* '.' 'class'	#java228
+	|	'void' '.' 'class'	#java229
+	|	'this'	#java230
+	|	typeName '.' 'this'	#java231
+	|	'(' expression ')'	#java232
+	|	classInstanceCreationExpression_lfno_primary	#java233
+	|	fieldAccess_lfno_primary	#java234
+	|	methodInvocation_lfno_primary	#java235
+	|	methodReference_lfno_primary	#java236
 	;
 
 classInstanceCreationExpression
-	:	'new' typeArguments? Identifier ('.' Identifier)* typeArgumentsOrDiamond? '(' argumentList? ')' classBody?
-	|	expressionName '.' 'new' typeArguments? Identifier typeArgumentsOrDiamond? '(' argumentList? ')' classBody?
-	|	primary '.' 'new' typeArguments? Identifier typeArgumentsOrDiamond? '(' argumentList? ')' classBody?
+	:	'new' typeArguments? Identifier ('.' Identifier)* typeArgumentsOrDiamond? '(' argumentList? ')' classBody?	#java237
+	|	expressionName '.' 'new' typeArguments? Identifier typeArgumentsOrDiamond? '(' argumentList? ')' classBody?	#java238
+	|	primary '.' 'new' typeArguments? Identifier typeArgumentsOrDiamond? '(' argumentList? ')' classBody?	#java239
 	;
 
 classInstanceCreationExpression_lf_primary
-	:	'.' 'new' typeArguments? Identifier typeArgumentsOrDiamond? '(' argumentList? ')' classBody?
+	:	'.' 'new' typeArguments? Identifier typeArgumentsOrDiamond? '(' argumentList? ')' classBody?	#java240
 	;
 
 classInstanceCreationExpression_lfno_primary
-	:	'new' typeArguments? Identifier ('.' Identifier)* typeArgumentsOrDiamond? '(' argumentList? ')' classBody?
-	|	expressionName '.' 'new' typeArguments? Identifier typeArgumentsOrDiamond? '(' argumentList? ')' classBody?
+	:	'new' typeArguments? Identifier ('.' Identifier)* typeArgumentsOrDiamond? '(' argumentList? ')' classBody?	#java241
+	|	expressionName '.' 'new' typeArguments? Identifier typeArgumentsOrDiamond? '(' argumentList? ')' classBody?	#java242
 	;
 
 typeArgumentsOrDiamond
-	:	typeArguments
-	|	'<' '>'
+	:	typeArguments	#java243
+	|	'<' '>'	#java244
 	;
 
 fieldAccess
-	:	primary '.' Identifier
-	|	'super' '.' Identifier
-	|	typeName '.' 'super' '.' Identifier
+	:	primary '.' Identifier	#java245
+	|	'super' '.' Identifier	#java246
+	|	typeName '.' 'super' '.' Identifier	#java247
 	;
 
 fieldAccess_lf_primary
-	:	'.' Identifier
+	:	'.' Identifier	#java248
 	;
 
 fieldAccess_lfno_primary
-	:	'super' '.' Identifier
-	|	typeName '.' 'super' '.' Identifier
+	:	'super' '.' Identifier	#java249
+	|	typeName '.' 'super' '.' Identifier	#java250
 	;
 
 arrayAccess
@@ -729,14 +729,14 @@ arrayAccess
 		|	primaryNoNewArray_lfno_arrayAccess '[' expression ']'
 		)
 		(	primaryNoNewArray_lf_arrayAccess '[' expression ']'
-		)*
+		)*	#java251
 	;
 
 arrayAccess_lf_primary
 	:	(	primaryNoNewArray_lf_primary_lfno_arrayAccess_lf_primary '[' expression ']'
 		)
 		(	primaryNoNewArray_lf_primary_lf_arrayAccess_lf_primary '[' expression ']'
-		)*
+		)*	#java252
 	;
 
 arrayAccess_lfno_primary
@@ -744,198 +744,198 @@ arrayAccess_lfno_primary
 		|	primaryNoNewArray_lfno_primary_lfno_arrayAccess_lfno_primary '[' expression ']'
 		)
 		(	primaryNoNewArray_lfno_primary_lf_arrayAccess_lfno_primary '[' expression ']'
-		)*
+		)*	#java253
 	;
 
 methodInvocation
-	:	methodName '(' argumentList? ')'
-	|	typeName '.' typeArguments? Identifier '(' argumentList? ')'
-	|	expressionName '.' typeArguments? Identifier '(' argumentList? ')'
-	|	primary '.' typeArguments? Identifier '(' argumentList? ')'
-	|	'super' '.' typeArguments? Identifier '(' argumentList? ')'
-	|	typeName '.' 'super' '.' typeArguments? Identifier '(' argumentList? ')'
+	:	methodName '(' argumentList? ')'	#java254
+	|	typeName '.' typeArguments? Identifier '(' argumentList? ')'	#java255
+	|	expressionName '.' typeArguments? Identifier '(' argumentList? ')'	#java256
+	|	primary '.' typeArguments? Identifier '(' argumentList? ')'	#java257
+	|	'super' '.' typeArguments? Identifier '(' argumentList? ')'	#java258
+	|	typeName '.' 'super' '.' typeArguments? Identifier '(' argumentList? ')'	#java259
 	;
 
 methodInvocation_lf_primary
-	:	'.' typeArguments? Identifier '(' argumentList? ')'
+	:	'.' typeArguments? Identifier '(' argumentList? ')'	#java260
 	;
 
 methodInvocation_lfno_primary
-	:	methodName '(' argumentList? ')'
-	|	typeName '.' typeArguments? Identifier '(' argumentList? ')'
-	|	expressionName '.' typeArguments? Identifier '(' argumentList? ')'
-	|	'super' '.' typeArguments? Identifier '(' argumentList? ')'
-	|	typeName '.' 'super' '.' typeArguments? Identifier '(' argumentList? ')'
+	:	methodName '(' argumentList? ')'	#java261
+	|	typeName '.' typeArguments? Identifier '(' argumentList? ')'	#java262
+	|	expressionName '.' typeArguments? Identifier '(' argumentList? ')'	#java263
+	|	'super' '.' typeArguments? Identifier '(' argumentList? ')'	#java264
+	|	typeName '.' 'super' '.' typeArguments? Identifier '(' argumentList? ')'	#java265
 	;
 
 argumentList
-	:	expression (',' expression)*
+	:	expression (',' expression)*	#java266
 	;
 
 methodReference
-	:	expressionName '::' typeArguments? Identifier
-	|	referenceType '::' typeArguments? Identifier
-	|	primary '::' typeArguments? Identifier
-	|	'super' '::' typeArguments? Identifier
-	|	typeName '.' 'super' '::' typeArguments? Identifier
-	|	classType '::' typeArguments? 'new'
-	|	arrayType '::' 'new'
+	:	expressionName '::' typeArguments? Identifier	#java267
+	|	referenceType '::' typeArguments? Identifier	#java268
+	|	primary '::' typeArguments? Identifier	#java269
+	|	'super' '::' typeArguments? Identifier	#java270
+	|	typeName '.' 'super' '::' typeArguments? Identifier	#java271
+	|	classType '::' typeArguments? 'new'	#java272
+	|	arrayType '::' 'new'	#java273
 	;
 
 methodReference_lf_primary
-	:	'::' typeArguments? Identifier
+	:	'::' typeArguments? Identifier	#java274
 	;
 
 methodReference_lfno_primary
-	:	expressionName '::' typeArguments? Identifier
-	|	referenceType '::' typeArguments? Identifier
-	|	'super' '::' typeArguments? Identifier
-	|	typeName '.' 'super' '::' typeArguments? Identifier
-	|	classType '::' typeArguments? 'new'
-	|	arrayType '::' 'new'
+	:	expressionName '::' typeArguments? Identifier	#java275
+	|	referenceType '::' typeArguments? Identifier	#java276
+	|	'super' '::' typeArguments? Identifier	#java277
+	|	typeName '.' 'super' '::' typeArguments? Identifier	#java278
+	|	classType '::' typeArguments? 'new'	#java279
+	|	arrayType '::' 'new'	#java280
 	;
 
 arrayCreationExpression
-	:	'new' primitiveType dimExprs dims?
-	|	'new' classOrInterfaceType dimExprs dims?
-	|	'new' primitiveType dims arrayInitializer
-	|	'new' classOrInterfaceType dims arrayInitializer
+	:	'new' primitiveType dimExprs dims?	#java281
+	|	'new' classOrInterfaceType dimExprs dims?	#java282
+	|	'new' primitiveType dims arrayInitializer	#java283
+	|	'new' classOrInterfaceType dims arrayInitializer	#java284
 	;
 
 dimExprs
-	:	dimExpr dimExpr*
+	:	dimExpr dimExpr*	#java285
 	;
 
 dimExpr
-	:	'[' expression ']'
+	:	'[' expression ']'	#java286
 	;
 
 constantExpression
-	:	expression
+	:	expression	#java287
 	;
 
 expression
-	:	assignmentExpression
+	:	assignmentExpression	#java288
 	;
 
 inferredFormalParameterList
-	:	Identifier (',' Identifier)*
+	:	Identifier (',' Identifier)*	#java289
 	;
 
 assignmentExpression
-	:	conditionalExpression
-	|	assignment
+	:	conditionalExpression	#java290
+	|	assignment	#java291
 	;
 
 assignment
-	:	leftHandSide assignmentOperator expression
+	:	leftHandSide assignmentOperator expression	#java292
 	;
 
 leftHandSide
-	:	expressionName
-	|	fieldAccess
-	|	arrayAccess
+	:	expressionName	#java293
+	|	fieldAccess	#java294
+	|	arrayAccess	#java295
 	;
 
 assignmentOperator
-	:	'='
-	|	'*='
-	|	'/='
-	|	'%='
-	|	'+='
-	|	'-='
-	|	'<<='
-	|	'>>='
-	|	'&='
-	|	'^='
-	|	'|='
+	:	'='	#java296
+	|	'*='	#java297
+	|	'/='	#java298
+	|	'%='	#java299
+	|	'+='	#java300
+	|	'-='	#java301
+	|	'<<='	#java302
+	|	'>>='	#java303
+	|	'&='	#java304
+	|	'^='	#java305
+	|	'|='	#java306
 	;
 
 conditionalExpression
-	:	conditionalOrExpression
-	|	conditionalOrExpression '?' expression ':' conditionalExpression
+	:	conditionalOrExpression	#java307
+	|	conditionalOrExpression '?' expression ':' conditionalExpression	#java308
 	;
 
 conditionalOrExpression
-	:	conditionalAndExpression
-	|	conditionalOrExpression '||' conditionalAndExpression
+	:	conditionalAndExpression	#java309
+	|	conditionalOrExpression '||' conditionalAndExpression	#java310
 	;
 
 conditionalAndExpression
-	:	inclusiveOrExpression
-	|	conditionalAndExpression '&&' inclusiveOrExpression
+	:	inclusiveOrExpression	#java311
+	|	conditionalAndExpression '&&' inclusiveOrExpression	#java312
 	;
 
 inclusiveOrExpression
-	:	exclusiveOrExpression
-	|	inclusiveOrExpression '|' exclusiveOrExpression
+	:	exclusiveOrExpression	#java313
+	|	inclusiveOrExpression '|' exclusiveOrExpression	#java314
 	;
 
 exclusiveOrExpression
-	:	andExpression
-	|	exclusiveOrExpression '^' andExpression
+	:	andExpression	#java315
+	|	exclusiveOrExpression '^' andExpression	#java316
 	;
 
 andExpression
-	:	equalityExpression
-	|	andExpression '&' equalityExpression
+	:	equalityExpression	#java317
+	|	andExpression '&' equalityExpression	#java318
 	;
 
 equalityExpression
-	:	relationalExpression
-	|	equalityExpression '==' relationalExpression
-	|	equalityExpression '!=' relationalExpression
+	:	relationalExpression	#java319
+	|	equalityExpression '==' relationalExpression	#java320
+	|	equalityExpression '!=' relationalExpression	#java321
 	;
 
 relationalExpression
-	:	shiftExpression
-	|	relationalExpression '<' shiftExpression
-	|	relationalExpression '>' shiftExpression
-	|	relationalExpression '<=' shiftExpression
-	|	relationalExpression '>=' shiftExpression
-	|	relationalExpression 'instanceof' referenceType
+	:	shiftExpression	#java322
+	|	relationalExpression '<' shiftExpression	#java323
+	|	relationalExpression '>' shiftExpression	#java324
+	|	relationalExpression '<=' shiftExpression	#java325
+	|	relationalExpression '>=' shiftExpression	#java326
+	|	relationalExpression 'instanceof' referenceType	#java327
 	;
 
 shiftExpression
-	:	additiveExpression
-	|	shiftExpression '<' '<' additiveExpression
-	|	shiftExpression '>' '>' additiveExpression
+	:	additiveExpression	#java328
+	|	shiftExpression '<' '<' additiveExpression	#java329
+	|	shiftExpression '>' '>' additiveExpression	#java330
 	;
 
 additiveExpression
-	:	multiplicativeExpression
-	|	additiveExpression '+' multiplicativeExpression
-	|	additiveExpression '-' multiplicativeExpression
+	:	multiplicativeExpression	#java331
+	|	additiveExpression '+' multiplicativeExpression	#java332
+	|	additiveExpression '-' multiplicativeExpression	#java333
 	;
 
 multiplicativeExpression
-	:	unaryExpression
-	|	multiplicativeExpression '*' unaryExpression
-	|	multiplicativeExpression '/' unaryExpression
-	|	multiplicativeExpression '%' unaryExpression
+	:	unaryExpression	#java334
+	|	multiplicativeExpression '*' unaryExpression	#java335
+	|	multiplicativeExpression '/' unaryExpression	#java336
+	|	multiplicativeExpression '%' unaryExpression	#java337
 	;
 
 unaryExpression
-	:	preIncrementExpression
-	|	preDecrementExpression
-	|	'+' unaryExpression
-	|	'-' unaryExpression
-	|	unaryExpressionNotPlusMinus
+	:	preIncrementExpression	#java338
+	|	preDecrementExpression	#java339
+	|	'+' unaryExpression	#java340
+	|	'-' unaryExpression	#java341
+	|	unaryExpressionNotPlusMinus	#java342
 	;
 
 preIncrementExpression
-	:	'++' unaryExpression
+	:	'++' unaryExpression	#java343
 	;
 
 preDecrementExpression
-	:	'--' unaryExpression
+	:	'--' unaryExpression	#java344
 	;
 
 unaryExpressionNotPlusMinus
-	:	postfixExpression
-	|	'~' unaryExpression
-	|	'!' unaryExpression
-	|	castExpression
+	:	postfixExpression	#java345
+	|	'~' unaryExpression	#java346
+	|	'!' unaryExpression	#java347
+	|	castExpression	#java348
 	;
 
 postfixExpression
@@ -944,27 +944,27 @@ postfixExpression
 		)
 		(	postIncrementExpression_lf_postfixExpression
 		|	postDecrementExpression_lf_postfixExpression
-		)*
+		)*	#java349
 	;
 
 postIncrementExpression
-	:	postfixExpression '++'
+	:	postfixExpression '++'	#java350
 	;
 
 postIncrementExpression_lf_postfixExpression
-	:	'++'
+	:	'++'	#java351
 	;
 
 postDecrementExpression
-	:	postfixExpression '--'
+	:	postfixExpression '--'	#java352
 	;
 
 postDecrementExpression_lf_postfixExpression
-	:	'--'
+	:	'--'	#java353
 	;
 
 castExpression
-	:	'(' primitiveType ')' unaryExpression
+	:	'(' primitiveType ')' unaryExpression	#java354
 	;
 
 // LEXER
@@ -1000,12 +1000,12 @@ WHILE : 'while';
 // §3.10.1 Integer Literals
 
 IntegerLiteral
-	:	DecimalIntegerLiteral
+	:	DecimalIntegerLiteral	
 	;
 
 fragment
 DecimalIntegerLiteral
-	:	DecimalNumeral
+	:	DecimalNumeral	
 	;
 
 fragment
@@ -1021,117 +1021,117 @@ Digits
 
 fragment
 Digit
-	:	'0'
-	|	NonZeroDigit
+	:	'0'	
+	|	NonZeroDigit	
 	;
 
 fragment
 NonZeroDigit
-	:	[1-9]
+	:	[1-9]	
 	;
 
 fragment
 DigitsAndUnderscores
-	:	DigitOrUnderscore+
+	:	DigitOrUnderscore+	
 	;
 
 fragment
 DigitOrUnderscore
-	:	Digit
-	|	'_'
+	:	Digit	
+	|	'_'	
 	;
 
 fragment
 Underscores
-	:	'_'+
+	:	'_'+	
 	;
 
 // §3.10.2 Floating-Point Literals
 
 FloatingPointLiteral
-	:	DecimalFloatingPointLiteral
+	:	DecimalFloatingPointLiteral	
 	;
 
 fragment
 DecimalFloatingPointLiteral
-	:	Digits '.' Digits? ExponentPart? FloatTypeSuffix?
-	|	'.' Digits ExponentPart? FloatTypeSuffix?
-	|	Digits ExponentPart FloatTypeSuffix?
-	|	Digits FloatTypeSuffix
+	:	Digits '.' Digits? ExponentPart? FloatTypeSuffix?	
+	|	'.' Digits ExponentPart? FloatTypeSuffix?	
+	|	Digits ExponentPart FloatTypeSuffix?	
+	|	Digits FloatTypeSuffix	
 	;
 
 fragment
 ExponentPart
-	:	ExponentIndicator SignedInteger
+	:	ExponentIndicator SignedInteger	
 	;
 
 fragment
 ExponentIndicator
-	:	[eE]
+	:	[eE]	
 	;
 
 fragment
 SignedInteger
-	:	Sign? Digits
+	:	Sign? Digits	
 	;
 
 fragment
 Sign
-	:	[+-]
+	:	[+-]	
 	;
 
 fragment
 FloatTypeSuffix
-	:	[fF]
+	:	[fF]	
 	;
 
 // §3.10.3 Boolean Literals
 
 BooleanLiteral
-	:	'true'
-	|	'false'
+	:	'true'	
+	|	'false'	
 	;
 
 // §3.10.4 Character Literals
 
 CharacterLiteral
-	:	'\'' SingleCharacter '\''
-	|	'\'' EscapeSequence '\''
+	:	'\'' SingleCharacter '\''	
+	|	'\'' EscapeSequence '\''	
 	;
 
 fragment
 SingleCharacter
-	:	~['\\]
+	:	~['\\]	
 	;
 
 // §3.10.5 String Literals
 
 StringLiteral
-	:	'"' StringCharacters? '"'
+	:	'"' StringCharacters? '"'	
 	;
 
 fragment
 StringCharacters
-	:	StringCharacter+
+	:	StringCharacter+	
 	;
 
 fragment
 StringCharacter
-	:	~["\\]
-	|	EscapeSequence
+	:	~["\\]	
+	|	EscapeSequence	
 	;
 
 // §3.10.6 Escape Sequences for Character and String Literals
 
 fragment
 EscapeSequence
-	:	'\\' [btnfr"'\\]
+	:	'\\' [btnfr"'\\]	
 	;
 
 // §3.10.7 The Null Literal
 
 NullLiteral
-	:	'null'
+	:	'null'	
 	;
 
 // §3.11 Separators
@@ -1187,29 +1187,29 @@ RSHIFT_ASSIGN : '>>=';
 // §3.8 Identifiers (must appear after all keywords in the grammar)
 
 Identifier
-	:	JavaLetter JavaLetterOrDigit*
+	:	JavaLetter JavaLetterOrDigit*	
 	;
 
 fragment
 JavaLetter
-	:	[a-zA-Z$_] // these are the "java letters" below 0x7F
+	:	[a-zA-Z$_] // these are the "java letters" below 0x7F	
 	|	// covers all characters above 0x7F which are not a surrogate
 		~[\u0000-\u007F\uD800-\uDBFF]
-		{Character.isJavaIdentifierStart(_input.LA(-1))}?
+		{Character.isJavaIdentifierStart(_input.LA(-1))}?	
 	|	// covers UTF-16 surrogate pairs encodings for U+10000 to U+10FFFF
 		[\uD800-\uDBFF] [\uDC00-\uDFFF]
-		{Character.isJavaIdentifierStart(Character.toCodePoint((char)_input.LA(-2), (char)_input.LA(-1)))}?
+		{Character.isJavaIdentifierStart(Character.toCodePoint((char)_input.LA(-2), (char)_input.LA(-1)))}?	
 	;
 
 fragment
 JavaLetterOrDigit
-	:	[a-zA-Z0-9$_] // these are the "java letters or digits" below 0x7F
+	:	[a-zA-Z0-9$_] // these are the "java letters or digits" below 0x7F	
 	|	// covers all characters above 0x7F which are not a surrogate
 		~[\u0000-\u007F\uD800-\uDBFF]
-		{Character.isJavaIdentifierPart(_input.LA(-1))}?
+		{Character.isJavaIdentifierPart(_input.LA(-1))}?	
 	|	// covers UTF-16 surrogate pairs encodings for U+10000 to U+10FFFF
 		[\uD800-\uDBFF] [\uDC00-\uDFFF]
-		{Character.isJavaIdentifierPart(Character.toCodePoint((char)_input.LA(-2), (char)_input.LA(-1)))}?
+		{Character.isJavaIdentifierPart(Character.toCodePoint((char)_input.LA(-2), (char)_input.LA(-1)))}?	
 	;
 
 //
@@ -1227,3 +1227,4 @@ WS  :  [ \t\r\n]+ -> channel(HIDDEN)
 LINE_COMMENT
     :   '//' ~[\r\n]* -> channel(HIDDEN)
     ;
+
