@@ -1,8 +1,16 @@
-// Generated from /Users/karthikeyan/Desktop/Changes/Compiler_Design/LexerParser/src/Java.g4 by ANTLR 4.7
-import org.antlr.v4.runtime.atn.*;
-import org.antlr.v4.runtime.dfa.DFA;
+// Generated from /Users/karthikeyan/IdeaProjects/Compiler_Design/LexerParser/src/Java.g4 by ANTLR 4.7
+package src;
+
 import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.tree.*;
+import org.antlr.v4.runtime.atn.ATN;
+import org.antlr.v4.runtime.atn.ATNDeserializer;
+import org.antlr.v4.runtime.atn.ParserATNSimulator;
+import org.antlr.v4.runtime.atn.PredictionContextCache;
+import org.antlr.v4.runtime.dfa.DFA;
+import org.antlr.v4.runtime.tree.ParseTreeListener;
+import org.antlr.v4.runtime.tree.ParseTreeVisitor;
+import org.antlr.v4.runtime.tree.TerminalNode;
+
 import java.util.List;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
@@ -737,14 +745,14 @@ public class JavaParser extends Parser {
 			setState(368);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
 					setState(365);
 					classType_lf_classOrInterfaceType();
 					}
-					} 
+					}
 				}
 				setState(370);
 				_errHandler.sync(this);
@@ -1116,7 +1124,7 @@ public class JavaParser extends Parser {
 			setState(411);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,13,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
@@ -1125,7 +1133,7 @@ public class JavaParser extends Parser {
 					setState(408);
 					match(RBRACK);
 					}
-					} 
+					}
 				}
 				setState(413);
 				_errHandler.sync(this);
@@ -1589,7 +1597,7 @@ public class JavaParser extends Parser {
 			setState(455);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,19,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -1604,7 +1612,7 @@ public class JavaParser extends Parser {
 					setState(452);
 					match(Identifier);
 					}
-					} 
+					}
 				}
 				setState(457);
 				_errHandler.sync(this);
@@ -1732,7 +1740,7 @@ public class JavaParser extends Parser {
 			setState(473);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,21,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -1747,7 +1755,7 @@ public class JavaParser extends Parser {
 					setState(470);
 					match(Identifier);
 					}
-					} 
+					}
 				}
 				setState(475);
 				_errHandler.sync(this);
@@ -1917,7 +1925,7 @@ public class JavaParser extends Parser {
 			setState(493);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,23,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -1932,7 +1940,7 @@ public class JavaParser extends Parser {
 					setState(490);
 					match(Identifier);
 					}
-					} 
+					}
 				}
 				setState(495);
 				_errHandler.sync(this);
@@ -3858,7 +3866,7 @@ public class JavaParser extends Parser {
 				setState(691);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,48,_ctx);
-				while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+				while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 					if ( _alt==1 ) {
 						{
 						{
@@ -3867,7 +3875,7 @@ public class JavaParser extends Parser {
 						setState(688);
 						formalParameter();
 						}
-						} 
+						}
 					}
 					setState(693);
 					_errHandler.sync(this);
@@ -3883,7 +3891,7 @@ public class JavaParser extends Parser {
 				setState(699);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,49,_ctx);
-				while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+				while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 					if ( _alt==1 ) {
 						{
 						{
@@ -3892,7 +3900,7 @@ public class JavaParser extends Parser {
 						setState(696);
 						formalParameter();
 						}
-						} 
+						}
 					}
 					setState(701);
 					_errHandler.sync(this);
@@ -5151,7 +5159,7 @@ public class JavaParser extends Parser {
 			setState(850);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,73,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
@@ -5160,7 +5168,7 @@ public class JavaParser extends Parser {
 					setState(847);
 					elementValue();
 					}
-					} 
+					}
 				}
 				setState(852);
 				_errHandler.sync(this);
@@ -5284,7 +5292,7 @@ public class JavaParser extends Parser {
 			setState(867);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,76,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
@@ -5293,7 +5301,7 @@ public class JavaParser extends Parser {
 					setState(864);
 					variableInitializer();
 					}
-					} 
+					}
 				}
 				setState(869);
 				_errHandler.sync(this);
@@ -7158,14 +7166,14 @@ public class JavaParser extends Parser {
 			setState(1048);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,96,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
 					setState(1045);
 					primaryNoNewArray_lf_primary();
 					}
-					} 
+					}
 				}
 				setState(1050);
 				_errHandler.sync(this);
@@ -9104,7 +9112,7 @@ public class JavaParser extends Parser {
 			setState(1381);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,140,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
@@ -9117,7 +9125,7 @@ public class JavaParser extends Parser {
 					setState(1377);
 					match(RBRACK);
 					}
-					} 
+					}
 				}
 				setState(1383);
 				_errHandler.sync(this);
@@ -9212,7 +9220,7 @@ public class JavaParser extends Parser {
 			setState(1403);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,142,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
@@ -9225,7 +9233,7 @@ public class JavaParser extends Parser {
 					setState(1399);
 					match(RBRACK);
 					}
-					} 
+					}
 				}
 				setState(1405);
 				_errHandler.sync(this);
@@ -10468,14 +10476,14 @@ public class JavaParser extends Parser {
 			setState(1678);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,185,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
 					setState(1675);
 					dimExpr();
 					}
-					} 
+					}
 				}
 				setState(1680);
 				_errHandler.sync(this);
@@ -11046,7 +11054,7 @@ public class JavaParser extends Parser {
 			setState(1729);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,190,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -11061,7 +11069,7 @@ public class JavaParser extends Parser {
 					setState(1726);
 					conditionalAndExpression(0);
 					}
-					} 
+					}
 				}
 				setState(1731);
 				_errHandler.sync(this);
@@ -11129,7 +11137,7 @@ public class JavaParser extends Parser {
 			setState(1740);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,191,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -11144,7 +11152,7 @@ public class JavaParser extends Parser {
 					setState(1737);
 					inclusiveOrExpression(0);
 					}
-					} 
+					}
 				}
 				setState(1742);
 				_errHandler.sync(this);
@@ -11212,7 +11220,7 @@ public class JavaParser extends Parser {
 			setState(1751);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,192,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -11227,7 +11235,7 @@ public class JavaParser extends Parser {
 					setState(1748);
 					exclusiveOrExpression(0);
 					}
-					} 
+					}
 				}
 				setState(1753);
 				_errHandler.sync(this);
@@ -11295,7 +11303,7 @@ public class JavaParser extends Parser {
 			setState(1762);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,193,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -11310,7 +11318,7 @@ public class JavaParser extends Parser {
 					setState(1759);
 					andExpression(0);
 					}
-					} 
+					}
 				}
 				setState(1764);
 				_errHandler.sync(this);
@@ -11378,7 +11386,7 @@ public class JavaParser extends Parser {
 			setState(1773);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,194,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -11393,7 +11401,7 @@ public class JavaParser extends Parser {
 					setState(1770);
 					equalityExpression(0);
 					}
-					} 
+					}
 				}
 				setState(1775);
 				_errHandler.sync(this);
@@ -11461,7 +11469,7 @@ public class JavaParser extends Parser {
 			setState(1787);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,196,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -11494,7 +11502,7 @@ public class JavaParser extends Parser {
 						}
 						break;
 					}
-					} 
+					}
 				}
 				setState(1789);
 				_errHandler.sync(this);
@@ -11565,7 +11573,7 @@ public class JavaParser extends Parser {
 			setState(1810);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,198,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -11634,7 +11642,7 @@ public class JavaParser extends Parser {
 						}
 						break;
 					}
-					} 
+					}
 				}
 				setState(1812);
 				_errHandler.sync(this);
@@ -11702,7 +11710,7 @@ public class JavaParser extends Parser {
 			setState(1826);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,200,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -11739,7 +11747,7 @@ public class JavaParser extends Parser {
 						}
 						break;
 					}
-					} 
+					}
 				}
 				setState(1828);
 				_errHandler.sync(this);
@@ -11807,7 +11815,7 @@ public class JavaParser extends Parser {
 			setState(1840);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,202,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -11840,7 +11848,7 @@ public class JavaParser extends Parser {
 						}
 						break;
 					}
-					} 
+					}
 				}
 				setState(1842);
 				_errHandler.sync(this);
@@ -11908,7 +11916,7 @@ public class JavaParser extends Parser {
 			setState(1857);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,204,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
@@ -11953,7 +11961,7 @@ public class JavaParser extends Parser {
 						}
 						break;
 					}
-					} 
+					}
 				}
 				setState(1859);
 				_errHandler.sync(this);
@@ -12319,7 +12327,7 @@ public class JavaParser extends Parser {
 			setState(1891);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,209,_ctx);
-			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+			while ( _alt!=2 && _alt!= ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					setState(1889);

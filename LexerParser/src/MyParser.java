@@ -1,3 +1,4 @@
+package src;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
@@ -34,6 +35,8 @@ public class MyParser {
         ParseTree tree = parser.compilationUnit();
         ParseTreeWalker walker = new ParseTreeWalker();
         MyJavaListener listener = new MyJavaListener();
+        TreeVisitor visitor = new TreeVisitor();
+        visitor.visit(tree);
         sentence = "<p> "+JavaParser.CompilationUnitContext.class.getSimpleName()+" </p>";
 
         try {
