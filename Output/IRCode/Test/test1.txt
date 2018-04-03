@@ -1,0 +1,29 @@
+add, z, 1, 0
+add, j, 1, 0
+add, sum, 0, 0
+add, i, 0, 0
+add, j, 1, 0
+is gt, z, 0, D_1728
+label, D_1727
+add, modreg, 10, 0
+mod, D_1732, j, modreg
+is eq, D_1732, 0, D_1733
+is gt, z, 0, D_1734
+label, D_1733
+print, j
+is gt, z, 0, D_1735
+label, D_1734
+add, sum, sum, i
+label, D_1735
+add, it, i, 0
+add, i, it, 1
+add, mulreg, 2, 0
+mul, j, i, mulreg
+label, D_1728
+add, temp_i, i, -99
+is lte, temp_i, 0, D_1727
+is gt, z, 0, D_1729
+label, D_1729
+print, sum
+add, D_1736, 0, 0
+label, exit
