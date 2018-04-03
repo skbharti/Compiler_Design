@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 public class TreeVisitor extends JavaBaseVisitor {
     ArrayList<ThreeAddCode> globalIRList = new ArrayList<>();
+    ArrayList<ThreeAddCode> initialization = new ArrayList<>();
+
 
     int tempCounter = 0;
 
@@ -39,12 +41,22 @@ public class TreeVisitor extends JavaBaseVisitor {
         child2.place = getVar();
         child1.accept(this);
         child2.accept(this);
-        globalIRList.add(new IRCode.src.IRCode.AssignmentIRTuple("and",node.place,child1.place, child2.place));
-        return 0;
+        globalIRList.add(new IRCode.src.IRCode.AssignmentIRTuple("arrToVar", child1.place, child2.place, node.place ));
         return 0;
     }
 
     public int visit(ArrayAssignmentStatement node) {
+        Node child1 = node.getChild(0);
+        child1.place = getVar();
+        Node child2 = node.getChild(2);
+        child2.place = getVar();
+        Node child3 = node.getChild(5);
+        child1.place = getVar();
+
+        child2.accept(this);
+        child3.accept(this);
+        globalIRList.add(new IRCode.src.IRCode.AssignmentIRTuple("varToArr", child1.place, child2.place, child3.place ));
+
         return 0;
     }
 
