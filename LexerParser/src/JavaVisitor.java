@@ -1,4 +1,4 @@
-// Generated from /Users/karthikeyan/IdeaProjects/Compiler_Design/LexerParser/src/Java.g4 by ANTLR 4.7
+// Generated from /home/varun/IdeaProjects/Compiler_Design/LexerParser/src/Java.g4 by ANTLR 4.7
 package src;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -103,6 +103,13 @@ public interface JavaVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitWhileStatement(JavaParser.WhileStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code forStatement}
+	 * labeled alternative in {@link JavaParser#statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitForStatement(JavaParser.ForStatementContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code printStatement}
 	 * labeled alternative in {@link JavaParser#statement}.

@@ -1,4 +1,4 @@
-// Generated from /Users/karthikeyan/IdeaProjects/Compiler_Design/LexerParser/src/Java.g4 by ANTLR 4.7
+// Generated from /home/varun/IdeaProjects/Compiler_Design/LexerParser/src/Java.g4 by ANTLR 4.7
 package src;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
@@ -116,6 +116,13 @@ public class JavaBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements J
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitWhileStatement(JavaParser.WhileStatementContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitForStatement(JavaParser.ForStatementContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

@@ -1,7 +1,6 @@
 package src;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 import java.io.*;
@@ -32,12 +31,13 @@ public class MyParser {
 
         CommonTokenStream tokenStream = new CommonTokenStream(lexer);
         JavaParser parser = new JavaParser(tokenStream);
-        ParseTree tree = parser.compilationUnit();
+        JavaParser.GoalContext tree = parser.goal();
+        Node.Goal treeNode = (new Node(tree)).new Goal(tree);
         ParseTreeWalker walker = new ParseTreeWalker();
         MyJavaListener listener = new MyJavaListener();
         TreeVisitor visitor = new TreeVisitor();
-        visitor.visit(tree);
-        sentence = "<p> "+JavaParser.CompilationUnitContext.class.getSimpleName()+" </p>";
+        visitor.visit(treeNode);
+        sentence = "<p> "+JavaParser.GoalContext.class.getSimpleName()+" </p>";
 
         try {
             writer = new BufferedWriter(new FileWriter("tree_output.html"));

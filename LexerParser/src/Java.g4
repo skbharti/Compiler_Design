@@ -39,6 +39,7 @@ type
 :	'int' dims
 |	'boolean'
 |	'int'
+|   'void'
 |	Identifier
 ;
 
@@ -53,7 +54,9 @@ statement
 #ifElseStatement
 |	'while' LP expression RP whileBlock
 #whileStatement
-|	'System.out.println' LP  expression RP ';'
+|   'for' LP expression ';' expression ';' expression RP whileBlock
+#forStatement
+|	'println' LP  expression RP ';'
 #printStatement
 |	Identifier EQ expression ';'
 #variableAssignmentStatement
@@ -80,7 +83,7 @@ expression
 |   expression DOTLENGTH
 # arrayLengthExpression
 
-|   expression '.' Identifier '(' ( expression ( ',' expression )* )? ')'
+|   Identifier '(' ( expression ( ',' expression )* )? ')'
 # methodCallExpression
 
 |   NOT expression
@@ -166,13 +169,9 @@ IntegerLiteral
 
 fragment
 DecimalIntegerLiteral
-:	DecimalNumeral IntegertypeSuffix?
+:	DecimalNumeral
 ;
 
-fragment
-IntegertypeSuffix
-:	[lL]
-;
 
 fragment
 DecimalNumeral

@@ -19,7 +19,7 @@ public class Constants {
     public final static String GT = "gt";           // Greater than
     public final static String LTE = "lte";         // Less than Equal
     public final static String LT = "lt";           // Less than
-    public final static String NOT = "not";
+    public final static String NOT = "!";
     public final static String IFTRUE = "is true";   // Conditional Jump on True
     public final static String IFFALSE = "is false";
     public final static String IFGTE = "is gte";

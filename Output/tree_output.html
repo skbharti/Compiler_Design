@@ -1,80 +1,12 @@
 <!DOCTYPE html>
 <html>
 <body>
-<p> <b> CompilationUnitContext </b> </p>
-<p> <b> ImportDeclarationContext </b>	TypeDeclarationContext	<EOF> </p>
-<p> <b> SingleTypeImportDeclarationContext </b>	TypeDeclarationContext	<EOF> </p>
-<p> import	<b> TypeNameContext </b>	;	TypeDeclarationContext	<EOF> </p>
-<p> import	AB	;	<b> TypeDeclarationContext </b>	<EOF> </p>
-<p> import	AB	;	<b> ClassDeclarationContext </b>	<EOF> </p>
-<p> import	AB	;	<b> NormalClassDeclarationContext </b>	<EOF> </p>
-<p> import	AB	;	class	ABC	<b> ClassBodyContext </b>	<EOF> </p>
-<p> import	AB	;	class	ABC	{	<b> ClassBodyDeclarationContext </b>	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	<b> ClassMemberDeclarationContext </b>	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	<b> MethodDeclarationContext </b>	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	<b> MethodModifierContext </b>	MethodModifierContext	MethodHeaderContext	MethodBodyContext	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	<b> MethodModifierContext </b>	MethodHeaderContext	MethodBodyContext	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	<b> MethodHeaderContext </b>	MethodBodyContext	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	<b> ResultContext </b>	MethodDeclaratorContext	MethodBodyContext	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	<b> MethodDeclaratorContext </b>	MethodBodyContext	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	<b> MethodBodyContext </b>	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	<b> BlockContext </b>	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	<b> BlockStatementsContext </b>	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	<b> BlockStatementContext </b>	BlockStatementContext	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	<b> LocalVariableDeclarationStatementContext </b>	BlockStatementContext	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	<b> LocalVariableDeclarationContext </b>	;	BlockStatementContext	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	<b> TypeTypeContext </b>	VariableDeclaratorListContext	;	BlockStatementContext	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	<b> PrimitiveTypeContext </b>	VariableDeclaratorListContext	;	BlockStatementContext	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	<b> NumericTypeContext </b>	VariableDeclaratorListContext	;	BlockStatementContext	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	<b> IntegralTypeContext </b>	VariableDeclaratorListContext	;	BlockStatementContext	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	<b> VariableDeclaratorListContext </b>	;	BlockStatementContext	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	<b> VariableDeclaratorContext </b>	;	BlockStatementContext	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	<b> VariableDeclaratorIdContext </b>	=	VariableInitializerContext	;	BlockStatementContext	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	<b> VariableInitializerContext </b>	;	BlockStatementContext	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	<b> ExpressionContext </b>	;	BlockStatementContext	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	<b> AssignmentExpressionContext </b>	;	BlockStatementContext	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	<b> ConditionalExpressionContext </b>	;	BlockStatementContext	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	<b> ConditionalOrExpressionContext </b>	;	BlockStatementContext	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	<b> ConditionalAndExpressionContext </b>	;	BlockStatementContext	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	<b> InclusiveOrExpressionContext </b>	;	BlockStatementContext	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	<b> ExclusiveOrExpressionContext </b>	;	BlockStatementContext	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	<b> AndExpressionContext </b>	;	BlockStatementContext	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	<b> EqualityExpressionContext </b>	;	BlockStatementContext	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	<b> RelationalExpressionContext </b>	;	BlockStatementContext	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	<b> ShiftExpressionContext </b>	;	BlockStatementContext	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	<b> AdditiveExpressionContext </b>	;	BlockStatementContext	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	<b> MultiplicativeExpressionContext </b>	;	BlockStatementContext	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	<b> UnaryExpressionContext </b>	;	BlockStatementContext	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	<b> UnaryExpressionNotPlusMinusContext </b>	;	BlockStatementContext	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	<b> PostfixExpressionContext </b>	;	BlockStatementContext	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	<b> PrimaryContext </b>	;	BlockStatementContext	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	<b> PrimaryNoNewArray_lfno_primaryContext </b>	;	BlockStatementContext	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	<b> LiteralContext </b>	;	BlockStatementContext	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	10	;	<b> BlockStatementContext </b>	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	10	;	<b> StatementContext </b>	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	10	;	<b> StatementWithoutTrailingSubstatementContext </b>	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	10	;	<b> ExpressionStatementContext </b>	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	10	;	<b> StatementExpressionContext </b>	;	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	10	;	<b> MethodInvocationContext </b>	;	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	10	;	<b> TypeNameContext </b>	.	println	(	ArgumentListContext	)	;	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	10	;	<b> PackageOrTypeNameContext </b>	.	out	.	println	(	ArgumentListContext	)	;	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	10	;	System	.	out	.	println	(	<b> ArgumentListContext </b>	)	;	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	10	;	System	.	out	.	println	(	<b> ExpressionContext </b>	)	;	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	10	;	System	.	out	.	println	(	<b> AssignmentExpressionContext </b>	)	;	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	10	;	System	.	out	.	println	(	<b> ConditionalExpressionContext </b>	)	;	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	10	;	System	.	out	.	println	(	<b> ConditionalOrExpressionContext </b>	)	;	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	10	;	System	.	out	.	println	(	<b> ConditionalAndExpressionContext </b>	)	;	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	10	;	System	.	out	.	println	(	<b> InclusiveOrExpressionContext </b>	)	;	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	10	;	System	.	out	.	println	(	<b> ExclusiveOrExpressionContext </b>	)	;	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	10	;	System	.	out	.	println	(	<b> AndExpressionContext </b>	)	;	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	10	;	System	.	out	.	println	(	<b> EqualityExpressionContext </b>	)	;	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	10	;	System	.	out	.	println	(	<b> RelationalExpressionContext </b>	)	;	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	10	;	System	.	out	.	println	(	<b> ShiftExpressionContext </b>	)	;	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	10	;	System	.	out	.	println	(	<b> AdditiveExpressionContext </b>	)	;	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	10	;	System	.	out	.	println	(	<b> MultiplicativeExpressionContext </b>	)	;	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	10	;	System	.	out	.	println	(	<b> UnaryExpressionContext </b>	)	;	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	10	;	System	.	out	.	println	(	<b> UnaryExpressionNotPlusMinusContext </b>	)	;	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	10	;	System	.	out	.	println	(	<b> PostfixExpressionContext </b>	)	;	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	10	;	System	.	out	.	println	(	<b> ExpressionNameContext </b>	)	;	}	}	<EOF> </p>
-<p> import	AB	;	class	ABC	{	public	static	void	main	(	)	{	int	a	=	10	;	System	.	out	.	println	(	a	)	;	}	}	<EOF> </p></body>
+<p> <b> GoalContext </b> </p>
+<p> <b> MainClassContext </b>	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	<b> NestedStatementContext </b>	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	<b> VariableAssignmentStatementContext </b>	PrintStatementContext	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	<b> IntLitExpressionContext </b>	;	PrintStatementContext	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	10	;	<b> PrintStatementContext </b>	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	10	;	println	(	<b> IdentifierExpressionContext </b>	)	;	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	10	;	println	(	a	)	;	}	}	}	<EOF> </p></body>
 </html>

@@ -1,8 +1,8 @@
-import AB;
-
 class ABC{
-    public static void main(){
-        int a = 10;
-        System.out.println(a);
+    public static void main(String[] args){
+    {
+        a=10;
+        println(a);
+    }
     }
 }
