@@ -164,6 +164,7 @@ public class MyJavaListener extends JavaBaseListener {
      
     @Override public void enterMethodBody(JavaParser.MethodBodyContext ctx) {
 
+
         JavaParser.LocalDeclarationContext child0 = (JavaParser.LocalDeclarationContext) ctx.getChild(0);
         JavaParser.StatementContext child1 = (JavaParser.StatementContext) ctx.getChild(1);
         JavaParser.ExpressionContext childReturn = (JavaParser.ExpressionContext) ctx.getChild(3);
@@ -268,10 +269,29 @@ public class MyJavaListener extends JavaBaseListener {
     }
     
      
-    @Override public void enterForStatement(JavaParser.ForStatementContext ctx) { }
+    @Override public void enterForStatement(JavaParser.ForStatementContext ctx) {
+        JavaParser.ExpressionContext child4 = (JavaParser.ExpressionContext)ctx.getChild(4);
+        child4.place = getVar();}
     
      
-    @Override public void exitForStatement(JavaParser.ForStatementContext ctx) { }
+    @Override public void exitForStatement(JavaParser.ForStatementContext ctx) {
+        JavaParser.StatementContext child2 = (JavaParser.StatementContext) ctx.getChild(2);
+        JavaParser.StatementContext child6 = (JavaParser.StatementContext) ctx.getChild(6);
+        JavaParser.ExpressionContext child4 = (JavaParser.ExpressionContext)ctx.getChild(4);
+        JavaParser.WhileBlockContext child8 = (JavaParser.WhileBlockContext)ctx.getChild(8);
+        String labelExpr = getLablel();
+        String labelEnd = getLablel();
+        String labelUpdate = getLablel();
+        ctx.codes.addAll(child2.codes);
+        ctx.codes.add(new LabelIRTuple(labelExpr));
+        ctx.codes.addAll(child4.codes);
+        ctx.codes.add(new ConditionalJumpIRTuple(IFFALSE, child4.place, labelEnd));
+        ctx.codes.addAll(child8.codes);
+        ctx.codes.addAll(child6.codes);
+        ctx.codes.add(new UnconditionalJumpIRTuple(labelExpr));
+        ctx.codes.add(new LabelIRTuple(labelEnd));
+
+    }
     
      
     @Override public void enterPrintStatement(JavaParser.PrintStatementContext ctx) {
@@ -355,7 +375,7 @@ public class MyJavaListener extends JavaBaseListener {
     
      
     @Override public void exitWhileBlock(JavaParser.WhileBlockContext ctx) {
-       JavaParser.WhileBlockContext child0 = (JavaParser.WhileBlockContext) ctx.getChild(0);
+       JavaParser.StatementContext child0 = (JavaParser.StatementContext) ctx.getChild(0);
        ctx.codes.addAll(child0.codes);
     }
     

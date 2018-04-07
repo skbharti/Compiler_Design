@@ -1,4 +1,4 @@
-// Generated from /home/varun/IdeaProjects/Compiler_Design/LexerParser/src/Java.g4 by ANTLR 4.7
+// Generated from /Users/karthikeyan/IdeaProjects/Compiler_Design/LexerParser/src/Java.g4 by ANTLR 4.7
 package src;
 
 import IRCode.src.IRCode.ThreeAddCode;
@@ -897,7 +897,7 @@ public class JavaParser extends Parser {
                 setState(116);
                 _errHandler.sync(this);
                 _alt = getInterpreter().adaptivePredict(_input, 6, _ctx);
-                while (_alt != 2 && _alt != org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER) {
+                while (_alt != 2 && _alt != ATN.INVALID_ALT_NUMBER) {
                     if (_alt == 1) {
                         {
                             {
@@ -1286,12 +1286,16 @@ public class JavaParser extends Parser {
             return getToken(JavaParser.LP, 0);
         }
 
-        public List<ExpressionContext> expression() {
-            return getRuleContexts(ExpressionContext.class);
+        public List<StatementContext> statement() {
+            return getRuleContexts(StatementContext.class);
         }
 
-        public ExpressionContext expression(int i) {
-            return getRuleContext(ExpressionContext.class, i);
+        public StatementContext statement(int i) {
+            return getRuleContext(StatementContext.class, i);
+        }
+
+        public ExpressionContext expression() {
+            return getRuleContext(ExpressionContext.class, 0);
         }
 
         public TerminalNode RP() {
@@ -1477,7 +1481,7 @@ public class JavaParser extends Parser {
                     setState(169);
                     match(LP);
                     setState(170);
-                    expression(0);
+                    statement();
                     setState(171);
                     match(T__9);
                     setState(172);
@@ -1485,7 +1489,7 @@ public class JavaParser extends Parser {
                     setState(173);
                     match(T__9);
                     setState(174);
-                    expression(0);
+                    statement();
                     setState(175);
                     match(RP);
                     setState(176);
@@ -2421,7 +2425,7 @@ public class JavaParser extends Parser {
                 setState(268);
                 _errHandler.sync(this);
                 _alt = getInterpreter().adaptivePredict(_input, 16, _ctx);
-                while (_alt != 2 && _alt != org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER) {
+                while (_alt != 2 && _alt != ATN.INVALID_ALT_NUMBER) {
                     if (_alt == 1) {
                         if (_parseListeners != null) triggerExitRuleEvent();
                         _prevctx = _localctx;
@@ -2627,9 +2631,9 @@ public class JavaParser extends Parser {
                     "\u009f\u00a0\7\"\2\2\u00a0\u00a1\5\34\17\2\u00a1\u00a2\7\21\2\2\u00a2" +
                     "\u00a3\5\36\20\2\u00a3\u00c8\3\2\2\2\u00a4\u00a5\7\22\2\2\u00a5\u00a6" +
                     "\7!\2\2\u00a6\u00a7\5\"\22\2\u00a7\u00a8\7\"\2\2\u00a8\u00a9\5 \21\2\u00a9" +
-                    "\u00c8\3\2\2\2\u00aa\u00ab\7\23\2\2\u00ab\u00ac\7!\2\2\u00ac\u00ad\5\"" +
-                    "\22\2\u00ad\u00ae\7\f\2\2\u00ae\u00af\5\"\22\2\u00af\u00b0\7\f\2\2\u00b0" +
-                    "\u00b1\5\"\22\2\u00b1\u00b2\7\"\2\2\u00b2\u00b3\5 \21\2\u00b3\u00c8\3" +
+                    "\u00c8\3\2\2\2\u00aa\u00ab\7\23\2\2\u00ab\u00ac\7!\2\2\u00ac\u00ad\5\32" +
+                    "\16\2\u00ad\u00ae\7\f\2\2\u00ae\u00af\5\"\22\2\u00af\u00b0\7\f\2\2\u00b0" +
+                    "\u00b1\5\32\16\2\u00b1\u00b2\7\"\2\2\u00b2\u00b3\5 \21\2\u00b3\u00c8\3" +
                     "\2\2\2\u00b4\u00b5\7\24\2\2\u00b5\u00b6\7!\2\2\u00b6\u00b7\5\"\22\2\u00b7" +
                     "\u00b8\7\"\2\2\u00b8\u00b9\7\f\2\2\u00b9\u00c8\3\2\2\2\u00ba\u00bb\7&" +
                     "\2\2\u00bb\u00bc\7$\2\2\u00bc\u00bd\5\"\22\2\u00bd\u00be\7\f\2\2\u00be" +

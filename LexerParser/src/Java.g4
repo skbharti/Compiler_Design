@@ -32,7 +32,12 @@ parameter
 ;
 
 methodBody
-:	localDeclaration* statement* RETURN expression ';'
+:	localDeclaration* statements RETURN expression ';'
+;
+
+statements
+:
+statement*
 ;
 
 type

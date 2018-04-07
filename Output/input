@@ -1,20 +1,19 @@
 class ABC{
-    public static void main(String[] args){
-    {
-        a=20;
-        println(a);
 
-        i = 10;
+    public static void main(String[] args)
+    {{
+        a = Func();
+    }}
 
-        for(i = 0; i< 10; i = i + 1)
-        {
-            if(i < 0)
-            {b = a+ 1;}
-            else
-            {}
-        }
+}
 
-    }
+class CD {
+public void Func()
+{
+    int a;
+    a = 10;
+    println(a);
+    return 0 ;
+}
 
-    }
 }
