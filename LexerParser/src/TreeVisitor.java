@@ -119,6 +119,7 @@ public class TreeVisitor<T> extends JavaBaseVisitor<T> {
     }
 
     public void visit(IfBlock node) {
+
         node.getChild(0).accept(this);
     }
 
@@ -142,7 +143,8 @@ public class TreeVisitor<T> extends JavaBaseVisitor<T> {
         globalIRList.add(new AssignmentIRTuple(ADD, node.place, node.getChild(0).getText(), 0));
     }
 
-    public void visit(LocalDeclaration node) {
+    public void visit(LocalDeclaration node)
+    {
         node.getChild(0).accept(this);
     }
 
@@ -195,7 +197,7 @@ public class TreeVisitor<T> extends JavaBaseVisitor<T> {
     }
 
     public void visit(NotExpression node) {
-        Node child1 = node.getChild(0);
+        Node child1 = node.getChild(1);
         child1.place = getVar();
         child1.accept(this);
         globalIRList.add(new UnaryAssignmentIRTuple(NOT, child1.place, node.place));
@@ -215,8 +217,8 @@ public class TreeVisitor<T> extends JavaBaseVisitor<T> {
     }
 
     public void visit(ParenExpression node) {
-        node.getChild(0).place = node.place;
-        node.getChild(0).accept(this);
+        node.getChild(1).place = node.place;
+        node.getChild(1).accept(this);
     }
 
     public int visit(PowExpression node) {
@@ -271,8 +273,9 @@ public class TreeVisitor<T> extends JavaBaseVisitor<T> {
         globalIRList.add(new LabelIRTuple(labelExpr));
         Node child2 = node.getChild(2);
         child2.place = getVar();
-        child2.accept(this);
         Node child4 = node.getChild(4);
+
+        child2.accept(this);
         globalIRList.add(new ConditionalJumpIRTuple(IFFALSE, child2.place, labelEnd));
         child4.accept(this);
         globalIRList.add(new UnconditionalJumpIRTuple(labelExpr));

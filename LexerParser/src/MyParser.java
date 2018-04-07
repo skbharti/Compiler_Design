@@ -32,11 +32,8 @@ public class MyParser {
         CommonTokenStream tokenStream = new CommonTokenStream(lexer);
         JavaParser parser = new JavaParser(tokenStream);
         JavaParser.GoalContext tree = parser.goal();
-        Node.Goal treeNode = (new Node(tree)).new Goal(tree);
         ParseTreeWalker walker = new ParseTreeWalker();
         MyJavaListener listener = new MyJavaListener();
-        TreeVisitor visitor = new TreeVisitor();
-        visitor.visit(treeNode);
         sentence = "<p> "+JavaParser.GoalContext.class.getSimpleName()+" </p>";
 
         try {

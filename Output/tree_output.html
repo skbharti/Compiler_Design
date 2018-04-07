@@ -4,9 +4,25 @@
 <p> <b> GoalContext </b> </p>
 <p> <b> MainClassContext </b>	<EOF> </p>
 <p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	<b> NestedStatementContext </b>	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	<b> VariableAssignmentStatementContext </b>	PrintStatementContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	<b> IntLitExpressionContext </b>	;	PrintStatementContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	10	;	<b> PrintStatementContext </b>	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	10	;	println	(	<b> IdentifierExpressionContext </b>	)	;	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	10	;	println	(	a	)	;	}	}	}	<EOF> </p></body>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	<b> VariableAssignmentStatementContext </b>	PrintStatementContext	IfElseStatementContext	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	<b> IntLitExpressionContext </b>	;	PrintStatementContext	IfElseStatementContext	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	20	;	<b> PrintStatementContext </b>	IfElseStatementContext	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	20	;	println	(	<b> IdentifierExpressionContext </b>	)	;	IfElseStatementContext	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	20	;	println	(	a	)	;	<b> IfElseStatementContext </b>	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	20	;	println	(	a	)	;	if	(	<b> LtExpressionContext </b>	)	IfBlockContext	else	ElseBlockContext	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	20	;	println	(	a	)	;	if	(	<b> IdentifierExpressionContext </b>	<	IntLitExpressionContext	)	IfBlockContext	else	ElseBlockContext	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	20	;	println	(	a	)	;	if	(	a	<	<b> IntLitExpressionContext </b>	)	IfBlockContext	else	ElseBlockContext	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	20	;	println	(	a	)	;	if	(	a	<	10	)	<b> IfBlockContext </b>	else	ElseBlockContext	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	20	;	println	(	a	)	;	if	(	a	<	10	)	<b> NestedStatementContext </b>	else	ElseBlockContext	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	20	;	println	(	a	)	;	if	(	a	<	10	)	{	<b> VariableAssignmentStatementContext </b>	}	else	ElseBlockContext	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	20	;	println	(	a	)	;	if	(	a	<	10	)	{	b	=	<b> MulExpressionContext </b>	;	}	else	ElseBlockContext	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	20	;	println	(	a	)	;	if	(	a	<	10	)	{	b	=	<b> IdentifierExpressionContext </b>	*	IntLitExpressionContext	;	}	else	ElseBlockContext	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	20	;	println	(	a	)	;	if	(	a	<	10	)	{	b	=	a	*	<b> IntLitExpressionContext </b>	;	}	else	ElseBlockContext	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	20	;	println	(	a	)	;	if	(	a	<	10	)	{	b	=	a	*	10	;	}	else	<b> ElseBlockContext </b>	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	20	;	println	(	a	)	;	if	(	a	<	10	)	{	b	=	a	*	10	;	}	else	<b> NestedStatementContext </b>	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	20	;	println	(	a	)	;	if	(	a	<	10	)	{	b	=	a	*	10	;	}	else	{	<b> VariableAssignmentStatementContext </b>	}	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	20	;	println	(	a	)	;	if	(	a	<	10	)	{	b	=	a	*	10	;	}	else	{	b	=	<b> MulExpressionContext </b>	;	}	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	20	;	println	(	a	)	;	if	(	a	<	10	)	{	b	=	a	*	10	;	}	else	{	b	=	<b> IdentifierExpressionContext </b>	*	IntLitExpressionContext	;	}	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	20	;	println	(	a	)	;	if	(	a	<	10	)	{	b	=	a	*	10	;	}	else	{	b	=	a	*	<b> IntLitExpressionContext </b>	;	}	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	20	;	println	(	a	)	;	if	(	a	<	10	)	{	b	=	a	*	10	;	}	else	{	b	=	a	*	2	;	}	}	}	}	<EOF> </p></body>
 </html>

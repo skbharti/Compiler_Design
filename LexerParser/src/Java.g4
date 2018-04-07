@@ -54,7 +54,7 @@ statement
 #ifElseStatement
 |	'while' LP expression RP whileBlock
 #whileStatement
-|   'for' LP expression ';' expression ';' expression RP whileBlock
+|   'for' LP statement ';' expression ';' statement RP whileBlock
 #forStatement
 |	'println' LP  expression RP ';'
 #printStatement

@@ -117,7 +117,7 @@ public class JavaParser extends Parser {
     }
 
     public static class GoalContext extends ParserRuleContext {
-        public ArrayList<ThreeAddCode> codes;
+        public ArrayList<ThreeAddCode> codes = new ArrayList<>();
         public String place;
         public String start;
         public String end;
@@ -202,7 +202,7 @@ public class JavaParser extends Parser {
     }
 
     public static class MainClassContext extends ParserRuleContext {
-        public ArrayList<ThreeAddCode> codes;
+        public ArrayList<ThreeAddCode> codes = new ArrayList<>();
         public String place;
         public String start;
         public String end;
@@ -298,7 +298,7 @@ public class JavaParser extends Parser {
     }
 
     public static class ClassDeclarationContext extends ParserRuleContext {
-        public ArrayList<ThreeAddCode> codes;
+        public ArrayList<ThreeAddCode> codes = new ArrayList<>();
         public String place;
         public String start;
         public String end;
@@ -421,7 +421,7 @@ public class JavaParser extends Parser {
     }
 
     public static class FieldDeclarationContext extends ParserRuleContext {
-        public ArrayList<ThreeAddCode> codes;
+        public ArrayList<ThreeAddCode> codes = new ArrayList<>();
         public String place;
         public String start;
         public String end;
@@ -477,7 +477,7 @@ public class JavaParser extends Parser {
     }
 
     public static class LocalDeclarationContext extends ParserRuleContext {
-        public ArrayList<ThreeAddCode> codes;
+        public ArrayList<ThreeAddCode> codes = new ArrayList<>();
         public String place;
         public String start;
         public String end;
@@ -533,7 +533,7 @@ public class JavaParser extends Parser {
     }
 
     public static class VarDeclarationContext extends ParserRuleContext {
-        public ArrayList<ThreeAddCode> codes;
+        public ArrayList<ThreeAddCode> codes = new ArrayList<>();
         public String place;
         public String start;
         public String end;
@@ -597,7 +597,7 @@ public class JavaParser extends Parser {
     }
 
     public static class MethodDeclarationContext extends ParserRuleContext {
-        public ArrayList<ThreeAddCode> codes;
+        public ArrayList<ThreeAddCode> codes = new ArrayList<>();
         public String place;
         public String start;
         public String end;
@@ -691,7 +691,7 @@ public class JavaParser extends Parser {
     }
 
     public static class ParameterListContext extends ParserRuleContext {
-        public ArrayList<ThreeAddCode> codes;
+        public ArrayList<ThreeAddCode> codes = new ArrayList<>();
         public String place;
         public String start;
         public String end;
@@ -768,7 +768,7 @@ public class JavaParser extends Parser {
     }
 
     public static class ParameterContext extends ParserRuleContext {
-        public ArrayList<ThreeAddCode> codes;
+        public ArrayList<ThreeAddCode> codes = new ArrayList<>();
         public String place;
         public String start;
         public String end;
@@ -830,7 +830,7 @@ public class JavaParser extends Parser {
     }
 
     public static class MethodBodyContext extends ParserRuleContext {
-        public ArrayList<ThreeAddCode> codes;
+        public ArrayList<ThreeAddCode> codes = new ArrayList<>();
         public String place;
         public String start;
         public String end;
@@ -942,7 +942,7 @@ public class JavaParser extends Parser {
     }
 
     public static class TypeContext extends ParserRuleContext {
-        public ArrayList<ThreeAddCode> codes;
+        public ArrayList<ThreeAddCode> codes = new ArrayList<>();
         public String place;
         public String start;
         public String end;
@@ -1038,7 +1038,7 @@ public class JavaParser extends Parser {
     }
 
     public static class DimsContext extends ParserRuleContext {
-        public ArrayList<ThreeAddCode> codes;
+        public ArrayList<ThreeAddCode> codes = new ArrayList<>();
         public String place;
         public String start;
         public String end;
@@ -1109,7 +1109,7 @@ public class JavaParser extends Parser {
     }
 
     public static class StatementContext extends ParserRuleContext {
-        public ArrayList<ThreeAddCode> codes;
+        public ArrayList<ThreeAddCode> codes = new ArrayList<>();
         public String place;
         public String start;
         public String end;
@@ -1554,7 +1554,7 @@ public class JavaParser extends Parser {
     }
 
     public static class IfBlockContext extends ParserRuleContext {
-        public ArrayList<ThreeAddCode> codes;
+        public ArrayList<ThreeAddCode> codes = new ArrayList<>();
         public String place;
         public String start;
         public String end;
@@ -1610,7 +1610,7 @@ public class JavaParser extends Parser {
     }
 
     public static class ElseBlockContext extends ParserRuleContext {
-        public ArrayList<ThreeAddCode> codes;
+        public ArrayList<ThreeAddCode> codes = new ArrayList<>();
         public String place;
         public String start;
         public String end;
@@ -1666,7 +1666,7 @@ public class JavaParser extends Parser {
     }
 
     public static class WhileBlockContext extends ParserRuleContext {
-        public ArrayList<ThreeAddCode> codes;
+        public ArrayList<ThreeAddCode> codes = new ArrayList<>();
         public String place;
         public String start;
         public String end;
@@ -1722,7 +1722,7 @@ public class JavaParser extends Parser {
     }
 
     public static class ExpressionContext extends ParserRuleContext {
-        public ArrayList<ThreeAddCode> codes;
+        public ArrayList<ThreeAddCode> codes = new ArrayList<>();
         public String place;
         public String start;
         public String end;

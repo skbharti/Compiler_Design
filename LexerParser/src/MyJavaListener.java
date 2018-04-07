@@ -1,11 +1,15 @@
 package src;
+import IRCode.src.IRCode.*;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.regex.Pattern;
+
+import static IRCode.src.helperclasses.Constants.*;
 
 public class MyJavaListener extends JavaBaseListener {
 
@@ -14,6 +18,20 @@ public class MyJavaListener extends JavaBaseListener {
         super.enterEveryRule(ctx);
         replaceParentWithChildren(ctx);
     }
+
+
+    private int tempCounter = 0;
+    private int labelCounter = 0;
+
+    public String getVar() {
+        return "var" + tempCounter++;
+    }
+
+    public String getLablel() {
+        return "label" + labelCounter++;
+    }
+
+
 
     public static String getChildList(ParserRuleContext ctx){
         int len = ctx.getChildCount();
@@ -50,31 +68,69 @@ public class MyJavaListener extends JavaBaseListener {
     @Override public void enterGoal(JavaParser.GoalContext ctx) { }
     
      
-    @Override public void exitGoal(JavaParser.GoalContext ctx) { }
+    @Override public void exitGoal(JavaParser.GoalContext ctx) {
+
+        JavaParser.MainClassContext child0 = (JavaParser.MainClassContext) ctx.getChild(0);
+        ctx.codes.addAll(child0.codes);
+
+        int count = ctx.getChildCount();
+
+        for (int i = 1; i < count -1; i++ )
+        {
+            JavaParser.ClassDeclarationContext child1 = (JavaParser.ClassDeclarationContext) ctx.getChild(i);
+            ctx.codes.addAll(child1.codes);
+        }
+
+        for(int i = 0; i< ctx.codes.size(); i++)
+        {
+            System.out.println(ctx.codes.get(i).toString());
+        }
+
+    }
     
      
     @Override public void enterMainClass(JavaParser.MainClassContext ctx) { }
     
      
-    @Override public void exitMainClass(JavaParser.MainClassContext ctx) { }
+    @Override public void exitMainClass(JavaParser.MainClassContext ctx) {
+        JavaParser.StatementContext child14 = (JavaParser.StatementContext) ctx.getChild(14);
+        ctx.codes.addAll(child14.codes);
+
+    }
     
      
     @Override public void enterClassDeclaration(JavaParser.ClassDeclarationContext ctx) { }
     
      
-    @Override public void exitClassDeclaration(JavaParser.ClassDeclarationContext ctx) { }
+    @Override public void exitClassDeclaration(JavaParser.ClassDeclarationContext ctx) {
+
+        JavaParser.MethodDeclarationContext child6 = (JavaParser.MethodDeclarationContext)ctx.getChild(6);
+
+        ctx.codes.addAll(child6.codes);
+
+    }
     
      
     @Override public void enterFieldDeclaration(JavaParser.FieldDeclarationContext ctx) { }
     
      
-    @Override public void exitFieldDeclaration(JavaParser.FieldDeclarationContext ctx) { }
+    @Override public void exitFieldDeclaration(JavaParser.FieldDeclarationContext ctx) {
+
+        JavaParser.VarDeclarationContext child0  =(JavaParser.VarDeclarationContext) ctx.getChild(0);
+        ctx.codes.addAll(child0.codes);
+
+    }
     
      
     @Override public void enterLocalDeclaration(JavaParser.LocalDeclarationContext ctx) { }
     
      
-    @Override public void exitLocalDeclaration(JavaParser.LocalDeclarationContext ctx) { }
+    @Override public void exitLocalDeclaration(JavaParser.LocalDeclarationContext ctx) {
+
+       JavaParser.VarDeclarationContext child0 = (JavaParser.VarDeclarationContext) ctx.getChild(0);
+       ctx.codes.addAll(child0.codes);
+
+    }
     
      
     @Override public void enterVarDeclaration(JavaParser.VarDeclarationContext ctx) { }
@@ -86,7 +142,12 @@ public class MyJavaListener extends JavaBaseListener {
     @Override public void enterMethodDeclaration(JavaParser.MethodDeclarationContext ctx) { }
     
      
-    @Override public void exitMethodDeclaration(JavaParser.MethodDeclarationContext ctx) { }
+    @Override public void exitMethodDeclaration(JavaParser.MethodDeclarationContext ctx) {
+        ctx.codes.add(new LabelIRTuple(ctx.getChild(2).getText()));
+        JavaParser.MethodBodyContext child7 = (JavaParser.MethodBodyContext) ctx.getChild(7);
+        ctx.codes.addAll(child7.codes);
+
+    }
     
      
     @Override public void enterParameterList(JavaParser.ParameterListContext ctx) { }
@@ -101,10 +162,28 @@ public class MyJavaListener extends JavaBaseListener {
     @Override public void exitParameter(JavaParser.ParameterContext ctx) { }
     
      
-    @Override public void enterMethodBody(JavaParser.MethodBodyContext ctx) { }
+    @Override public void enterMethodBody(JavaParser.MethodBodyContext ctx) {
+
+        JavaParser.LocalDeclarationContext child0 = (JavaParser.LocalDeclarationContext) ctx.getChild(0);
+        JavaParser.StatementContext child1 = (JavaParser.StatementContext) ctx.getChild(1);
+        JavaParser.ExpressionContext childReturn = (JavaParser.ExpressionContext) ctx.getChild(3);
+        childReturn.place = getVar();
+
+
+    }
     
      
-    @Override public void exitMethodBody(JavaParser.MethodBodyContext ctx) { }
+    @Override public void exitMethodBody(JavaParser.MethodBodyContext ctx) {
+        JavaParser.LocalDeclarationContext child0 = (JavaParser.LocalDeclarationContext) ctx.getChild(0);
+        JavaParser.StatementContext child1 = (JavaParser.StatementContext) ctx.getChild(1);
+        JavaParser.ExpressionContext childReturn = (JavaParser.ExpressionContext) ctx.getChild(3);
+
+        ctx.codes.addAll(child0.codes);
+        ctx.codes.addAll(child1.codes);
+        ctx.codes.addAll(childReturn.codes);
+        ctx.codes.add(new ReturnIRTuple(childReturn.place));
+
+    }
     
      
     @Override public void enterType(JavaParser.TypeContext ctx) { }
@@ -122,19 +201,71 @@ public class MyJavaListener extends JavaBaseListener {
     @Override public void enterNestedStatement(JavaParser.NestedStatementContext ctx) { }
     
      
-    @Override public void exitNestedStatement(JavaParser.NestedStatementContext ctx) { }
+    @Override public void exitNestedStatement(JavaParser.NestedStatementContext ctx) {
+
+
+        int count = ctx.getChildCount();
+
+        for(int i = 1; i < count-1; i++ )
+        {
+            JavaParser.StatementContext child0 = (JavaParser.StatementContext) ctx.getChild(i);
+            ctx.codes.addAll(child0.codes);
+        }
+
+    }
     
      
-    @Override public void enterIfElseStatement(JavaParser.IfElseStatementContext ctx) { }
+    @Override public void enterIfElseStatement(JavaParser.IfElseStatementContext ctx) {
+
+        JavaParser.ExpressionContext childExpr = (JavaParser.ExpressionContext) ctx.getChild(2);
+        JavaParser.ElseBlockContext childElse = (JavaParser.ElseBlockContext) ctx.getChild(6);
+        JavaParser.IfBlockContext childIf = (JavaParser.IfBlockContext) ctx.getChild(4);
+
+
+        childExpr.place = getVar();
+
+
+    }
     
      
-    @Override public void exitIfElseStatement(JavaParser.IfElseStatementContext ctx) { }
+    @Override public void exitIfElseStatement(JavaParser.IfElseStatementContext ctx) {
+
+        JavaParser.ExpressionContext childExpr = (JavaParser.ExpressionContext) ctx.getChild(2);
+        JavaParser.ElseBlockContext childElse = (JavaParser.ElseBlockContext) ctx.getChild(6);
+        JavaParser.IfBlockContext childIf = (JavaParser.IfBlockContext) ctx.getChild(4);
+
+        String labelIf = getLablel();
+        String end = getLablel();
+
+        ctx.codes.addAll(childExpr.codes);
+        ctx.codes.add(new ConditionalJumpIRTuple(IFTRUE, childExpr.place, labelIf));
+        ctx.codes.addAll(childElse.codes);
+        ctx.codes.add(new UnconditionalJumpIRTuple(end));
+        ctx.codes.add(new LabelIRTuple(labelIf));
+        ctx.codes.addAll(childIf.codes);
+        ctx.codes.add(new LabelIRTuple(end));
+
+    }
     
      
-    @Override public void enterWhileStatement(JavaParser.WhileStatementContext ctx) { }
+    @Override public void enterWhileStatement(JavaParser.WhileStatementContext ctx) {
+        JavaParser.ExpressionContext child2 = (JavaParser.ExpressionContext)ctx.getChild(2);
+        child2.place = getVar();
+    }
     
      
-    @Override public void exitWhileStatement(JavaParser.WhileStatementContext ctx) { }
+    @Override public void exitWhileStatement(JavaParser.WhileStatementContext ctx) {
+        JavaParser.ExpressionContext child2 = (JavaParser.ExpressionContext)ctx.getChild(2);
+        ArrayList<ThreeAddCode> list = child2.codes;
+        String labelExpr = getLablel();
+        String labelEnd = getLablel();
+        ctx.codes.add(new LabelIRTuple(labelExpr));
+        list.add(new ConditionalJumpIRTuple(IFFALSE, child2.place, labelEnd));
+        list.addAll(((JavaParser.WhileBlockContext)ctx.getChild(4)).codes);
+        list.add(new UnconditionalJumpIRTuple(labelExpr));
+        list.add(new LabelIRTuple(labelEnd));
+        ctx.codes.addAll(list);
+    }
     
      
     @Override public void enterForStatement(JavaParser.ForStatementContext ctx) { }
@@ -143,46 +274,111 @@ public class MyJavaListener extends JavaBaseListener {
     @Override public void exitForStatement(JavaParser.ForStatementContext ctx) { }
     
      
-    @Override public void enterPrintStatement(JavaParser.PrintStatementContext ctx) { }
+    @Override public void enterPrintStatement(JavaParser.PrintStatementContext ctx) {
+        JavaParser.ExpressionContext child1 = (JavaParser.ExpressionContext) ctx.getChild(2);
+        child1.place = getVar();
+
+    }
     
      
-    @Override public void exitPrintStatement(JavaParser.PrintStatementContext ctx) { }
+    @Override public void exitPrintStatement(JavaParser.PrintStatementContext ctx) {
+
+        JavaParser.ExpressionContext child1 = (JavaParser.ExpressionContext) ctx.getChild(2);
+        ctx.codes.addAll(child1.codes);
+        ctx.codes.add(new PrintIRTuple("int", child1.place));
+    }
     
      
-    @Override public void enterVariableAssignmentStatement(JavaParser.VariableAssignmentStatementContext ctx) { }
+    @Override public void enterVariableAssignmentStatement(JavaParser.VariableAssignmentStatementContext ctx) {
+
+        JavaParser.ExpressionContext child2 = (JavaParser.ExpressionContext) ctx.getChild(2);
+        child2.place = getVar();
+    }
     
      
-    @Override public void exitVariableAssignmentStatement(JavaParser.VariableAssignmentStatementContext ctx) { }
+    @Override public void exitVariableAssignmentStatement(JavaParser.VariableAssignmentStatementContext ctx) {
+
+        JavaParser.ExpressionContext child2 = (JavaParser.ExpressionContext) ctx.getChild(2);
+
+        ctx.codes.addAll(child2.codes);
+        ctx.codes.add(new AssignmentIRTuple(ADD, ( ctx.getChild(0)).getText(), child2.place, 0));
+    }
     
      
-    @Override public void enterArrayAssignmentStatement(JavaParser.ArrayAssignmentStatementContext ctx) { }
+    @Override public void enterArrayAssignmentStatement(JavaParser.ArrayAssignmentStatementContext ctx) {
+
+        JavaParser.IdentifierExpressionContext child1 = (JavaParser.IdentifierExpressionContext)ctx.getChild(0);
+        JavaParser.ExpressionContext child2 = (JavaParser.ExpressionContext)ctx.getChild(2);
+        JavaParser.ExpressionContext child3 = (JavaParser.ExpressionContext)ctx.getChild(5);
+
+        child1.place = getVar();
+        child2.place = getVar();
+        child1.place = getVar();
+
+    }
     
      
-    @Override public void exitArrayAssignmentStatement(JavaParser.ArrayAssignmentStatementContext ctx) { }
+    @Override public void exitArrayAssignmentStatement(JavaParser.ArrayAssignmentStatementContext ctx) {
+        JavaParser.IdentifierExpressionContext child1 = (JavaParser.IdentifierExpressionContext)ctx.getChild(0);
+        JavaParser.ExpressionContext child2 = (JavaParser.ExpressionContext)ctx.getChild(2);
+        JavaParser.ExpressionContext child3 = (JavaParser.ExpressionContext)ctx.getChild(5);
+
+        ctx.codes.addAll(child1.codes);
+        ctx.codes.addAll(child2.codes);
+        ctx.codes.addAll(child3.codes);
+        ctx.codes.add(new ArrayAssignmentIRTuple(VARTOARR, child1.place, child2.place, child3.place));
+
+    }
     
      
     @Override public void enterIfBlock(JavaParser.IfBlockContext ctx) { }
     
      
-    @Override public void exitIfBlock(JavaParser.IfBlockContext ctx) { }
+    @Override public void exitIfBlock(JavaParser.IfBlockContext ctx) {
+        JavaParser.StatementContext child0 = (JavaParser.StatementContext) ctx.getChild(0);
+        ctx.codes.addAll(child0.codes);
+    }
     
      
-    @Override public void enterElseBlock(JavaParser.ElseBlockContext ctx) { }
+    @Override public void enterElseBlock(JavaParser.ElseBlockContext ctx) {
+
+    }
     
      
-    @Override public void exitElseBlock(JavaParser.ElseBlockContext ctx) { }
+    @Override public void exitElseBlock(JavaParser.ElseBlockContext ctx) {
+        JavaParser.StatementContext child0 = (JavaParser.StatementContext) ctx.getChild(0);
+        ctx.codes.addAll(child0.codes);
+    }
     
      
     @Override public void enterWhileBlock(JavaParser.WhileBlockContext ctx) { }
     
      
-    @Override public void exitWhileBlock(JavaParser.WhileBlockContext ctx) { }
+    @Override public void exitWhileBlock(JavaParser.WhileBlockContext ctx) {
+       JavaParser.WhileBlockContext child0 = (JavaParser.WhileBlockContext) ctx.getChild(0);
+       ctx.codes.addAll(child0.codes);
+    }
     
      
-    @Override public void enterLtExpression(JavaParser.LtExpressionContext ctx) { }
+    @Override public void enterLtExpression(JavaParser.LtExpressionContext ctx) {
+        JavaParser.ExpressionContext child1 = (JavaParser.ExpressionContext) ctx.getChild(0);
+        JavaParser.ExpressionContext child2 = (JavaParser.ExpressionContext) ctx.getChild(2);
+
+
+        child1.place = getVar();
+        child2.place = getVar();
+
+    }
     
      
-    @Override public void exitLtExpression(JavaParser.LtExpressionContext ctx) { }
+    @Override public void exitLtExpression(JavaParser.LtExpressionContext ctx) {
+        JavaParser.ExpressionContext child1 = (JavaParser.ExpressionContext) ctx.getChild(0);
+        JavaParser.ExpressionContext child2 = (JavaParser.ExpressionContext) ctx.getChild(2);
+
+        ctx.codes.addAll(child1.codes);
+        ctx.codes.addAll(child2.codes);
+        ctx.codes.add(new AssignmentIRTuple(LT, ctx.place, child1.place, child2.place));
+    }
     
      
     @Override public void enterObjectInstantiationExpression(JavaParser.ObjectInstantiationExpressionContext ctx) { }
@@ -191,10 +387,21 @@ public class MyJavaListener extends JavaBaseListener {
     @Override public void exitObjectInstantiationExpression(JavaParser.ObjectInstantiationExpressionContext ctx) { }
     
      
-    @Override public void enterArrayInstantiationExpression(JavaParser.ArrayInstantiationExpressionContext ctx) { }
+    @Override public void enterArrayInstantiationExpression(JavaParser.ArrayInstantiationExpressionContext ctx) {
+
+        JavaParser.ExpressionContext child3 = (JavaParser.ExpressionContext)ctx.getChild(3);
+        child3.place = getVar();
+
+    }
     
      
-    @Override public void exitArrayInstantiationExpression(JavaParser.ArrayInstantiationExpressionContext ctx) { }
+    @Override public void exitArrayInstantiationExpression(JavaParser.ArrayInstantiationExpressionContext ctx) {
+        JavaParser.ExpressionContext child3 = (JavaParser.ExpressionContext)ctx.getChild(3);
+
+        ctx.codes.addAll(child3.codes);
+        ctx.codes.add(new NewArrayIRTuple(ctx.place, "int", child3.place));
+
+    }
     
      
     @Override public void enterPowExpression(JavaParser.PowExpressionContext ctx) { }
@@ -206,55 +413,135 @@ public class MyJavaListener extends JavaBaseListener {
     @Override public void enterIdentifierExpression(JavaParser.IdentifierExpressionContext ctx) { }
     
      
-    @Override public void exitIdentifierExpression(JavaParser.IdentifierExpressionContext ctx) { }
+    @Override public void exitIdentifierExpression(JavaParser.IdentifierExpressionContext ctx) {
+        ctx.codes.add(new AssignmentIRTuple(ADD, ctx.place, ctx.getText(), 0));
+
+    }
     
      
     @Override public void enterMethodCallExpression(JavaParser.MethodCallExpressionContext ctx) { }
     
      
-    @Override public void exitMethodCallExpression(JavaParser.MethodCallExpressionContext ctx) { }
+    @Override public void exitMethodCallExpression(JavaParser.MethodCallExpressionContext ctx) {
+        //TODO parameter supply
+        ctx.codes.add(new FunctionCallIRTuple(ctx.getChild(0).getText(), "null", ctx.place));
+    }
     
      
-    @Override public void enterNotExpression(JavaParser.NotExpressionContext ctx) { }
+    @Override public void enterNotExpression(JavaParser.NotExpressionContext ctx) {
+
+        JavaParser.ExpressionContext child1 = (JavaParser.ExpressionContext) ctx.getChild(1);
+        child1.place = getVar();
+
+    }
     
      
-    @Override public void exitNotExpression(JavaParser.NotExpressionContext ctx) { }
+    @Override public void exitNotExpression(JavaParser.NotExpressionContext ctx) {
+        JavaParser.ExpressionContext child1 = (JavaParser.ExpressionContext) ctx.getChild(1);
+        ctx.codes.addAll(child1.codes);
+        ctx.codes.add(new UnaryAssignmentIRTuple(NOT, child1.place, ctx.place));
+    }
     
      
-    @Override public void enterBooleanLitExpression(JavaParser.BooleanLitExpressionContext ctx) { }
+    @Override public void enterBooleanLitExpression(JavaParser.BooleanLitExpressionContext ctx) {
+
+    }
     
      
-    @Override public void exitBooleanLitExpression(JavaParser.BooleanLitExpressionContext ctx) { }
+    @Override public void exitBooleanLitExpression(JavaParser.BooleanLitExpressionContext ctx) {
+        if (ctx.getText().equals("true"))
+            ctx.codes.add(new AssignmentIRTuple(ADD, ctx.place, 0, 1));
+        else
+            ctx.codes.add(new AssignmentIRTuple(ADD, ctx.place, 0, 0));
+
+    }
     
      
-    @Override public void enterParenExpression(JavaParser.ParenExpressionContext ctx) { }
+    @Override public void enterParenExpression(JavaParser.ParenExpressionContext ctx) {
+
+        JavaParser.ExpressionContext child1 = (JavaParser.ExpressionContext) ctx.getChild(1);
+        child1.place = ctx.place;
+
+    }
     
      
-    @Override public void exitParenExpression(JavaParser.ParenExpressionContext ctx) { }
+    @Override public void exitParenExpression(JavaParser.ParenExpressionContext ctx) {
+        JavaParser.ExpressionContext child1 = (JavaParser.ExpressionContext) ctx.getChild(1);
+        ctx.codes.addAll(child1.codes);
+    }
     
      
     @Override public void enterIntLitExpression(JavaParser.IntLitExpressionContext ctx) { }
     
      
-    @Override public void exitIntLitExpression(JavaParser.IntLitExpressionContext ctx) { }
+    @Override public void exitIntLitExpression(JavaParser.IntLitExpressionContext ctx) {
+        ctx.codes.add(new AssignmentIRTuple(ADD, ctx.place, ctx.getText(), 0));
+
+    }
     
      
-    @Override public void enterAndExpression(JavaParser.AndExpressionContext ctx) { }
+    @Override public void enterAndExpression(JavaParser.AndExpressionContext ctx) {
+        JavaParser.ExpressionContext child1 = (JavaParser.ExpressionContext)ctx.getChild(0);
+        JavaParser.ExpressionContext child2 = (JavaParser.ExpressionContext)ctx.getChild(2);
+
+        child1.place = getVar();
+        child2.place = getVar();
+    }
     
      
-    @Override public void exitAndExpression(JavaParser.AndExpressionContext ctx) { }
+    @Override public void exitAndExpression(JavaParser.AndExpressionContext ctx) {
+        JavaParser.ExpressionContext child1 = (JavaParser.ExpressionContext)ctx.getChild(0);
+        JavaParser.ExpressionContext child2 = (JavaParser.ExpressionContext)ctx.getChild(2);
+
+        ctx.codes.addAll(child1.codes);
+        ctx.codes.addAll(child2.codes);
+        ctx.codes.add(new AssignmentIRTuple(AND, ctx.place, child1.place, child2.place));
+
+    }
     
      
-    @Override public void enterArrayAccessExpression(JavaParser.ArrayAccessExpressionContext ctx) { }
+    @Override public void enterArrayAccessExpression(JavaParser.ArrayAccessExpressionContext ctx) {
+
+        JavaParser.ExpressionContext child1 = (JavaParser.ExpressionContext)ctx.getChild(0);
+        JavaParser.ExpressionContext child2 = (JavaParser.ExpressionContext)ctx.getChild(2);
+
+        child1.place = getVar();
+        child2.place = getVar();
+    }
     
      
-    @Override public void exitArrayAccessExpression(JavaParser.ArrayAccessExpressionContext ctx) { }
+    @Override public void exitArrayAccessExpression(JavaParser.ArrayAccessExpressionContext ctx) {
+
+        JavaParser.ExpressionContext child1 = (JavaParser.ExpressionContext)ctx.getChild(0);
+        JavaParser.ExpressionContext child2 = (JavaParser.ExpressionContext)ctx.getChild(2);
+
+        ctx.codes.addAll(child1.codes);
+        ctx.codes.addAll(child2.codes);
+        ctx.codes.add(new ArrayAssignmentIRTuple(ARRTOVAR, child1.place, child2.place, ctx.place));
+    }
     
      
-    @Override public void enterAddExpression(JavaParser.AddExpressionContext ctx) { }
+    @Override public void enterAddExpression(JavaParser.AddExpressionContext ctx) {
+
+        JavaParser.ExpressionContext child1 = (JavaParser.ExpressionContext)ctx.getChild(0);
+        JavaParser.ExpressionContext child2 = (JavaParser.ExpressionContext)ctx.getChild(2);
+
+        child1.place = getVar();
+        child2.place = getVar();
+
+    }
     
      
-    @Override public void exitAddExpression(JavaParser.AddExpressionContext ctx) { }
+    @Override public void exitAddExpression(JavaParser.AddExpressionContext ctx) {
+
+        JavaParser.ExpressionContext child1 = (JavaParser.ExpressionContext)ctx.getChild(0);
+        JavaParser.ExpressionContext child2 = (JavaParser.ExpressionContext)ctx.getChild(2);
+
+        ctx.codes.addAll(child1.codes);
+        ctx.codes.addAll(child2.codes);
+        ctx.codes.add(new AssignmentIRTuple(ADD,  ctx.place, child1.place, child2.place));
+
+    }
     
      
     @Override public void enterThisExpression(JavaParser.ThisExpressionContext ctx) { }
@@ -269,16 +556,43 @@ public class MyJavaListener extends JavaBaseListener {
     @Override public void exitArrayLengthExpression(JavaParser.ArrayLengthExpressionContext ctx) { }
     
      
-    @Override public void enterSubExpression(JavaParser.SubExpressionContext ctx) { }
+    @Override public void enterSubExpression(JavaParser.SubExpressionContext ctx) {
+        JavaParser.ExpressionContext child1 = (JavaParser.ExpressionContext)ctx.getChild(0);
+        JavaParser.ExpressionContext child2 = (JavaParser.ExpressionContext)ctx.getChild(2);
+
+        child1.place = getVar();
+        child2.place = getVar();
+    }
     
      
-    @Override public void exitSubExpression(JavaParser.SubExpressionContext ctx) { }
+    @Override public void exitSubExpression(JavaParser.SubExpressionContext ctx) {
+        JavaParser.ExpressionContext child1 = (JavaParser.ExpressionContext)ctx.getChild(0);
+        JavaParser.ExpressionContext child2 = (JavaParser.ExpressionContext)ctx.getChild(2);
+
+        ctx.codes.addAll(child1.codes);
+        ctx.codes.addAll(child2.codes);
+        ctx.codes.add(new AssignmentIRTuple(SUB,  ctx.place, child1.place, child2.place));
+    }
     
      
-    @Override public void enterMulExpression(JavaParser.MulExpressionContext ctx) { }
+    @Override public void enterMulExpression(JavaParser.MulExpressionContext ctx) {
+        JavaParser.ExpressionContext child1 = (JavaParser.ExpressionContext)ctx.getChild(0);
+        JavaParser.ExpressionContext child2 = (JavaParser.ExpressionContext)ctx.getChild(2);
+
+        child1.place = getVar();
+        child2.place = getVar();
+    }
     
      
-    @Override public void exitMulExpression(JavaParser.MulExpressionContext ctx) { }
+    @Override public void exitMulExpression(JavaParser.MulExpressionContext ctx) {
+        JavaParser.ExpressionContext child1 = (JavaParser.ExpressionContext)ctx.getChild(0);
+        JavaParser.ExpressionContext child2 = (JavaParser.ExpressionContext)ctx.getChild(2);
+
+        ctx.codes.addAll(child1.codes);
+        ctx.codes.addAll(child2.codes);
+        ctx.codes.add(new AssignmentIRTuple(MUL,  ctx.place, child1.place, child2.place));
+
+    }
 
 
     @Override public void exitEveryRule(ParserRuleContext ctx) { }
