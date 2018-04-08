@@ -6,7 +6,6 @@ import IRCode.src.IRCode.MainClass;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.Hashtable;
-import java.util.Set;
 
 public class ArgumentVariable {
     public String type;
@@ -16,6 +15,7 @@ public class ArgumentVariable {
         this.value = (String) arg;
         this.type = getType();
     }
+
     public String getValue(Hashtable<String,AddrTableEntry> curAddTable) {
         if (type.equals("constant")) {
 
