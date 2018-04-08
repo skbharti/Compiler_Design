@@ -10,7 +10,6 @@
       <excludeFolder url="file://$MODULE_DIR$/Compiler_Design" />
       <excludeFolder url="file://$MODULE_DIR$/IRCode/.idea" />
       <excludeFolder url="file://$MODULE_DIR$/IRCode/src/parserclasses" />
-      <excludeFolder url="file://$MODULE_DIR$/IRCode/src/symboltables" />
       <excludeFolder url="file://$MODULE_DIR$/test" />
     </content>
     <orderEntry type="inheritedJdk" />

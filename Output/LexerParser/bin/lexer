@@ -1,4 +1,0 @@
-#!/bin/bash
-cd src
-echo "$1"
-java Main ../$1
