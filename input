@@ -2,21 +2,14 @@ class ABC{
 
     public static void main(String[] args)
     {{
-        a = Func();
-        b  = new int [4];
-        b[0] = 2;
-        a = b[0];
+        b = 3;
+        while (b < 5)
+        {
+            b = b + 1;
+        }
+
+
     }}
 
 }
 
-class CD {
-public void Func()
-{
-    int a;
-    a = 10;
-    println(a);
-    return 0 ;
-}
-
-}

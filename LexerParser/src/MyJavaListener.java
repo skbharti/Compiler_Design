@@ -106,16 +106,16 @@ public class MyJavaListener extends JavaBaseListener {
 
         int child_count = ctx.getChildCount();
 
-        for(int i = 2; i< child_count-1; i++)
+        for(int i = 0; i< child_count-1; i++)
         {
-            //System.out.println("Print ---- " + ctx.getChild(i).getClass().getSimpleName());
             if(ctx.getChild(i).getClass().getSimpleName().equals("MethodDeclarationContext") )
             {
                 JavaParser.MethodDeclarationContext child6 = (JavaParser.MethodDeclarationContext)ctx.getChild(i);
                 ctx.codes.addAll(child6.codes);
             }
+
+
         }
-        ;
 
     }
     
@@ -152,9 +152,19 @@ public class MyJavaListener extends JavaBaseListener {
     
      
     @Override public void exitMethodDeclaration(JavaParser.MethodDeclarationContext ctx) {
-        ctx.codes.add(new LabelIRTuple(ctx.getChild(2).getText()));
 
+        ctx.codes.add(new LabelIRTuple(ctx.getChild(2).getText()));
         int child_count = ctx.getChildCount();
+
+        for (int i = 0; i< child_count; i++)
+        {
+            if (ctx.getChild(i).getClass().getSimpleName().equals("ParameterListContext") )
+            {
+                JavaParser.ParameterListContext childParam = (JavaParser.ParameterListContext) ctx.getChild(i);
+                ctx.codes.addAll(childParam.codes);
+            }
+        }
+
         JavaParser.MethodBodyContext child7 = (JavaParser.MethodBodyContext) ctx.getChild(child_count-2);
         ctx.codes.addAll(child7.codes);
 
@@ -164,13 +174,27 @@ public class MyJavaListener extends JavaBaseListener {
     @Override public void enterParameterList(JavaParser.ParameterListContext ctx) { }
     
      
-    @Override public void exitParameterList(JavaParser.ParameterListContext ctx) { }
-    
-     
+    @Override public void exitParameterList(JavaParser.ParameterListContext ctx) {
+
+        int child_count = ctx.getChildCount();
+        for(int i = 0; i < child_count; i++ )
+        {
+            if(ctx.getChild(i).getClass().getSimpleName().equals("ParameterContext"))
+            {
+                JavaParser.ParameterContext childParameter  = (JavaParser.ParameterContext) ctx.getChild(i);
+                ctx.codes.addAll(childParameter.codes);
+            }
+        }
+
+    }
+
     @Override public void enterParameter(JavaParser.ParameterContext ctx) { }
     
      
-    @Override public void exitParameter(JavaParser.ParameterContext ctx) { }
+    @Override public void exitParameter(JavaParser.ParameterContext ctx) {
+
+        ctx.codes.add(new ParamInitIRTuple(ctx.getChild(0).getText(), ctx.getChild(1).getText()) );
+    }
     
      
     @Override public void enterMethodBody(JavaParser.MethodBodyContext ctx) {
@@ -463,12 +487,39 @@ public class MyJavaListener extends JavaBaseListener {
     }
     
      
-    @Override public void enterMethodCallExpression(JavaParser.MethodCallExpressionContext ctx) { }
+    @Override public void enterMethodCallExpression(JavaParser.MethodCallExpressionContext ctx) {
+
+        int child_count = ctx.getChildCount();
+
+        for(int i = 0 ; i< child_count; i++)
+        {
+            if(ctx.getChild(i) instanceof JavaParser.ExpressionContext)
+            {
+                JavaParser.ExpressionContext child = (JavaParser.ExpressionContext) ctx.getChild(i);
+                child.place = getVar();
+            }
+        }
+
+    }
     
      
     @Override public void exitMethodCallExpression(JavaParser.MethodCallExpressionContext ctx) {
         //TODO parameter supply
         // TODO Change to List after Parameter
+
+        int child_count = ctx.getChildCount();
+        for(int i = 0 ; i< child_count; i++)
+        {
+            //System.out.println(ctx.getChild(i).getClass().getSimpleName());
+            if(ctx.getChild(i) instanceof JavaParser.ExpressionContext)
+            {
+                JavaParser.ExpressionContext child = (JavaParser.ExpressionContext) ctx.getChild(i);
+                ctx.codes.addAll(child.codes);
+                ctx.codes.add(new ParamIRTuple(child.place, ctx.getChild(0)));
+            }
+        }
+
+
         ctx.codes.add(new FunctionCallIRTuple(ctx.getChild(0).getText(), "null", ctx.place));
     }
     

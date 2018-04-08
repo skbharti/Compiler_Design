@@ -2,6 +2,8 @@ package IRCode.src.helperclasses;
 
 public class Constants {
 
+    public final static String PARAMINIT = "ParamInit";
+    public final static String PARAM = "Param";
     public final static String COPY = "copy";
     public final static String ADD = "add";
     public final static String SUB = "sub";

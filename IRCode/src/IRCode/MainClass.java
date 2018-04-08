@@ -2,12 +2,10 @@ package IRCode.src.IRCode;
 
 import IRCode.src.CodeGenerator.CodeGen;
 import IRCode.src.FlowGraph.FullProgramRegAlloc;
-import IRCode.src.FlowGraph.Tables;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 import static IRCode.src.helperclasses.Constants.*;
 public class MainClass {
@@ -26,6 +24,10 @@ public class MainClass {
 
     public static ThreeAddCode getIRTuple(String st[]){
         switch (st[0]){
+            case PARAMINIT:
+                return new ParamInitIRTuple((st[0]).trim(), (st[1]).trim());
+            case PARAM:
+                return new ParamIRTuple((st[0]).trim(), st[1].trim()  );
             case COPY:
                 return new CopyIRTuple((st[1]).trim(), (st[2]).trim());
             case ADD:
