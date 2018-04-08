@@ -35,6 +35,7 @@ methodBody
 :	localDeclaration* statement* RETURN expression ';'
 ;
 
+
 type
 :	'int' dims
 |	'boolean'

@@ -3,6 +3,9 @@ class ABC{
     public static void main(String[] args)
     {{
         a = Func();
+        b  = new int [4];
+        b[0] = 2;
+        a = b[0];
     }}
 
 }

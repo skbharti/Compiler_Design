@@ -104,9 +104,18 @@ public class MyJavaListener extends JavaBaseListener {
      
     @Override public void exitClassDeclaration(JavaParser.ClassDeclarationContext ctx) {
 
-        JavaParser.MethodDeclarationContext child6 = (JavaParser.MethodDeclarationContext)ctx.getChild(6);
+        int child_count = ctx.getChildCount();
 
-        ctx.codes.addAll(child6.codes);
+        for(int i = 2; i< child_count-1; i++)
+        {
+            //System.out.println("Print ---- " + ctx.getChild(i).getClass().getSimpleName());
+            if(ctx.getChild(i).getClass().getSimpleName().equals("MethodDeclarationContext") )
+            {
+                JavaParser.MethodDeclarationContext child6 = (JavaParser.MethodDeclarationContext)ctx.getChild(i);
+                ctx.codes.addAll(child6.codes);
+            }
+        }
+        ;
 
     }
     
@@ -144,7 +153,9 @@ public class MyJavaListener extends JavaBaseListener {
      
     @Override public void exitMethodDeclaration(JavaParser.MethodDeclarationContext ctx) {
         ctx.codes.add(new LabelIRTuple(ctx.getChild(2).getText()));
-        JavaParser.MethodBodyContext child7 = (JavaParser.MethodBodyContext) ctx.getChild(7);
+
+        int child_count = ctx.getChildCount();
+        JavaParser.MethodBodyContext child7 = (JavaParser.MethodBodyContext) ctx.getChild(child_count-2);
         ctx.codes.addAll(child7.codes);
 
     }
@@ -164,10 +175,9 @@ public class MyJavaListener extends JavaBaseListener {
      
     @Override public void enterMethodBody(JavaParser.MethodBodyContext ctx) {
 
+        int child_count  = ctx.getChildCount();
 
-        JavaParser.LocalDeclarationContext child0 = (JavaParser.LocalDeclarationContext) ctx.getChild(0);
-        JavaParser.StatementContext child1 = (JavaParser.StatementContext) ctx.getChild(1);
-        JavaParser.ExpressionContext childReturn = (JavaParser.ExpressionContext) ctx.getChild(3);
+        JavaParser.ExpressionContext childReturn = (JavaParser.ExpressionContext) ctx.getChild(child_count-2);
         childReturn.place = getVar();
 
 
@@ -175,13 +185,30 @@ public class MyJavaListener extends JavaBaseListener {
     
      
     @Override public void exitMethodBody(JavaParser.MethodBodyContext ctx) {
-        JavaParser.LocalDeclarationContext child0 = (JavaParser.LocalDeclarationContext) ctx.getChild(0);
-        JavaParser.StatementContext child1 = (JavaParser.StatementContext) ctx.getChild(1);
-        JavaParser.ExpressionContext childReturn = (JavaParser.ExpressionContext) ctx.getChild(3);
 
-        ctx.codes.addAll(child0.codes);
-        ctx.codes.addAll(child1.codes);
+        int child_count  = ctx.getChildCount();
+
+
+        for(int i = 0; i< child_count-3; i++)
+        {
+            //System.out.println("MeB Print ---- "+ctx.getChild(i).getClass().getSimpleName());
+            if( ctx.getChild(i).getClass().getSimpleName().equals("LocalDeclarationContext")  ) {
+                JavaParser.LocalDeclarationContext child0 = (JavaParser.LocalDeclarationContext) ctx.getChild(i);
+                ctx.codes.addAll(child0.codes);
+            }
+            else
+            {
+
+                JavaParser.StatementContext child1 = (JavaParser.StatementContext) ctx.getChild(i);
+                ctx.codes.addAll(child1.codes);
+            }
+        }
+
+
+        JavaParser.ExpressionContext childReturn = (JavaParser.ExpressionContext) ctx.getChild(child_count-2);
         ctx.codes.addAll(childReturn.codes);
+
+
         ctx.codes.add(new ReturnIRTuple(childReturn.place));
 
     }
@@ -327,26 +354,23 @@ public class MyJavaListener extends JavaBaseListener {
      
     @Override public void enterArrayAssignmentStatement(JavaParser.ArrayAssignmentStatementContext ctx) {
 
-        JavaParser.IdentifierExpressionContext child1 = (JavaParser.IdentifierExpressionContext)ctx.getChild(0);
         JavaParser.ExpressionContext child2 = (JavaParser.ExpressionContext)ctx.getChild(2);
         JavaParser.ExpressionContext child3 = (JavaParser.ExpressionContext)ctx.getChild(5);
 
-        child1.place = getVar();
         child2.place = getVar();
-        child1.place = getVar();
+        child3.place = getVar();
 
     }
     
      
     @Override public void exitArrayAssignmentStatement(JavaParser.ArrayAssignmentStatementContext ctx) {
-        JavaParser.IdentifierExpressionContext child1 = (JavaParser.IdentifierExpressionContext)ctx.getChild(0);
+
         JavaParser.ExpressionContext child2 = (JavaParser.ExpressionContext)ctx.getChild(2);
         JavaParser.ExpressionContext child3 = (JavaParser.ExpressionContext)ctx.getChild(5);
 
-        ctx.codes.addAll(child1.codes);
         ctx.codes.addAll(child2.codes);
         ctx.codes.addAll(child3.codes);
-        ctx.codes.add(new ArrayAssignmentIRTuple(VARTOARR, child1.place, child2.place, child3.place));
+        ctx.codes.add(new ArrayAssignmentIRTuple(VARTOARR, ctx.getChild(0).getText(), child2.place, child3.place));
 
     }
     
@@ -444,6 +468,7 @@ public class MyJavaListener extends JavaBaseListener {
      
     @Override public void exitMethodCallExpression(JavaParser.MethodCallExpressionContext ctx) {
         //TODO parameter supply
+        // TODO Change to List after Parameter
         ctx.codes.add(new FunctionCallIRTuple(ctx.getChild(0).getText(), "null", ctx.place));
     }
     

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+<p> <b> GoalContext </b> </p>
+<p> <b> MainClassContext </b>	ClassDeclarationContext	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	<b> NestedStatementContext </b>	}	}	ClassDeclarationContext	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	<b> VariableAssignmentStatementContext </b>	VariableAssignmentStatementContext	ArrayAssignmentStatementContext	VariableAssignmentStatementContext	}	}	}	ClassDeclarationContext	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	<b> MethodCallExpressionContext </b>	;	VariableAssignmentStatementContext	ArrayAssignmentStatementContext	VariableAssignmentStatementContext	}	}	}	ClassDeclarationContext	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	Func	(	)	;	<b> VariableAssignmentStatementContext </b>	ArrayAssignmentStatementContext	VariableAssignmentStatementContext	}	}	}	ClassDeclarationContext	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	Func	(	)	;	b	=	<b> ArrayInstantiationExpressionContext </b>	;	ArrayAssignmentStatementContext	VariableAssignmentStatementContext	}	}	}	ClassDeclarationContext	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	Func	(	)	;	b	=	new	int	[	<b> IntLitExpressionContext </b>	]	;	ArrayAssignmentStatementContext	VariableAssignmentStatementContext	}	}	}	ClassDeclarationContext	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	Func	(	)	;	b	=	new	int	[	4	]	;	<b> ArrayAssignmentStatementContext </b>	VariableAssignmentStatementContext	}	}	}	ClassDeclarationContext	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	Func	(	)	;	b	=	new	int	[	4	]	;	b	[	<b> IntLitExpressionContext </b>	]	=	IntLitExpressionContext	;	VariableAssignmentStatementContext	}	}	}	ClassDeclarationContext	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	Func	(	)	;	b	=	new	int	[	4	]	;	b	[	0	]	=	<b> IntLitExpressionContext </b>	;	VariableAssignmentStatementContext	}	}	}	ClassDeclarationContext	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	Func	(	)	;	b	=	new	int	[	4	]	;	b	[	0	]	=	2	;	<b> VariableAssignmentStatementContext </b>	}	}	}	ClassDeclarationContext	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	Func	(	)	;	b	=	new	int	[	4	]	;	b	[	0	]	=	2	;	a	=	<b> ArrayAccessExpressionContext </b>	;	}	}	}	ClassDeclarationContext	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	Func	(	)	;	b	=	new	int	[	4	]	;	b	[	0	]	=	2	;	a	=	<b> IdentifierExpressionContext </b>	[	IntLitExpressionContext	]	;	}	}	}	ClassDeclarationContext	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	Func	(	)	;	b	=	new	int	[	4	]	;	b	[	0	]	=	2	;	a	=	b	[	<b> IntLitExpressionContext </b>	]	;	}	}	}	ClassDeclarationContext	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	Func	(	)	;	b	=	new	int	[	4	]	;	b	[	0	]	=	2	;	a	=	b	[	0	]	;	}	}	}	<b> ClassDeclarationContext </b>	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	Func	(	)	;	b	=	new	int	[	4	]	;	b	[	0	]	=	2	;	a	=	b	[	0	]	;	}	}	}	class	CD	{	<b> MethodDeclarationContext </b>	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	Func	(	)	;	b	=	new	int	[	4	]	;	b	[	0	]	=	2	;	a	=	b	[	0	]	;	}	}	}	class	CD	{	public	<b> TypeContext </b>	Func	(	)	{	MethodBodyContext	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	Func	(	)	;	b	=	new	int	[	4	]	;	b	[	0	]	=	2	;	a	=	b	[	0	]	;	}	}	}	class	CD	{	public	void	Func	(	)	{	<b> MethodBodyContext </b>	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	Func	(	)	;	b	=	new	int	[	4	]	;	b	[	0	]	=	2	;	a	=	b	[	0	]	;	}	}	}	class	CD	{	public	void	Func	(	)	{	<b> LocalDeclarationContext </b>	VariableAssignmentStatementContext	PrintStatementContext	return	IntLitExpressionContext	;	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	Func	(	)	;	b	=	new	int	[	4	]	;	b	[	0	]	=	2	;	a	=	b	[	0	]	;	}	}	}	class	CD	{	public	void	Func	(	)	{	<b> VarDeclarationContext </b>	VariableAssignmentStatementContext	PrintStatementContext	return	IntLitExpressionContext	;	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	Func	(	)	;	b	=	new	int	[	4	]	;	b	[	0	]	=	2	;	a	=	b	[	0	]	;	}	}	}	class	CD	{	public	void	Func	(	)	{	<b> TypeContext </b>	a	;	VariableAssignmentStatementContext	PrintStatementContext	return	IntLitExpressionContext	;	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	Func	(	)	;	b	=	new	int	[	4	]	;	b	[	0	]	=	2	;	a	=	b	[	0	]	;	}	}	}	class	CD	{	public	void	Func	(	)	{	int	a	;	<b> VariableAssignmentStatementContext </b>	PrintStatementContext	return	IntLitExpressionContext	;	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	Func	(	)	;	b	=	new	int	[	4	]	;	b	[	0	]	=	2	;	a	=	b	[	0	]	;	}	}	}	class	CD	{	public	void	Func	(	)	{	int	a	;	a	=	<b> IntLitExpressionContext </b>	;	PrintStatementContext	return	IntLitExpressionContext	;	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	Func	(	)	;	b	=	new	int	[	4	]	;	b	[	0	]	=	2	;	a	=	b	[	0	]	;	}	}	}	class	CD	{	public	void	Func	(	)	{	int	a	;	a	=	10	;	<b> PrintStatementContext </b>	return	IntLitExpressionContext	;	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	Func	(	)	;	b	=	new	int	[	4	]	;	b	[	0	]	=	2	;	a	=	b	[	0	]	;	}	}	}	class	CD	{	public	void	Func	(	)	{	int	a	;	a	=	10	;	println	(	<b> IdentifierExpressionContext </b>	)	;	return	IntLitExpressionContext	;	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	Func	(	)	;	b	=	new	int	[	4	]	;	b	[	0	]	=	2	;	a	=	b	[	0	]	;	}	}	}	class	CD	{	public	void	Func	(	)	{	int	a	;	a	=	10	;	println	(	a	)	;	return	<b> IntLitExpressionContext </b>	;	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	a	=	Func	(	)	;	b	=	new	int	[	4	]	;	b	[	0	]	=	2	;	a	=	b	[	0	]	;	}	}	}	class	CD	{	public	void	Func	(	)	{	int	a	;	a	=	10	;	println	(	a	)	;	return	0	;	}	}	<EOF> </p></body>
+</html>

@@ -32,13 +32,9 @@ parameter
 ;
 
 methodBody
-:	localDeclaration* statements RETURN expression ';'
+:	localDeclaration* statement* RETURN expression ';'
 ;
 
-statements
-:
-statement*
-;
 
 type
 :	'int' dims
