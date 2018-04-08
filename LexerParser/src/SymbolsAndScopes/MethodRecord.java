@@ -1,11 +1,13 @@
 package src.SymbolsAndScopes;
 
+import java.util.List;
+
 public class MethodRecord extends Record {
     private String returnType;   // can be int/float/boolean/char etc
     private int paramCount;
-    private String[] paramType;
+    private List<String> paramType;
 
-    public MethodRecord(String rType, int pCount, String[] pType){
+    public MethodRecord(String rType, int pCount, List<String> pType){
         this.returnType = rType;
         this.paramCount = pCount;
         this.paramType = pType;
@@ -19,7 +21,7 @@ public class MethodRecord extends Record {
         return returnType;
     }
 
-    public String[] getParamType() {
+    public List<String> getParamType() {
         return paramType;
     }
 
@@ -27,7 +29,7 @@ public class MethodRecord extends Record {
         this.paramCount = paramCount;
     }
 
-    public void setParamType(String[] paramType) {
+    public void setParamType(List<String> paramType) {
         this.paramType = paramType;
     }
 
