@@ -1,4 +1,4 @@
-// Generated from /Users/karthikeyan/IdeaProjects/Compiler_Design/LexerParser/src/Java.g4 by ANTLR 4.7
+// Generated from /home/varun/IdeaProjects/Compiler_Design/LexerParser/src/Java.g4 by ANTLR 4.7
 package src;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -47,16 +47,6 @@ public interface JavaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitFieldDeclaration(JavaParser.FieldDeclarationContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link JavaParser#localDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void enterLocalDeclaration(JavaParser.LocalDeclarationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JavaParser#localDeclaration}.
-	 * @param ctx the parse tree
-	 */
-	void exitLocalDeclaration(JavaParser.LocalDeclarationContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JavaParser#varDeclaration}.
 	 * @param ctx the parse tree
@@ -118,6 +108,16 @@ public interface JavaListener extends ParseTreeListener {
 	 */
 	void exitType(JavaParser.TypeContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link JavaParser#typeDim}.
+	 * @param ctx the parse tree
+	 */
+	void enterTypeDim(JavaParser.TypeDimContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JavaParser#typeDim}.
+	 * @param ctx the parse tree
+	 */
+	void exitTypeDim(JavaParser.TypeDimContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link JavaParser#dims}.
 	 * @param ctx the parse tree
 	 */
@@ -139,6 +139,18 @@ public interface JavaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitNestedStatement(JavaParser.NestedStatementContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code declaration}
+	 * labeled alternative in {@link JavaParser#statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterDeclaration(JavaParser.DeclarationContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code declaration}
+	 * labeled alternative in {@link JavaParser#statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitDeclaration(JavaParser.DeclarationContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code ifElseStatement}
 	 * labeled alternative in {@link JavaParser#statement}.
@@ -361,6 +373,18 @@ public interface JavaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitIntLitExpression(JavaParser.IntLitExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code decLitExpression}
+	 * labeled alternative in {@link JavaParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterDecLitExpression(JavaParser.DecLitExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code decLitExpression}
+	 * labeled alternative in {@link JavaParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitDecLitExpression(JavaParser.DecLitExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code andExpression}
 	 * labeled alternative in {@link JavaParser#expression}.

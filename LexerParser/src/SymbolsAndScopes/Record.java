@@ -1,5 +1,7 @@
 package src.SymbolsAndScopes;
 
+import src.JavaParser;
+
 public class Record {
-    public static String recordType;   // can be variable/method/array
+    public static JavaParser.Type recordType;   // can be variable/method/array
 }

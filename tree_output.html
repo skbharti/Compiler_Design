@@ -4,17 +4,21 @@
 <p> <b> GoalContext </b> </p>
 <p> <b> MainClassContext </b>	<EOF> </p>
 <p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	<b> NestedStatementContext </b>	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	<b> VariableAssignmentStatementContext </b>	WhileStatementContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	b	=	<b> IntLitExpressionContext </b>	;	WhileStatementContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	b	=	3	;	<b> WhileStatementContext </b>	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	b	=	3	;	while	(	<b> LtExpressionContext </b>	)	WhileBlockContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	b	=	3	;	while	(	<b> IdentifierExpressionContext </b>	<	IntLitExpressionContext	)	WhileBlockContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	b	=	3	;	while	(	b	<	<b> IntLitExpressionContext </b>	)	WhileBlockContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	b	=	3	;	while	(	b	<	5	)	<b> WhileBlockContext </b>	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	b	=	3	;	while	(	b	<	5	)	<b> NestedStatementContext </b>	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	b	=	3	;	while	(	b	<	5	)	{	<b> VariableAssignmentStatementContext </b>	}	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	b	=	3	;	while	(	b	<	5	)	{	b	=	<b> AddExpressionContext </b>	;	}	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	b	=	3	;	while	(	b	<	5	)	{	b	=	<b> IdentifierExpressionContext </b>	+	IntLitExpressionContext	;	}	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	b	=	3	;	while	(	b	<	5	)	{	b	=	b	+	<b> IntLitExpressionContext </b>	;	}	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	b	=	3	;	while	(	b	<	5	)	{	b	=	b	+	1	;	}	}	}	}	<EOF> </p></body>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	<b> DeclarationContext </b>	VariableAssignmentStatementContext	WhileStatementContext	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	<b> FieldDeclarationContext </b>	VariableAssignmentStatementContext	WhileStatementContext	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	<b> VarDeclarationContext </b>	VariableAssignmentStatementContext	WhileStatementContext	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	<b> TypeContext </b>	b	;	VariableAssignmentStatementContext	WhileStatementContext	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	b	;	<b> VariableAssignmentStatementContext </b>	WhileStatementContext	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	b	;	b	=	<b> IntLitExpressionContext </b>	;	WhileStatementContext	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	b	;	b	=	3	;	<b> WhileStatementContext </b>	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	b	;	b	=	3	;	while	(	<b> LtExpressionContext </b>	)	WhileBlockContext	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	b	;	b	=	3	;	while	(	<b> IdentifierExpressionContext </b>	<	IntLitExpressionContext	)	WhileBlockContext	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	b	;	b	=	3	;	while	(	b	<	<b> IntLitExpressionContext </b>	)	WhileBlockContext	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	b	;	b	=	3	;	while	(	b	<	5	)	<b> WhileBlockContext </b>	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	b	;	b	=	3	;	while	(	b	<	5	)	<b> NestedStatementContext </b>	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	b	;	b	=	3	;	while	(	b	<	5	)	{	<b> VariableAssignmentStatementContext </b>	}	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	b	;	b	=	3	;	while	(	b	<	5	)	{	b	=	<b> AddExpressionContext </b>	;	}	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	b	;	b	=	3	;	while	(	b	<	5	)	{	b	=	<b> IdentifierExpressionContext </b>	+	IntLitExpressionContext	;	}	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	b	;	b	=	3	;	while	(	b	<	5	)	{	b	=	b	+	<b> IntLitExpressionContext </b>	;	}	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	b	;	b	=	3	;	while	(	b	<	5	)	{	b	=	b	+	1	;	}	}	}	}	<EOF> </p></body>
 </html>

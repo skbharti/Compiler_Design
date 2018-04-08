@@ -14,9 +14,6 @@ classDeclaration
 fieldDeclaration
 :	varDeclaration ;
 
-localDeclaration
-:	varDeclaration ;
-
 varDeclaration
 :	type Identifier ';';
 
@@ -28,11 +25,11 @@ parameterList
 ;
 
 parameter
-:   type Identifier
+:   typeDim Identifier
 ;
 
 methodBody
-:	localDeclaration* statement* RETURN expression ';'
+:	statement* RETURN expression ';'
 ;
 
 
@@ -51,6 +48,11 @@ typeDim
 |   'float'dims
 |   'char'dims
 |	Identifier dims
+|	'int'
+|	'boolean'
+|   'float'
+|   'char'
+|	Identifier
 ;
 
 dims
@@ -60,6 +62,8 @@ dims
 statement
 :	'{' statement* '}'
 #nestedStatement
+|   fieldDeclaration
+#declaration
 |	'if' LP expression RP ifBlock 'else' elseBlock
 #ifElseStatement
 |	'while' LP expression RP whileBlock

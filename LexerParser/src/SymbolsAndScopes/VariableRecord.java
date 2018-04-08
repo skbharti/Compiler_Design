@@ -1,18 +1,20 @@
 package src.SymbolsAndScopes;
 
+import src.JavaParser;
+
 public class VariableRecord extends Record{
-    public String variableType;
+    public JavaParser.Type variableType;
 
 
-    public VariableRecord(String type){
+    public VariableRecord(JavaParser.Type type){
         this.variableType = type;
     }
 
-    public String getVariableType() {
+    public JavaParser.Type getVariableType() {
         return variableType;
     }
 
-    public void setVariableType(String variableType) {
+    public void setVariableType(JavaParser.Type variableType) {
         this.variableType = variableType;
     }
 }

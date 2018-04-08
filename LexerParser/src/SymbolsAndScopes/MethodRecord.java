@@ -1,13 +1,15 @@
 package src.SymbolsAndScopes;
 
+import src.JavaParser;
+
 import java.util.List;
 
 public class MethodRecord extends Record {
-    private String returnType;   // can be int/float/boolean/char etc
+    private JavaParser.Type returnType;   // can be int/float/boolean/char etc
     private int paramCount;
-    private List<String> paramType;
+    private List<JavaParser.Type> paramType;
 
-    public MethodRecord(String rType, int pCount, List<String> pType){
+    public MethodRecord(JavaParser.Type rType, int pCount, List<JavaParser.Type> pType){
         this.returnType = rType;
         this.paramCount = pCount;
         this.paramType = pType;
@@ -17,11 +19,11 @@ public class MethodRecord extends Record {
         return paramCount;
     }
 
-    public String getReturnType() {
+    public JavaParser.Type getReturnType() {
         return returnType;
     }
 
-    public List<String> getParamType() {
+    public List<JavaParser.Type> getParamType() {
         return paramType;
     }
 
@@ -29,11 +31,11 @@ public class MethodRecord extends Record {
         this.paramCount = paramCount;
     }
 
-    public void setParamType(List<String> paramType) {
+    public void setParamType(List<JavaParser.Type> paramType) {
         this.paramType = paramType;
     }
 
-    public void setReturnType(String returnType) {
+    public void setReturnType(JavaParser.Type returnType) {
         this.returnType = returnType;
     }
 }
