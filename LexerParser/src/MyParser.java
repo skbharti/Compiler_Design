@@ -2,14 +2,16 @@ package src;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
+import src.SymbolsAndScopes.Scope;
 
 import java.io.*;
 
 public class MyParser {
     public static final String INPUT_FILE = "input";
-    public static boolean start =  false;
     public static String sentence = "";
     public static BufferedWriter writer;
+    public static Scope globalScope = new Scope(null, Scope.GLOBAL);
+    public static Scope currentScope = globalScope;
 
     public static void main(String args[]) {
         FileInputStream fileInputStream;

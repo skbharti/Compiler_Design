@@ -1,14 +1,16 @@
 package src.SymbolsAndScopes;
 
+import java.util.List;
+
 public class ArrayRecord extends Record {
     public String arrayType;
     public int arrayDim;
-    public int[] dimLength;
+    public List<String> dimLengthVar;
 
-    public ArrayRecord(String type, int dim, int[] dimLen){
+    public ArrayRecord(String type, int dim, List<String> dimLenVar){
         this.arrayType = type;
         this.arrayDim = dim;
-        this.dimLength = dimLen;
+        this.dimLengthVar = dimLenVar;
     }
 
     public int getArrayDim() {
@@ -19,8 +21,8 @@ public class ArrayRecord extends Record {
         return arrayType;
     }
 
-    public int[] getDimLength() {
-        return dimLength;
+    public List<String> getDimLength() {
+        return dimLengthVar;
     }
 
     public void setArrayDim(int arrayDim) {
@@ -31,8 +33,8 @@ public class ArrayRecord extends Record {
         this.arrayType = arrayType;
     }
 
-    public void setDimLength(int[] dimLength) {
-        this.dimLength = dimLength;
+    public void setDimLength(List<String> dimLenVar) {
+        this.dimLengthVar = dimLenVar;
     }
 }
 

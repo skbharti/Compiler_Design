@@ -692,6 +692,7 @@ public class JavaParser extends Parser {
 
     public static class ParameterListContext extends ParserRuleContext {
         public ArrayList<ThreeAddCode> codes = new ArrayList<>();
+        public List<String> paramList;
         public String place;
         public String start;
         public String end;
@@ -722,6 +723,11 @@ public class JavaParser extends Parser {
         @Override
         public void exitRule(ParseTreeListener listener) {
             if (listener instanceof JavaListener) ((JavaListener) listener).exitParameterList(this);
+            for(int i=0 ; i<this.getChildCount(); i++){
+                if(this.getChild(i) instanceof ParameterContext){
+                    paramList.add(this.getChild(i).getChild(0).getText());
+                }
+            }
         }
 
         @Override
@@ -1039,6 +1045,8 @@ public class JavaParser extends Parser {
 
     public static class DimsContext extends ParserRuleContext {
         public ArrayList<ThreeAddCode> codes = new ArrayList<>();
+        public int dimCount;
+        public List<String> dimLength;
         public String place;
         public String start;
         public String end;
@@ -1056,6 +1064,12 @@ public class JavaParser extends Parser {
         @Override
         public void enterRule(ParseTreeListener listener) {
             if (listener instanceof JavaListener) ((JavaListener) listener).enterDims(this);
+            this.dimCount = this.getChildCount()/2;
+            for(int i=0; i<this.getChildCount(); i++){
+                if(this.getChild(i) instanceof ExpressionContext){
+                    dimLength.add(((ExpressionContext) this.getChild(i)).place);
+                }
+            }
         }
 
         @Override
