@@ -1,9 +1,14 @@
 package src;
+
 import IRCode.src.IRCode.*;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNode;
+import src.SymbolsAndScopes.ArrayRecord;
+import src.SymbolsAndScopes.MethodRecord;
+import src.SymbolsAndScopes.Scope;
+import src.SymbolsAndScopes.VariableRecord;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,15 +18,15 @@ import static IRCode.src.helperclasses.Constants.*;
 
 public class MyJavaListener extends JavaBaseListener {
 
+    private int tempCounter = 0;
+    private int labelCounter = 0;
+    Scope currentScope = MyParser.currentScope;
+
     @Override
     public void enterEveryRule(ParserRuleContext ctx) {
         super.enterEveryRule(ctx);
         replaceParentWithChildren(ctx);
     }
-
-
-    private int tempCounter = 0;
-    private int labelCounter = 0;
 
     public String getVar() {
         return "var" + tempCounter++;
@@ -95,7 +100,6 @@ public class MyJavaListener extends JavaBaseListener {
     @Override public void exitMainClass(JavaParser.MainClassContext ctx) {
         JavaParser.StatementContext child14 = (JavaParser.StatementContext) ctx.getChild(14);
         ctx.codes.addAll(child14.codes);
-
     }
     
      
@@ -145,19 +149,36 @@ public class MyJavaListener extends JavaBaseListener {
     @Override public void enterVarDeclaration(JavaParser.VarDeclarationContext ctx) { }
     
      
-    @Override public void exitVarDeclaration(JavaParser.VarDeclarationContext ctx) { }
+    @Override public void exitVarDeclaration(JavaParser.VarDeclarationContext ctx) {
+        JavaParser.TypeContext typeContext = (JavaParser.TypeContext) ctx.getChild(0);
+        if(typeContext.getChildCount() > 1){
+            currentScope.insert(ctx.getChild(1).getText(), new ArrayRecord(typeContext.getChild(0).getText(), ((JavaParser.DimsContext) typeContext.getChild(1)).dimCount ,((JavaParser.DimsContext) typeContext.getChild(1)).dimLength));
+        }
+        else {
+            currentScope.insert(ctx.getChild(1).getText(), new VariableRecord(ctx.getChild(0).getText()));
+        }
+    }
     
      
-    @Override public void enterMethodDeclaration(JavaParser.MethodDeclarationContext ctx) { }
+    @Override public void enterMethodDeclaration(JavaParser.MethodDeclarationContext ctx) {
+        if(ctx.getChild(5) instanceof JavaParser.ParameterListContext){
+            JavaParser.ParameterListContext p = (JavaParser.ParameterListContext) ctx.getChild(5);
+            currentScope.insert(ctx.getChild(2).getText(), new MethodRecord(ctx.getChild(1).getText(), (p.getChildCount()+1)/2, p.paramList));
+        }
+        else{
+            currentScope.insert(ctx.getChild(2).getText(), new MethodRecord(ctx.getChild(1).getText(), 0, null));
+        }
+        Scope methodScope = new Scope(currentScope, Scope.METHOD);
+        currentScope = methodScope;
+    }
     
      
     @Override public void exitMethodDeclaration(JavaParser.MethodDeclarationContext ctx) {
         ctx.codes.add(new LabelIRTuple(ctx.getChild(2).getText()));
-
         int child_count = ctx.getChildCount();
         JavaParser.MethodBodyContext child7 = (JavaParser.MethodBodyContext) ctx.getChild(child_count-2);
         ctx.codes.addAll(child7.codes);
-
+        currentScope = currentScope.parentScope;
     }
     
      
@@ -220,7 +241,9 @@ public class MyJavaListener extends JavaBaseListener {
     @Override public void exitType(JavaParser.TypeContext ctx) { }
     
      
-    @Override public void enterDims(JavaParser.DimsContext ctx) { }
+    @Override public void enterDims(JavaParser.DimsContext ctx) {
+
+    }
     
      
     @Override public void exitDims(JavaParser.DimsContext ctx) { }
@@ -375,39 +398,48 @@ public class MyJavaListener extends JavaBaseListener {
     }
     
      
-    @Override public void enterIfBlock(JavaParser.IfBlockContext ctx) { }
+    @Override public void enterIfBlock(JavaParser.IfBlockContext ctx) {
+        Scope blockScope = new Scope(currentScope, Scope.BLOCK);
+        currentScope = blockScope;
+    }
     
      
     @Override public void exitIfBlock(JavaParser.IfBlockContext ctx) {
         JavaParser.StatementContext child0 = (JavaParser.StatementContext) ctx.getChild(0);
         ctx.codes.addAll(child0.codes);
+        currentScope = currentScope.parentScope;
     }
     
      
     @Override public void enterElseBlock(JavaParser.ElseBlockContext ctx) {
-
+        Scope blockScope = new Scope(currentScope, Scope.BLOCK);
+        currentScope = blockScope;
     }
     
      
     @Override public void exitElseBlock(JavaParser.ElseBlockContext ctx) {
         JavaParser.StatementContext child0 = (JavaParser.StatementContext) ctx.getChild(0);
         ctx.codes.addAll(child0.codes);
+        currentScope = currentScope.parentScope;
     }
     
      
-    @Override public void enterWhileBlock(JavaParser.WhileBlockContext ctx) { }
+    @Override public void enterWhileBlock(JavaParser.WhileBlockContext ctx) {
+        Scope blockScope = new Scope(currentScope, Scope.BLOCK);
+        currentScope = blockScope;
+    }
     
      
     @Override public void exitWhileBlock(JavaParser.WhileBlockContext ctx) {
        JavaParser.StatementContext child0 = (JavaParser.StatementContext) ctx.getChild(0);
        ctx.codes.addAll(child0.codes);
+       currentScope = currentScope.parentScope;
     }
     
      
     @Override public void enterLtExpression(JavaParser.LtExpressionContext ctx) {
         JavaParser.ExpressionContext child1 = (JavaParser.ExpressionContext) ctx.getChild(0);
         JavaParser.ExpressionContext child2 = (JavaParser.ExpressionContext) ctx.getChild(2);
-
 
         child1.place = getVar();
         child2.place = getVar();

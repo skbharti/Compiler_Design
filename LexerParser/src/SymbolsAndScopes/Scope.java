@@ -11,9 +11,9 @@ public class Scope {
     public String scopeType;        // scopeType can be global/function/block
     protected HashMap<String, Record> symbolTable = new HashMap<String, Record>();
 
-    public Scope(Scope pScope, String sType){
-        this.parentScope = pScope;
-        this.scopeType = sType;
+    public Scope(Scope parentScope, String scopeType){
+        this.parentScope = parentScope;
+        this.scopeType = scopeType;
     }
 
     public void insert(String name, Record record){
