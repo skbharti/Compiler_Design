@@ -13,6 +13,7 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
@@ -1745,6 +1746,7 @@ public class JavaParser extends Parser {
         public String start;
         public String end;
         public int value;
+        public Type type;
 
         public ExpressionContext(ParserRuleContext parent, int invokingState) {
             super(parent, invokingState);
@@ -2690,6 +2692,29 @@ public class JavaParser extends Parser {
         _decisionToDFA = new DFA[_ATN.getNumberOfDecisions()];
         for (int i = 0; i < _ATN.getNumberOfDecisions(); i++) {
             _decisionToDFA[i] = new DFA(_ATN.getDecisionState(i), i);
+        }
+    }
+
+    public enum Type {
+        INT,INT_ARR,FLOAT,FLOAT_ARR,CHAR,CHAR_ARR,BOOLEAN,BOOLEAN_ARR,VOID,CLASS;
+
+        public static EnumSet<Type> ARRAY = EnumSet.of(INT_ARR,FLOAT_ARR,BOOLEAN_ARR,CHAR_ARR);
+        public static EnumSet<Type> ARITHEMATIC = EnumSet.of(INT,FLOAT,BOOLEAN,CHAR);
+        public static EnumSet<Type> CHARS= EnumSet.of(INT,BOOLEAN,CHAR);
+        public static EnumSet<Type> NON_ARRAY = EnumSet.of(INT,FLOAT,CHAR,BOOLEAN,CLASS);
+        public static Type arrToNormal(Type type){
+            switch(type){
+                case INT_ARR:
+                    return INT;
+                case CHAR_ARR:
+                    return CHAR;
+                case FLOAT_ARR:
+                    return FLOAT;
+                case BOOLEAN_ARR:
+                    return BOOLEAN;
+                default:
+                    return VOID;
+            }
         }
     }
 }

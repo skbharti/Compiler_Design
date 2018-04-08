@@ -37,11 +37,20 @@ methodBody
 
 
 type
-:	'int' dims
+:	'int'
 |	'boolean'
-|	'int'
-|   'void'
+|   'float'
+|   'char'
 |	Identifier
+;
+
+
+typeDim
+:	'int' dims
+|	'boolean' dims
+|   'float'dims
+|   'char'dims
+|	Identifier dims
 ;
 
 dims
@@ -90,7 +99,7 @@ expression
 |   NOT expression
 # notExpression
 
-|   'new' 'int' LSB expression RSB
+|   'new' type LSB expression RSB
 # arrayInstantiationExpression
 
 |   'new' Identifier '(' ')'
@@ -117,6 +126,8 @@ expression
 |   IntegerLiteral
 # intLitExpression
 
+|   DecimalLiteral
+# decLitExpression
 |   BooleanLiteral
 # booleanLitExpression
 
@@ -168,6 +179,9 @@ IntegerLiteral
 :	DecimalIntegerLiteral
 ;
 
+DecimalLiteral
+:   IntegerLiteral.IntegerLiteral
+;
 fragment
 DecimalIntegerLiteral
 :	DecimalNumeral
