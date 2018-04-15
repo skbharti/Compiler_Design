@@ -1,13 +1,15 @@
 package src.SymbolsAndScopes;
 
+import src.JavaParser;
+
 import java.util.List;
 
 public class ArrayRecord extends Record {
-    public String arrayType;
+    public JavaParser.Type arrayType;
     public int arrayDim;
     public List<String> dimLengthVar;
 
-    public ArrayRecord(String type, int dim, List<String> dimLenVar){
+    public ArrayRecord(JavaParser.Type type, int dim, List<String> dimLenVar){
         this.arrayType = type;
         this.arrayDim = dim;
         this.dimLengthVar = dimLenVar;
@@ -17,7 +19,7 @@ public class ArrayRecord extends Record {
         return arrayDim;
     }
 
-    public String getArrayType() {
+    public JavaParser.Type getArrayType() {
         return arrayType;
     }
 
@@ -29,7 +31,7 @@ public class ArrayRecord extends Record {
         this.arrayDim = arrayDim;
     }
 
-    public void setArrayType(String arrayType) {
+    public void setArrayType(JavaParser.Type arrayType) {
         this.arrayType = arrayType;
     }
 

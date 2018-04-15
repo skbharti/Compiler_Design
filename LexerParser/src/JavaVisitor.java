@@ -1,4 +1,4 @@
-// Generated from /Users/karthikeyan/IdeaProjects/Compiler_Design/LexerParser/src/Java.g4 by ANTLR 4.7
+// Generated from /home/varun/IdeaProjects/Compiler_Design/LexerParser/src/Java.g4 by ANTLR 4.7
 package src;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -34,12 +34,6 @@ public interface JavaVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitFieldDeclaration(JavaParser.FieldDeclarationContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link JavaParser#localDeclaration}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitLocalDeclaration(JavaParser.LocalDeclarationContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link JavaParser#varDeclaration}.
 	 * @param ctx the parse tree
@@ -77,6 +71,12 @@ public interface JavaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitType(JavaParser.TypeContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link JavaParser#typeDim}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTypeDim(JavaParser.TypeDimContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link JavaParser#dims}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -89,6 +89,13 @@ public interface JavaVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitNestedStatement(JavaParser.NestedStatementContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code declaration}
+	 * labeled alternative in {@link JavaParser#statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDeclaration(JavaParser.DeclarationContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code ifElseStatement}
 	 * labeled alternative in {@link JavaParser#statement}.
@@ -219,6 +226,13 @@ public interface JavaVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitIntLitExpression(JavaParser.IntLitExpressionContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code decLitExpression}
+	 * labeled alternative in {@link JavaParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDecLitExpression(JavaParser.DecLitExpressionContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code andExpression}
 	 * labeled alternative in {@link JavaParser#expression}.

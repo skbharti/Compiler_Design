@@ -2,6 +2,7 @@ class ABC{
 
     public static void main(String[] args)
     {{
+        b = new int[100];
         b = 3;
         while (b < 5)
         {

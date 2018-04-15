@@ -14,9 +14,6 @@ classDeclaration
 fieldDeclaration
 :	varDeclaration ;
 
-localDeclaration
-:	varDeclaration ;
-
 varDeclaration
 :	type Identifier ';';
 
@@ -28,19 +25,33 @@ parameterList
 ;
 
 parameter
-:   type Identifier
+:   typeDim Identifier
 ;
 
 methodBody
-:	localDeclaration* statement* RETURN expression ';'
+:	statement* RETURN expression ';'
 ;
 
 
 type
-:	'int' dims
+:	'int'
 |	'boolean'
+|   'float'
+|   'char'
+|	Identifier
+;
+
+
+typeDim
+:	'int' dims
+|	'boolean' dims
+|   'float'dims
+|   'char'dims
+|	Identifier dims
 |	'int'
-|   'void'
+|	'boolean'
+|   'float'
+|   'char'
 |	Identifier
 ;
 
@@ -51,6 +62,8 @@ dims
 statement
 :	'{' statement* '}'
 #nestedStatement
+|   fieldDeclaration
+#declaration
 |	'if' LP expression RP ifBlock 'else' elseBlock
 #ifElseStatement
 |	'while' LP expression RP whileBlock
@@ -90,7 +103,7 @@ expression
 |   NOT expression
 # notExpression
 
-|   'new' 'int' LSB expression RSB
+|   'new' type LSB expression RSB
 # arrayInstantiationExpression
 
 |   'new' Identifier '(' ')'
@@ -117,6 +130,8 @@ expression
 |   IntegerLiteral
 # intLitExpression
 
+|   DecimalLiteral
+# decLitExpression
 |   BooleanLiteral
 # booleanLitExpression
 
@@ -168,6 +183,9 @@ IntegerLiteral
 :	DecimalIntegerLiteral
 ;
 
+DecimalLiteral
+:   IntegerLiteral.IntegerLiteral
+;
 fragment
 DecimalIntegerLiteral
 :	DecimalNumeral
