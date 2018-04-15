@@ -868,6 +868,7 @@ public class JavaParser extends Parser {
         public String start;
         public String end;
         public int value;
+        public Type type;   //  initialize type value for this token
 
         public TerminalNode Identifier() {
             return getToken(JavaParser.Identifier, 0);
@@ -932,6 +933,9 @@ public class JavaParser extends Parser {
         public String start;
         public String end;
         public int value;
+        public int numberOfDimensions;
+        public int[] lengthOfDimensions;
+        public Type type;   //  initialize type value for this token
 
         public DimsContext dims() {
             return getRuleContext(DimsContext.class, 0);
@@ -1072,7 +1076,7 @@ public class JavaParser extends Parser {
         public String end;
         public int value;
         public int dimCount;
-        public List<String> dimLength;
+        public int[] dimLength;
 
         public DimsContext(ParserRuleContext parent, int invokingState) {
             super(parent, invokingState);
@@ -2818,7 +2822,7 @@ public class JavaParser extends Parser {
         public static EnumSet<JavaParser.Type> ARITHEMATIC = EnumSet.of(INT, FLOAT, BOOLEAN, CHAR);
         public static EnumSet<Type> CHARS = EnumSet.of(INT, BOOLEAN, CHAR);
         public static EnumSet<JavaParser.Type> NON_ARRAY = EnumSet.of(INT, FLOAT, CHAR, BOOLEAN, CLASS);
-
+        // Dynamic types also reuired!
         public static JavaParser.Type arrToNormal(JavaParser.Type type) {
             switch (type) {
                 case INT_ARR:

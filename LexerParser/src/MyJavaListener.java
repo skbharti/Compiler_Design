@@ -303,6 +303,17 @@ public class MyJavaListener extends JavaBaseListener {
     public void exitType(JavaParser.TypeContext ctx) {
     }
 
+    @Override
+    public void enterTypeDim(JavaParser.TypeDimContext ctx) {
+    }
+
+
+    @Override
+    public void exitTypeDim(JavaParser.TypeDimContext ctx) {
+        int childCount = ctx.getChildCount();
+        ctx.numberOfDimensions = (childCount-1)/2;
+    }
+
 
     @Override
     public void enterDims(JavaParser.DimsContext ctx) {
@@ -489,6 +500,21 @@ public class MyJavaListener extends JavaBaseListener {
             errorFlag = true;
             return;
         }
+
+        String lhsName = ctx.getChild(0).getText();
+        JavaParser.Type lhsType = null;
+        if(currentScope.lookup(lhsName)!=null) {
+            lhsType = ((VariableRecord) currentScope.lookup(lhsName)).getVariableType();
+        }else{
+            System.err.println("Varibale not decalared!");
+        }
+
+        //type checking for variables
+        if(lhsType!=((JavaParser.ExpressionContext) ctx.getChild(2)).type){
+            System.err.println("Varibale types do not match not possible!");
+            //type casting can be implemented here!
+        }
+
         ctx.codes.addAll(child2.codes);
         ctx.codes.add(new AssignmentIRTuple(ADD, (ctx.getChild(0)).getText(), child2.place, 0));
     }
@@ -526,6 +552,26 @@ public class MyJavaListener extends JavaBaseListener {
             errorFlag = true;
             return;
         }
+
+        String lhsName = ctx.getChild(0).getText();
+        JavaParser.Type indexType = ((JavaParser.ExpressionContext)ctx.getChild(2)).type;
+        if(indexType!= JavaParser.Type.INT){
+            System.err.println("Non Integral Array indexing not allowed!");
+        }
+
+        JavaParser.Type lhsType = null;
+        if(currentScope.lookup(lhsName)!=null) {
+            lhsType = ((VariableRecord) currentScope.lookup(lhsName)).getVariableType();
+        }else{
+            System.err.println("Variable not decalared!");
+        }
+
+        //type checking for array assignments
+        if(lhsType!=((JavaParser.ExpressionContext) ctx.getChild(2)).type){
+            System.err.println("Varibale assignment not possible!");
+            //type casting can be implemented here!
+        }
+
         ctx.codes.addAll(child2.codes);
         ctx.codes.addAll(child3.codes);
         ctx.codes.add(new ArrayAssignmentIRTuple(VARTOARR, ctx.getChild(0).getText(), child2.place, child3.place));
@@ -552,7 +598,7 @@ public class MyJavaListener extends JavaBaseListener {
     @Override
     public void enterElseBlock(JavaParser.ElseBlockContext ctx) {
         Scope blockScope = new Scope(currentScope, Scope.BLOCK);
-
+        currentScope = blockScope;
     }
 
 
@@ -638,9 +684,33 @@ public class MyJavaListener extends JavaBaseListener {
             return;
         }
 
+        String lhsName = ctx.getParent().getChild(0).getText();
+        JavaParser.Type lhsType = null;
+        int lhsDim = 0;
+        if(currentScope.lookup(lhsName)!=null) {
+            Record record = currentScope.lookup(lhsName);
+            if(record instanceof ArrayRecord==false){
+                System.err.println("Varibale not decalared!");
+            }
+
+            ArrayRecord  arrayRecord = (ArrayRecord) currentScope.lookup(lhsName);
+            lhsType = arrayRecord.getArrayType();
+            lhsDim = arrayRecord.getnumberOfDimensions();
+            if(lhsDim!=(ctx.getChildCount()-2)/3){
+                System.err.println("Array dimensions not matching!");
+            }
+        }else{
+            System.err.println("Varibale not decalared!");
+        }
+
+        //type checking for variables
+        if(lhsType!=((JavaParser.TypeContext) ctx.getChild(1)).type){
+            System.err.println("Varibale types do not match");
+            //type casting can be implemented here!
+        }
+
         ctx.codes.addAll(child3.codes);
         ctx.codes.add(new NewArrayIRTuple(ctx.place, "int", child3.place));
-
     }
 
 
