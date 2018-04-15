@@ -36,7 +36,7 @@ public class MyParser {
         JavaParser.GoalContext tree = parser.goal();
         ParseTreeWalker walker = new ParseTreeWalker();
         MyJavaListener listener = new MyJavaListener();
-        sentence = "<p> "+JavaParser.GoalContext.class.getSimpleName()+" </p>";
+        sentence = "<p> "+ JavaParser.GoalContext.class.getSimpleName()+" </p>";
 
         try {
             writer = new BufferedWriter(new FileWriter("tree_output.html"));

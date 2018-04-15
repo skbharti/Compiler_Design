@@ -1,4 +1,4 @@
-// Generated from /home/varun/IdeaProjects/Compiler_Design/LexerParser/src/Java.g4 by ANTLR 4.7
+// Generated from /media/shubham/GyanSangraha/Courses/CS335/Compiler_Design/LexerParser/src/Java.g4 by ANTLR 4.7
 package src;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -234,19 +234,19 @@ public interface JavaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDecLitExpression(JavaParser.DecLitExpressionContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code andExpression}
-	 * labeled alternative in {@link JavaParser#expression}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAndExpression(JavaParser.AndExpressionContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code arrayAccessExpression}
 	 * labeled alternative in {@link JavaParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitArrayAccessExpression(JavaParser.ArrayAccessExpressionContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code andExpression}
+	 * labeled alternative in {@link JavaParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAndExpression(JavaParser.AndExpressionContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code addExpression}
 	 * labeled alternative in {@link JavaParser#expression}.
@@ -261,13 +261,6 @@ public interface JavaVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitThisExpression(JavaParser.ThisExpressionContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code arrayLengthExpression}
-	 * labeled alternative in {@link JavaParser#expression}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitArrayLengthExpression(JavaParser.ArrayLengthExpressionContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code subExpression}
 	 * labeled alternative in {@link JavaParser#expression}.

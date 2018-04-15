@@ -91,11 +91,8 @@ whileBlock
 ;
 
 expression
-:   expression LSB expression RSB
+:   Identifier LSB expression RSB ( LSB expression RSB )*
 # arrayAccessExpression
-
-|   expression DOTLENGTH
-# arrayLengthExpression
 
 |   Identifier '(' ( expression ( ',' expression )* )? ')'
 # methodCallExpression
@@ -154,7 +151,6 @@ POWER:'**';
 NOT:'!';
 LSB:'[';
 RSB:']';
-DOTLENGTH:'.length';
 LP:'(';
 RP:')';
 RETURN: 'return';

@@ -911,17 +911,6 @@ public class MyJavaListener extends JavaBaseListener {
     public void exitThisExpression(JavaParser.ThisExpressionContext ctx) {
     }
 
-
-    @Override
-    public void enterArrayLengthExpression(JavaParser.ArrayLengthExpressionContext ctx) {
-    }
-
-
-    @Override
-    public void exitArrayLengthExpression(JavaParser.ArrayLengthExpressionContext ctx) {
-    }
-
-
     @Override
     public void enterSubExpression(JavaParser.SubExpressionContext ctx) {
         JavaParser.ExpressionContext child1 = (JavaParser.ExpressionContext) ctx.getChild(0);

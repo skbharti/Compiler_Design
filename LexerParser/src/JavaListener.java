@@ -1,4 +1,4 @@
-// Generated from /home/varun/IdeaProjects/Compiler_Design/LexerParser/src/Java.g4 by ANTLR 4.7
+// Generated from /media/shubham/GyanSangraha/Courses/CS335/Compiler_Design/LexerParser/src/Java.g4 by ANTLR 4.7
 package src;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -386,18 +386,6 @@ public interface JavaListener extends ParseTreeListener {
 	 */
 	void exitDecLitExpression(JavaParser.DecLitExpressionContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code andExpression}
-	 * labeled alternative in {@link JavaParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void enterAndExpression(JavaParser.AndExpressionContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code andExpression}
-	 * labeled alternative in {@link JavaParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void exitAndExpression(JavaParser.AndExpressionContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code arrayAccessExpression}
 	 * labeled alternative in {@link JavaParser#expression}.
 	 * @param ctx the parse tree
@@ -409,6 +397,18 @@ public interface JavaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitArrayAccessExpression(JavaParser.ArrayAccessExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code andExpression}
+	 * labeled alternative in {@link JavaParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterAndExpression(JavaParser.AndExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code andExpression}
+	 * labeled alternative in {@link JavaParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitAndExpression(JavaParser.AndExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code addExpression}
 	 * labeled alternative in {@link JavaParser#expression}.
@@ -433,18 +433,6 @@ public interface JavaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitThisExpression(JavaParser.ThisExpressionContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code arrayLengthExpression}
-	 * labeled alternative in {@link JavaParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void enterArrayLengthExpression(JavaParser.ArrayLengthExpressionContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code arrayLengthExpression}
-	 * labeled alternative in {@link JavaParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void exitArrayLengthExpression(JavaParser.ArrayLengthExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code subExpression}
 	 * labeled alternative in {@link JavaParser#expression}.
