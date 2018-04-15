@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 public class Scope {
     public static final String GLOBAL = "global";
+    public static final String CLASS = "class";
     public static final String METHOD = "method";
     public static final String BLOCK = "block";
 

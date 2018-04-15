@@ -2,6 +2,7 @@ package src;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
+import src.SymbolsAndScopes.GlobalRecord;
 import src.SymbolsAndScopes.Scope;
 
 import java.io.*;
@@ -12,6 +13,7 @@ public class MyParser {
     public static BufferedWriter writer;
     public static Scope globalScope = new Scope(null, Scope.GLOBAL);
     public static Scope currentScope = globalScope;
+    public static GlobalRecord globalRecord = new GlobalRecord();;
 
     public static void main(String args[]) {
         FileInputStream fileInputStream;

@@ -13,4 +13,8 @@ class ABC{
     }}
 
 }
+class BCD{
+    int a;
+    int b;
+}
 

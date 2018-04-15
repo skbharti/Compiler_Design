@@ -15,27 +15,11 @@ import static IRCode.src.helperclasses.Constants.*;
 
 public class MyJavaListener extends JavaBaseListener {
 
+    Scope currentScope = MyParser.currentScope;
+    GlobalRecord globalRecord = MyParser.globalRecord;
     private int tempCounter = 0;
     private int labelCounter = 0;
-    Scope currentScope = MyParser.currentScope;
     private boolean errorFlag = false;
-
-    @Override
-    public void enterEveryRule(ParserRuleContext ctx) {
-        if (errorFlag)
-            return;
-        super.enterEveryRule(ctx);
-        replaceParentWithChildren(ctx);
-    }
-
-
-    public String getVar() {
-        return "var" + tempCounter++;
-    }
-
-    public String getLablel() {
-        return "label" + labelCounter++;
-    }
 
     public static JavaParser.Type getType(String type) {
         boolean arr = false;
@@ -87,9 +71,34 @@ public class MyJavaListener extends JavaBaseListener {
         MyParser.sentence = (MyParser.sentence).replaceFirst(Pattern.quote(parentToken), childList);
     }
 
+    @Override
+    public void enterEveryRule(ParserRuleContext ctx) {
+        if (errorFlag)
+            return;
+        super.enterEveryRule(ctx);
+        replaceParentWithChildren(ctx);
+    }
+
+    public String getVar() {
+        return "var" + tempCounter++;
+    }
+
+    public String getLablel() {
+        return "label" + labelCounter++;
+    }
 
     @Override
     public void enterGoal(JavaParser.GoalContext ctx) {
+        // Initializing global scope and making it current scope.
+         currentScope.insert(Scope.GLOBAL, globalRecord);
+
+         int numOfClass = ctx.getChildCount()-1;
+         for(int i=0; i<numOfClass; i++){
+                // Create new scope for every class, with scopeType classClassName. For every class, a classRecord is pushed to global scope to maintain a reference to that classScope.
+                Scope classScope = new Scope(currentScope, Scope.CLASS+ctx.getChild(i).getChild(1).getText());
+                ClassRecord classRecord = new ClassRecord(classScope);
+                globalRecord.insertClassRecord(Scope.CLASS+ctx.getChild(i).getChild(1).getText(), classRecord);
+         }
     }
 
 
@@ -115,6 +124,9 @@ public class MyJavaListener extends JavaBaseListener {
 
     @Override
     public void enterMainClass(JavaParser.MainClassContext ctx) {
+        // While entering a class fetch its scope from the class record hashmap stored in global record
+        ClassRecord mainClassRecord = globalRecord.getClassRecord(Scope.CLASS+ctx.getChild(1).getText());
+        currentScope = mainClassRecord.getClassScope();
     }
 
 
@@ -122,11 +134,14 @@ public class MyJavaListener extends JavaBaseListener {
     public void exitMainClass(JavaParser.MainClassContext ctx) {
         JavaParser.StatementContext child14 = (JavaParser.StatementContext) ctx.getChild(14);
         ctx.codes.addAll(child14.codes);
+        currentScope = currentScope.parentScope;
     }
 
 
     @Override
     public void enterClassDeclaration(JavaParser.ClassDeclarationContext ctx) {
+        ClassRecord thisClassRecord = globalRecord.getClassRecord(Scope.CLASS+ctx.getChild(1).getText());
+        currentScope = thisClassRecord.getClassScope();
     }
 
 
@@ -140,10 +155,9 @@ public class MyJavaListener extends JavaBaseListener {
                 JavaParser.MethodDeclarationContext child6 = (JavaParser.MethodDeclarationContext) ctx.getChild(i);
                 ctx.codes.addAll(child6.codes);
             }
-
-
         }
 
+        currentScope = currentScope.parentScope;
     }
 
 
@@ -193,7 +207,8 @@ public class MyJavaListener extends JavaBaseListener {
         currentScope = methodScope;
     }
 
-    @Override public void exitMethodDeclaration(JavaParser.MethodDeclarationContext ctx) {
+    @Override
+    public void exitMethodDeclaration(JavaParser.MethodDeclarationContext ctx) {
         ctx.codes.add(new LabelIRTuple(ctx.getChild(2).getText()));
         int child_count = ctx.getChildCount();
 
@@ -320,11 +335,12 @@ public class MyJavaListener extends JavaBaseListener {
     }
 
     @Override
-    public void exitDeclaration(JavaParser.DeclarationContext ctx){
+    public void exitDeclaration(JavaParser.DeclarationContext ctx) {
 
     }
+
     @Override
-    public void enterDeclaration(JavaParser.DeclarationContext ctx){
+    public void enterDeclaration(JavaParser.DeclarationContext ctx) {
 
     }
 
@@ -781,6 +797,7 @@ public class MyJavaListener extends JavaBaseListener {
     @Override
     public void enterDecLitExpression(JavaParser.DecLitExpressionContext ctx) {
     }
+
     @Override
     public void exitDecLitExpression(JavaParser.DecLitExpressionContext ctx) {
         //TODO handle floats
