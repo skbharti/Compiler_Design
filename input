@@ -2,11 +2,13 @@ class ABC{
 
     public static void main(String[] args)
     {{
+        int[] b;
+        int c;
         b = new int[100];
-        b = 3;
-        while (b < 5)
+        c = 3;
+        while (c < 5)
         {
-            b = b + 1;
+            c = c + 1;
         }
 
 

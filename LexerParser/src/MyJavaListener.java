@@ -168,10 +168,8 @@ public class MyJavaListener extends JavaBaseListener {
 
     @Override
     public void exitFieldDeclaration(JavaParser.FieldDeclarationContext ctx) {
-
         JavaParser.VarDeclarationContext child0 = (JavaParser.VarDeclarationContext) ctx.getChild(0);
         ctx.codes.addAll(child0.codes);
-
     }
 
 
@@ -182,7 +180,7 @@ public class MyJavaListener extends JavaBaseListener {
 
     @Override
     public void exitVarDeclaration(JavaParser.VarDeclarationContext ctx) {
-        JavaParser.TypeContext typeContext = (JavaParser.TypeContext) ctx.getChild(0);
+        JavaParser.TypeDimContext typeContext = (JavaParser.TypeDimContext) ctx.getChild(0);
         if (typeContext.getChildCount() > 1) {
             currentScope.insert(ctx.getChild(1).getText(), new ArrayRecord(getType(typeContext.getChild(0).getText()),
                     ((JavaParser.DimsContext) typeContext.getChild(1)).dimCount,
@@ -481,7 +479,12 @@ public class MyJavaListener extends JavaBaseListener {
             printError(ctx);
             errorFlag = true;
             return;
-        } else if (((VariableRecord) currentScope.lookup(child0)).getVariableType() != child2.type) {
+        } else if ((currentScope.lookup(child0) instanceof VariableRecord) && ((VariableRecord) currentScope.lookup(child0)).getVariableType() != child2.type) {
+            printError(child2);
+            errorFlag = true;
+            return;
+        }
+        else if ((currentScope.lookup(child0) instanceof ArrayRecord) && ((ArrayRecord) currentScope.lookup(child0)).getArrayType() != child2.type) {
             printError(child2);
             errorFlag = true;
             return;
@@ -620,10 +623,8 @@ public class MyJavaListener extends JavaBaseListener {
 
     @Override
     public void enterArrayInstantiationExpression(JavaParser.ArrayInstantiationExpressionContext ctx) {
-
         JavaParser.ExpressionContext child3 = (JavaParser.ExpressionContext) ctx.getChild(3);
         child3.place = getVar();
-
     }
 
 
