@@ -6,39 +6,40 @@ import java.util.List;
 
 public class ArrayRecord extends Record {
     public JavaParser.Type arrayType;
-    public int arrayDim;
-    public List<String> dimLengthVar;
+    public int numberOfDimensions;
+    public int[] lengthOfDimensions;
     public int stackPointerOffset;
 
-    public ArrayRecord(JavaParser.Type type, int dim, List<String> dimLenVar, int stackPointerOffset){
-        this.arrayType = type;
-        this.arrayDim = dim;
-        this.dimLengthVar = dimLenVar;
-        this.stackPointerOffset = stackPointerOffset;
-    }
 
-    public int getArrayDim() {
-        return arrayDim;
+    public ArrayRecord(JavaParser.Type type, int dim, int[] dimLenVar,int stackPointerOffset){
+            this.arrayType = type;
+            this.numberOfDimensions = dim;
+            this.stackPointerOffset = stackPointerOffset;
+            this.lengthOfDimensions = dimLenVar;
+        }
+
+    public int getnumberOfDimensions() {
+        return numberOfDimensions;
     }
 
     public JavaParser.Type getArrayType() {
         return arrayType;
     }
 
-    public List<String> getDimLength() {
-        return dimLengthVar;
+    public int[] getDimLength() {
+        return lengthOfDimensions;
     }
 
-    public void setArrayDim(int arrayDim) {
-        this.arrayDim = arrayDim;
+    public void setnumberOfDimensions(int numberOfDimensions) {
+        this.numberOfDimensions = numberOfDimensions;
     }
 
     public void setArrayType(JavaParser.Type arrayType) {
         this.arrayType = arrayType;
     }
 
-    public void setDimLength(List<String> dimLenVar) {
-        this.dimLengthVar = dimLenVar;
+    public void setDimLength(int[] dimLenVar) {
+        this.lengthOfDimensions = dimLenVar;
     }
 }
 

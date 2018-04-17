@@ -1,6 +1,7 @@
 package IRCode.src.helperclasses;
 
 import IRCode.src.FlowGraph.AddrTableEntry;
+import src.MyParser;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -9,7 +10,7 @@ import java.util.Hashtable;
 public class ArgumentVariable {
     public String type;
     private String value;
-    private static BufferedWriter writer = MainClass.writer;;
+    private static BufferedWriter writer = MyParser.writer;
     public ArgumentVariable(Object arg){
         this.value = (String) arg;
         this.type = getType();

@@ -8,6 +8,7 @@ import java.util.List;
 
 public class Scope {
     public static final String GLOBAL = "global";
+    public static final String CLASS = "class";
     public static final String METHOD = "method";
     public static final String BLOCK = "block";
     public static int stackPointerOffset = 0;
@@ -36,7 +37,7 @@ public class Scope {
         symbolTable.put(name, record);
     }
 
-    public void insertArray(String name, JavaParser.Type variableType, int dim, ArrayList<String> dimLenVar) {
+    public void insertArray(String name, JavaParser.Type variableType, int dim, int[] dimLenVar) {
         if (symbolTable.containsKey(name)) {
             System.err.println("Symbol table can't contain two same name variable.");
             System.exit(1);
@@ -44,6 +45,10 @@ public class Scope {
         Record record = new ArrayRecord(variableType, dim, dimLenVar, stackPointerOffset);
         stackPointerOffset += 4;
         symbolTable.put(name, record);
+    }
+
+    public void insertGlobal(GlobalRecord globalRecord) {
+        symbolTable.put(Scope.GLOBAL, globalRecord);
     }
 
     public void insertVariable(String name, JavaParser.Type variableType) {

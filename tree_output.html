@@ -2,11 +2,20 @@
 <html>
 <body>
 <p> <b> GoalContext </b> </p>
-<p> <b> MainClassContext </b>	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	<b> NestedStatementContext </b>	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	<b> VariableAssignmentStatementContext </b>	VariableAssignmentStatementContext	WhileStatementContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	b	=	<b> ArrayInstantiationExpressionContext </b>	;	VariableAssignmentStatementContext	WhileStatementContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	b	=	new	<b> TypeContext </b>	[	IntLitExpressionContext	]	;	VariableAssignmentStatementContext	WhileStatementContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	b	=	new	int	[	<b> IntLitExpressionContext </b>	]	;	VariableAssignmentStatementContext	WhileStatementContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	b	=	new	int	[	100	]	;	VariableAssignmentStatementContext	WhileStatementContext	}	}	}	<EOF> </p></body>
+<p> <b> MainClassContext </b>	ClassDeclarationContext	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	<b> NestedStatementContext </b>	}	}	ClassDeclarationContext	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	<b> DeclarationContext </b>	DeclarationContext	VariableAssignmentStatementContext	VariableAssignmentStatementContext	WhileStatementContext	}	}	}	ClassDeclarationContext	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	<b> FieldDeclarationContext </b>	DeclarationContext	VariableAssignmentStatementContext	VariableAssignmentStatementContext	WhileStatementContext	}	}	}	ClassDeclarationContext	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	<b> VarDeclarationContext </b>	DeclarationContext	VariableAssignmentStatementContext	VariableAssignmentStatementContext	WhileStatementContext	}	}	}	ClassDeclarationContext	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	<b> TypeDimContext </b>	b	;	DeclarationContext	VariableAssignmentStatementContext	VariableAssignmentStatementContext	WhileStatementContext	}	}	}	ClassDeclarationContext	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	<b> DimsContext </b>	b	;	DeclarationContext	VariableAssignmentStatementContext	VariableAssignmentStatementContext	WhileStatementContext	}	}	}	ClassDeclarationContext	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	[	]	b	;	<b> DeclarationContext </b>	VariableAssignmentStatementContext	VariableAssignmentStatementContext	WhileStatementContext	}	}	}	ClassDeclarationContext	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	[	]	b	;	<b> FieldDeclarationContext </b>	VariableAssignmentStatementContext	VariableAssignmentStatementContext	WhileStatementContext	}	}	}	ClassDeclarationContext	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	[	]	b	;	<b> VarDeclarationContext </b>	VariableAssignmentStatementContext	VariableAssignmentStatementContext	WhileStatementContext	}	}	}	ClassDeclarationContext	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	[	]	b	;	<b> TypeDimContext </b>	c	;	VariableAssignmentStatementContext	VariableAssignmentStatementContext	WhileStatementContext	}	}	}	ClassDeclarationContext	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	[	]	b	;	int	c	;	<b> VariableAssignmentStatementContext </b>	VariableAssignmentStatementContext	WhileStatementContext	}	}	}	ClassDeclarationContext	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	[	]	b	;	int	c	;	b	=	<b> ArrayInstantiationExpressionContext </b>	;	VariableAssignmentStatementContext	WhileStatementContext	}	}	}	ClassDeclarationContext	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	[	]	b	;	int	c	;	b	=	new	<b> TypeContext </b>	[	IntLitExpressionContext	]	;	VariableAssignmentStatementContext	WhileStatementContext	}	}	}	ClassDeclarationContext	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	[	]	b	;	int	c	;	b	=	new	int	[	<b> IntLitExpressionContext </b>	]	;	VariableAssignmentStatementContext	WhileStatementContext	}	}	}	ClassDeclarationContext	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	[	]	b	;	int	c	;	b	=	new	int	[	100	]	;	VariableAssignmentStatementContext	WhileStatementContext	}	}	}	ClassDeclarationContext	<EOF> </p></body>
 </html>

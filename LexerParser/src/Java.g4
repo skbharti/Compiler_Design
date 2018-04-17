@@ -15,10 +15,10 @@ fieldDeclaration
 :	varDeclaration ;
 
 varDeclaration
-:	type Identifier ';';
+:	typeDim Identifier ';';
 
 methodDeclaration
-:	'public' type Identifier '(' parameterList? ')' '{' methodBody '}';
+:	'public' typeDim Identifier '(' parameterList? ')' '{' methodBody '}';
 
 parameterList
 :   parameter (',' parameter)*
@@ -100,7 +100,7 @@ expression
 |   NOT expression
 # notExpression
 
-|   'new' type LSB expression RSB
+|   'new' type LSB expression RSB ( LSB expression RSB )*
 # arrayInstantiationExpression
 
 |   'new' Identifier '(' ')'
