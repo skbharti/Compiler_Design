@@ -322,7 +322,6 @@ public class Tables {
                     MyParser.writer.write("sw " + ArgumentVariable.getRegName(PrevAddressTable.get(Key).getReg()) + " " + getStackPointer(Key, this.currentScope) + "($sp)" + "\n");
             }
 
-
             String arg0 = (String) q.getArg0();
             String arg1 = (String) q.getArg1();
             if (isVariable(arg0) && !PrevAddressTable.containsKey(arg0) && AddressTable.containsKey(arg0))

@@ -2,8 +2,6 @@ package src.SymbolsAndScopes;
 
 import src.JavaParser;
 
-import java.util.List;
-
 public class ArrayRecord extends Record {
     public JavaParser.Type arrayType;
     public int numberOfDimensions;

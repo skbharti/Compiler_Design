@@ -2,9 +2,9 @@ class ABC{
 
     public static void main(String[] args)
     {{
-        int[] b;
+        int[][] b;
         int c;
-        b = new int[100];
+        b = new int[100][200];
         c = 3;
         while (c < 5)
         {

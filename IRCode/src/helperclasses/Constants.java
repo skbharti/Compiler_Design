@@ -10,7 +10,6 @@ public class Constants {
     public final static String MUL = "mul";
     public final static String DIV = "div";
     public final static String MOD = "mod";
-    public final static String LEQ = "leq";         // Less than Equal
     public final static String AND = "and";
     public final static String OR = "or";
     public final static String LSL = "lsl";         // Logical Shift Left

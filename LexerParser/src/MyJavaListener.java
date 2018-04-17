@@ -45,9 +45,10 @@ public class MyJavaListener extends JavaBaseListener {
 
     public static JavaParser.Type getType(String type) {
         boolean arr = false;
-        if (type.contains("[]"))
+        if (type.contains("[]")){
             arr = true;
-
+            type = type.replace("[]","");
+        }
         switch (type) {
             case "boolean":
                 return arr ? JavaParser.Type.BOOLEAN_ARR : JavaParser.Type.BOOLEAN;
@@ -187,7 +188,19 @@ public class MyJavaListener extends JavaBaseListener {
 
     @Override
     public void exitVarDeclaration(JavaParser.VarDeclarationContext ctx) {
-        currentScope.insertVariable(ctx.getChild(1).getText(), getType(ctx.getChild(0).getText()));
+        JavaParser.TypeDimContext typeDimContext = (JavaParser.TypeDimContext) ctx.getChild(0);
+        if (typeDimContext.getChildCount() > 1) {
+
+            typeDimContext.numberOfDimensions = (typeDimContext.getChild(1).getChildCount() )/2;
+            System.out.println("Number of dimensions   " +typeDimContext.numberOfDimensions );
+
+            currentScope.insertArray(ctx.getChild(1).getText(), getType(typeDimContext.getChild(0).getText()+"[]"),
+             typeDimContext.numberOfDimensions,
+             null);
+
+        } else {
+            currentScope.insertVariable(ctx.getChild(1).getText(), getType(ctx.getChild(0).getText()));
+        }
 
     }
 
@@ -322,6 +335,9 @@ public class MyJavaListener extends JavaBaseListener {
 
     @Override
     public void exitDims(JavaParser.DimsContext ctx) {
+        int count = (int)(ctx.getChildCount()/2);
+
+
     }
 
 
@@ -500,22 +516,23 @@ public class MyJavaListener extends JavaBaseListener {
 
         JavaParser.ExpressionContext child2 = (JavaParser.ExpressionContext) ctx.getChild(2);
         String child0 = ctx.getChild(0).getText();
-        if (currentScope.lookup(child0) == null) {
+        Record bRecord = currentScope.lookup(child0);
+        if (bRecord == null) {
             printError(ctx);
             errorFlag = true;
             return;
-        } else if ((currentScope.lookup(child0) instanceof VariableRecord) && ((VariableRecord) currentScope.lookup(child0)).getVariableType() != child2.type) {
+        } else if ((bRecord instanceof VariableRecord) && ((VariableRecord) bRecord).getVariableType() != child2.type) {
             printError(child2);
             errorFlag = true;
             return;
-        } else if ((currentScope.lookup(child0) instanceof ArrayRecord) && ((ArrayRecord) currentScope.lookup(child0)).getArrayType() != child2.type) {
+        } else if ((bRecord instanceof ArrayRecord) && ((ArrayRecord) bRecord).getArrayType() != child2.type) {
             printError(child2);
             errorFlag = true;
             return;
         }
 
         ctx.codes.addAll(child2.codes);
-        ctx.codes.add(new AssignmentIRTuple(ADD, (ctx.getChild(0)).getText(), child2.place, 0));
+        ctx.codes.add(new AssignmentIRTuple(ADD, (ctx.getChild(0)).getText(), child2.place, "0"));
     }
 
 
@@ -651,16 +668,12 @@ public class MyJavaListener extends JavaBaseListener {
 
 
     @Override
-    public void enterArrayInstantiationExpression(JavaParser.ArrayInstantiationExpressionContext ctx) {
-        JavaParser.ExpressionContext child3 = (JavaParser.ExpressionContext) ctx.getChild(3);
-        child3.place = getVar();
-    }
+    public void enterArrayInstantiationExpression(JavaParser.ArrayInstantiationExpressionContext ctx) {}
 
 
     @Override
     public void exitArrayInstantiationExpression(JavaParser.ArrayInstantiationExpressionContext ctx) {
         ctx.type = getType(ctx.getChild(1).getText() + "[]");
-
 
         String lhsName = ctx.getParent().getChild(0).getText();
         JavaParser.Type lhsType = null;
@@ -682,20 +695,17 @@ public class MyJavaListener extends JavaBaseListener {
         }
 
         //type checking for variables
-        if (lhsType != ((JavaParser.TypeContext) ctx.getChild(1)).type) {
+        if (lhsType != getType(((JavaParser.TypeContext) ctx.getChild(1)).getText() + "[]"  )) {
             System.err.println("Variable types do not match");
             //type casting can be implemented here!
         }
-        int[] dimensions = new int[lhsDim];
-        for (int i = 0; 3 * i < ctx.getChildCount(); i++) {
-            JavaParser.ExpressionContext child = (JavaParser.ExpressionContext) ctx.getChild(3 * i + 3);
-            if (child.type != JavaParser.Type.INT) {
-                printError(child);
-                errorFlag = true;
-                return;
+        int[] dimensions = new int[(ctx.getChildCount() - 2) / 3];
+        for (int j = 0, i = 1; i < ctx.getChildCount(); i++) {
+            if(ctx.getChild(i-1).getText().equals("[")){
+                JavaParser.IntLitExpressionContext child = (JavaParser.IntLitExpressionContext) ctx.getChild(i);
+                dimensions[j++] = Integer.parseInt(child.getText());
+                ctx.codes.addAll(child.codes);
             }
-            dimensions[i] = Integer.parseInt(child.getText());
-            ctx.codes.addAll(child.codes);
         }
         ctx.codes.add(new NewArrayIRTuple(ctx.place, ctx.getChild(1).getText(), Arrays.stream(dimensions).reduce((x, y) -> x * y)));
         currentScope.insertArray(ctx.place, ctx.type, 1, dimensions);
@@ -727,7 +737,7 @@ public class MyJavaListener extends JavaBaseListener {
             return;
         }
         ctx.type = ((VariableRecord) currentScope.lookup(ctx.getText())).getVariableType();
-        ctx.codes.add(new AssignmentIRTuple(ADD, ctx.place, ctx.getText(), 0));
+        ctx.codes.add(new AssignmentIRTuple(ADD, ctx.place, ctx.getText(), "0"));
 
     }
 
@@ -823,9 +833,9 @@ public class MyJavaListener extends JavaBaseListener {
     @Override
     public void exitBooleanLitExpression(JavaParser.BooleanLitExpressionContext ctx) {
         if (ctx.getText().equals("true"))
-            ctx.codes.add(new AssignmentIRTuple(ADD, ctx.place, 0, 1));
+            ctx.codes.add(new AssignmentIRTuple(ADD, ctx.place, "0", "1"));
         else
-            ctx.codes.add(new AssignmentIRTuple(ADD, ctx.place, 0, 0));
+            ctx.codes.add(new AssignmentIRTuple(ADD, ctx.place, "0", "0"));
         ctx.type = JavaParser.Type.BOOLEAN;
     }
 
@@ -855,7 +865,7 @@ public class MyJavaListener extends JavaBaseListener {
 
     @Override
     public void exitIntLitExpression(JavaParser.IntLitExpressionContext ctx) {
-        ctx.codes.add(new AssignmentIRTuple(ADD, ctx.place, ctx.getText(), 0));
+        ctx.codes.add(new AssignmentIRTuple(ADD, ctx.place, ctx.getText(), "0"));
         ctx.type = JavaParser.Type.INT;
     }
 
@@ -867,7 +877,7 @@ public class MyJavaListener extends JavaBaseListener {
     @Override
     public void exitDecLitExpression(JavaParser.DecLitExpressionContext ctx) {
         //TODO handle floats
-        ctx.codes.add(new AssignmentIRTuple(ADD, ctx.place, ctx.getText(), 0));
+        ctx.codes.add(new AssignmentIRTuple(ADD, ctx.place, ctx.getText(), "0"));
         ctx.type = JavaParser.Type.FLOAT;
     }
 
