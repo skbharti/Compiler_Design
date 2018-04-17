@@ -948,6 +948,12 @@ public class JavaParser extends Parser {
         public int[] lengthOfDimensions;
         public Type type;   //  initialize type value for this token
 
+
+        public void setDimCount (int count)
+        {
+            numberOfDimensions = count;
+        }
+
         public DimsContext dims() {
             return getRuleContext(DimsContext.class, 0);
         }
