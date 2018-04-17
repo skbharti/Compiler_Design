@@ -4,10 +4,10 @@ import src.JavaParser;
 
 public class VariableRecord extends Record{
     public JavaParser.Type variableType;
-
-
-    public VariableRecord(JavaParser.Type type){
+    public int stackPointerOffset;
+    public VariableRecord(JavaParser.Type type, int stackPointerOffset){
         this.variableType = type;
+        this.stackPointerOffset = stackPointerOffset;
     }
 
     public JavaParser.Type getVariableType() {

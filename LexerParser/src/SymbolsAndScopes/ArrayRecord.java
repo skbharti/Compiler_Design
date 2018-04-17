@@ -6,12 +6,15 @@ public class ArrayRecord extends Record {
     public JavaParser.Type arrayType;
     public int numberOfDimensions;
     public int[] lengthOfDimensions;
+    public int stackPointerOffset;
 
-    public ArrayRecord(JavaParser.Type type, int dim, int[] dimLenVar){
-        this.arrayType = type;
-        this.numberOfDimensions = dim;
-        this.lengthOfDimensions = dimLenVar;
-    }
+
+    public ArrayRecord(JavaParser.Type type, int dim, int[] dimLenVar,int stackPointerOffset){
+            this.arrayType = type;
+            this.numberOfDimensions = dim;
+            this.stackPointerOffset = stackPointerOffset;
+            this.lengthOfDimensions = dimLenVar;
+        }
 
     public int getnumberOfDimensions() {
         return numberOfDimensions;
