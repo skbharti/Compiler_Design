@@ -35,7 +35,6 @@ public class MainClass {
             case MUL:
             case DIV:
             case MOD:
-            case LEQ:
             case AND:
             case OR:
             case LSL:

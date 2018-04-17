@@ -1,5 +1,5 @@
-package src;// Generated from /media/shubham/GyanSangraha/Courses/CS335/Compiler_Design/LexerParser/src/Java.g4 by ANTLR 4.7
-
+// Generated from /media/shubham/GyanSangraha/Courses/CS335/Compiler_Design/LexerParser/src/Java.g4 by ANTLR 4.7
+package src;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -278,6 +278,18 @@ public interface JavaListener extends ParseTreeListener {
 	 */
 	void exitObjectInstantiationExpression(JavaParser.ObjectInstantiationExpressionContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code gtExpression}
+	 * labeled alternative in {@link JavaParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterGtExpression(JavaParser.GtExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code gtExpression}
+	 * labeled alternative in {@link JavaParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitGtExpression(JavaParser.GtExpressionContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code arrayInstantiationExpression}
 	 * labeled alternative in {@link JavaParser#expression}.
 	 * @param ctx the parse tree
@@ -386,6 +398,30 @@ public interface JavaListener extends ParseTreeListener {
 	 */
 	void exitDecLitExpression(JavaParser.DecLitExpressionContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code gteExpression}
+	 * labeled alternative in {@link JavaParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterGteExpression(JavaParser.GteExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code gteExpression}
+	 * labeled alternative in {@link JavaParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitGteExpression(JavaParser.GteExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code equExpression}
+	 * labeled alternative in {@link JavaParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterEquExpression(JavaParser.EquExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code equExpression}
+	 * labeled alternative in {@link JavaParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitEquExpression(JavaParser.EquExpressionContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code arrayAccessExpression}
 	 * labeled alternative in {@link JavaParser#expression}.
 	 * @param ctx the parse tree
@@ -433,6 +469,18 @@ public interface JavaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitThisExpression(JavaParser.ThisExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code lteExpression}
+	 * labeled alternative in {@link JavaParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterLteExpression(JavaParser.LteExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code lteExpression}
+	 * labeled alternative in {@link JavaParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitLteExpression(JavaParser.LteExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code subExpression}
 	 * labeled alternative in {@link JavaParser#expression}.

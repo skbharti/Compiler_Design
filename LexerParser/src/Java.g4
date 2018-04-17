@@ -29,7 +29,7 @@ parameter
 ;
 
 methodBody
-:	statement* RETURN expression ';'
+:	statement* RETURN (expression)? ';'
 ;
 
 
@@ -74,7 +74,7 @@ statement
 #printStatement
 |	Identifier EQ expression ';'
 #variableAssignmentStatement
-|	Identifier LSB expression RSB EQ expression ';'
+|	Identifier LSB expression RSB (LSB expression RSB)* EQ expression ';'
 #arrayAssignmentStatement
 ;
 
@@ -100,7 +100,7 @@ expression
 |   NOT expression
 # notExpression
 
-|   'new' type LSB expression RSB ( LSB expression RSB )*
+|   'new' type LSB IntegerLiteral RSB ( LSB IntegerLiteral RSB )*
 # arrayInstantiationExpression
 
 |   'new' Identifier '(' ')'
@@ -121,7 +121,22 @@ expression
 |   expression LT expression
 # ltExpression
 
+|   expression GT expression
+# gtExpression
+
+|   expression LTE expression
+# lteExpression
+
+|   expression GTE expression
+# gteExpression
+
+|   expression EQU expression
+#equExpression
+
 |   expression AND expression
+# andExpression
+
+|   expression OR expression
 # andExpression
 
 |   IntegerLiteral
@@ -129,6 +144,7 @@ expression
 
 |   DecimalLiteral
 # decLitExpression
+
 |   BooleanLiteral
 # booleanLitExpression
 
@@ -144,6 +160,10 @@ expression
 
 AND:'&&';
 LT:'<';
+LTE:'<=';
+GT:'>';
+GTE:'>=';
+EQU:'==';
 PLUS:'+';
 MINUS:'-';
 TIMES:'*';

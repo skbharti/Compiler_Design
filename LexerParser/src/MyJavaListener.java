@@ -180,13 +180,14 @@ public class MyJavaListener extends JavaBaseListener {
 
     @Override
     public void exitVarDeclaration(JavaParser.VarDeclarationContext ctx) {
-        JavaParser.TypeDimContext typeContext = (JavaParser.TypeDimContext) ctx.getChild(0);
-        if (typeContext.getChildCount() > 1) {
-            currentScope.insert(ctx.getChild(1).getText(), new ArrayRecord(getType(typeContext.getChild(0).getText()),
-                    ((JavaParser.DimsContext) typeContext.getChild(1)).dimCount,
-                    ((JavaParser.DimsContext) typeContext.getChild(1)).dimLength));
+        JavaParser.TypeDimContext typeDimContext = (JavaParser.TypeDimContext) ctx.getChild(0);
+
+        if (typeDimContext.getChildCount() > 1) {
+            currentScope.insert(ctx.getChild(1).getText(), new ArrayRecord(getType(typeDimContext.getChild(0).getText()),
+                     typeDimContext.numberOfDimensions,
+                     typeDimContext.lengthOfDimensions));
         } else {
-            currentScope.insert(ctx.getChild(1).getText(), new VariableRecord(getType(ctx.getChild(0).getText())));
+                currentScope.insert(ctx.getChild(1).getText(), new VariableRecord(getType(ctx.getChild(0).getText())));
         }
 
     }
@@ -200,6 +201,7 @@ public class MyJavaListener extends JavaBaseListener {
                     new MethodRecord(getType(ctx.getChild(1).getText()), (p.getChildCount() + 1) / 2, p.paramList));
         } else {
             currentScope.insert(ctx.getChild(2).getText(), new MethodRecord(getType(ctx.getChild(1).getText()), 0, null));
+
         }
         Scope methodScope = new Scope(currentScope, Scope.METHOD);
         currentScope = methodScope;
@@ -668,21 +670,12 @@ public class MyJavaListener extends JavaBaseListener {
 
 
     @Override
-    public void enterArrayInstantiationExpression(JavaParser.ArrayInstantiationExpressionContext ctx) {
-        JavaParser.ExpressionContext child3 = (JavaParser.ExpressionContext) ctx.getChild(3);
-        child3.place = getVar();
-    }
+    public void enterArrayInstantiationExpression(JavaParser.ArrayInstantiationExpressionContext ctx) {}
 
 
     @Override
     public void exitArrayInstantiationExpression(JavaParser.ArrayInstantiationExpressionContext ctx) {
         ctx.type = getType(ctx.getChild(1).getText() + "[]");
-        JavaParser.ExpressionContext child3 = (JavaParser.ExpressionContext) ctx.getChild(3);
-        if (child3.type != JavaParser.Type.INT) {
-            printError(child3);
-            errorFlag = true;
-            return;
-        }
 
         String lhsName = ctx.getParent().getChild(0).getText();
         JavaParser.Type lhsType = null;
@@ -709,8 +702,7 @@ public class MyJavaListener extends JavaBaseListener {
             //type casting can be implemented here!
         }
 
-        ctx.codes.addAll(child3.codes);
-        ctx.codes.add(new NewArrayIRTuple(ctx.place, "int", child3.place));
+        ctx.codes.add(new NewArrayIRTuple(ctx.place, "int", ctx.getChild(4)));
     }
 
 

@@ -1,5 +1,5 @@
-package src;// Generated from /media/shubham/GyanSangraha/Courses/CS335/Compiler_Design/LexerParser/src/Java.g4 by ANTLR 4.7
-
+// Generated from /media/shubham/GyanSangraha/Courses/CS335/Compiler_Design/LexerParser/src/Java.g4 by ANTLR 4.7
+package src;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -171,6 +171,13 @@ public interface JavaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitObjectInstantiationExpression(JavaParser.ObjectInstantiationExpressionContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code gtExpression}
+	 * labeled alternative in {@link JavaParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitGtExpression(JavaParser.GtExpressionContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code arrayInstantiationExpression}
 	 * labeled alternative in {@link JavaParser#expression}.
 	 * @param ctx the parse tree
@@ -234,6 +241,20 @@ public interface JavaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDecLitExpression(JavaParser.DecLitExpressionContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code gteExpression}
+	 * labeled alternative in {@link JavaParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitGteExpression(JavaParser.GteExpressionContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code equExpression}
+	 * labeled alternative in {@link JavaParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitEquExpression(JavaParser.EquExpressionContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code arrayAccessExpression}
 	 * labeled alternative in {@link JavaParser#expression}.
 	 * @param ctx the parse tree
@@ -261,6 +282,13 @@ public interface JavaVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitThisExpression(JavaParser.ThisExpressionContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code lteExpression}
+	 * labeled alternative in {@link JavaParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLteExpression(JavaParser.LteExpressionContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code subExpression}
 	 * labeled alternative in {@link JavaParser#expression}.
