@@ -24,6 +24,9 @@ public class CodeGen {
     private static BufferedWriter writer = MyParser.writer;
     private Scope currentScope;
 
+    public static void updateMainStackPointer(int size) throws Exception{
+        writer.write("addi $sp, $sp, "+4*size+"\n");
+    }
 
     public void generateMips(ThreeAddCode q, Hashtable<String,
             AddrTableEntry> curAddTable, Hashtable<String,
@@ -36,7 +39,9 @@ public class CodeGen {
         this.currentScope = currentScope;
 
         if (q instanceof StoreStackIRTuple)
-            storeStack((StoreStackIRTuple) q);
+            storeStack();
+        else if (q instanceof ExitIRTuple)
+            exit();
         else if (q instanceof AssignmentIRTuple)
             assignmentEvaluation((AssignmentIRTuple) q);
         else if (q instanceof NewObjectIRTuple)
@@ -68,8 +73,11 @@ public class CodeGen {
             paramInit((ParamInitIRTuple)q);
 
     }
+    private void exit() throws IOException{
+        writer.write(HelperFunctions.printExitCode());
+    }
 
-    private void storeStack(StoreStackIRTuple instr) throws IOException {
+    private void storeStack() throws IOException {
         for (String key : curAddTable.keySet()) {
             writer.write("sw " + ArgumentVariable.getRegName(curAddTable.get(key).getReg()) + ", " + Tables.getStackPointer(key, currentScope) + "($sp)\n");
         }

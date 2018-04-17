@@ -26,10 +26,24 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 .text
 
 main:
 
+addi $sp, $sp, 0
 addi $sp, $sp, -20
 sw $ra, 16($sp)
 sw $a0, 12($sp)
@@ -47,12 +61,13 @@ move null, $v0
 lw $v0, 0($sp)
 lw $ra, 16($sp)
 addi $sp, $sp, 20
-addi null,null,0
+addi $t0,null,0
 li $s6, 3
 addi null,$s6,0
-addi $t0,null,0
-sw $t0, 1($sp)
-label0_scope2:
+addi $t1,null,0
+sw $t0, -12($sp)
+sw $t1, -8($sp)
+label0_scope3:
 lw $t0 -8($sp)
 addi null,$t0,0
 li $s6, 5
@@ -65,7 +80,8 @@ _L0:
 addi null, $zero, 1
 _L1:
 sw $t0, -8($sp)
-bne null, $zero, label1_scope2
+bne null, $zero, label1_scope3
+addi $sp, $sp, 12
 lw $t0 -8($sp)
 addi null,$t0,0
 li $s6, 1
@@ -74,4 +90,12 @@ add null,null,null
 addi $t0,null,0
 sw $t0, -8($sp)
 j null
-label1_scope2:
+label1_scope3:
+li $v0, 10 
+syscall
+hello_scope5:
+li $s6, 2
+addi null,$s6,0
+addi $t0,null,0
+addi null,$t0,0
+jr $ra

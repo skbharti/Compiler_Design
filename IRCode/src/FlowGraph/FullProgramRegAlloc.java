@@ -1,4 +1,5 @@
 package IRCode.src.FlowGraph;
+import IRCode.src.CodeGenerator.CodeGen;
 import IRCode.src.IRCode.*;
 import src.MyParser;
 import src.SymbolsAndScopes.Scope;
@@ -30,10 +31,17 @@ public class FullProgramRegAlloc
             lv.FindVariablesUsesDefs();
             writer.write("\n.text\n\nmain:\n\n");
             Scope currentScope = MyParser.globalScope;
+            Scope prevScope;
             for (int i = 0; i < BlocksList.size(); i++)
             {   List<ThreeAddCode> list =BlocksList.get(i).getListOfInstructions();
-                if (list.get(0) instanceof LabelIRTuple)
-                    currentScope = scopeMapping.get("_"+(list.get(0).getArg0()).split("_")[1]);
+                if (list.get(0) instanceof ScopeChangeIRTuple) {
+                    prevScope = currentScope;
+                    currentScope = scopeMapping.get(list.get(0).getArg0());
+                    if (list.get(0).getOpcode().equals("true"))
+                        CodeGen.updateMainStackPointer(-currentScope.getVariableSize());
+                    else
+                        CodeGen.updateMainStackPointer(prevScope.getVariableSize());
+                }
                 Tables tb = new Tables(list,lv,currentScope);
                 tb.RegisterAllocator();
             }

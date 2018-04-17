@@ -111,16 +111,12 @@ public class MyJavaListener extends JavaBaseListener {
 
         JavaParser.MainClassContext child0 = (JavaParser.MainClassContext) ctx.getChild(0);
         ctx.codes.addAll(child0.codes);
-
+        ctx.codes.add(new ExitIRTuple());
         int count = ctx.getChildCount();
 
         for (int i = 1; i < count - 1; i++) {
             JavaParser.ClassDeclarationContext child1 = (JavaParser.ClassDeclarationContext) ctx.getChild(i);
             ctx.codes.addAll(child1.codes);
-        }
-
-        for (int i = 0; i < ctx.codes.size(); i++) {
-            System.out.println(ctx.codes.get(i).toString());
         }
 
     }
@@ -130,6 +126,7 @@ public class MyJavaListener extends JavaBaseListener {
     public void enterMainClass(JavaParser.MainClassContext ctx) {
         // While entering a class fetch its scope from the class record hashmap stored in global record
         ClassRecord mainClassRecord = globalRecord.getClassRecord(Scope.CLASS + ctx.getChild(1).getText());
+        ctx.codes.add(new ScopeChangeIRTuple("false", mainClassRecord.getClassScope().scopeName, currentScope.scopeName));
         currentScope = mainClassRecord.getClassScope();
 
     }
@@ -139,6 +136,7 @@ public class MyJavaListener extends JavaBaseListener {
     public void exitMainClass(JavaParser.MainClassContext ctx) {
         JavaParser.StatementContext child14 = (JavaParser.StatementContext) ctx.getChild(14);
         ctx.codes.addAll(child14.codes);
+        ctx.codes.add(new ScopeChangeIRTuple("true", currentScope.scopeName, currentScope.parentScope.scopeName));
         currentScope = currentScope.parentScope;
     }
 
@@ -146,6 +144,7 @@ public class MyJavaListener extends JavaBaseListener {
     @Override
     public void enterClassDeclaration(JavaParser.ClassDeclarationContext ctx) {
         ClassRecord thisClassRecord = globalRecord.getClassRecord(Scope.CLASS + ctx.getChild(1).getText());
+        ctx.codes.add(new ScopeChangeIRTuple("false", thisClassRecord.getClassScope().scopeName, currentScope.scopeName));
         currentScope = thisClassRecord.getClassScope();
     }
 
@@ -161,6 +160,7 @@ public class MyJavaListener extends JavaBaseListener {
                 ctx.codes.addAll(child6.codes);
             }
         }
+        ctx.codes.add(new ScopeChangeIRTuple("true", currentScope.scopeName, currentScope.parentScope.scopeName));
 
         currentScope = currentScope.parentScope;
     }
@@ -211,6 +211,7 @@ public class MyJavaListener extends JavaBaseListener {
             currentScope.insertMethod(ctx.getChild(2).getText(), getType(ctx.getChild(1).getText()), 0, null);
         }
         Scope methodScope = new Scope(currentScope, Scope.METHOD);
+        ctx.codes.add(new ScopeChangeIRTuple("false", methodScope.scopeName, currentScope.scopeName));
         currentScope = methodScope;
     }
 
@@ -224,18 +225,29 @@ public class MyJavaListener extends JavaBaseListener {
                 JavaParser.ParameterListContext childParam = (JavaParser.ParameterListContext) ctx.getChild(i);
                 ctx.codes.addAll(childParam.codes);
             }
+            if (ctx.getChild(i) instanceof JavaParser.MethodBodyContext) {
+                JavaParser.MethodBodyContext child7 = (JavaParser.MethodBodyContext) ctx.getChild(i);
+                ctx.codes.addAll(child7.codes);
+                JavaParser.TypeDimContext type = (JavaParser.TypeDimContext) ctx.getChild(1);
+                ParseTree ctxChild = child7.getChild(child7.getChildCount() - 2);
+                if (ctxChild instanceof JavaParser.ExpressionContext) {
+                    if (((JavaParser.ExpressionContext) ctxChild).type != getType(type.getText())) {
+                        printError((ParserRuleContext) ctxChild);
+                        errorFlag = true;
+                        return;
+                    }
+                } else if (getType(type.getText()) != JavaParser.Type.VOID) {
+                    printError((ParserRuleContext) ctxChild);
+                    errorFlag = true;
+                    return;
+
+                }
+            }
         }
 
-        JavaParser.MethodBodyContext child7 = (JavaParser.MethodBodyContext) ctx.getChild(child_count - 2);
-        JavaParser.TypeContext type = (JavaParser.TypeContext) ctx.getChild(1);
-        JavaParser.ExpressionContext expr = (JavaParser.ExpressionContext) ctx.getChild(ctx.getChildCount() - 2);
-        if (expr.type != getType(type.getText())) {
-            printError(expr);
-            errorFlag = true;
-            return;
-        }
-        ctx.codes.addAll(child7.codes);
+        ctx.codes.add(new ScopeChangeIRTuple("true", currentScope.scopeName, currentScope.parentScope.scopeName));
         currentScope = currentScope.parentScope;
+
     }
 
 
@@ -251,7 +263,7 @@ public class MyJavaListener extends JavaBaseListener {
         for (int i = 0, paramNum = 0; i < child_count; i++) {
             if (ctx.getChild(i).getClass().getSimpleName().equals("ParameterContext")) {
                 JavaParser.ParameterContext childParameter = (JavaParser.ParameterContext) ctx.getChild(i);
-                ctx.codes.add(new ParamInitIRTuple(childParameter.getChild(0).getText(), (paramNum++) +"", childParameter.getChild(1).getText()));
+                ctx.codes.add(new ParamInitIRTuple(childParameter.getChild(0).getText(), (paramNum++) + "", childParameter.getChild(1).getText()));
             }
         }
 
@@ -410,6 +422,7 @@ public class MyJavaListener extends JavaBaseListener {
         JavaParser.ExpressionContext child2 = (JavaParser.ExpressionContext) ctx.getChild(2);
         child2.place = getVar();
         Scope blockScope = new Scope(currentScope, Scope.BLOCK);
+        ctx.codes.add(new ScopeChangeIRTuple("false", blockScope.scopeName, currentScope.scopeName));
         currentScope = blockScope;
     }
 
@@ -433,6 +446,7 @@ public class MyJavaListener extends JavaBaseListener {
         ctx.codes.add(new StoreStackIRTuple());
         ctx.codes.add(new UnconditionalJumpIRTuple(labelExpr));
         ctx.codes.add(new LabelIRTuple(labelEnd));
+        ctx.codes.add(new ScopeChangeIRTuple("true", currentScope.scopeName, currentScope.parentScope.scopeName));
         currentScope = currentScope.parentScope;
     }
 
@@ -442,6 +456,7 @@ public class MyJavaListener extends JavaBaseListener {
         JavaParser.ExpressionContext child4 = (JavaParser.ExpressionContext) ctx.getChild(4);
         child4.place = getVar();
         Scope blockScope = new Scope(currentScope, Scope.BLOCK);
+        ctx.codes.add(new ScopeChangeIRTuple("false", blockScope.scopeName, currentScope.scopeName));
         currentScope = blockScope;
     }
 
@@ -470,6 +485,8 @@ public class MyJavaListener extends JavaBaseListener {
         ctx.codes.add(new StoreStackIRTuple());
         ctx.codes.add(new UnconditionalJumpIRTuple(labelExpr));
         ctx.codes.add(new LabelIRTuple(labelEnd));
+        ctx.codes.add(new ScopeChangeIRTuple("true", currentScope.scopeName, currentScope.parentScope.scopeName));
+
         currentScope = currentScope.parentScope;
     }
 
@@ -576,6 +593,7 @@ public class MyJavaListener extends JavaBaseListener {
     @Override
     public void enterIfBlock(JavaParser.IfBlockContext ctx) {
         Scope blockScope = new Scope(currentScope, Scope.BLOCK);
+        ctx.codes.add(new ScopeChangeIRTuple("false", blockScope.scopeName, currentScope.scopeName));
         currentScope = blockScope;
     }
 
@@ -585,6 +603,8 @@ public class MyJavaListener extends JavaBaseListener {
 
         JavaParser.StatementContext child0 = (JavaParser.StatementContext) ctx.getChild(0);
         ctx.codes.addAll(child0.codes);
+        ctx.codes.add(new ScopeChangeIRTuple("true", currentScope.scopeName, currentScope.parentScope.scopeName));
+
         currentScope = currentScope.parentScope;
     }
 
@@ -592,6 +612,7 @@ public class MyJavaListener extends JavaBaseListener {
     @Override
     public void enterElseBlock(JavaParser.ElseBlockContext ctx) {
         Scope blockScope = new Scope(currentScope, Scope.BLOCK);
+        ctx.codes.add(new ScopeChangeIRTuple("false", blockScope.scopeName, currentScope.scopeName));
         currentScope = blockScope;
     }
 
@@ -600,13 +621,16 @@ public class MyJavaListener extends JavaBaseListener {
     public void exitElseBlock(JavaParser.ElseBlockContext ctx) {
         JavaParser.StatementContext child0 = (JavaParser.StatementContext) ctx.getChild(0);
         ctx.codes.addAll(child0.codes);
+        ctx.codes.add(new ScopeChangeIRTuple("true", currentScope.scopeName, currentScope.parentScope.scopeName));
         currentScope = currentScope.parentScope;
+
     }
 
 
     @Override
     public void enterWhileBlock(JavaParser.WhileBlockContext ctx) {
         Scope blockScope = new Scope(currentScope, Scope.BLOCK);
+        ctx.codes.add(new ScopeChangeIRTuple("false", blockScope.scopeName, currentScope.scopeName));
         currentScope = blockScope;
     }
 
@@ -615,6 +639,7 @@ public class MyJavaListener extends JavaBaseListener {
     public void exitWhileBlock(JavaParser.WhileBlockContext ctx) {
         JavaParser.StatementContext child0 = (JavaParser.StatementContext) ctx.getChild(0);
         ctx.codes.addAll(child0.codes);
+        ctx.codes.add(new ScopeChangeIRTuple("true", currentScope.scopeName, currentScope.parentScope.scopeName));
         currentScope = currentScope.parentScope;
     }
 
@@ -704,7 +729,7 @@ public class MyJavaListener extends JavaBaseListener {
         }
         OptionalInt prod = Arrays.stream(dimensions).reduce((x, y) -> x * y);
         if (prod.isPresent())
-            ctx.codes.add(new NewArrayIRTuple(ctx.place, ctx.getChild(1).getText(), prod.getAsInt()+""));
+            ctx.codes.add(new NewArrayIRTuple(ctx.place, ctx.getChild(1).getText(), prod.getAsInt() + ""));
         else {
             printError(ctx);
         }
@@ -772,7 +797,7 @@ public class MyJavaListener extends JavaBaseListener {
                 if (ctx.getChild(i) instanceof JavaParser.ExpressionContext) {
                     JavaParser.ExpressionContext child = (JavaParser.ExpressionContext) ctx.getChild(i);
                     ctx.codes.addAll(child.codes);
-                    ctx.codes.add(new ParamIRTuple(child.place, (paramNum++)+"", parampos));
+                    ctx.codes.add(new ParamIRTuple(child.place, (paramNum++) + "", parampos));
                 } else if (ctx.getChild(i) instanceof JavaParser.ParameterListContext) {
                     JavaParser.ParameterListContext parameterListContext = (JavaParser.ParameterListContext) ctx.getChild(i);
                     if (parameterListContext.getChildCount() != methodRecord.getParamCount()) {

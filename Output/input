@@ -16,3 +16,12 @@ class ABC{
 
 }
 
+class CDE{
+int b;
+int c;
+public int hello(){
+c=2;
+return c;
+}
+
+}

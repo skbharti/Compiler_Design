@@ -16,24 +16,27 @@ public class MyParser {
     public static String sentence = "";
     public static BufferedWriter writer;
     public static CodeGen codegen;
-    public static HashMap<String,Scope> scopeMapping = new HashMap<>();
+    public static HashMap<String, Scope> scopeMapping = new HashMap<>();
     public static Scope globalScope = new Scope(null, Scope.GLOBAL);
     public static Scope currentScope = globalScope;
     public static GlobalRecord globalRecord = new GlobalRecord();
+
     public static void main(String args[]) throws Exception {
-    FileInputStream fileInputStream = new FileInputStream(INPUT_FILE);
-    JavaLexer lexer = new JavaLexer(new ANTLRInputStream(fileInputStream));
-    writer = new BufferedWriter(new FileWriter("mips.s"));
-    CommonTokenStream tokenStream = new CommonTokenStream(lexer);
-    JavaParser parser = new JavaParser(tokenStream);
-    JavaParser.GoalContext tree = parser.goal();
-    ParseTreeWalker walker = new ParseTreeWalker();
-    MyJavaListener listener = new MyJavaListener();
-    walker.walk(listener, tree);
-    codegen = new CodeGen();
-    FullProgramRegAlloc f = new FullProgramRegAlloc(tree.codes, scopeMapping);
-    f.FullRegAlloc();
-    writer.close();
-    System.out.println("Derivation Generated. Kindly check root folder for html file!");
+        FileInputStream fileInputStream = new FileInputStream(INPUT_FILE);
+        JavaLexer lexer = new JavaLexer(new ANTLRInputStream(fileInputStream));
+        writer = new BufferedWriter(new FileWriter("mips.s"));
+        CommonTokenStream tokenStream = new CommonTokenStream(lexer);
+        JavaParser parser = new JavaParser(tokenStream);
+        JavaParser.GoalContext tree = parser.goal();
+        ParseTreeWalker walker = new ParseTreeWalker();
+        MyJavaListener listener = new MyJavaListener();
+        walker.walk(listener, tree);
+        codegen = new CodeGen();
+        System.out.println(tree.codes);
+        FullProgramRegAlloc f = new FullProgramRegAlloc(tree.codes, scopeMapping);
+        f.FullRegAlloc();
+        writer.close();
+        System.out.println("Derivation Generated. Kindly check root folder for html file!");
     }
+
 }
