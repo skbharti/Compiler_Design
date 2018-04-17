@@ -26,10 +26,10 @@ public class FullProgramRegAlloc
     }
 
     public void FullRegAlloc() throws Exception{
-            Liveness lv = new Liveness(InstructionList);
+            Liveness lv = new Liveness(InstructionList,scopeMapping);
             lv.FindVariablesUsesDefs();
             writer.write("\n.text\n\nmain:\n\n");
-            Scope currentScope = MyParser.currentScope;
+            Scope currentScope = MyParser.globalScope;
             for (int i = 0; i < BlocksList.size(); i++)
             {   List<ThreeAddCode> list =BlocksList.get(i).getListOfInstructions();
                 if (list.get(0) instanceof LabelIRTuple)

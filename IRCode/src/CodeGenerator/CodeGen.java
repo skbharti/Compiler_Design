@@ -4,8 +4,11 @@ import IRCode.src.FlowGraph.AddrTableEntry;
 import IRCode.src.FlowGraph.Tables;
 import IRCode.src.IRCode.*;
 import IRCode.src.helperclasses.ArgumentVariable;
+import src.JavaParser;
 import src.MyParser;
+import src.SymbolsAndScopes.Record;
 import src.SymbolsAndScopes.Scope;
+import src.SymbolsAndScopes.VariableRecord;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -22,49 +25,68 @@ public class CodeGen {
     private Scope currentScope;
 
 
-    public void generateMips (ThreeAddCode q, Hashtable<String,
+    public void generateMips(ThreeAddCode q, Hashtable<String,
             AddrTableEntry> curAddTable, Hashtable<String,
             AddrTableEntry> preAddTable, Hashtable<Integer,
-            String> regTable,Scope currentScope) throws Exception{
+            String> regTable, Scope currentScope) throws Exception {
 
-            this.curAddTable = curAddTable;
-            this.preAddTable = preAddTable;
-            this.regTable = regTable;
-            this.currentScope = currentScope;
+        this.curAddTable = curAddTable;
+        this.preAddTable = preAddTable;
+        this.regTable = regTable;
+        this.currentScope = currentScope;
 
-            if (q instanceof StoreStackIRTuple)
-                storeStack((StoreStackIRTuple) q);
-            else if (q instanceof AssignmentIRTuple)
-                assignmentEvaluation((AssignmentIRTuple) q);
-            else if (q instanceof FunctionCallIRTuple)
-                functionCall(q);
-            else if (q instanceof ReturnIRTuple)
-                functionReturn((ReturnIRTuple) q);
-            else if (q instanceof UnaryAssignmentIRTuple)
-                unaryAssignment((UnaryAssignmentIRTuple) q);
-            else if (q instanceof UnconditionalJumpIRTuple)
-                unconditonalJump((UnconditionalJumpIRTuple) q);
-            else if (q instanceof ConditionalJumpIRTuple)
-                conditonalJump((ConditionalJumpIRTuple) q);
-            else if (q instanceof NewArrayIRTuple);
-////Do nothing only needed for dynamic memory allocation
-            //           newArrayInitialize((NewArrayIRTuple) q);
-            else if (q instanceof ArrayAssignmentIRTuple) {
-                if (q.getOpcode().equals(ARRTOVAR))
-                    arrayIndexLoad((ArrayAssignmentIRTuple) q);
-                else
-                    arrayIndexAssignment((ArrayAssignmentIRTuple) q);
-            } else if (q instanceof LabelIRTuple)
-                labelDefine((LabelIRTuple) q);
-            else if (q instanceof PrintIRTuple)
-                printMips((PrintIRTuple) q);
+        if (q instanceof StoreStackIRTuple)
+            storeStack((StoreStackIRTuple) q);
+        else if (q instanceof AssignmentIRTuple)
+            assignmentEvaluation((AssignmentIRTuple) q);
+        else if (q instanceof NewObjectIRTuple)
+            newObjectInstance((NewObjectIRTuple) q);
+        else if (q instanceof ParamIRTuple)
+            param((ParamIRTuple) q);
+        else if (q instanceof FunctionCallIRTuple)
+            functionCall((FunctionCallIRTuple) q);
+        else if (q instanceof ReturnIRTuple)
+            functionReturn((ReturnIRTuple) q);
+        else if (q instanceof UnaryAssignmentIRTuple)
+            unaryAssignment((UnaryAssignmentIRTuple) q);
+        else if (q instanceof UnconditionalJumpIRTuple)
+            unconditionalJump((UnconditionalJumpIRTuple) q);
+        else if (q instanceof ConditionalJumpIRTuple)
+            conditonalJump((ConditionalJumpIRTuple) q);
+        else if (q instanceof NewArrayIRTuple)
+            newArrayInitialize((NewArrayIRTuple) q);
+        else if (q instanceof ArrayAssignmentIRTuple) {
+            if (q.getOpcode().equals(ARRTOVAR))
+                arrayIndexLoad((ArrayAssignmentIRTuple) q);
+            else
+                arrayIndexAssignment((ArrayAssignmentIRTuple) q);
+        } else if (q instanceof LabelIRTuple)
+            labelDefine((LabelIRTuple) q);
+        else if (q instanceof PrintIRTuple)
+            printMips((PrintIRTuple) q);
+        else if (q instanceof ParamInitIRTuple)
+            paramInit((ParamInitIRTuple)q);
 
     }
 
     private void storeStack(StoreStackIRTuple instr) throws IOException {
-        for ( String key : curAddTable.keySet()) {
-            writer.write("sw "+ArgumentVariable.getRegName(curAddTable.get(key).getReg())+", "+Tables.getStackPointer(key,currentScope)+"($sp)\n");
+        for (String key : curAddTable.keySet()) {
+            writer.write("sw " + ArgumentVariable.getRegName(curAddTable.get(key).getReg()) + ", " + Tables.getStackPointer(key, currentScope) + "($sp)\n");
         }
+    }
+
+    private void paramInit(ParamInitIRTuple instr) throws IOException{
+        ArgumentVariable par = new ArgumentVariable(instr.getResult());
+        int offset = (int) instr.getArg0();
+        writer.write("lw "+par.getValue(curAddTable)+", "+offset*4+"($a0)");
+
+    }
+
+    private void param(ParamIRTuple instr) throws IOException {
+        ArgumentVariable param = new ArgumentVariable(instr.getArg0());
+        int paramNum = (int) (instr.getArg1());
+        ArgumentVariable paramPos = new ArgumentVariable(instr.getResult());
+        writer.write("sw " + param.getValue(curAddTable)+", " + paramNum * 4 + "(" + paramPos.getValue(curAddTable) + ")\n");
     }
 
     private void printMips(PrintIRTuple instr) throws IOException {
@@ -93,14 +115,50 @@ public class CodeGen {
 
     }
 
+    private void newObjectInstance(NewObjectIRTuple instr) throws IOException {
+
+        String type = (String) instr.getArg0();
+        ArgumentVariable result = new ArgumentVariable(instr.getResult());
+
+        //Store $ra on stack
+        writer.write("addi $sp, $sp, -20\n");
+        writer.write("sw $ra, 16($sp)\n");
+
+        //Store $a0
+        writer.write("sw $a0, 12($sp)\n");
+
+        //Store $t0-$t1 on the stack
+        for (int i = 0; i < 2; i++) {
+            writer.write("sw $t" + i + ", " + (8 - (4 * i)) + "($sp)\n");
+        }
+
+        //Store $v0 on the stack
+        writer.write("sw $v0, 0($sp)\n");
+        writer.write("li $a0, " + MyParser.globalRecord.getClassRecord(type).getClassScope().getVariableSize() + "\n");
+        writer.write("sll $a0, $a0, 2\n");
+
+        //Call the function of "_new_array"
+        writer.write("li $v0, 9\n");
+        writer.write("syscall\n");
+        writer.write("lw $t0, 8($sp)\n");
+        writer.write("lw $t1, 4($sp)\n");
+
+        writer.write("lw $a0, 12($sp)\n");
+        writer.write("move " + result.getValue(curAddTable) + ", $v0\n");
+
+        writer.write("lw $v0, 0($sp)\n");
+        writer.write("lw $ra, 16($sp)\n");
+        writer.write("addi $sp, $sp, 20\n");
+    }
+
     private void labelDefine(LabelIRTuple q) throws IOException {
         writer.write(q.getArg0() + ":\n");
     }
 
-    private void unconditonalJump(UnconditionalJumpIRTuple instr) throws IOException {
+    private void unconditionalJump(UnconditionalJumpIRTuple instr) throws IOException {
 
         // op=label arg1=labelname
-        String instrMips = "j " + (String) instr.getArg1() + "\n";
+        String instrMips = "j " + instr.getArg1() + "\n";
         writer.write(instrMips);
 
     }
@@ -430,7 +488,8 @@ public class CodeGen {
             writer.write("sll $a0, $a0, 2\n");
 
         //Call the function of "_new_array"
-        writer.write("jal _new_array\n");
+        writer.write("li $v0, 9\n");
+        writer.write("syscall\n");
         writer.write("lw $t0, 8($sp)\n");
         writer.write("lw $t1, 4($sp)\n");
 
@@ -454,9 +513,14 @@ public class CodeGen {
         //Handle arg1 -- Store the first parameter in the result register
         if (arg1.type.equals("constant"))
             writer.write("li " + resultReg + ", " + arg1.getValue(curAddTable) + "\n");
-        else //Variable arg1
-            writer.write("move " + resultReg + ", " + arg1.getValue(curAddTable) + "\n");
+        else {//Variable arg1
+            Record record = currentScope.lookup(arg1.getValue(curAddTable));
+            if (record instanceof VariableRecord && ((VariableRecord) record).getVariableType() == JavaParser.Type.FLOAT)
+                writer.write("move.s " + resultReg + ", " + arg1.getValue(curAddTable) + "\n");
+            else
+                writer.write("move " + resultReg + ", " + arg1.getValue(curAddTable) + "\n");
 
+        }
         if (op.equals("!")) {
             String L1 = "_L1\n";
             String L2 = "_L2\n";
@@ -507,8 +571,9 @@ public class CodeGen {
         }
     }
 
-    private void functionCall(ThreeAddCode instr) throws IOException {
+    private void functionCall(FunctionCallIRTuple instr) throws IOException {
         String function = instr.getArg0().toString();
+        ArgumentVariable paramPos = new ArgumentVariable(instr.getArg1().toString());
         if (function.equals("exit")) {
             writer.write(HelperFunctions.printExitCode());
             return;
@@ -520,7 +585,7 @@ public class CodeGen {
         //Store $v0-$v1 on the stack for taking return value
         writer.write("sw $v0, 4($sp)\n");
         writer.write("sw $v1, 0($sp)\n");
-
+        writer.write("move $v0, " + paramPos.getValue(curAddTable));
         //Jump to the function
         writer.write("jal " + function + "\n");
 

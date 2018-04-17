@@ -24,13 +24,13 @@ public class MyParser {
         FileInputStream fileInputStream = new FileInputStream(INPUT_FILE);
         JavaLexer lexer = new JavaLexer(new ANTLRInputStream(fileInputStream));
 
+        writer = new BufferedWriter(new FileWriter("mips.s"));
         CommonTokenStream tokenStream = new CommonTokenStream(lexer);
         JavaParser parser = new JavaParser(tokenStream);
         JavaParser.GoalContext tree = parser.goal();
         ParseTreeWalker walker = new ParseTreeWalker();
         MyJavaListener listener = new MyJavaListener();
         walker.walk(listener, tree);
-        writer = new BufferedWriter(new FileWriter("mips.s"));
         codegen = new CodeGen();
         FullProgramRegAlloc f = new FullProgramRegAlloc(tree.codes, scopeMapping);
         f.FullRegAlloc();

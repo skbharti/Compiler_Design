@@ -239,10 +239,10 @@ public class MyJavaListener extends JavaBaseListener {
     public void exitParameterList(JavaParser.ParameterListContext ctx) {
 
         int child_count = ctx.getChildCount();
-        for (int i = 0; i < child_count; i++) {
+        for (int i = 0,paramNum=0; i < child_count; i++) {
             if (ctx.getChild(i).getClass().getSimpleName().equals("ParameterContext")) {
                 JavaParser.ParameterContext childParameter = (JavaParser.ParameterContext) ctx.getChild(i);
-                ctx.codes.addAll(childParameter.codes);
+                ctx.codes.add(new ParamInitIRTuple(childParameter.getChild(0).getText(),paramNum++, childParameter.getChild(1).getText()));
             }
         }
 
@@ -256,7 +256,6 @@ public class MyJavaListener extends JavaBaseListener {
     @Override
     public void exitParameter(JavaParser.ParameterContext ctx) {
 
-        ctx.codes.add(new ParamInitIRTuple(ctx.getChild(0).getText(), ctx.getChild(1).getText()));
     }
 
 
@@ -624,12 +623,12 @@ public class MyJavaListener extends JavaBaseListener {
     public void exitLtExpression(JavaParser.LtExpressionContext ctx) {
         JavaParser.ExpressionContext child1 = (JavaParser.ExpressionContext) ctx.getChild(0);
         JavaParser.ExpressionContext child2 = (JavaParser.ExpressionContext) ctx.getChild(2);
-        if (child1.type != JavaParser.Type.BOOLEAN && child1.type != JavaParser.Type.INT) {
+        if (child1.type != JavaParser.Type.BOOLEAN && child1.type != JavaParser.Type.INT && child1.type != JavaParser.Type.FLOAT) {
             printError(child1);
             errorFlag = true;
             return;
         }
-        if (child2.type != JavaParser.Type.BOOLEAN && child2.type != JavaParser.Type.INT) {
+        if (child2.type != JavaParser.Type.BOOLEAN && child2.type != JavaParser.Type.INT && child1.type != JavaParser.Type.FLOAT) {
             printError(child2);
             errorFlag = true;
             return;
@@ -695,10 +694,10 @@ public class MyJavaListener extends JavaBaseListener {
                 errorFlag = true;
                 return;
             }
-            dimensions[i]=Integer.parseInt(child.getText());
+            dimensions[i] = Integer.parseInt(child.getText());
             ctx.codes.addAll(child.codes);
         }
-        ctx.codes.add(new NewArrayIRTuple(ctx.place, ctx.getChild(1).getText(), Arrays.stream(dimensions).reduce((x,y)->x*y)));
+        ctx.codes.add(new NewArrayIRTuple(ctx.place, ctx.getChild(1).getText(), Arrays.stream(dimensions).reduce((x, y) -> x * y)));
         currentScope.insertArray(ctx.place, ctx.type, 1, dimensions);
 
     }
@@ -758,12 +757,14 @@ public class MyJavaListener extends JavaBaseListener {
         MethodRecord methodRecord = (MethodRecord) currentScope.lookup(ctx.getChild(0).getText());
 
         int child_count = ctx.getChildCount();
+        String parampos = getVar();
+        int paramNum = 0;
         for (int i = 0; i < child_count; i++) {
             //System.out.println(ctx.getChild(i).getClass().getSimpleName());
             if (ctx.getChild(i) instanceof JavaParser.ExpressionContext) {
                 JavaParser.ExpressionContext child = (JavaParser.ExpressionContext) ctx.getChild(i);
                 ctx.codes.addAll(child.codes);
-                ctx.codes.add(new ParamIRTuple(child.place, ctx.getChild(0)));
+                ctx.codes.add(new ParamIRTuple(child.place, paramNum++, parampos));
             } else if (ctx.getChild(i) instanceof JavaParser.ParameterListContext) {
                 JavaParser.ParameterListContext parameterListContext = (JavaParser.ParameterListContext) ctx.getChild(i);
                 if (parameterListContext.getChildCount() != methodRecord.getParamCount()) {
@@ -783,7 +784,10 @@ public class MyJavaListener extends JavaBaseListener {
 
         ctx.type = ((VariableRecord) currentScope.lookup(ctx.getChild(0).getText())).getVariableType();
         ctx.codes.add(new StoreStackIRTuple());
-        ctx.codes.add(new FunctionCallIRTuple(ctx.getChild(0).getText(), "null", ctx.place));
+        if (paramNum > 0)
+            ctx.codes.add(new FunctionCallIRTuple(ctx.getChild(0).getText(), parampos, ctx.place));
+        else
+            ctx.codes.add(new FunctionCallIRTuple(ctx.getChild(0).getText(), "null", ctx.place));
     }
 
 

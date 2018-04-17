@@ -12,16 +12,24 @@ public class Scope {
     public static final String METHOD = "method";
     public static final String BLOCK = "block";
     public static int stackPointerOffset = 0;
-
     public static int ScopeCounter = 0;
     public Scope parentScope;      // The scope inside which this scope lies.
     public String scopeType;        // scopeType can be global/function/block
-    protected HashMap<String, Record> symbolTable = new HashMap<String, Record>();
+    public HashMap<String, Record> symbolTable = new HashMap<String, Record>();
 
     public Scope(Scope parentScope, String scopeType) {
         this.parentScope = parentScope;
         this.scopeType = scopeType;
 
+    }
+
+    public int getVariableSize(){
+        int count =0;
+        for (String key: symbolTable.keySet()) {
+            if (symbolTable.get(key) instanceof ArrayRecord || symbolTable.get(key) instanceof VariableRecord)
+                count++;
+        }
+        return count;
     }
 
     public static String getScopeName() {

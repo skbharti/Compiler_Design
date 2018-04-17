@@ -29,7 +29,7 @@ public class Tables {
         AddressTable = new Hashtable<>();
         this.currentScope = currentScope;
         PrevAddressTable = new Hashtable<>();
-        InstrLiveness = new Liveness(Instr);
+        InstrLiveness = new Liveness(Instr,currentScope);
     }
 
 

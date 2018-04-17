@@ -2,11 +2,11 @@ package IRCode.src.IRCode;
 
 public class ParamIRTuple extends  ThreeAddCode{
 
-    public ParamIRTuple ( Object par , Object funcName ){
+    public ParamIRTuple ( Object par , Object paramNum, Object parampos){
         opcode = "Param";
         arg0 = par;
-        arg1 = funcName;
-        result = null;
+        arg1 = paramNum;
+        result = parampos;
     }
 
     @Override
