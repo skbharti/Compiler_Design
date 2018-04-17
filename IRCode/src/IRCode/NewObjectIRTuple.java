@@ -1,7 +1,7 @@
 package IRCode.src.IRCode;
 
 public class NewObjectIRTuple extends ThreeAddCode{
-    public NewObjectIRTuple(Object assignVariable, Object objectType, Object count){
+    public NewObjectIRTuple(String assignVariable, String objectType, String count){
         opcode = "new";
         arg0 = objectType;
         result = assignVariable;

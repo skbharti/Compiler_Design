@@ -2,7 +2,7 @@ package IRCode.src.IRCode;
 
 public class ParamInitIRTuple extends  ThreeAddCode{
 
-    public ParamInitIRTuple (Object type, Object offset ,  Object par ){
+    public ParamInitIRTuple (String type, String offset ,  String par ){
         opcode = "ParamInit";
         arg0 = offset;
         arg1 = type;

@@ -19,7 +19,7 @@ public class MyParser {
     public static HashMap<String,Scope> scopeMapping = new HashMap<>();
     public static Scope globalScope = new Scope(null, Scope.GLOBAL);
     public static Scope currentScope = globalScope;
-    public static GlobalRecord globalRecord = new GlobalRecord();;
+    public static GlobalRecord globalRecord = new GlobalRecord();
     public static void main(String args[]) throws Exception {
     FileInputStream fileInputStream = new FileInputStream(INPUT_FILE);
     JavaLexer lexer = new JavaLexer(new ANTLRInputStream(fileInputStream));

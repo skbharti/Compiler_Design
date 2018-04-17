@@ -1,0 +1,12 @@
+add, a, 2, 0
+add, b, 7, 0
+
+call, foo, null, null
+print, b
+call, exit, null,null
+
+
+label, foo
+add, a, a, -1
+is gt, a, 0, foo
+label, exit

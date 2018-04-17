@@ -23,13 +23,13 @@ public class Tables {
     private Scope currentScope;
 
 
-    public Tables(List<ThreeAddCode> Instr, Scope currentScope) {
+    public Tables(List<ThreeAddCode> Instr, Liveness liveness, Scope currentScope) {
         InstructionList = Instr;
         RegesterTable = new Hashtable<>();
         AddressTable = new Hashtable<>();
         this.currentScope = currentScope;
         PrevAddressTable = new Hashtable<>();
-        InstrLiveness = new Liveness(Instr,currentScope);
+        InstrLiveness = liveness;
     }
 
 
@@ -322,8 +322,8 @@ public class Tables {
                     MyParser.writer.write("sw " + ArgumentVariable.getRegName(PrevAddressTable.get(Key).getReg()) + " " + getStackPointer(Key, this.currentScope) + "($sp)" + "\n");
             }
 
-            String arg0 = (String) q.getArg0();
-            String arg1 = (String) q.getArg1();
+            String arg0 = q.getArg0();
+            String arg1 = q.getArg1();
             if (isVariable(arg0) && !PrevAddressTable.containsKey(arg0) && AddressTable.containsKey(arg0))
                 MyParser.writer.write("lw " + ArgumentVariable.getRegName(AddressTable.get(arg0).getReg()) + " " + getStackPointer(arg0,this.currentScope) + "($sp)" + "\n");
             if (isVariable(arg1) && !this.PrevAddressTable.containsKey(arg1) && AddressTable.containsKey(arg1))

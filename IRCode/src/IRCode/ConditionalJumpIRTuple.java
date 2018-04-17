@@ -2,14 +2,14 @@ package IRCode.src.IRCode;
 public class ConditionalJumpIRTuple extends ThreeAddCode
 {
 
-    public ConditionalJumpIRTuple(Object op, Object operand0, Object operand1, Object label) {
+    public ConditionalJumpIRTuple(String op, String operand0, String operand1, String label) {
         opcode = op;
         arg0 = operand0;             //x
         arg1 = operand1;        //goto
         result = label;       //LABEL
     }
 
-    public ConditionalJumpIRTuple(Object op, Object operand0, Object label) {
+    public ConditionalJumpIRTuple(String op, String operand0, String label) {
         opcode = op;
         arg0 = operand0;             //x
         arg1 = "null";        //goto

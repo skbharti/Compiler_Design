@@ -33,8 +33,8 @@ public class FullProgramRegAlloc
             for (int i = 0; i < BlocksList.size(); i++)
             {   List<ThreeAddCode> list =BlocksList.get(i).getListOfInstructions();
                 if (list.get(0) instanceof LabelIRTuple)
-                    currentScope = scopeMapping.get(((String)list.get(0).getArg0()).split("_")[1]);
-                Tables tb = new Tables(list,currentScope);
+                    currentScope = scopeMapping.get("_"+(list.get(0).getArg0()).split("_")[1]);
+                Tables tb = new Tables(list,lv,currentScope);
                 tb.RegisterAllocator();
             }
     }

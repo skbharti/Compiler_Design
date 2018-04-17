@@ -17,9 +17,9 @@ public class Liveness {
     Hashtable<String, List<Integer>> Used;
     Hashtable<String, List<Integer>> Defined;
     Hashtable<String, Integer> Arrays = new Hashtable<String, Integer>();
-    HashMap<String,Scope> scopeHashMap;
+    HashMap<String, Scope> scopeHashMap;
 
-    public Liveness(List<ThreeAddCode> Instr, HashMap<String,Scope> scopeHashMap) {
+    public Liveness(List<ThreeAddCode> Instr, HashMap<String, Scope> scopeHashMap) {
         InstructionList = Instr;
         this.scopeHashMap = scopeHashMap;
         Variables = new ArrayList<String>();
@@ -124,12 +124,15 @@ public class Liveness {
     }
 
     public void InsertInVariable(String var) {
-        boolean flag =false;
-        for (Scope scope: scopeHashMap.values()) {
-            if ((scope.lookup(var) instanceof VariableRecord)) {
-                flag =true;
-                break;
-            }
+        boolean flag = false;
+        try {
+            for (Scope scope : scopeHashMap.values())
+                if ((scope.lookup(var) instanceof VariableRecord)) {
+                    flag = true;
+                    break;
+                }
+        } catch (Exception e) {
+
         }
         if (!flag)
             return;

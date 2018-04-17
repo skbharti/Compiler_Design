@@ -1,7 +1,7 @@
 package IRCode.src.IRCode;
 public class NewArrayIRTuple extends ThreeAddCode {
 
-    public NewArrayIRTuple(Object assignVariable, Object arrayType, Object count){
+    public NewArrayIRTuple(String assignVariable, String arrayType, String count){
         opcode = "new";
         arg0 = arrayType;
         arg1 = count;

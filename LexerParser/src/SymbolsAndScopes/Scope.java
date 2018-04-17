@@ -1,6 +1,7 @@
 package src.SymbolsAndScopes;
 
 import src.JavaParser;
+import src.MyParser;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,16 +12,17 @@ public class Scope {
     public static final String CLASS = "class";
     public static final String METHOD = "method";
     public static final String BLOCK = "block";
-    public static int stackPointerOffset = 0;
-    public static int ScopeCounter = 0;
+    private int stackPointerOffset = 0;
+    private static int ScopeCounter = 0;
     public Scope parentScope;      // The scope inside which this scope lies.
     public String scopeType;        // scopeType can be global/function/block
     public HashMap<String, Record> symbolTable = new HashMap<String, Record>();
-
+    public String scopeName;
     public Scope(Scope parentScope, String scopeType) {
         this.parentScope = parentScope;
         this.scopeType = scopeType;
-
+        this.scopeName = getScopeName();
+        MyParser.scopeMapping.put(this.scopeName,this);
     }
 
     public int getVariableSize(){
@@ -32,8 +34,8 @@ public class Scope {
         return count;
     }
 
-    public static String getScopeName() {
-        return "scope" + ScopeCounter++;
+    private static String getScopeName() {
+        return "_scope" + ScopeCounter++;
     }
 
     public void insertMethod(String name, JavaParser.Type methodType, int pCount, List<JavaParser.Type> pType) {
@@ -82,14 +84,13 @@ public class Scope {
         return 1;
     }
 
-    public Record lookup(String name) {
+    public Record lookup(String name) throws Exception{
         if (symbolTable.containsKey(name)) {
             return symbolTable.get(name);
         } else if (parentScope != null)
             return parentScope.lookup(name);
         else {
-            System.err.println("Symbol table does not have the variable " + name);
-            return null;
+            throw new Exception("Symbol table does not have the variable" + name);
         }
     }
 }

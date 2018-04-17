@@ -3,40 +3,40 @@ package IRCode.src.IRCode;
 public class ThreeAddCode {
 
         // Operation result = arg0 op arg1
-        protected Object opcode;
-        protected Object result;
-        protected Object arg0;
-        protected Object arg1;
+        protected String opcode;
+        protected String result;
+        protected String arg0;
+        protected String arg1;
 
-    public Object getOpcode() {
+    public String getOpcode() {
         return opcode;
     }
 
-    public void setOpcode(Object opcode) {
+    public void setOpcode(String opcode) {
         this.opcode = opcode;
     }
 
-    public Object getResult() {
+    public String getResult() {
         return result;
     }
 
-    public void setResult(Object result) {
+    public void setResult(String result) {
         this.result = result;
     }
 
-    public Object getArg0() {
+    public String getArg0() {
         return arg0;
     }
 
-    public void setArg0(Object arg0) {
+    public void setArg0(String arg0) {
         this.arg0 = arg0;
     }
 
-    public Object getArg1() {
+    public String getArg1() {
         return arg1;
     }
 
-    public void setArg1(Object arg1) {
+    public void setArg1(String arg1) {
         this.arg1 = arg1;
     }
 }

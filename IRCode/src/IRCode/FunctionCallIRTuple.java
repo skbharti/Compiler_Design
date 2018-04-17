@@ -1,7 +1,7 @@
 package IRCode.src.IRCode;
 public class FunctionCallIRTuple extends ThreeAddCode {
 
-    public FunctionCallIRTuple(Object functionName, Object paramValue, Object returnValue){
+    public FunctionCallIRTuple(String functionName, String paramValue, String returnValue){
         opcode = "call";
         arg0 = functionName;
         arg1 = paramValue;

@@ -77,14 +77,14 @@ public class CodeGen {
 
     private void paramInit(ParamInitIRTuple instr) throws IOException{
         ArgumentVariable par = new ArgumentVariable(instr.getResult());
-        int offset = (int) instr.getArg0();
+        int offset =  Integer.parseInt(instr.getArg0());
         writer.write("lw "+par.getValue(curAddTable)+", "+offset*4+"($a0)");
 
     }
 
     private void param(ParamIRTuple instr) throws IOException {
         ArgumentVariable param = new ArgumentVariable(instr.getArg0());
-        int paramNum = (int) (instr.getArg1());
+        int paramNum = Integer.parseInt(instr.getArg1());
         ArgumentVariable paramPos = new ArgumentVariable(instr.getResult());
         writer.write("sw " + param.getValue(curAddTable)+", " + paramNum * 4 + "(" + paramPos.getValue(curAddTable) + ")\n");
     }
@@ -503,7 +503,7 @@ public class CodeGen {
     }
 
 
-    private void unaryAssignment(UnaryAssignmentIRTuple instr) throws IOException {
+    private void unaryAssignment(UnaryAssignmentIRTuple instr) throws Exception {
         String op = (String) instr.getOpcode();
 
         ArgumentVariable result = new ArgumentVariable(instr.getResult());

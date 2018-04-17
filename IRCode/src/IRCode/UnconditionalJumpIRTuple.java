@@ -1,7 +1,7 @@
 package IRCode.src.IRCode;
 public class UnconditionalJumpIRTuple extends ThreeAddCode{
 
-    public UnconditionalJumpIRTuple(Object label)
+    public UnconditionalJumpIRTuple(String label)
     {
         opcode = "goto";
         arg1 = null;

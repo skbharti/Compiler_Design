@@ -4,7 +4,7 @@ import static IRCode.src.helperclasses.Constants.*;
 
 public class ArrayAssignmentIRTuple extends ThreeAddCode {
 
-    public ArrayAssignmentIRTuple(Object assignType, Object pointer, Object index, Object assignVariable){
+    public ArrayAssignmentIRTuple(String assignType, String pointer, String index, String assignVariable){
         opcode = assignType;
         arg0 = pointer;
         arg1 = index;

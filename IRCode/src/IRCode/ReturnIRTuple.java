@@ -9,7 +9,7 @@ public class ReturnIRTuple extends ThreeAddCode{
         result = null;
     }
 
-    public ReturnIRTuple(Object a0){
+    public ReturnIRTuple(String a0){
         opcode = "return";
         arg0 = a0;
         arg1 = null;

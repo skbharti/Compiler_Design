@@ -5,7 +5,7 @@ public class UnaryAssignmentIRTuple extends ThreeAddCode {
 
 
     // op a0 res    =>   res = ++ a0
-    public UnaryAssignmentIRTuple(Object operator, Object operand, Object assignVariable){
+    public UnaryAssignmentIRTuple(String operator, String operand, String assignVariable){
         opcode = operator;
         arg0 = operand;
         arg1 = null;

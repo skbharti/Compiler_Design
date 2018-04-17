@@ -2,7 +2,7 @@ package IRCode.src.IRCode;
 
 public class LabelIRTuple extends ThreeAddCode {
 
-    public LabelIRTuple(Object labelName){
+    public LabelIRTuple(String labelName){
         arg0 = labelName;
     }
 

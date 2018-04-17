@@ -1,7 +1,7 @@
 package IRCode.src.IRCode;
 public class PrintIRTuple extends ThreeAddCode {
 
-    public PrintIRTuple(Object dataType, Object value){
+    public PrintIRTuple(String dataType, String value){
         opcode = dataType;
         arg0 = value;
         arg1 = null;

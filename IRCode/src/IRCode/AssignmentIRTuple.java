@@ -2,7 +2,7 @@ package IRCode.src.IRCode;
 
 public class AssignmentIRTuple extends ThreeAddCode {
 
-    public AssignmentIRTuple(Object op, Object assignVariable, Object oprand0, Object oprand1){
+    public AssignmentIRTuple(String op, String assignVariable, String oprand0, String oprand1){
         opcode = op;
         arg0 = oprand0;
         arg1 = oprand1;
