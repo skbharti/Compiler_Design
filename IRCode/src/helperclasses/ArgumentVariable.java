@@ -1,7 +1,6 @@
 package IRCode.src.helperclasses;
 
 import IRCode.src.FlowGraph.AddrTableEntry;
-import IRCode.src.IRCode.MainClass;
 
 import java.io.BufferedWriter;
 import java.io.IOException;

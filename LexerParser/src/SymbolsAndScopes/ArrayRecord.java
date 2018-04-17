@@ -8,11 +8,13 @@ public class ArrayRecord extends Record {
     public JavaParser.Type arrayType;
     public int arrayDim;
     public List<String> dimLengthVar;
+    public int stackPointerOffset;
 
-    public ArrayRecord(JavaParser.Type type, int dim, List<String> dimLenVar){
+    public ArrayRecord(JavaParser.Type type, int dim, List<String> dimLenVar, int stackPointerOffset){
         this.arrayType = type;
         this.arrayDim = dim;
         this.dimLengthVar = dimLenVar;
+        this.stackPointerOffset = stackPointerOffset;
     }
 
     public int getArrayDim() {
