@@ -692,15 +692,12 @@ public class MyJavaListener extends JavaBaseListener {
             //type casting can be implemented here!
         }
         int[] dimensions = new int[lhsDim];
-        for (int i = 0; 3 * i < ctx.getChildCount(); i++) {
-            JavaParser.ExpressionContext child = (JavaParser.ExpressionContext) ctx.getChild(3 * i + 3);
-            if (child.type != JavaParser.Type.INT) {
-                printError(child);
-                errorFlag = true;
-                return;
+        int j = 0;
+        for (int i = 1; i < ctx.getChildCount(); i++) {
+            if(ctx.getChild(i-1).getText().equals("[")){
+                dimensions[j] = Integer.parseInt(ctx.getChild(i).getText());
+                j++;
             }
-            dimensions[i]=Integer.parseInt(child.getText());
-            ctx.codes.addAll(child.codes);
         }
         ctx.codes.add(new NewArrayIRTuple(ctx.place, ctx.getChild(1).getText(), Arrays.stream(dimensions).reduce((x,y)->x*y)));
         currentScope.insertArray(ctx.place, ctx.type, 1, dimensions);

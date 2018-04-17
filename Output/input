@@ -1,0 +1,22 @@
+class ABC{
+
+    public static void main(String[] args)
+    {{
+        int[] b;
+        int c;
+        b = new int[100];
+        c = 3;
+        while (c < 5)
+        {
+            c = c + 1;
+        }
+
+
+    }}
+
+}
+class BCD{
+    int a;
+    int b;
+}
+
