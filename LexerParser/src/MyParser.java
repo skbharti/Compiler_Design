@@ -61,6 +61,30 @@ public class MyParser {
 //        }
 
         writer.close();
+        sentence = "<p> "+JavaParser.GoalContext.class.getSimpleName()+" </p>";
+
+        try {
+            writer = new BufferedWriter(new FileWriter("tree_output.html"));
+            writer.write("<!DOCTYPE html>\n" +
+                    "<html>\n" +
+                    "<body>\n");
+        }
+        catch (Exception e){
+            System.out.println("Output File Not Found Error!");
+        }
+
+        walker.walk(listener,tree);
+
+        try {
+            writer.write(sentence);
+            writer.write("</body>\n" +
+                    "</html>");
+            writer.close();
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
         System.out.println("Derivation Generated. Kindly check root folder for html file!");
     }
 

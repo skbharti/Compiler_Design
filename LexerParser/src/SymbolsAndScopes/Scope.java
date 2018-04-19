@@ -12,16 +12,29 @@ public class Scope {
     public static final String CLASS = "class";
     public static final String METHOD = "method";
     public static final String BLOCK = "block";
+    public JavaParser.Type classType;
     private int stackPointerOffset = 0;
     private static int ScopeCounter = 0;
     public Scope parentScope;      // The scope inside which this scope lies.
     public String scopeType;        // scopeType can be global/function/block
     public HashMap<String, Record> symbolTable = new HashMap<String, Record>();
     public String scopeName;
-    public Scope(Scope parentScope, String scopeType) {
+
+    public Scope(Scope parentScope, String scopeType){
+        if(parentScope!=null){
+            System.err.println("ClassType must be passed to child scope");
+        }
         this.parentScope = parentScope;
         this.scopeType = scopeType;
         this.scopeName = getScopeName();
+        MyParser.scopeMapping.put(this.scopeName,this);
+    }
+
+    public Scope(Scope parentScope, String scopeType, JavaParser.Type classType) {
+        this.parentScope = parentScope;
+        this.scopeType = scopeType;
+        this.scopeName = getScopeName();
+        this.classType = classType;
         MyParser.scopeMapping.put(this.scopeName,this);
     }
 

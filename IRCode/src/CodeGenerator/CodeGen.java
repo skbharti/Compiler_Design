@@ -107,10 +107,8 @@ public class CodeGen {
 
         if (arg0.type.equals("constant")) {
             writer.write(HelperFunctions.printIntegerFromString(arg0.getValue(curAddTable)));
-            writer.write(HelperFunctions.printString("newline"));
         } else if (!arg0.getValue(curAddTable).equals("null")) {
             writer.write(HelperFunctions.printIntegerFromRegister(arg0.getValue(curAddTable)));
-            writer.write(HelperFunctions.printString("newline"));
         } else {
             System.out.println("error in arguments to print");
             writer.write(HelperFunctions.printExitCode()); //Error

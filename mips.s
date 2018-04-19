@@ -72,9 +72,6 @@ sw $v1, 0($sp)
 li $v0, 1
 move $a0, $t1
 syscall
-li $v0, 4
-la $a0, newline
-syscall
 lw $v0, 4($sp)
 lw $v1, 0($sp)
 lw $a0, 8($sp)

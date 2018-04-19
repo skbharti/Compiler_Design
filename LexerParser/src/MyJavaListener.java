@@ -57,8 +57,12 @@ public class MyJavaListener extends JavaBaseListener {
             case "char":
                 return arr ? JavaParser.Type.CHAR_ARR : JavaParser.Type.CHAR;
             default:
-                System.out.println("Error in type");
-                return JavaParser.Type.VOID;
+                JavaParser.Type classType = MyParser.globalRecord.getClassRecord("class"+type).getClassType();
+                if(classType!=null)
+                    return classType;
+                else
+                    System.err.println("Class type not found");
+                    return JavaParser.Type.VOID;
         }
     }
 
@@ -100,8 +104,9 @@ public class MyJavaListener extends JavaBaseListener {
         int numOfClass = ctx.getChildCount() - 1;
         for (int i = 0; i < numOfClass; i++) {
             // Create new scope for every class, with scopeType classClassName. For every class, a classRecord is pushed to global scope to maintain a reference to that classScope.
-            Scope classScope = new Scope(currentScope, Scope.CLASS + ctx.getChild(i).getChild(1).getText());
-            ClassRecord classRecord = new ClassRecord(classScope);
+            JavaParser.Type classType = JavaParser.Type.getType(i+1);
+            Scope classScope = new Scope(currentScope, Scope.CLASS + ctx.getChild(i).getChild(1).getText(), classType);
+            ClassRecord classRecord = new ClassRecord(classScope, classType);
             globalRecord.insertClassRecord(Scope.CLASS + ctx.getChild(i).getChild(1).getText(), classRecord);
         }
 
@@ -110,17 +115,16 @@ public class MyJavaListener extends JavaBaseListener {
 
     @Override
     public void exitGoal(JavaParser.GoalContext ctx) {
-
-        JavaParser.MainClassContext child0 = (JavaParser.MainClassContext) ctx.getChild(0);
-        ctx.codes.addAll(child0.codes);
-        ctx.codes.add(new ExitIRTuple());
         int count = ctx.getChildCount();
 
-        for (int i = 1; i < count - 1; i++) {
+        for (int i = 0; i < count - 2; i++) {
             JavaParser.ClassDeclarationContext child1 = (JavaParser.ClassDeclarationContext) ctx.getChild(i);
             ctx.codes.addAll(child1.codes);
         }
 
+        JavaParser.MainClassContext mainClass = (JavaParser.MainClassContext) ctx.getChild(count-2);
+        ctx.codes.addAll(mainClass.codes);
+        ctx.codes.add(new ExitIRTuple());
     }
 
 
@@ -212,7 +216,7 @@ public class MyJavaListener extends JavaBaseListener {
         } else {
             currentScope.insertMethod(ctx.getChild(2).getText(), getType(ctx.getChild(1).getText()), 0, null);
         }
-        Scope methodScope = new Scope(currentScope, Scope.METHOD);
+        Scope methodScope = new Scope(currentScope, Scope.METHOD, currentScope.classType);
         ctx.codes.add(new ScopeChangeIRTuple("false", methodScope.scopeName, currentScope.scopeName));
         currentScope = methodScope;
     }
@@ -423,7 +427,7 @@ public class MyJavaListener extends JavaBaseListener {
     public void enterWhileStatement(JavaParser.WhileStatementContext ctx) {
         JavaParser.ExpressionContext child2 = (JavaParser.ExpressionContext) ctx.getChild(2);
         child2.place = getVar();
-        Scope blockScope = new Scope(currentScope, Scope.BLOCK);
+        Scope blockScope = new Scope(currentScope, Scope.BLOCK, currentScope.classType);
         ctx.codes.add(new ScopeChangeIRTuple("false", blockScope.scopeName, currentScope.scopeName));
         currentScope = blockScope;
     }
@@ -457,7 +461,7 @@ public class MyJavaListener extends JavaBaseListener {
     public void enterForStatement(JavaParser.ForStatementContext ctx) {
         JavaParser.ExpressionContext child4 = (JavaParser.ExpressionContext) ctx.getChild(4);
         child4.place = getVar();
-        Scope blockScope = new Scope(currentScope, Scope.BLOCK);
+        Scope blockScope = new Scope(currentScope, Scope.BLOCK, currentScope.classType);
         ctx.codes.add(new ScopeChangeIRTuple("false", blockScope.scopeName, currentScope.scopeName));
         currentScope = blockScope;
     }
@@ -506,7 +510,9 @@ public class MyJavaListener extends JavaBaseListener {
 
         JavaParser.ExpressionContext child1 = (JavaParser.ExpressionContext) ctx.getChild(2);
         ctx.codes.addAll(child1.codes);
-        if (child1.type == JavaParser.Type.CLASS || JavaParser.Type.ARRAY.contains(child1.type)) {
+
+        // checkpoint whether any class type or current class type
+        if (JavaParser.Type.isClassType(child1.type) || JavaParser.Type.ARRAY.contains(child1.type)) {
             printError(child1);
             errorFlag = true;
             return;
@@ -594,7 +600,7 @@ public class MyJavaListener extends JavaBaseListener {
 
     @Override
     public void enterIfBlock(JavaParser.IfBlockContext ctx) {
-        Scope blockScope = new Scope(currentScope, Scope.BLOCK);
+        Scope blockScope = new Scope(currentScope, Scope.BLOCK, currentScope.classType);
         ctx.codes.add(new ScopeChangeIRTuple("false", blockScope.scopeName, currentScope.scopeName));
         currentScope = blockScope;
     }
@@ -613,7 +619,7 @@ public class MyJavaListener extends JavaBaseListener {
 
     @Override
     public void enterElseBlock(JavaParser.ElseBlockContext ctx) {
-        Scope blockScope = new Scope(currentScope, Scope.BLOCK);
+        Scope blockScope = new Scope(currentScope, Scope.BLOCK, currentScope.classType);
         ctx.codes.add(new ScopeChangeIRTuple("false", blockScope.scopeName, currentScope.scopeName));
         currentScope = blockScope;
     }
@@ -631,7 +637,7 @@ public class MyJavaListener extends JavaBaseListener {
 
     @Override
     public void enterWhileBlock(JavaParser.WhileBlockContext ctx) {
-        Scope blockScope = new Scope(currentScope, Scope.BLOCK);
+        Scope blockScope = new Scope(currentScope, Scope.BLOCK, currentScope.classType);
         ctx.codes.add(new ScopeChangeIRTuple("false", blockScope.scopeName, currentScope.scopeName));
         currentScope = blockScope;
     }
@@ -685,6 +691,18 @@ public class MyJavaListener extends JavaBaseListener {
 
     @Override
     public void exitObjectInstantiationExpression(JavaParser.ObjectInstantiationExpressionContext ctx) {
+        JavaParser.Type lhsType = null;
+        try {
+             lhsType = ((VariableRecord) currentScope.lookup(ctx.parent.getChild(0).getText())).getVariableType();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Class Object not declared before.");
+        }
+        JavaParser.Type rhsType = getType(ctx.getChild(1).getText());
+        if(lhsType!=rhsType)
+            System.err.println("Object assignment type not matching!");
+
+        ctx.type = lhsType;
     }
 
 
@@ -737,6 +755,51 @@ public class MyJavaListener extends JavaBaseListener {
         }
         //currentScope.insertArray(ctx.place, ctx.type, 1, dimensions);
 
+    }
+
+    @Override public void enterObjectMethodCallExpression(JavaParser.ObjectMethodCallExpressionContext ctx) { }
+
+    @Override public void exitObjectMethodCallExpression(JavaParser.ObjectMethodCallExpressionContext ctx) {
+        int childCount = ctx.getChildCount();
+        for(int i=0; i < childCount; i+=2){
+            // check whether identifier is an object
+            if(i<childCount-1){
+                String identifier = ctx.getChild(i).getText();
+                try {
+                    JavaParser.Type type = ((VariableRecord) currentScope.lookup(identifier)).getVariableType();
+                    ctx.codes.add(new ScopeChangeIRTuple("false", type.name(), currentScope.classType.name()));
+                } catch (Exception e) {
+                    System.err.println(e);
+                    printError(ctx);
+                    errorFlag = true;
+                    return;
+                }
+            }
+        }
+    }
+
+
+    @Override public void enterObjectVariableReferenceExpression(JavaParser.ObjectVariableReferenceExpressionContext ctx) { }
+
+    @Override public void exitObjectVariableReferenceExpression(JavaParser.ObjectVariableReferenceExpressionContext ctx) {
+        int childCount = ctx.getChildCount();
+
+        for(int i=0; i < childCount; i+=2){
+            // check whether identifier is an object
+            if(i<childCount-1){
+                String identifier = ctx.getChild(i).getText();
+                try {
+                    JavaParser.Type type = ((VariableRecord) currentScope.lookup(identifier)).getVariableType();
+                    ctx.codes.add(new ScopeChangeIRTuple("false", type.name(), currentScope.classType.name()));
+                } catch (Exception e) {
+                    System.err.println(e);
+                    printError(ctx);
+                    errorFlag = true;
+                    return;
+                }
+            }
+
+        }
     }
 
 
