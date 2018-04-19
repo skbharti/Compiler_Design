@@ -3,7 +3,6 @@ package src.SymbolsAndScopes;
 import src.JavaParser;
 import src.MyParser;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 

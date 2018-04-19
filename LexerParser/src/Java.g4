@@ -94,8 +94,14 @@ expression
 :   Identifier LSB expression RSB ( LSB expression RSB )*
 # arrayAccessExpression
 
-|   Identifier '(' ( expression ( ',' expression )* )? ')'
+|  Identifier '(' expression ( ',' expression )* ')'
 # methodCallExpression
+
+|  Identifier REF Identifier( REF Identifier)* '(' expression ( ',' expression )* ')'
+# objectMethodCallExpression
+
+|  Identifier REF Identifier( REF Identifier)*
+# objectVariableReferenceExpression
 
 |   NOT expression
 # notExpression
@@ -175,6 +181,7 @@ LP:'(';
 RP:')';
 RETURN: 'return';
 EQ: '=';
+REF:'.';
 
 BooleanLiteral
 :	'true'

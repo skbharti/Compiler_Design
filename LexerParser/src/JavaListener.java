@@ -398,6 +398,18 @@ public interface JavaListener extends ParseTreeListener {
 	 */
 	void exitDecLitExpression(JavaParser.DecLitExpressionContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code objectMethodCallExpression}
+	 * labeled alternative in {@link JavaParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterObjectMethodCallExpression(JavaParser.ObjectMethodCallExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code objectMethodCallExpression}
+	 * labeled alternative in {@link JavaParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitObjectMethodCallExpression(JavaParser.ObjectMethodCallExpressionContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code gteExpression}
 	 * labeled alternative in {@link JavaParser#expression}.
 	 * @param ctx the parse tree
@@ -481,6 +493,18 @@ public interface JavaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitLteExpression(JavaParser.LteExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code objectVariableReferenceExpression}
+	 * labeled alternative in {@link JavaParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterObjectVariableReferenceExpression(JavaParser.ObjectVariableReferenceExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code objectVariableReferenceExpression}
+	 * labeled alternative in {@link JavaParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitObjectVariableReferenceExpression(JavaParser.ObjectVariableReferenceExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code subExpression}
 	 * labeled alternative in {@link JavaParser#expression}.

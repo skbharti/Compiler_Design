@@ -436,6 +436,18 @@ public class JavaBaseListener implements JavaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterObjectMethodCallExpression(JavaParser.ObjectMethodCallExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitObjectMethodCallExpression(JavaParser.ObjectMethodCallExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterGteExpression(JavaParser.GteExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -515,6 +527,18 @@ public class JavaBaseListener implements JavaListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitLteExpression(JavaParser.LteExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterObjectVariableReferenceExpression(JavaParser.ObjectVariableReferenceExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitObjectVariableReferenceExpression(JavaParser.ObjectVariableReferenceExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

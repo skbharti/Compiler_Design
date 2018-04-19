@@ -241,6 +241,13 @@ public interface JavaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDecLitExpression(JavaParser.DecLitExpressionContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code objectMethodCallExpression}
+	 * labeled alternative in {@link JavaParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitObjectMethodCallExpression(JavaParser.ObjectMethodCallExpressionContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code gteExpression}
 	 * labeled alternative in {@link JavaParser#expression}.
 	 * @param ctx the parse tree
@@ -289,6 +296,13 @@ public interface JavaVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitLteExpression(JavaParser.LteExpressionContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code objectVariableReferenceExpression}
+	 * labeled alternative in {@link JavaParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitObjectVariableReferenceExpression(JavaParser.ObjectVariableReferenceExpressionContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code subExpression}
 	 * labeled alternative in {@link JavaParser#expression}.
