@@ -21,8 +21,7 @@ class ABC{
         {
             c = c + 1;
         }
-
-
+        c1 = new CDE();
     }}
 
 }

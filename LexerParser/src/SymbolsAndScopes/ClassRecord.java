@@ -20,4 +20,8 @@ public class ClassRecord extends Record {
     public Scope getClassScope() {
         return classScope;
     }
+
+    public JavaParser.Type getClassType() {
+        return classType;
+    }
 }

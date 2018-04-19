@@ -55,8 +55,12 @@ public class MyJavaListener extends JavaBaseListener {
             case "char":
                 return arr ? JavaParser.Type.CHAR_ARR : JavaParser.Type.CHAR;
             default:
-                System.out.println("Error in type");
-                return JavaParser.Type.VOID;
+                JavaParser.Type classType = MyParser.globalRecord.getClassRecord("class"+type).getClassType();
+                if(classType!=null)
+                    return classType;
+                else
+                    System.err.println("Class type not found");
+                    return JavaParser.Type.VOID;
         }
     }
 
@@ -685,6 +689,18 @@ public class MyJavaListener extends JavaBaseListener {
 
     @Override
     public void exitObjectInstantiationExpression(JavaParser.ObjectInstantiationExpressionContext ctx) {
+        JavaParser.Type lhsType = null;
+        try {
+             lhsType = ((VariableRecord) currentScope.lookup(ctx.parent.getChild(0).getText())).getVariableType();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Class Object not declared before.");
+        }
+        JavaParser.Type rhsType = getType(ctx.getChild(1).getText());
+        if(lhsType!=rhsType)
+            System.err.println("Object assignment type not matching!");
+
+        ctx.type = lhsType;
     }
 
 

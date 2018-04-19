@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="060f4d86-df81-436c-a53d-bed20c377005" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/LexerParser/src/Java.g4" afterPath="$PROJECT_DIR$/LexerParser/src/Java.g4" />
-      <change beforePath="$PROJECT_DIR$/LexerParser/src/JavaParser.java" afterPath="$PROJECT_DIR$/LexerParser/src/JavaParser.java" />
       <change beforePath="$PROJECT_DIR$/LexerParser/src/MyJavaListener.java" afterPath="$PROJECT_DIR$/LexerParser/src/MyJavaListener.java" />
-      <change beforePath="$PROJECT_DIR$/LexerParser/src/MyParser.java" afterPath="$PROJECT_DIR$/LexerParser/src/MyParser.java" />
-      <change beforePath="$PROJECT_DIR$/LexerParser/src/SymbolsAndScopes/ClassRecord.java" afterPath="$PROJECT_DIR$/LexerParser/src/SymbolsAndScopes/ClassRecord.java" />
-      <change beforePath="$PROJECT_DIR$/LexerParser/src/SymbolsAndScopes/GlobalRecord.java" afterPath="$PROJECT_DIR$/LexerParser/src/SymbolsAndScopes/GlobalRecord.java" />
       <change beforePath="$PROJECT_DIR$/input" afterPath="$PROJECT_DIR$/input" />
       <change beforePath="$PROJECT_DIR$/mips.s" afterPath="$PROJECT_DIR$/mips.s" />
       <change beforePath="$PROJECT_DIR$/tree_output.html" afterPath="$PROJECT_DIR$/tree_output.html" />
@@ -26,13 +21,13 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.3473054">
+    <splitter split-orientation="horizontal" split-proportion="0.5614653">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="StoreStackIRTuple.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/StoreStackIRTuple.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
+                <state relative-caret-position="138">
                   <caret line="8" column="27" lean-forward="false" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
                   <folding />
                 </state>
@@ -49,12 +44,25 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="MyJavaListener.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="MyJavaListener.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/LexerParser/src/MyJavaListener.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="444">
-                  <caret line="118" column="98" lean-forward="false" selection-start-line="118" selection-start-column="98" selection-end-line="118" selection-end-column="98" />
+                <state relative-caret-position="6712">
+                  <caret line="531" column="0" lean-forward="false" selection-start-line="531" selection-start-column="0" selection-end-line="531" selection-end-column="0" />
                   <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="VariableRecord.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/LexerParser/src/SymbolsAndScopes/VariableRecord.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="276">
+                  <caret line="12" column="27" lean-forward="false" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
+                  <folding>
+                    <element signature="e#388#389#0" expanded="true" />
+                    <element signature="e#423#424#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -87,8 +95,8 @@
           <file leaf-file-name="JavaParser.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/LexerParser/src/JavaParser.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="480">
-                  <caret line="1840" column="25" lean-forward="false" selection-start-line="1840" selection-start-column="25" selection-end-line="1840" selection-end-column="25" />
+                <state relative-caret-position="288">
+                  <caret line="1324" column="0" lean-forward="false" selection-start-line="1324" selection-start-column="0" selection-end-line="1324" selection-end-column="0" />
                   <folding>
                     <element signature="e#384#453#0" expanded="true" />
                     <element signature="e#3935#3936#0" expanded="true" />
@@ -503,19 +511,12 @@
           <file leaf-file-name="ClassRecord.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/LexerParser/src/SymbolsAndScopes/ClassRecord.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="69">
-                  <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="input" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/input">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="368">
-                  <caret line="16" column="15" lean-forward="false" selection-start-line="16" selection-start-column="15" selection-end-line="16" selection-end-column="15" />
-                  <folding />
+                <state relative-caret-position="460">
+                  <caret line="24" column="8" lean-forward="false" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="25" />
+                  <folding>
+                    <element signature="e#555#556#0" expanded="true" />
+                    <element signature="e#587#588#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -526,7 +527,17 @@
         <splitter split-orientation="vertical" split-proportion="0.4912764">
           <split-first>
             <leaf>
-              <file leaf-file-name="Scope.java" pinned="false" current-in-tab="true">
+              <file leaf-file-name="input" pinned="false" current-in-tab="true">
+                <entry file="file://$PROJECT_DIR$/input">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="529">
+                      <caret line="23" column="23" lean-forward="false" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="Scope.java" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/LexerParser/src/SymbolsAndScopes/Scope.java">
                   <provider selected="true" editor-type-id="text-editor">
                     <state relative-caret-position="391">
@@ -540,21 +551,21 @@
           </split-first>
           <split-second>
             <leaf>
-              <file leaf-file-name="Java.g4" pinned="false" current-in-tab="false">
+              <file leaf-file-name="Java.g4" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/LexerParser/src/Java.g4">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="69">
-                      <caret line="3" column="32" lean-forward="false" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
+                    <state relative-caret-position="-531">
+                      <caret line="75" column="15" lean-forward="false" selection-start-line="75" selection-start-column="9" selection-end-line="75" selection-end-column="15" />
                       <folding />
                     </state>
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="tree_output.html" pinned="false" current-in-tab="true">
+              <file leaf-file-name="tree_output.html" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/tree_output.html">
                   <provider selected="true" editor-type-id="text-editor">
                     <state relative-caret-position="92">
-                      <caret line="4" column="7" lean-forward="true" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
+                      <caret line="50" column="7" lean-forward="false" selection-start-line="50" selection-start-column="7" selection-end-line="50" selection-end-column="7" />
                       <folding />
                     </state>
                   </provider>
@@ -575,14 +586,10 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>class</find>
-      <find>typedim</find>
-      <find>entertype</find>
       <find>dim</find>
       <find>lengthof</find>
       <find>arrayDim</find>
       <find>arratin</find>
-      <find>express</find>
       <find>variablea</find>
       <find>varde</find>
       <find>expression</find>
@@ -597,14 +604,18 @@
       <find>method</find>
       <find>metho</find>
       <find>methodcall</find>
-      <find>object</find>
       <find>lookup</find>
       <find>objectva</find>
       <find>new Scope</find>
       <find>CLASS[0-9]+</find>
       <find>(CLASS[0-9]+)</find>
       <find>look</find>
+      <find>error in</find>
+      <find>object</find>
       <find>vardec</find>
+      <find>objectin</find>
+      <find>printerror</find>
+      <find>express</find>
     </findStrings>
     <replaceStrings>
       <replace>JavaParser</replace>
@@ -660,13 +671,13 @@
         <option value="$PROJECT_DIR$/IRCode/src/IRCode/ExitIRTuple.java" />
         <option value="$PROJECT_DIR$/IRCode/src/CodeGenerator/CodeGen.java" />
         <option value="$PROJECT_DIR$/LexerParser/src/SymbolsAndScopes/Scope.java" />
-        <option value="$PROJECT_DIR$/LexerParser/src/SymbolsAndScopes/ClassRecord.java" />
         <option value="$PROJECT_DIR$/LexerParser/src/Java.g4" />
         <option value="$PROJECT_DIR$/LexerParser/src/JavaParser.java" />
         <option value="$PROJECT_DIR$/LexerParser/src/SymbolsAndScopes/GlobalRecord.java" />
-        <option value="$PROJECT_DIR$/LexerParser/src/MyJavaListener.java" />
         <option value="$PROJECT_DIR$/LexerParser/src/MyParser.java" />
+        <option value="$PROJECT_DIR$/LexerParser/src/SymbolsAndScopes/ClassRecord.java" />
         <option value="$PROJECT_DIR$/input" />
+        <option value="$PROJECT_DIR$/LexerParser/src/MyJavaListener.java" />
       </list>
     </option>
   </component>
@@ -873,7 +884,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="30" width="3200" height="1770" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -884,10 +894,10 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3294335" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294335" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Floobits" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294335" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3294335" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1128125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -971,23 +981,34 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/LexerParser/src/MyJavaListener.java</url>
-          <line>114</line>
+          <line>531</line>
           <properties />
-          <option name="timeStamp" value="36" />
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/LexerParser/src/MyJavaListener.java</url>
+          <line>536</line>
+          <properties />
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/LexerParser/src/MyJavaListener.java</url>
+          <line>540</line>
+          <properties />
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/LexerParser/src/MyJavaListener.java</url>
+          <line>546</line>
+          <properties />
+          <option name="timeStamp" value="51" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="37" />
+      <option name="time" value="52" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/LexerParser/src/SymbolsAndScopes/VariableRecord.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/LexerParser/src/SymbolsAndScopes/Record.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1189,7 +1210,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/StoreStackIRTuple.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="138">
           <caret line="8" column="27" lean-forward="false" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
           <folding />
         </state>
@@ -1253,6 +1274,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
           <caret line="71" column="33" lean-forward="false" selection-start-line="71" selection-start-column="33" selection-end-line="71" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1260,14 +1282,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
           <caret line="610" column="13" lean-forward="false" selection-start-line="610" selection-start-column="13" selection-end-line="610" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LexerParser/src/SymbolsAndScopes/ClassRecord.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1287,10 +1301,77 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/LexerParser/src/SymbolsAndScopes/GlobalRecord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="24" column="38" lean-forward="false" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
+          <folding>
+            <element signature="e#608#609#0" expanded="true" />
+            <element signature="e#666#667#0" expanded="true" />
+            <element signature="e#699#700#0" expanded="true" />
+            <element signature="e#744#745#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LexerParser/src/MyParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="667">
+          <caret line="38" column="48" lean-forward="false" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tree_output.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="50" column="7" lean-forward="false" selection-start-line="50" selection-start-column="7" selection-end-line="50" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LexerParser/src/SymbolsAndScopes/ClassRecord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="24" column="8" lean-forward="false" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="25" />
+          <folding>
+            <element signature="e#555#556#0" expanded="true" />
+            <element signature="e#587#588#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LexerParser/src/Java.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-531">
+          <caret line="75" column="15" lean-forward="false" selection-start-line="75" selection-start-column="9" selection-end-line="75" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/input">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="23" column="23" lean-forward="false" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LexerParser/src/SymbolsAndScopes/VariableRecord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="12" column="27" lean-forward="false" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
+          <folding>
+            <element signature="e#388#389#0" expanded="true" />
+            <element signature="e#423#424#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/LexerParser/src/JavaParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="1840" column="25" lean-forward="false" selection-start-line="1840" selection-start-column="25" selection-end-line="1840" selection-end-column="25" />
+        <state relative-caret-position="288">
+          <caret line="1324" column="0" lean-forward="false" selection-start-line="1324" selection-start-column="0" selection-end-line="1324" selection-end-column="0" />
           <folding>
             <element signature="e#384#453#0" expanded="true" />
             <element signature="e#3935#3936#0" expanded="true" />
@@ -1701,55 +1782,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LexerParser/src/SymbolsAndScopes/GlobalRecord.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="24" column="38" lean-forward="false" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
-          <folding>
-            <element signature="e#608#609#0" expanded="true" />
-            <element signature="e#666#667#0" expanded="true" />
-            <element signature="e#699#700#0" expanded="true" />
-            <element signature="e#744#745#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LexerParser/src/Java.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" column="32" lean-forward="false" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/LexerParser/src/MyJavaListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="118" column="98" lean-forward="false" selection-start-line="118" selection-start-column="98" selection-end-line="118" selection-end-column="98" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LexerParser/src/MyParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="667">
-          <caret line="38" column="48" lean-forward="false" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tree_output.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="7" lean-forward="true" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/input">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="16" column="15" lean-forward="false" selection-start-line="16" selection-start-column="15" selection-end-line="16" selection-end-column="15" />
+        <state relative-caret-position="6712">
+          <caret line="531" column="0" lean-forward="false" selection-start-line="531" selection-start-column="0" selection-end-line="531" selection-end-column="0" />
           <folding />
         </state>
       </provider>

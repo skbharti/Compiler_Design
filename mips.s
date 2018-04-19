@@ -103,5 +103,6 @@ addi $t0,null,0
 sw $t0, -12($sp)
 j null
 label1_scope4:
+addi $t0,null,0
 li $v0, 10 
 syscall
