@@ -1,15 +1,18 @@
 package src.SymbolsAndScopes;
 
+import src.JavaParser;
+
 import java.util.HashMap;
 
 public class ClassRecord extends Record {
     private Scope classScope;
-
+    private JavaParser.Type classType;
     public ClassRecord(){
     }
 
-    public ClassRecord(Scope classScope){
+    public ClassRecord(Scope classScope, JavaParser.Type classType){
         this.classScope = classScope;
+        this.classType = classType;
     }
 
     public void setClassScope(Scope classScope) {

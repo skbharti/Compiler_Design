@@ -3250,13 +3250,26 @@ public class JavaParser extends Parser {
 
 
     public enum Type {
-        INT, INT_ARR, FLOAT, FLOAT_ARR, CHAR, CHAR_ARR, BOOLEAN, BOOLEAN_ARR, VOID, CLASS;
+        INT, INT_ARR, FLOAT, FLOAT_ARR, CHAR, CHAR_ARR, BOOLEAN, BOOLEAN_ARR, VOID, CLASS1, CLASS2, CLASS3, CLASS4,
+        CLASS5, CLASS6, CLASS7, CLASS8, CLASS9, CLASS10, CLASS11, CLASS12, CLASS13, CLASS14, CLASS15, CLASS16, CLASS17,
+        CLASS18, CLASS19, CLASS20, CLASS21, CLASS22, CLASS23, CLASS24, CLASS25,  CLASS1_ARR, CLASS2_ARR, CLASS3_ARR, CLASS4_ARR,
+        CLASS5_ARR, CLASS6_ARR, CLASS7_ARR, CLASS8_ARR, CLASS9_ARR, CLASS10_ARR, CLASS11_ARR, CLASS12_ARR, CLASS13_ARR, CLASS14_ARR, CLASS15_ARR, CLASS16_ARR, CLASS17_ARR,
+        CLASS18_ARR, CLASS19_ARR, CLASS20_ARR, CLASS21_ARR, CLASS22_ARR, CLASS23_ARR, CLASS24_ARR, CLASS25_ARR;
 
         public String className = null;
-        public static EnumSet<JavaParser.Type> ARRAY = EnumSet.of(INT_ARR, FLOAT_ARR, BOOLEAN_ARR, CHAR_ARR);
-        public static EnumSet<JavaParser.Type> ARITHEMATIC = EnumSet.of(INT, FLOAT, BOOLEAN, CHAR);
+        public static EnumSet<Type> ARRAY = EnumSet.of(INT_ARR, FLOAT_ARR, BOOLEAN_ARR, CHAR_ARR, CLASS1_ARR, CLASS2_ARR, CLASS3_ARR, CLASS4_ARR,
+                CLASS5_ARR, CLASS6_ARR, CLASS7_ARR, CLASS8_ARR, CLASS9_ARR, CLASS10_ARR, CLASS11_ARR, CLASS12_ARR, CLASS13_ARR, CLASS14_ARR, CLASS15_ARR, CLASS16_ARR, CLASS17_ARR,
+                CLASS18_ARR, CLASS19_ARR, CLASS20_ARR, CLASS21_ARR, CLASS22_ARR, CLASS23_ARR, CLASS24_ARR, CLASS25_ARR);
+
+        public static EnumSet<Type> ARITHEMATIC = EnumSet.of(INT, FLOAT, BOOLEAN, CHAR);
         public static EnumSet<Type> CHARS = EnumSet.of(INT, BOOLEAN, CHAR);
-        public static EnumSet<JavaParser.Type> NON_ARRAY = EnumSet.of(INT, FLOAT, CHAR, BOOLEAN, CLASS);
+        public static EnumSet<Type> NON_ARRAY = EnumSet.of(INT, FLOAT, CHAR, BOOLEAN, CLASS1, CLASS2, CLASS3, CLASS4,
+                CLASS5, CLASS6, CLASS7, CLASS8, CLASS9, CLASS10, CLASS11, CLASS12, CLASS13, CLASS14, CLASS15, CLASS16, CLASS17,
+                CLASS18, CLASS19, CLASS20, CLASS21, CLASS22, CLASS23, CLASS24, CLASS25);
+        public static EnumSet<Type> CLASS = EnumSet.of(CLASS1, CLASS2, CLASS3, CLASS4,
+                CLASS5, CLASS6, CLASS7, CLASS8, CLASS9, CLASS10, CLASS11, CLASS12, CLASS13, CLASS14, CLASS15, CLASS16, CLASS17,
+                CLASS18, CLASS19, CLASS20, CLASS21, CLASS22, CLASS23, CLASS24, CLASS25);
+
         // Dynamic types also reuired!
         public static JavaParser.Type arrToNormal(JavaParser.Type type) {
             switch (type) {
@@ -3272,5 +3285,15 @@ public class JavaParser extends Parser {
                     return VOID;
             }
         }
+
+        public static Type getType(int i){
+            return Type.values()[8+i];
+        }
+
+        public static boolean isClassType(Type myType){
+            return CLASS.contains(myType);
+        }
+
+
     }
 }
