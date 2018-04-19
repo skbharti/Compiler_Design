@@ -20,4 +20,8 @@ public class GlobalRecord extends Record{
     public ClassRecord getClassRecord(String className){
         return this.classRecordList.get(className);
     }
+
+    public int getClassCount(){
+        return classRecordList.size();
+    }
 }

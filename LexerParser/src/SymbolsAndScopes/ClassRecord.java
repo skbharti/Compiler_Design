@@ -2,8 +2,6 @@ package src.SymbolsAndScopes;
 
 import src.JavaParser;
 
-import java.util.HashMap;
-
 public class ClassRecord extends Record {
     private Scope classScope;
     private JavaParser.Type classType;

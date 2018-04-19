@@ -1,9 +1,20 @@
+class CDE{
+    int b;
+    int c;
+    public int hello(){
+        c=2;
+        return c;
+    }
+
+}
+
 class ABC{
 
     public static void main(String[] args)
     {{
         int[][] b;
         int c;
+        CDE c1;
         b = new int[100][200];
         c = 3;
         while (c < 5)
@@ -13,15 +24,5 @@ class ABC{
 
 
     }}
-
-}
-
-class CDE{
-int b;
-int c;
-public int hello(){
-c=2;
-return c;
-}
 
 }

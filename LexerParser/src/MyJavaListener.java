@@ -8,7 +8,6 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 import src.SymbolsAndScopes.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.OptionalInt;
 import java.util.regex.Pattern;
@@ -110,17 +109,16 @@ public class MyJavaListener extends JavaBaseListener {
 
     @Override
     public void exitGoal(JavaParser.GoalContext ctx) {
-
-        JavaParser.MainClassContext child0 = (JavaParser.MainClassContext) ctx.getChild(0);
-        ctx.codes.addAll(child0.codes);
-        ctx.codes.add(new ExitIRTuple());
         int count = ctx.getChildCount();
 
-        for (int i = 1; i < count - 1; i++) {
+        for (int i = 0; i < count - 2; i++) {
             JavaParser.ClassDeclarationContext child1 = (JavaParser.ClassDeclarationContext) ctx.getChild(i);
             ctx.codes.addAll(child1.codes);
         }
 
+        JavaParser.MainClassContext mainClass = (JavaParser.MainClassContext) ctx.getChild(count-2);
+        ctx.codes.addAll(mainClass.codes);
+        ctx.codes.add(new ExitIRTuple());
     }
 
 

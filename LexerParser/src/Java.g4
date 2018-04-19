@@ -1,7 +1,7 @@
 grammar Java;
 
 goal
-:	mainClass classDeclaration* EOF
+:	classDeclaration* mainClass EOF
 ;
 
 
