@@ -166,7 +166,7 @@ public class CodeGen {
     private void unconditionalJump(UnconditionalJumpIRTuple instr) throws IOException {
 
         // op=label arg1=labelname
-        String instrMips = "j " + instr.getArg1() + "\n";
+        String instrMips = "j " + instr.getResult() + "\n";
         writer.write(instrMips);
 
     }

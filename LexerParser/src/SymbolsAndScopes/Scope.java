@@ -34,13 +34,22 @@ public class Scope {
         return count;
     }
 
+    public ArrayList<String> getVariables(){
+        ArrayList<String> varNames = new ArrayList<>();
+        for (String key: symbolTable.keySet()) {
+            if (symbolTable.get(key) instanceof ArrayRecord || symbolTable.get(key) instanceof VariableRecord)
+                varNames.add(key);
+        }
+        return varNames;
+    }
+
     private static String getScopeName() {
         return "_scope" + ScopeCounter++;
     }
 
     public void insertMethod(String name, JavaParser.Type methodType, int pCount, List<JavaParser.Type> pType) {
         if (symbolTable.containsKey(name)) {
-            System.err.println("Symbol table can't contain two same name variable.");
+            System.err.println("Symbol table can't contain two same name variable."+name);
             System.exit(1);
         }
         Record record = new MethodRecord(methodType, pCount, pType);
@@ -49,7 +58,7 @@ public class Scope {
 
     public void insertArray(String name, JavaParser.Type variableType, int dim, int[] dimLenVar) {
         if (symbolTable.containsKey(name)) {
-            System.err.println("Symbol table can't contain two same name variable.");
+            System.err.println("Symbol table can't contain two same name variable."+name);
             System.exit(1);
         }
         Record record = new ArrayRecord(variableType, dim, dimLenVar, stackPointerOffset);
@@ -63,7 +72,8 @@ public class Scope {
 
     public void insertVariable(String name, JavaParser.Type variableType) {
         if (symbolTable.containsKey(name)) {
-            System.err.println("Symbol table can't contain two same name variable.");
+
+            System.err.println("Symbol table can't contain two same name variable."+name);
             System.exit(1);
         }
         Record record = new VariableRecord(variableType, stackPointerOffset);
@@ -72,6 +82,7 @@ public class Scope {
         symbolTable.put(name, record);
     }
 
+
     public int lookupOffset(String name, int offset) {
         if (symbolTable.containsKey(name)) {
             Record record = symbolTable.get(name);
@@ -79,9 +90,13 @@ public class Scope {
                 return offset - 4 * symbolTable.size() + ((VariableRecord) record).stackPointerOffset;
             else if (record instanceof ArrayRecord)
                 return offset - 4 * symbolTable.size() + ((ArrayRecord) record).stackPointerOffset;
-        } else if (parentScope != null)
+            else return 1;
+        } else if (parentScope != null) {
             return parentScope.lookupOffset(name, offset - 4 * symbolTable.size());
-        return 1;
+        }
+        else {
+            return 1;
+        }
     }
 
     public Record lookup(String name) throws Exception{

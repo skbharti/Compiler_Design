@@ -32,7 +32,9 @@ public class MyJavaListener extends JavaBaseListener {
 
 
     public String getVar() {
-        return "var" + tempCounter++;
+        String name = "var" + (tempCounter++) +"0000"+ currentScope.scopeName;
+        currentScope.insertVariable(name, JavaParser.Type.INT);
+        return name;
     }
 
     public String getLabel() {
@@ -733,7 +735,7 @@ public class MyJavaListener extends JavaBaseListener {
         else {
             printError(ctx);
         }
-        currentScope.insertArray(ctx.place, ctx.type, 1, dimensions);
+        //currentScope.insertArray(ctx.place, ctx.type, 1, dimensions);
 
     }
 

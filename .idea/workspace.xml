@@ -2,19 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="060f4d86-df81-436c-a53d-bed20c377005" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/IRCode/src/IRCode/ExitIRTuple.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/IRCode/src/IRCode/ScopeChangeIRTuple.java" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/IRCode/src/CodeGenerator/CodeGen.java" afterPath="$PROJECT_DIR$/IRCode/src/CodeGenerator/CodeGen.java" />
       <change beforePath="$PROJECT_DIR$/IRCode/src/FlowGraph/FullProgramRegAlloc.java" afterPath="$PROJECT_DIR$/IRCode/src/FlowGraph/FullProgramRegAlloc.java" />
+      <change beforePath="$PROJECT_DIR$/IRCode/src/FlowGraph/Liveness.java" afterPath="$PROJECT_DIR$/IRCode/src/FlowGraph/Liveness.java" />
+      <change beforePath="$PROJECT_DIR$/IRCode/src/FlowGraph/Tables.java" afterPath="$PROJECT_DIR$/IRCode/src/FlowGraph/Tables.java" />
       <change beforePath="$PROJECT_DIR$/LexerParser/src/MyJavaListener.java" afterPath="$PROJECT_DIR$/LexerParser/src/MyJavaListener.java" />
       <change beforePath="$PROJECT_DIR$/LexerParser/src/MyParser.java" afterPath="$PROJECT_DIR$/LexerParser/src/MyParser.java" />
+      <change beforePath="$PROJECT_DIR$/LexerParser/src/SymbolsAndScopes/Scope.java" afterPath="$PROJECT_DIR$/LexerParser/src/SymbolsAndScopes/Scope.java" />
+      <change beforePath="$PROJECT_DIR$/Output/.idea/misc.xml" afterPath="$PROJECT_DIR$/Output/.idea/misc.xml" />
+      <change beforePath="$PROJECT_DIR$/Output/.idea/workspace.xml" afterPath="$PROJECT_DIR$/Output/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/Output/IRCode/src/CodeGenerator/CodeGen.class" afterPath="$PROJECT_DIR$/Output/IRCode/src/CodeGenerator/CodeGen.class" />
-      <change beforePath="$PROJECT_DIR$/Output/IRCode/src/FlowGraph/FullProgramRegAlloc.class" afterPath="$PROJECT_DIR$/Output/IRCode/src/FlowGraph/FullProgramRegAlloc.class" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/src/FlowGraph/Liveness.class" afterPath="$PROJECT_DIR$/Output/IRCode/src/FlowGraph/Liveness.class" />
+      <change beforePath="$PROJECT_DIR$/Output/IRCode/src/FlowGraph/Tables.class" afterPath="$PROJECT_DIR$/Output/IRCode/src/FlowGraph/Tables.class" />
+      <change beforePath="$PROJECT_DIR$/Output/mips.s" afterPath="$PROJECT_DIR$/Output/mips.s" />
       <change beforePath="$PROJECT_DIR$/Output/src/MyJavaListener.class" afterPath="$PROJECT_DIR$/Output/src/MyJavaListener.class" />
       <change beforePath="$PROJECT_DIR$/Output/src/MyParser.class" afterPath="$PROJECT_DIR$/Output/src/MyParser.class" />
+      <change beforePath="$PROJECT_DIR$/Output/src/SymbolsAndScopes/Scope.class" afterPath="$PROJECT_DIR$/Output/src/SymbolsAndScopes/Scope.class" />
+      <change beforePath="$PROJECT_DIR$/Output/tree_output.html" afterPath="$PROJECT_DIR$/Output/tree_output.html" />
       <change beforePath="$PROJECT_DIR$/input" afterPath="$PROJECT_DIR$/input" />
       <change beforePath="$PROJECT_DIR$/mips.s" afterPath="$PROJECT_DIR$/mips.s" />
+      <change beforePath="$PROJECT_DIR$/tree_output.html" afterPath="$PROJECT_DIR$/tree_output.html" />
     </list>
     <ignored path="$PROJECT_DIR$/Compiler_Design/" />
     <ignored path="$PROJECT_DIR$/IRCode/.idea/" />
@@ -29,92 +38,108 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="Java.g4" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/LexerParser/src/Java.g4">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="414">
-                  <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="input" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/input">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="414">
-                  <caret line="23" column="8" lean-forward="false" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="mips.s" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/mips.s">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-108">
-                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="FullProgramRegAlloc.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/IRCode/src/FlowGraph/FullProgramRegAlloc.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="190">
-                  <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="MyParser.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/LexerParser/src/MyParser.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="432">
-                  <caret line="33" column="32" lean-forward="true" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="MyJavaListener.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/LexerParser/src/MyJavaListener.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="442">
-                  <caret line="240" column="20" lean-forward="false" selection-start-line="240" selection-start-column="20" selection-end-line="240" selection-end-column="20" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#1004#1005#0" expanded="true" />
-                    <element signature="e#1076#1077#0" expanded="true" />
-                    <element signature="e#41379#41380#0" expanded="true" />
-                    <element signature="e#41450#41451#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="tree_output.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/tree_output.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Java.g4" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/LexerParser/src/Java.g4">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="721">
+              <caret line="106" column="7" lean-forward="false" selection-start-line="106" selection-start-column="2" selection-end-line="106" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MyJavaListener.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/LexerParser/src/MyJavaListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="166" column="0" lean-forward="false" selection-start-line="166" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JavaParser.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/LexerParser/src/JavaParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="18">
+              <caret line="937" column="25" lean-forward="false" selection-start-line="937" selection-start-column="25" selection-end-line="937" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="input" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/input">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="1" lean-forward="false" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mips.s" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mips.s">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="233">
+              <caret line="72" column="13" lean-forward="true" selection-start-line="72" selection-start-column="13" selection-end-line="72" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Scope.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/LexerParser/src/SymbolsAndScopes/Scope.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-427">
+              <caret line="42" column="23" lean-forward="false" selection-start-line="42" selection-start-column="23" selection-end-line="42" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Tables.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/IRCode/src/FlowGraph/Tables.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2949">
+              <caret line="23" column="12" lean-forward="false" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CodeGen.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/IRCode/src/CodeGenerator/CodeGen.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-552">
+              <caret line="27" column="8" lean-forward="true" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FullProgramRegAlloc.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/IRCode/src/FlowGraph/FullProgramRegAlloc.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="348">
+              <caret line="33" column="83" lean-forward="false" selection-start-line="33" selection-start-column="83" selection-end-line="33" selection-end-column="83" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MyParser.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/LexerParser/src/MyParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="447">
+              <caret line="59" column="49" lean-forward="true" selection-start-line="59" selection-start-column="49" selection-end-line="59" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -125,21 +150,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>JavaParserOld</find>
-      <find>Old</find>
-      <find>new</find>
-      <find>currentScope.insert</find>
-      <find>expre</find>
-      <find>int</find>
-      <find>typeDim</find>
-      <find>eq</find>
-      <find>Error in type</find>
-      <find>class</find>
-      <find>typedim</find>
-      <find>entertype</find>
-      <find>dim</find>
-      <find>lengthof</find>
-      <find>vardec</find>
       <find>arrayDim</find>
       <find>arratin</find>
       <find>express</find>
@@ -155,6 +165,21 @@
       <find>lookup</find>
       <find>Object</find>
       <find>currentScope</find>
+      <find>null</find>
+      <find>Unconditional</find>
+      <find>getVar</find>
+      <find>insert</find>
+      <find>j</find>
+      <find>insertVAria</find>
+      <find>1(</find>
+      <find>insertArray</find>
+      <find>currentScope = current</find>
+      <find>main</find>
+      <find>System.err</find>
+      <find>objec</find>
+      <find>store</find>
+      <find>getS</find>
+      <find>storestac</find>
     </findStrings>
     <replaceStrings>
       <replace>JavaParser</replace>
@@ -189,8 +214,6 @@
         <option value="$PROJECT_DIR$/LexerParser/src/SymbolsAndScopes/ArrayRecord.java" />
         <option value="$PROJECT_DIR$/LexerParser/src/JavaParser.java" />
         <option value="$PROJECT_DIR$/IRCode/src/IRCode/StoreStackIRTuple.java" />
-        <option value="$PROJECT_DIR$/LexerParser/src/SymbolsAndScopes/Scope.java" />
-        <option value="$PROJECT_DIR$/IRCode/src/FlowGraph/Liveness.java" />
         <option value="$PROJECT_DIR$/IRCode/src/IRCode/ArrayAssignmentIRTuple.java" />
         <option value="$PROJECT_DIR$/IRCode/src/IRCode/AssignmentIRTuple.java" />
         <option value="$PROJECT_DIR$/IRCode/src/IRCode/ThreeAddCode.java" />
@@ -206,24 +229,26 @@
         <option value="$PROJECT_DIR$/IRCode/src/IRCode/FunctionCallIRTuple.java" />
         <option value="$PROJECT_DIR$/IRCode/src/IRCode/CopyIRTuple.java" />
         <option value="$PROJECT_DIR$/IRCode/src/IRCode/ConditionalJumpIRTuple.java" />
-        <option value="$PROJECT_DIR$/IRCode/src/FlowGraph/Tables.java" />
         <option value="$PROJECT_DIR$/IRCode/src/IRCode/ExitScopeIRTuple.java" />
         <option value="$PROJECT_DIR$/IRCode/src/IRCode/EnterScopeIRTuple.java" />
         <option value="$PROJECT_DIR$/IRCode/src/IRCode/ScopeChangeIRTuple.java" />
+        <option value="$PROJECT_DIR$/IRCode/src/IRCode/ExitIRTuple.java" />
+        <option value="$PROJECT_DIR$/IRCode/src/FlowGraph/Liveness.java" />
+        <option value="$PROJECT_DIR$/tree_output.html" />
+        <option value="$PROJECT_DIR$/LexerParser/src/MyJavaListener.java" />
         <option value="$PROJECT_DIR$/IRCode/src/FlowGraph/FullProgramRegAlloc.java" />
         <option value="$PROJECT_DIR$/LexerParser/src/MyParser.java" />
-        <option value="$PROJECT_DIR$/IRCode/src/IRCode/ExitIRTuple.java" />
+        <option value="$PROJECT_DIR$/mips.s" />
+        <option value="$PROJECT_DIR$/IRCode/src/FlowGraph/Tables.java" />
+        <option value="$PROJECT_DIR$/LexerParser/src/SymbolsAndScopes/Scope.java" />
         <option value="$PROJECT_DIR$/IRCode/src/CodeGenerator/CodeGen.java" />
         <option value="$PROJECT_DIR$/input" />
-        <option value="$PROJECT_DIR$/LexerParser/src/MyJavaListener.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="1714" />
-    <option name="y" value="682" />
-    <option name="width" value="1920" />
-    <option name="height" value="1057" />
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1280" />
+    <option name="height" value="800" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -242,6 +267,8 @@
     <panes>
       <pane id="Scope" />
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -272,7 +299,7 @@
               <item name="Compiler_Design" type="462c0819:PsiDirectoryNode" />
               <item name="IRCode" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="IRCode" type="462c0819:PsiDirectoryNode" />
+              <item name="FlowGraph" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Compiler_Design" type="b2602c69:ProjectViewProjectNode" />
@@ -289,14 +316,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
@@ -437,39 +462,39 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1714" y="682" width="1920" height="1057" extended-state="0" />
+    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32933334" sideWeight="0.49375" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25733334" sideWeight="0.3796875" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25733334" sideWeight="0.6203125" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Floobits" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32933334" sideWeight="0.496875" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13972163" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20234375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Learn" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42964554" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.404" sideWeight="0.77265626" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294335" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32933334" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Learn" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -477,7 +502,69 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="36" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/LexerParser/src/MyJavaListener.java</url>
+          <line>141</line>
+          <properties />
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/LexerParser/src/MyJavaListener.java</url>
+          <line>166</line>
+          <properties />
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/LexerParser/src/MyJavaListener.java</url>
+          <line>250</line>
+          <properties />
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/LexerParser/src/MyJavaListener.java</url>
+          <line>451</line>
+          <properties />
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/LexerParser/src/MyJavaListener.java</url>
+          <line>491</line>
+          <properties />
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/LexerParser/src/MyJavaListener.java</url>
+          <line>609</line>
+          <properties />
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/LexerParser/src/MyJavaListener.java</url>
+          <line>626</line>
+          <properties />
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/LexerParser/src/MyJavaListener.java</url>
+          <line>644</line>
+          <properties />
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/IRCode/src/FlowGraph/FullProgramRegAlloc.java</url>
+          <line>35</line>
+          <properties />
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/IRCode/src/FlowGraph/FullProgramRegAlloc.java</url>
+          <line>34</line>
+          <properties />
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="56" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -552,7 +639,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -561,31 +647,13 @@
         <state relative-caret-position="345">
           <caret line="17" column="40" lean-forward="false" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
           <folding>
-            <element signature="e#506#507#0" expanded="true" />
-            <element signature="e#551#552#0" expanded="true" />
-            <element signature="e#583#584#0" expanded="true" />
-            <element signature="e#618#619#0" expanded="true" />
-            <element signature="e#659#660#0" expanded="true" />
-            <element signature="e#724#725#0" expanded="true" />
-            <element signature="e#784#785#0" expanded="true" />
-            <element signature="e#843#844#0" expanded="true" />
-            <element signature="e#885#886#0" expanded="true" />
+            <element signature="e#659#660#0" expanded="false" />
+            <element signature="e#724#725#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/MainClass.java" />
-    <entry file="file://$PROJECT_DIR$/LexerParser/src/JavaParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="937" column="25" lean-forward="false" selection-start-line="937" selection-start-column="25" selection-end-line="937" selection-end-column="25" />
-          <folding>
-            <element signature="e#16838#16839#0" expanded="false" />
-            <element signature="e#16903#16904#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/LexerParser/src/SymbolsAndScopes/MethodRecord.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
@@ -612,14 +680,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="jrt:///usr/lib/jvm/java-9-openjdk!/java.base/java/util/OptionalInt.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="47" column="16" lean-forward="false" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jrt:///usr/lib/jvm/java-9-openjdk!/java.base/java/util/OptionalInt.class" />
     <entry file="file://$PROJECT_DIR$/LexerParser/src/SymbolsAndScopes/ClassRecord.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -635,40 +696,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="11" column="11" lean-forward="false" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
-          <folding>
-            <element signature="e#353#354#0" expanded="false" />
-            <element signature="e#407#408#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jrt:///usr/lib/jvm/java-9-openjdk!/java.base/java/lang/Exception.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="13" column="11" lean-forward="false" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LexerParser/src/SymbolsAndScopes/Scope.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="86" column="22" lean-forward="true" selection-start-line="86" selection-start-column="22" selection-end-line="86" selection-end-column="22" />
-          <folding>
-            <element signature="e#1274#1275#0" expanded="false" />
-            <element signature="e#1322#1323#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/IRCode/src/FlowGraph/Liveness.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="129" column="31" lean-forward="false" selection-start-line="129" selection-start-column="31" selection-end-line="129" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jrt:///usr/lib/jvm/java-9-openjdk!/java.base/java/lang/Exception.class" />
     <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/ArrayAssignmentIRTuple.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -681,14 +712,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="4" column="86" lean-forward="false" selection-start-line="4" selection-start-column="86" selection-end-line="4" selection-end-column="86" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/UnconditionalJumpIRTuple.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="43" lean-forward="false" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
           <folding />
         </state>
       </provider>
@@ -796,25 +819,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/IRCode/src/FlowGraph/Tables.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5076">
-          <caret line="25" column="16" lean-forward="true" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
-          <folding>
-            <element signature="e#6305#6306#0" expanded="true" />
-            <element signature="e#6361#6362#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/ExitScopeIRTuple.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="50" lean-forward="false" selection-start-line="2" selection-start-column="50" selection-end-line="2" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/ExitScopeIRTuple.java" />
     <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/LabelIRTuple.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
@@ -828,25 +833,9 @@
         <state relative-caret-position="216">
           <caret line="12" column="25" lean-forward="true" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
           <folding>
-            <element signature="e#312#313#0" expanded="true" />
-            <element signature="e#373#374#0" expanded="true" />
+            <element signature="e#312#313#0" expanded="false" />
+            <element signature="e#373#374#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LexerParser/src/MyParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="33" column="32" lean-forward="true" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/IRCode/src/FlowGraph/FullProgramRegAlloc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -871,8 +860,8 @@
         <state relative-caret-position="162">
           <caret line="9" column="20" lean-forward="false" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
           <folding>
-            <element signature="e#152#153#0" expanded="true" />
-            <element signature="e#181#182#0" expanded="true" />
+            <element signature="e#152#153#0" expanded="false" />
+            <element signature="e#181#182#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -885,57 +874,107 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/IRCode/src/CodeGenerator/CodeGen.java">
+    <entry file="file://$PROJECT_DIR$/IRCode/src/FlowGraph/Liveness.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="41" column="23" lean-forward="false" selection-start-line="41" selection-start-column="23" selection-end-line="41" selection-end-column="23" />
+        <state relative-caret-position="652">
+          <caret line="137" column="24" lean-forward="false" selection-start-line="137" selection-start-column="24" selection-end-line="137" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mips.s">
+    <entry file="file://$PROJECT_DIR$/IRCode/src/IRCode/UnconditionalJumpIRTuple.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-108">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LexerParser/src/Java.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/input">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="23" column="8" lean-forward="false" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
+        <state relative-caret-position="45">
+          <caret line="3" column="43" lean-forward="false" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tree_output.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="60">
+          <caret line="44" column="7" lean-forward="false" selection-start-line="44" selection-start-column="7" selection-end-line="44" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IRCode/src/FlowGraph/FullProgramRegAlloc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="33" column="83" lean-forward="false" selection-start-line="33" selection-start-column="83" selection-end-line="33" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LexerParser/src/JavaParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="937" column="25" lean-forward="false" selection-start-line="937" selection-start-column="25" selection-end-line="937" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LexerParser/src/MyParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="59" column="49" lean-forward="true" selection-start-line="59" selection-start-column="49" selection-end-line="59" selection-end-column="49" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/LexerParser/src/MyJavaListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="240" column="20" lean-forward="false" selection-start-line="240" selection-start-column="20" selection-end-line="240" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1004#1005#0" expanded="true" />
-            <element signature="e#1076#1077#0" expanded="true" />
-            <element signature="e#41379#41380#0" expanded="true" />
-            <element signature="e#41450#41451#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="132">
+          <caret line="166" column="0" lean-forward="false" selection-start-line="166" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LexerParser/src/Java.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="721">
+          <caret line="106" column="7" lean-forward="false" selection-start-line="106" selection-start-column="2" selection-end-line="106" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/input">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="1" lean-forward="false" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mips.s">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="72" column="13" lean-forward="true" selection-start-line="72" selection-start-column="13" selection-end-line="72" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IRCode/src/FlowGraph/Tables.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2949">
+          <caret line="23" column="12" lean-forward="false" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IRCode/src/CodeGenerator/CodeGen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-552">
+          <caret line="27" column="8" lean-forward="true" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LexerParser/src/SymbolsAndScopes/Scope.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-427">
+          <caret line="42" column="23" lean-forward="false" selection-start-line="42" selection-start-column="23" selection-end-line="42" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>

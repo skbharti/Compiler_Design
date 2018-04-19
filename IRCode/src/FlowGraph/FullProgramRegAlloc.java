@@ -16,7 +16,6 @@ public class FullProgramRegAlloc
     private List<Block>  BlocksList;
     private static BufferedWriter writer = MyParser.writer;
     public static HashMap<String,Scope> scopeMapping;
-
     public FullProgramRegAlloc(List<ThreeAddCode> Instr, HashMap<String,Scope> scopeMapping)
     {
         InstructionList = Instr;
@@ -30,19 +29,10 @@ public class FullProgramRegAlloc
             Liveness lv = new Liveness(InstructionList,scopeMapping);
             lv.FindVariablesUsesDefs();
             writer.write("\n.text\n\nmain:\n\n");
-            Scope currentScope = MyParser.globalScope;
-            Scope prevScope;
+
             for (int i = 0; i < BlocksList.size(); i++)
             {   List<ThreeAddCode> list =BlocksList.get(i).getListOfInstructions();
-                if (list.get(0) instanceof ScopeChangeIRTuple) {
-                    prevScope = currentScope;
-                    currentScope = scopeMapping.get(list.get(0).getArg0());
-                    if (list.get(0).getOpcode().equals("true"))
-                        CodeGen.updateMainStackPointer(-currentScope.getVariableSize());
-                    else
-                        CodeGen.updateMainStackPointer(prevScope.getVariableSize());
-                }
-                Tables tb = new Tables(list,lv,currentScope);
+                Tables tb = new Tables(list,lv);
                 tb.RegisterAllocator();
             }
     }

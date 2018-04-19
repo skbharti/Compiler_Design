@@ -1,6 +1,7 @@
 package IRCode.src.FlowGraph;
 
 import IRCode.src.CodeGenerator.CodeGen;
+import IRCode.src.IRCode.ScopeChangeIRTuple;
 import IRCode.src.IRCode.ThreeAddCode;
 import IRCode.src.helperclasses.ArgumentVariable;
 import src.MyParser;
@@ -20,14 +21,13 @@ public class Tables {
     Liveness InstrLiveness;
     CodeGen codegen = MyParser.codegen;
     int MaxReg = 16;
-    private Scope currentScope;
+    public static Scope currentScope=MyParser.globalScope;
+    private static Scope prevScope;
 
-
-    public Tables(List<ThreeAddCode> Instr, Liveness liveness, Scope currentScope) {
+    public Tables(List<ThreeAddCode> Instr, Liveness liveness) {
         InstructionList = Instr;
         RegesterTable = new Hashtable<>();
         AddressTable = new Hashtable<>();
-        this.currentScope = currentScope;
         PrevAddressTable = new Hashtable<>();
         InstrLiveness = liveness;
     }
@@ -226,6 +226,7 @@ public class Tables {
     }
 
     public static int getStackPointer(String name, Scope currentScope) {
+
         return currentScope.lookupOffset(name,0);
     }
 
@@ -234,6 +235,14 @@ public class Tables {
             int flag = 0;
             ThreeAddCode q = InstructionList.get(i);
 
+            if (q instanceof ScopeChangeIRTuple) {
+                prevScope = currentScope;
+                currentScope = FullProgramRegAlloc.scopeMapping.get(q.getArg0());
+                if (q.getOpcode().equals("true"))
+                    CodeGen.updateMainStackPointer(-currentScope.getVariableSize());
+                else
+                    CodeGen.updateMainStackPointer(prevScope.getVariableSize());
+            }
             int regnum1 = -1;
             int regnum2 = -1;
             int regnum3 = -1;

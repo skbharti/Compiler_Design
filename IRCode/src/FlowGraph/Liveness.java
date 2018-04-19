@@ -134,6 +134,8 @@ public class Liveness {
         } catch (Exception e) {
 
         }
+        if (var.contains("var"))
+            flag = true;
         if (!flag)
             return;
         if (!Variables.contains(var)) {
