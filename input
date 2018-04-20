@@ -3,14 +3,10 @@ class ABC{
 
     public static void main(String[] args)
     {{
-        int c;
-        c = 3;
-        while (c < 5)
-        {
-            c = c + 1;
-        }
-
-        println(c);
+        int[] c;
+        c = new int[3];
+        c[0] = 10;
+        println(c[0]);
 
     }}
 

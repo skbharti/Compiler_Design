@@ -218,7 +218,7 @@ DecimalIntegerLiteral
 fragment
 DecimalNumeral
 	:	'0'
-|	NonZeroDigit (Digits? | Underscores Digits)
+|('+' | '-')? NonZeroDigit (Digits? | Underscores Digits)
 	;
 
 	fragment

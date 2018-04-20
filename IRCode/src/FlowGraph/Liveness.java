@@ -2,6 +2,7 @@ package IRCode.src.FlowGraph;
 
 import IRCode.src.IRCode.ArrayAssignmentIRTuple;
 import IRCode.src.IRCode.*;
+import src.SymbolsAndScopes.ArrayRecord;
 import src.SymbolsAndScopes.Scope;
 import src.SymbolsAndScopes.VariableRecord;
 
@@ -127,7 +128,7 @@ public class Liveness {
         boolean flag = false;
         try {
             for (Scope scope : scopeHashMap.values())
-                if ((scope.lookup(var) instanceof VariableRecord)) {
+                if ((scope.lookup(var) instanceof VariableRecord) || scope.lookup(var) instanceof ArrayRecord) {
                     flag = true;
                     break;
                 }

@@ -24,8 +24,8 @@ public class CodeGen {
     private static BufferedWriter writer = MyParser.writer;
     private Scope currentScope;
 
-    public static void updateMainStackPointer(int size) throws Exception{
-        writer.write("addi $sp, $sp, "+4*size+"\n");
+    public static void updateMainStackPointer(int size) throws Exception {
+        writer.write("addi $sp, $sp, " + 4 * size + "\n");
     }
 
     public void generateMips(ThreeAddCode q, Hashtable<String,
@@ -70,10 +70,11 @@ public class CodeGen {
         else if (q instanceof PrintIRTuple)
             printMips((PrintIRTuple) q);
         else if (q instanceof ParamInitIRTuple)
-            paramInit((ParamInitIRTuple)q);
+            paramInit((ParamInitIRTuple) q);
 
     }
-    private void exit() throws IOException{
+
+    private void exit() throws IOException {
         writer.write(HelperFunctions.printExitCode());
     }
 
@@ -83,10 +84,10 @@ public class CodeGen {
         }
     }
 
-    private void paramInit(ParamInitIRTuple instr) throws IOException{
+    private void paramInit(ParamInitIRTuple instr) throws IOException {
         ArgumentVariable par = new ArgumentVariable(instr.getResult());
-        int offset =  Integer.parseInt(instr.getArg0());
-        writer.write("lw "+par.getValue(curAddTable)+", "+offset*4+"($a0)");
+        int offset = Integer.parseInt(instr.getArg0());
+        writer.write("lw " + par.getValue(curAddTable) + ", " + offset * 4 + "($a0)");
 
     }
 
@@ -94,16 +95,16 @@ public class CodeGen {
         ArgumentVariable param = new ArgumentVariable(instr.getArg0());
         int paramNum = Integer.parseInt(instr.getArg1());
         ArgumentVariable paramPos = new ArgumentVariable(instr.getResult());
-        writer.write("sw " + param.getValue(curAddTable)+", " + paramNum * 4 + "(" + paramPos.getValue(curAddTable) + ")\n");
+        writer.write("sw " + param.getValue(curAddTable) + ", " + paramNum * 4 + "(" + paramPos.getValue(curAddTable) + ")\n");
     }
 
     private void printMips(PrintIRTuple instr) throws IOException {
         ArgumentVariable arg0 = new ArgumentVariable(instr.getArg0());
-        writer.write("addi $sp, $sp, -12\n");
+        writer.write("addi $sp, $sp, 12\n");
         //Store $v0-$v1 on the stack for taking return value
-        writer.write("sw $a0, 8($sp)\n");
-        writer.write("sw $v0, 4($sp)\n");
-        writer.write("sw $v1, 0($sp)\n");
+        writer.write("sw $a0, -8($sp)\n");
+        writer.write("sw $v0, -4($sp)\n");
+        writer.write("sw $v1, -0($sp)\n");
 
         if (arg0.type.equals("constant")) {
             writer.write(HelperFunctions.printIntegerFromString(arg0.getValue(curAddTable)));
@@ -114,28 +115,28 @@ public class CodeGen {
             writer.write(HelperFunctions.printExitCode()); //Error
         }
         //Restore $v0-$v1 from the stack
-        writer.write("lw $v0, 4($sp)\n");
-        writer.write("lw $v1, 0($sp)\n");
-        writer.write("lw $a0, 8($sp)\n");
-        writer.write("addi $sp, $sp, 12\n");
+        writer.write("lw $v0, -4($sp)\n");
+        writer.write("lw $v1, -0($sp)\n");
+        writer.write("lw $a0, -8($sp)\n");
+        writer.write("addi $sp, $sp, -12\n");
 
     }
 
     private void newObjectInstance(NewObjectIRTuple instr) throws IOException {
 
-        String type = (String) instr.getArg0();
+        String type = instr.getArg0();
         ArgumentVariable result = new ArgumentVariable(instr.getResult());
 
         //Store $ra on stack
-        writer.write("addi $sp, $sp, -20\n");
-        writer.write("sw $ra, 16($sp)\n");
+        writer.write("addi $sp, $sp, 20\n");
+        writer.write("sw $ra, -16($sp)\n");
 
         //Store $a0
-        writer.write("sw $a0, 12($sp)\n");
+        writer.write("sw $a0, -12($sp)\n");
 
         //Store $t0-$t1 on the stack
         for (int i = 0; i < 2; i++) {
-            writer.write("sw $t" + i + ", " + (8 - (4 * i)) + "($sp)\n");
+            writer.write("sw $t" + i + ", " + -(8 - (4 * i)) + "($sp)\n");
         }
 
         //Store $v0 on the stack
@@ -146,15 +147,15 @@ public class CodeGen {
         //Call the function of "_new_array"
         writer.write("li $v0, 9\n");
         writer.write("syscall\n");
-        writer.write("lw $t0, 8($sp)\n");
-        writer.write("lw $t1, 4($sp)\n");
+        writer.write("lw $t0, -8($sp)\n");
+        writer.write("lw $t1, -4($sp)\n");
 
-        writer.write("lw $a0, 12($sp)\n");
+        writer.write("lw $a0, -12($sp)\n");
         writer.write("move " + result.getValue(curAddTable) + ", $v0\n");
 
         writer.write("lw $v0, 0($sp)\n");
-        writer.write("lw $ra, 16($sp)\n");
-        writer.write("addi $sp, $sp, 20\n");
+        writer.write("lw $ra, -16($sp)\n");
+        writer.write("addi $sp, $sp, -20\n");
     }
 
     private void labelDefine(LabelIRTuple q) throws IOException {
@@ -197,12 +198,28 @@ public class CodeGen {
         if (immediate) {
             String L1, L2;
 
-            //Assuming unary minus is handled in the value of arg2
-//            if(op=="-")
-//                arg2 = "-"+arg2;
             switch (op) {
                 case ADD:
                     bw.write("addi " + result + "," + arg0 + "," + arg1 + "\n");
+                    break;
+                case SUB:
+                    bw.write("li $s7, " + arg1 + "\n");
+                    bw.write("sub " + result + ", " + arg0 + ", " + "$s7" +"\n");
+                    break;
+                case MUL:
+                    writer.write("li $s7, " + arg1 + "\n");
+                    bw.write("mult $s7" + "," + arg0 + "\n");
+                    bw.write("mflo " + result + "\n");
+                    break;
+                case DIV:
+                    writer.write("li $s7, " + arg1 + "\n");
+                    bw.write("div " + arg0 + ", $s7"+"\n");
+                    bw.write("mflo " + result + "\n");
+                    break;
+                case MOD:
+                    writer.write("li $s7, " + arg1 + "\n");
+                    bw.write("div $s7" + "," + arg0 + "\n");
+                    bw.write("mfhi " + result + "\n");
                     break;
                 case LSL:
                     bw.write("sll " + result + "," + arg0 + "," + arg1 + "\n");
@@ -437,7 +454,7 @@ public class CodeGen {
     }
 
     private void arrayIndexAssignment(ArrayAssignmentIRTuple instr) throws IOException {
-        ArgumentVariable pointer = new ArgumentVariable(instr.getArg0());
+        int pointer = currentScope.lookupOffset(instr.getArg0(),0);
         ArgumentVariable index = new ArgumentVariable(instr.getArg1());
         ArgumentVariable result = new ArgumentVariable(instr.getResult());
         String argresult = result.getValue(curAddTable), indexstr = index.getValue(curAddTable);
@@ -447,17 +464,15 @@ public class CodeGen {
         }
         writer.write("sll " + indexstr + "," + indexstr + ", 2\n");
         writer.write("addi " + indexstr + ", " + indexstr + ", 4\n");
+        writer.write("add "+indexstr+",$sp,"+indexstr+"\n");
+
         // writer.write("add "+argresult+", "+argresult+", "+argstr0+"\n");
         if (result.type.equals("constant")) {
             String tmp = "$s7";
-            writer.write("li " + tmp + "," + result + "\n");
-            writer.write("sw " + tmp + ", " + instr.getArg0().toString() + "(" + indexstr + ")\n");
+            writer.write("li " + tmp + "," + argresult + "\n");
+            writer.write("sw " + tmp + ", " + pointer + "(" + indexstr + ")\n");
         } else {
-            writer.write("sw " + result.getValue(curAddTable) + ", " + instr.getArg0().toString() + "(" + indexstr + ")\n");
-        }
-        if (!index.type.equals("constant")) {
-            writer.write("addi " + indexstr + ", " + indexstr + ", -4\n");
-            writer.write("srl " + indexstr + ", " + indexstr + ", 2\n");
+            writer.write("sw " + result.getValue(curAddTable) + ", " + pointer + "(" + indexstr + ")\n");
         }
 
     }
@@ -472,15 +487,15 @@ public class CodeGen {
         ArgumentVariable result = new ArgumentVariable(instr.getResult());
 
         //Store $ra on stack
-        writer.write("addi $sp, $sp, -20\n");
-        writer.write("sw $ra, 16($sp)\n");
+        writer.write("addi $sp, $sp, 20\n");
+        writer.write("sw $ra, -16($sp)\n");
 
         //Store $a0
-        writer.write("sw $a0, 12($sp)\n");
+        writer.write("sw $a0, -12($sp)\n");
 
         //Store $t0-$t1 on the stack
         for (int i = 0; i < 2; i++) {
-            writer.write("sw $t" + i + ", " + (8 - (4 * i)) + "($sp)\n");
+            writer.write("sw $t" + i + ", " + -(8 - (4 * i)) + "($sp)\n");
         }
 
         //Store $v0 on the stack
@@ -496,15 +511,15 @@ public class CodeGen {
         //Call the function of "_new_array"
         writer.write("li $v0, 9\n");
         writer.write("syscall\n");
-        writer.write("lw $t0, 8($sp)\n");
-        writer.write("lw $t1, 4($sp)\n");
+        writer.write("lw $t0, -8($sp)\n");
+        writer.write("lw $t1, -4($sp)\n");
 
-        writer.write("lw $a0, 12($sp)\n");
+        writer.write("lw $a0, -12($sp)\n");
         writer.write("move " + result.getValue(curAddTable) + ", $v0\n");
 
         writer.write("lw $v0, 0($sp)\n");
-        writer.write("lw $ra, 16($sp)\n");
-        writer.write("addi $sp, $sp, 20\n");
+        writer.write("lw $ra, -16($sp)\n");
+        writer.write("addi $sp, $sp, -20\n");
 
     }
 
@@ -551,10 +566,10 @@ public class CodeGen {
         String opcode = instr.getOpcode().toString();
         switch (opcode) {
             case IFTRUE:
-                writer.write("beq " + arg0.getValue(curAddTable) + ", $zero, " + label + "\n");
+                writer.write("bne " + arg0.getValue(curAddTable) + ", $zero, " + label + "\n");
                 break;
             case IFFALSE:
-                writer.write("bne " + arg0.getValue(curAddTable) + ", $zero, " + label + "\n");
+                writer.write("beq " + arg0.getValue(curAddTable) + ", $zero, " + label + "\n");
                 break;
             case IFLT:
                 writer.write("bltz " + arg0.getValue(curAddTable) + ", " + label + "\n");
@@ -586,11 +601,11 @@ public class CodeGen {
         }
         //Assuming all variables as global and no parameters
         //Store $ra on stack
-        writer.write("addi $sp, $sp, -12\n");
-        writer.write("sw $ra, 8($sp)\n");
+        writer.write("addi $sp, $sp, 12\n");
+        writer.write("sw $ra, -8($sp)\n");
         //Store $v0-$v1 on the stack for taking return value
-        writer.write("sw $v0, 4($sp)\n");
-        writer.write("sw $v1, 0($sp)\n");
+        writer.write("sw $v0, -4($sp)\n");
+        writer.write("sw $v1, -0($sp)\n");
         writer.write("move $v0, " + paramPos.getValue(curAddTable));
         //Jump to the function
         writer.write("jal " + function + "\n");
@@ -602,12 +617,12 @@ public class CodeGen {
                 writer.write("move " + result.getValue(curAddTable) + ", $v0\n");
         }
         //Restore $v0-$v1 from the stack
-        writer.write("lw $v0, 4($sp)\n");
-        writer.write("lw $v1, 0($sp)\n");
+        writer.write("lw $v0, -4($sp)\n");
+        writer.write("lw $v1, -0($sp)\n");
 
         //Restore $ra from the stack
-        writer.write("lw $ra, 8($sp)\n");
-        writer.write("addi $sp, $sp, 12\n");
+        writer.write("lw $ra, -8($sp)\n");
+        writer.write("addi $sp, $sp, -12\n");
     }
 
     private void functionReturn(ReturnIRTuple instr) throws IOException {
@@ -622,22 +637,23 @@ public class CodeGen {
     }
 
     private void arrayIndexLoad(ArrayAssignmentIRTuple instr) throws IOException {
-        String assignmentType = instr.getOpcode().toString();
-        ArgumentVariable arg0 = new ArgumentVariable(instr.getArg0());
-        ArgumentVariable arg1 = new ArgumentVariable(instr.getArg1());
+        int pointer = currentScope.lookupOffset(instr.getArg0(),0);
+        ArgumentVariable index = new ArgumentVariable(instr.getArg1());
         ArgumentVariable result = new ArgumentVariable(instr.getResult());
-        String argstr0 = arg0.getValue(curAddTable), argstr1 = arg1.getValue(curAddTable);
-        if (arg1.type.equals("constant")) {
-            String tmp = "$s6";
-            writer.write("li " + tmp + "," + argstr1 + "\n");
-            argstr1 = tmp;
+        String argresult = result.getValue(curAddTable), indexstr = index.getValue(curAddTable);
+        if (index.type.equals("constant")) {
+            writer.write("li " + "$s6" + "," + indexstr + "\n");
+            indexstr = "$s6";
         }
-        writer.write("sll " + argstr1 + "," + argstr1 + ", 2\n");
-        writer.write("addi " + argstr1 + ", " + argstr1 + ", 4\n");
-        writer.write("lw " + result.getValue(curAddTable) + ", " + instr.getArg0().toString() + "(" + argstr1 + ")\n");
-        if (!arg1.type.equals("constant")) {
-            writer.write("addi " + argstr1 + ", " + argstr1 + ", -4\n");
-            writer.write("srl " + argstr1 + ", " + argstr1 + ", 2\n");
+        writer.write("sll " + indexstr + "," + indexstr + ", 2\n");
+        writer.write("addi " + indexstr + ", " + indexstr + ", 4\n");
+        writer.write("add "+indexstr+",$sp,"+indexstr+"\n");
+
+        // writer.write("add "+argresult+", "+argresult+", "+argstr0+"\n");
+        if (result.type.equals("constant")) {
+            System.out.println("result register is constant");
+        } else {
+            writer.write("lw " + result.getValue(curAddTable) + ", " + pointer + "(" + indexstr + ")\n");
         }
     }
 }

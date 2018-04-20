@@ -4,23 +4,19 @@
 <p> <b> GoalContext </b> </p>
 <p> <b> MainClassContext </b>	<EOF> </p>
 <p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	<b> NestedStatementContext </b>	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	<b> DeclarationContext </b>	VariableAssignmentStatementContext	WhileStatementContext	PrintStatementContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	<b> FieldDeclarationContext </b>	VariableAssignmentStatementContext	WhileStatementContext	PrintStatementContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	<b> VarDeclarationContext </b>	VariableAssignmentStatementContext	WhileStatementContext	PrintStatementContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	<b> TypeDimContext </b>	c	;	VariableAssignmentStatementContext	WhileStatementContext	PrintStatementContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	c	;	<b> VariableAssignmentStatementContext </b>	WhileStatementContext	PrintStatementContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	c	;	c	=	<b> IntLitExpressionContext </b>	;	WhileStatementContext	PrintStatementContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	c	;	c	=	3	;	<b> WhileStatementContext </b>	PrintStatementContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	c	;	c	=	3	;	while	(	<b> LtExpressionContext </b>	)	WhileBlockContext	PrintStatementContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	c	;	c	=	3	;	while	(	<b> IdentifierExpressionContext </b>	<	IntLitExpressionContext	)	WhileBlockContext	PrintStatementContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	c	;	c	=	3	;	while	(	c	<	<b> IntLitExpressionContext </b>	)	WhileBlockContext	PrintStatementContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	c	;	c	=	3	;	while	(	c	<	5	)	<b> WhileBlockContext </b>	PrintStatementContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	c	;	c	=	3	;	while	(	c	<	5	)	<b> NestedStatementContext </b>	PrintStatementContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	c	;	c	=	3	;	while	(	c	<	5	)	{	<b> VariableAssignmentStatementContext </b>	}	PrintStatementContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	c	;	c	=	3	;	while	(	c	<	5	)	{	c	=	<b> AddExpressionContext </b>	;	}	PrintStatementContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	c	;	c	=	3	;	while	(	c	<	5	)	{	c	=	<b> IdentifierExpressionContext </b>	+	IntLitExpressionContext	;	}	PrintStatementContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	c	;	c	=	3	;	while	(	c	<	5	)	{	c	=	c	+	<b> IntLitExpressionContext </b>	;	}	PrintStatementContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	c	;	c	=	3	;	while	(	c	<	5	)	{	c	=	c	+	1	;	}	<b> PrintStatementContext </b>	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	c	;	c	=	3	;	while	(	c	<	5	)	{	c	=	c	+	1	;	}	println	(	<b> IdentifierExpressionContext </b>	)	;	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	c	;	c	=	3	;	while	(	c	<	5	)	{	c	=	c	+	1	;	}	println	(	c	)	;	}	}	}	<EOF> </p></body>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	<b> DeclarationContext </b>	VariableAssignmentStatementContext	ArrayAssignmentStatementContext	PrintStatementContext	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	<b> FieldDeclarationContext </b>	VariableAssignmentStatementContext	ArrayAssignmentStatementContext	PrintStatementContext	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	<b> VarDeclarationContext </b>	VariableAssignmentStatementContext	ArrayAssignmentStatementContext	PrintStatementContext	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	<b> TypeDimContext </b>	c	;	VariableAssignmentStatementContext	ArrayAssignmentStatementContext	PrintStatementContext	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	<b> DimsContext </b>	c	;	VariableAssignmentStatementContext	ArrayAssignmentStatementContext	PrintStatementContext	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	[	]	c	;	<b> VariableAssignmentStatementContext </b>	ArrayAssignmentStatementContext	PrintStatementContext	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	[	]	c	;	c	=	<b> ArrayInstantiationExpressionContext </b>	;	ArrayAssignmentStatementContext	PrintStatementContext	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	[	]	c	;	c	=	new	<b> TypeContext </b>	[	3	]	;	ArrayAssignmentStatementContext	PrintStatementContext	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	[	]	c	;	c	=	new	int	[	3	]	;	<b> ArrayAssignmentStatementContext </b>	PrintStatementContext	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	[	]	c	;	c	=	new	int	[	3	]	;	c	[	<b> IntLitExpressionContext </b>	]	=	IntLitExpressionContext	;	PrintStatementContext	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	[	]	c	;	c	=	new	int	[	3	]	;	c	[	0	]	=	<b> IntLitExpressionContext </b>	;	PrintStatementContext	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	[	]	c	;	c	=	new	int	[	3	]	;	c	[	0	]	=	10	;	<b> PrintStatementContext </b>	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	[	]	c	;	c	=	new	int	[	3	]	;	c	[	0	]	=	10	;	println	(	<b> ArrayAccessExpressionContext </b>	)	;	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	[	]	c	;	c	=	new	int	[	3	]	;	c	[	0	]	=	10	;	println	(	c	[	<b> IntLitExpressionContext </b>	]	)	;	}	}	}	<EOF> </p>
+<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	[	]	c	;	c	=	new	int	[	3	]	;	c	[	0	]	=	10	;	println	(	c	[	0	]	)	;	}	}	}	<EOF> </p></body>
 </html>

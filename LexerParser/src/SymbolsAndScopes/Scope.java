@@ -100,14 +100,15 @@ public class Scope {
         if (symbolTable.containsKey(name)) {
             Record record = symbolTable.get(name);
             if (record instanceof VariableRecord)
-                return offset - 4 * symbolTable.size() + ((VariableRecord) record).stackPointerOffset;
+                return offset + ((VariableRecord) record).stackPointerOffset;
             else if (record instanceof ArrayRecord)
-                return offset - 4 * symbolTable.size() + ((ArrayRecord) record).stackPointerOffset;
+                return offset + ((ArrayRecord) record).stackPointerOffset;
             else return 1;
         } else if (parentScope != null) {
-            return parentScope.lookupOffset(name, offset - 4 * symbolTable.size());
+            return parentScope.lookupOffset(name, offset - 4 * parentScope.getVariableSize());
         }
         else {
+            System.out.println(name+scopeName+"somethings");
             return 1;
         }
     }
