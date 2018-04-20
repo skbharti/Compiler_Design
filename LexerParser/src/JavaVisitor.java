@@ -139,6 +139,13 @@ public interface JavaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitArrayAssignmentStatement(JavaParser.ArrayAssignmentStatementContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code objectAssignmentStatement}
+	 * labeled alternative in {@link JavaParser#statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitObjectAssignmentStatement(JavaParser.ObjectAssignmentStatementContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link JavaParser#ifBlock}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

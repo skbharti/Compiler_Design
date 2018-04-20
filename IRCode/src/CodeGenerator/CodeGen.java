@@ -71,9 +71,15 @@ public class CodeGen {
             printMips((PrintIRTuple) q);
         else if (q instanceof ParamInitIRTuple)
             paramInit((ParamInitIRTuple) q);
+        else if (q instanceof ObjectReferenceIRTuple)
+            referObject((ObjectReferenceIRTuple)q);
 
     }
-
+    private void referObject(ObjectReferenceIRTuple instr) throws Exception{
+        String offset = instr.getArg0();
+        ArgumentVariable place = new ArgumentVariable(instr.getArg1());
+        writer.write("lw "+place.getValue(curAddTable)+", "+offset+"($sp)\n");
+    }
     private void exit() throws IOException {
         writer.write(HelperFunctions.printExitCode());
     }
@@ -85,6 +91,10 @@ public class CodeGen {
     }
 
     private void paramInit(ParamInitIRTuple instr) throws IOException {
+        if (instr.getResult().equals("null")) {
+            writer.write("lw $v1, 0($a0)\n");
+            return;
+        }
         ArgumentVariable par = new ArgumentVariable(instr.getResult());
         int offset = Integer.parseInt(instr.getArg0());
         writer.write("lw " + par.getValue(curAddTable) + ", " + offset * 4 + "($a0)");
@@ -599,30 +609,20 @@ public class CodeGen {
             writer.write(HelperFunctions.printExitCode());
             return;
         }
-        //Assuming all variables as global and no parameters
-        //Store $ra on stack
-        writer.write("addi $sp, $sp, 12\n");
-        writer.write("sw $ra, -8($sp)\n");
+
         //Store $v0-$v1 on the stack for taking return value
-        writer.write("sw $v0, -4($sp)\n");
-        writer.write("sw $v1, -0($sp)\n");
-        writer.write("move $v0, " + paramPos.getValue(curAddTable));
+        writer.write("move $a0, " + paramPos.getValue(curAddTable));
         //Jump to the function
         writer.write("jal " + function + "\n");
 
         //Move return value into the result register
         if (!function.equals("print")) {
             ArgumentVariable result = new ArgumentVariable(instr.getResult());
+            writer.write("move $ra, $v1\n");
             if (!result.getValue(curAddTable).equals("null"))
                 writer.write("move " + result.getValue(curAddTable) + ", $v0\n");
         }
-        //Restore $v0-$v1 from the stack
-        writer.write("lw $v0, -4($sp)\n");
-        writer.write("lw $v1, -0($sp)\n");
-
         //Restore $ra from the stack
-        writer.write("lw $ra, -8($sp)\n");
-        writer.write("addi $sp, $sp, -12\n");
     }
 
     private void functionReturn(ReturnIRTuple instr) throws IOException {

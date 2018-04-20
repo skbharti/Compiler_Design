@@ -2,21 +2,36 @@
 <html>
 <body>
 <p> <b> GoalContext </b> </p>
-<p> <b> MainClassContext </b>	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	<b> NestedStatementContext </b>	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	<b> DeclarationContext </b>	VariableAssignmentStatementContext	ArrayAssignmentStatementContext	PrintStatementContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	<b> FieldDeclarationContext </b>	VariableAssignmentStatementContext	ArrayAssignmentStatementContext	PrintStatementContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	<b> VarDeclarationContext </b>	VariableAssignmentStatementContext	ArrayAssignmentStatementContext	PrintStatementContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	<b> TypeDimContext </b>	c	;	VariableAssignmentStatementContext	ArrayAssignmentStatementContext	PrintStatementContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	<b> DimsContext </b>	c	;	VariableAssignmentStatementContext	ArrayAssignmentStatementContext	PrintStatementContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	[	]	c	;	<b> VariableAssignmentStatementContext </b>	ArrayAssignmentStatementContext	PrintStatementContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	[	]	c	;	c	=	<b> ArrayInstantiationExpressionContext </b>	;	ArrayAssignmentStatementContext	PrintStatementContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	[	]	c	;	c	=	new	<b> TypeContext </b>	[	3	]	;	ArrayAssignmentStatementContext	PrintStatementContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	[	]	c	;	c	=	new	int	[	3	]	;	<b> ArrayAssignmentStatementContext </b>	PrintStatementContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	[	]	c	;	c	=	new	int	[	3	]	;	c	[	<b> IntLitExpressionContext </b>	]	=	IntLitExpressionContext	;	PrintStatementContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	[	]	c	;	c	=	new	int	[	3	]	;	c	[	0	]	=	<b> IntLitExpressionContext </b>	;	PrintStatementContext	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	[	]	c	;	c	=	new	int	[	3	]	;	c	[	0	]	=	10	;	<b> PrintStatementContext </b>	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	[	]	c	;	c	=	new	int	[	3	]	;	c	[	0	]	=	10	;	println	(	<b> ArrayAccessExpressionContext </b>	)	;	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	[	]	c	;	c	=	new	int	[	3	]	;	c	[	0	]	=	10	;	println	(	c	[	<b> IntLitExpressionContext </b>	]	)	;	}	}	}	<EOF> </p>
-<p> class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	int	[	]	c	;	c	=	new	int	[	3	]	;	c	[	0	]	=	10	;	println	(	c	[	0	]	)	;	}	}	}	<EOF> </p></body>
+<p> <b> ClassDeclarationContext </b>	MainClassContext	<EOF> </p>
+<p> class	CDE	{	<b> FieldDeclarationContext </b>	FieldDeclarationContext	MethodDeclarationContext	}	MainClassContext	<EOF> </p>
+<p> class	CDE	{	<b> VarDeclarationContext </b>	FieldDeclarationContext	MethodDeclarationContext	}	MainClassContext	<EOF> </p>
+<p> class	CDE	{	<b> TypeDimContext </b>	a	;	FieldDeclarationContext	MethodDeclarationContext	}	MainClassContext	<EOF> </p>
+<p> class	CDE	{	int	a	;	<b> FieldDeclarationContext </b>	MethodDeclarationContext	}	MainClassContext	<EOF> </p>
+<p> class	CDE	{	int	a	;	<b> VarDeclarationContext </b>	MethodDeclarationContext	}	MainClassContext	<EOF> </p>
+<p> class	CDE	{	int	a	;	<b> TypeDimContext </b>	b	;	MethodDeclarationContext	}	MainClassContext	<EOF> </p>
+<p> class	CDE	{	int	a	;	int	b	;	<b> MethodDeclarationContext </b>	}	MainClassContext	<EOF> </p>
+<p> class	CDE	{	int	a	;	int	b	;	public	<b> TypeDimContext </b>	foo	(	)	{	MethodBodyContext	}	}	MainClassContext	<EOF> </p>
+<p> class	CDE	{	int	a	;	int	b	;	public	int	foo	(	)	{	<b> MethodBodyContext </b>	}	}	MainClassContext	<EOF> </p>
+<p> class	CDE	{	int	a	;	int	b	;	public	int	foo	(	)	{	<b> VariableAssignmentStatementContext </b>	PrintStatementContext	return	IntLitExpressionContext	;	}	}	MainClassContext	<EOF> </p>
+<p> class	CDE	{	int	a	;	int	b	;	public	int	foo	(	)	{	a	=	<b> IntLitExpressionContext </b>	;	PrintStatementContext	return	IntLitExpressionContext	;	}	}	MainClassContext	<EOF> </p>
+<p> class	CDE	{	int	a	;	int	b	;	public	int	foo	(	)	{	a	=	10	;	<b> PrintStatementContext </b>	return	IntLitExpressionContext	;	}	}	MainClassContext	<EOF> </p>
+<p> class	CDE	{	int	a	;	int	b	;	public	int	foo	(	)	{	a	=	10	;	println	(	<b> IdentifierExpressionContext </b>	)	;	return	IntLitExpressionContext	;	}	}	MainClassContext	<EOF> </p>
+<p> class	CDE	{	int	a	;	int	b	;	public	int	foo	(	)	{	a	=	10	;	println	(	a	)	;	return	<b> IntLitExpressionContext </b>	;	}	}	MainClassContext	<EOF> </p>
+<p> class	CDE	{	int	a	;	int	b	;	public	int	foo	(	)	{	a	=	10	;	println	(	a	)	;	return	0	;	}	}	<b> MainClassContext </b>	<EOF> </p>
+<p> class	CDE	{	int	a	;	int	b	;	public	int	foo	(	)	{	a	=	10	;	println	(	a	)	;	return	0	;	}	}	class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	<b> NestedStatementContext </b>	}	}	<EOF> </p>
+<p> class	CDE	{	int	a	;	int	b	;	public	int	foo	(	)	{	a	=	10	;	println	(	a	)	;	return	0	;	}	}	class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	<b> DeclarationContext </b>	DeclarationContext	VariableAssignmentStatementContext	VariableAssignmentStatementContext	PrintStatementContext	}	}	}	<EOF> </p>
+<p> class	CDE	{	int	a	;	int	b	;	public	int	foo	(	)	{	a	=	10	;	println	(	a	)	;	return	0	;	}	}	class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	<b> FieldDeclarationContext </b>	DeclarationContext	VariableAssignmentStatementContext	VariableAssignmentStatementContext	PrintStatementContext	}	}	}	<EOF> </p>
+<p> class	CDE	{	int	a	;	int	b	;	public	int	foo	(	)	{	a	=	10	;	println	(	a	)	;	return	0	;	}	}	class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	<b> VarDeclarationContext </b>	DeclarationContext	VariableAssignmentStatementContext	VariableAssignmentStatementContext	PrintStatementContext	}	}	}	<EOF> </p>
+<p> class	CDE	{	int	a	;	int	b	;	public	int	foo	(	)	{	a	=	10	;	println	(	a	)	;	return	0	;	}	}	class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	<b> TypeDimContext </b>	c1	;	DeclarationContext	VariableAssignmentStatementContext	VariableAssignmentStatementContext	PrintStatementContext	}	}	}	<EOF> </p>
+<p> class	CDE	{	int	a	;	int	b	;	public	int	foo	(	)	{	a	=	10	;	println	(	a	)	;	return	0	;	}	}	class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	CDE	c1	;	<b> DeclarationContext </b>	VariableAssignmentStatementContext	VariableAssignmentStatementContext	PrintStatementContext	}	}	}	<EOF> </p>
+<p> class	CDE	{	int	a	;	int	b	;	public	int	foo	(	)	{	a	=	10	;	println	(	a	)	;	return	0	;	}	}	class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	CDE	c1	;	<b> FieldDeclarationContext </b>	VariableAssignmentStatementContext	VariableAssignmentStatementContext	PrintStatementContext	}	}	}	<EOF> </p>
+<p> class	CDE	{	int	a	;	int	b	;	public	int	foo	(	)	{	a	=	10	;	println	(	a	)	;	return	0	;	}	}	class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	CDE	c1	;	<b> VarDeclarationContext </b>	VariableAssignmentStatementContext	VariableAssignmentStatementContext	PrintStatementContext	}	}	}	<EOF> </p>
+<p> class	CDE	{	int	a	;	int	b	;	public	int	foo	(	)	{	a	=	10	;	println	(	a	)	;	return	0	;	}	}	class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	CDE	c1	;	<b> TypeDimContext </b>	b	;	VariableAssignmentStatementContext	VariableAssignmentStatementContext	PrintStatementContext	}	}	}	<EOF> </p>
+<p> class	CDE	{	int	a	;	int	b	;	public	int	foo	(	)	{	a	=	10	;	println	(	a	)	;	return	0	;	}	}	class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	CDE	c1	;	int	b	;	<b> VariableAssignmentStatementContext </b>	VariableAssignmentStatementContext	PrintStatementContext	}	}	}	<EOF> </p>
+<p> class	CDE	{	int	a	;	int	b	;	public	int	foo	(	)	{	a	=	10	;	println	(	a	)	;	return	0	;	}	}	class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	CDE	c1	;	int	b	;	c1	=	<b> ObjectInstantiationExpressionContext </b>	;	VariableAssignmentStatementContext	PrintStatementContext	}	}	}	<EOF> </p>
+<p> class	CDE	{	int	a	;	int	b	;	public	int	foo	(	)	{	a	=	10	;	println	(	a	)	;	return	0	;	}	}	class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	CDE	c1	;	int	b	;	c1	=	new	CDE	(	)	;	<b> VariableAssignmentStatementContext </b>	PrintStatementContext	}	}	}	<EOF> </p>
+<p> class	CDE	{	int	a	;	int	b	;	public	int	foo	(	)	{	a	=	10	;	println	(	a	)	;	return	0	;	}	}	class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	CDE	c1	;	int	b	;	c1	=	new	CDE	(	)	;	b	=	<b> ObjectVariableReferenceExpressionContext </b>	;	PrintStatementContext	}	}	}	<EOF> </p>
+<p> class	CDE	{	int	a	;	int	b	;	public	int	foo	(	)	{	a	=	10	;	println	(	a	)	;	return	0	;	}	}	class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	CDE	c1	;	int	b	;	c1	=	new	CDE	(	)	;	b	=	c1	.	a	;	<b> PrintStatementContext </b>	}	}	}	<EOF> </p>
+<p> class	CDE	{	int	a	;	int	b	;	public	int	foo	(	)	{	a	=	10	;	println	(	a	)	;	return	0	;	}	}	class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	CDE	c1	;	int	b	;	c1	=	new	CDE	(	)	;	b	=	c1	.	a	;	println	(	<b> IdentifierExpressionContext </b>	)	;	}	}	}	<EOF> </p>
+<p> class	CDE	{	int	a	;	int	b	;	public	int	foo	(	)	{	a	=	10	;	println	(	a	)	;	return	0	;	}	}	class	ABC	{	public	static	void	main	(	String	[	]	args	)	{	{	CDE	c1	;	int	b	;	c1	=	new	CDE	(	)	;	b	=	c1	.	a	;	println	(	b	)	;	}	}	}	<EOF> </p></body>
 </html>

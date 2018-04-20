@@ -76,6 +76,8 @@ statement
 #variableAssignmentStatement
 |	Identifier LSB expression RSB (LSB expression RSB)* EQ expression ';'
 #arrayAssignmentStatement
+|   Identifier (REF Identifier)* EQ expression ';'
+#objectAssignmentStatement
 ;
 
 ifBlock

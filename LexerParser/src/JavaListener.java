@@ -224,6 +224,18 @@ public interface JavaListener extends ParseTreeListener {
 	 */
 	void exitArrayAssignmentStatement(JavaParser.ArrayAssignmentStatementContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code objectAssignmentStatement}
+	 * labeled alternative in {@link JavaParser#statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterObjectAssignmentStatement(JavaParser.ObjectAssignmentStatementContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code objectAssignmentStatement}
+	 * labeled alternative in {@link JavaParser#statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitObjectAssignmentStatement(JavaParser.ObjectAssignmentStatementContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link JavaParser#ifBlock}.
 	 * @param ctx the parse tree
 	 */

@@ -1,13 +1,21 @@
-
+class CDE{
+    int a;
+    int b;
+    public int foo(){
+        a = 10;
+        println(a);
+        return 0;
+    }
+}
 class ABC{
 
     public static void main(String[] args)
     {{
-        int[] c;
-        c = new int[3];
-        c[0] = 10;
-        println(c[0]);
-
+        CDE c1;
+        int b;
+        c1 = new CDE();
+        b = c1.a;
+        println(b);
     }}
 
 }

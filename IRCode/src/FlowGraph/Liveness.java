@@ -3,6 +3,7 @@ package IRCode.src.FlowGraph;
 import IRCode.src.IRCode.ArrayAssignmentIRTuple;
 import IRCode.src.IRCode.*;
 import src.SymbolsAndScopes.ArrayRecord;
+import src.SymbolsAndScopes.Record;
 import src.SymbolsAndScopes.Scope;
 import src.SymbolsAndScopes.VariableRecord;
 
@@ -126,17 +127,25 @@ public class Liveness {
 
     public void InsertInVariable(String var) {
         boolean flag = false;
-        try {
-            for (Scope scope : scopeHashMap.values())
+        Record record;
+        for (String scopekey : scopeHashMap.keySet()) {
+            Scope scope = scopeHashMap.get(scopekey);
+
+            try {
+                record = scope.lookup(var);
+                System.out.println(record.getClass());
                 if ((scope.lookup(var) instanceof VariableRecord) || scope.lookup(var) instanceof ArrayRecord) {
                     flag = true;
                     break;
                 }
-        } catch (Exception e) {
+            } catch (Exception e) {
 
+            }
         }
-        if (var.contains("var"))
+
+        if (var.contains("var")) {
             flag = true;
+        }
         if (!flag)
             return;
         if (!Variables.contains(var)) {
@@ -246,6 +255,17 @@ public class Liveness {
 
                 InsertInVariable(res);
                 InsertInDef(res, i);
+            }
+            if (q instanceof NewObjectIRTuple) {
+                InsertInVariable(q.getResult());
+                InsertInDef(q.getResult(), i);
+            }
+            if (q instanceof ParamInitIRTuple) {
+                InsertInVariable(q.getResult());
+                InsertInDef(q.getResult(), i);
+            }
+            if (q instanceof ParamIRTuple) {
+                InsertInVariable(q.getArg0());
             }
 
         }
