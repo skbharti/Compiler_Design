@@ -188,6 +188,18 @@ public interface JavaListener extends ParseTreeListener {
 	 */
 	void exitForStatement(JavaParser.ForStatementContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code printlnStatement}
+	 * labeled alternative in {@link JavaParser#statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterPrintlnStatement(JavaParser.PrintlnStatementContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code printlnStatement}
+	 * labeled alternative in {@link JavaParser#statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitPrintlnStatement(JavaParser.PrintlnStatementContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code printStatement}
 	 * labeled alternative in {@link JavaParser#statement}.
 	 * @param ctx the parse tree

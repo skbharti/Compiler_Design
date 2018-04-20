@@ -118,6 +118,13 @@ public interface JavaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitForStatement(JavaParser.ForStatementContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code printlnStatement}
+	 * labeled alternative in {@link JavaParser#statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPrintlnStatement(JavaParser.PrintlnStatementContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code printStatement}
 	 * labeled alternative in {@link JavaParser#statement}.
 	 * @param ctx the parse tree

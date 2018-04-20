@@ -110,6 +110,7 @@ public class CodeGen {
 
     private void printMips(PrintIRTuple instr) throws IOException {
         ArgumentVariable arg0 = new ArgumentVariable(instr.getArg0());
+        String newline = instr.getArg1();
         writer.write("addi $sp, $sp, 12\n");
         //Store $v0-$v1 on the stack for taking return value
         writer.write("sw $a0, -8($sp)\n");
@@ -117,9 +118,9 @@ public class CodeGen {
         writer.write("sw $v1, -0($sp)\n");
 
         if (arg0.type.equals("constant")) {
-            writer.write(HelperFunctions.printIntegerFromString(arg0.getValue(curAddTable)));
+            writer.write(HelperFunctions.printIntegerFromString(arg0.getValue(curAddTable), newline));
         } else if (!arg0.getValue(curAddTable).equals("null")) {
-            writer.write(HelperFunctions.printIntegerFromRegister(arg0.getValue(curAddTable)));
+            writer.write(HelperFunctions.printIntegerFromRegister(arg0.getValue(curAddTable), newline));
         } else {
             System.out.println("error in arguments to print");
             writer.write(HelperFunctions.printExitCode()); //Error
@@ -611,7 +612,7 @@ public class CodeGen {
         }
 
         //Store $v0-$v1 on the stack for taking return value
-        writer.write("move $a0, " + paramPos.getValue(curAddTable));
+        writer.write("move $a0, " + paramPos.getValue(curAddTable)+"\n");
         //Jump to the function
         writer.write("jal " + function + "\n");
 

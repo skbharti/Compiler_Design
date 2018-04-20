@@ -6,7 +6,7 @@ goal
 
 
 mainClass
-:	'class' Identifier '{' 'public' 'static' 'void' 'main' '(' 'String' '[' ']' Identifier ')' '{' statement '}' '}';
+:	'class' Identifier '{' fieldDeclaration* methodDeclaration* 'public' 'static' 'void' 'main' '(' 'String' '[' ']' Identifier ')' '{' statement '}' '}';
 
 classDeclaration
 :	'class' Identifier ( 'extends' Identifier )? '{' fieldDeclaration* methodDeclaration* '}';
@@ -71,6 +71,8 @@ statement
 |   'for' LP statement ';' expression ';' statement RP whileBlock
 #forStatement
 |	'println' LP  expression RP ';'
+#printlnStatement
+|	'print' LP  expression RP ';'
 #printStatement
 |	Identifier EQ expression ';'
 #variableAssignmentStatement

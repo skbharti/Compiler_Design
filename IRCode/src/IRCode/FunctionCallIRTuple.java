@@ -10,8 +10,8 @@ public class FunctionCallIRTuple extends ThreeAddCode {
 
     @Override
     public String toString() {
-        if(result.toString().contentEquals("null")) {
-            if(arg1.toString().contentEquals("null"))
+        if(result.contentEquals("null")) {
+            if(arg1.contentEquals("null"))
                 return opcode + " " + arg0 + "()";
             else
                 return opcode + " " + arg0 + "(" + arg1 + ")";

@@ -128,7 +128,6 @@ public class MyJavaListener extends JavaBaseListener {
 
         JavaParser.MainClassContext mainClass = (JavaParser.MainClassContext) ctx.getChild(count - 2);
         ctx.codes.addAll(mainClass.codes);
-        ctx.codes.add(new ExitIRTuple());
     }
 
 
@@ -144,8 +143,26 @@ public class MyJavaListener extends JavaBaseListener {
 
     @Override
     public void exitMainClass(JavaParser.MainClassContext ctx) {
-        JavaParser.StatementContext child14 = (JavaParser.StatementContext) ctx.getChild(14);
-        ctx.codes.addAll(child14.codes);
+        JavaParser.StatementContext mainStatement = null;
+
+
+        for(int i=0; i<ctx.getChildCount();i++){
+            if(ctx.getChild(i) instanceof JavaParser.StatementContext) {
+                mainStatement = (JavaParser.StatementContext) ctx.getChild(i);
+            }
+        }
+
+        ctx.codes.addAll(mainStatement.codes);
+        ctx.codes.add(new ExitIRTuple());
+
+        for (int i=0; i<ctx.getChildCount();i++){
+            if(ctx.getChild(i) instanceof JavaParser.FieldDeclarationContext){
+                ctx.codes.addAll(((JavaParser.FieldDeclarationContext) ctx.getChild(i)).codes);
+            }
+            else if(ctx.getChild(i) instanceof JavaParser.MethodDeclarationContext){
+                ctx.codes.addAll(((JavaParser.MethodDeclarationContext) ctx.getChild(i)).codes);
+            }
+        }
         ctx.codes.add(new ScopeChangeIRTuple("true", currentScope.parentScope.scopeName, currentScope.scopeName));
         currentScope = currentScope.parentScope;
     }
@@ -227,7 +244,7 @@ public class MyJavaListener extends JavaBaseListener {
 
     @Override
     public void exitMethodDeclaration(JavaParser.MethodDeclarationContext ctx) {
-        ctx.codes.add(new LabelIRTuple(ctx.getChild(2).getText() + currentScope.scopeName));
+        ctx.codes.add(new LabelIRTuple(getFunctionName(ctx.getChild(2).getText(),currentScope.classType)));
         int child_count = ctx.getChildCount();
 
         for (int i = 0; i < child_count; i++) {
@@ -517,7 +534,30 @@ public class MyJavaListener extends JavaBaseListener {
             errorFlag = true;
             return;
         }
-        ctx.codes.add(new PrintIRTuple(child1.type.toString(), child1.place));
+        ctx.codes.add(new PrintIRTuple(child1.type.toString(), child1.place, "false"));
+    }
+
+    @Override
+    public void enterPrintlnStatement(JavaParser.PrintlnStatementContext ctx) {
+        JavaParser.ExpressionContext child1 = (JavaParser.ExpressionContext) ctx.getChild(2);
+        child1.place = getVar();
+
+    }
+
+
+    @Override
+    public void exitPrintlnStatement(JavaParser.PrintlnStatementContext ctx) {
+
+        JavaParser.ExpressionContext child1 = (JavaParser.ExpressionContext) ctx.getChild(2);
+        ctx.codes.addAll(child1.codes);
+
+        // checkpoint whether any class type or current class type
+        if (JavaParser.Type.isClassType(child1.type) || JavaParser.Type.ARRAY.contains(child1.type)) {
+            printError(child1);
+            errorFlag = true;
+            return;
+        }
+        ctx.codes.add(new PrintIRTuple(child1.type.toString(), child1.place, "true"));
     }
 
 
@@ -702,6 +742,98 @@ public class MyJavaListener extends JavaBaseListener {
         ctx.codes.add(new AssignmentIRTuple(LT, ctx.place, child1.place, child2.place));
     }
 
+    @Override
+    public void enterGtExpression(JavaParser.GtExpressionContext ctx) {
+        JavaParser.ExpressionContext child1 = (JavaParser.ExpressionContext) ctx.getChild(0);
+        JavaParser.ExpressionContext child2 = (JavaParser.ExpressionContext) ctx.getChild(2);
+
+        child1.place = getVar();
+        child2.place = getVar();
+
+    }
+
+
+    @Override
+    public void exitGtExpression(JavaParser.GtExpressionContext ctx) {
+        JavaParser.ExpressionContext child1 = (JavaParser.ExpressionContext) ctx.getChild(0);
+        JavaParser.ExpressionContext child2 = (JavaParser.ExpressionContext) ctx.getChild(2);
+        if (child1.type != JavaParser.Type.BOOLEAN && child1.type != JavaParser.Type.INT && child1.type != JavaParser.Type.FLOAT) {
+            printError(child1);
+            errorFlag = true;
+            return;
+        }
+        if (child2.type != JavaParser.Type.BOOLEAN && child2.type != JavaParser.Type.INT && child1.type != JavaParser.Type.FLOAT) {
+            printError(child2);
+            errorFlag = true;
+            return;
+        }
+        ctx.type = JavaParser.Type.BOOLEAN;
+        ctx.codes.addAll(child1.codes);
+        ctx.codes.addAll(child2.codes);
+        ctx.codes.add(new AssignmentIRTuple(GT, ctx.place, child1.place, child2.place));
+    }
+
+    @Override
+    public void enterGteExpression(JavaParser.GteExpressionContext ctx) {
+        JavaParser.ExpressionContext child1 = (JavaParser.ExpressionContext) ctx.getChild(0);
+        JavaParser.ExpressionContext child2 = (JavaParser.ExpressionContext) ctx.getChild(2);
+
+        child1.place = getVar();
+        child2.place = getVar();
+
+    }
+
+
+    @Override
+    public void exitGteExpression(JavaParser.GteExpressionContext ctx) {
+        JavaParser.ExpressionContext child1 = (JavaParser.ExpressionContext) ctx.getChild(0);
+        JavaParser.ExpressionContext child2 = (JavaParser.ExpressionContext) ctx.getChild(2);
+        if (child1.type != JavaParser.Type.BOOLEAN && child1.type != JavaParser.Type.INT && child1.type != JavaParser.Type.FLOAT) {
+            printError(child1);
+            errorFlag = true;
+            return;
+        }
+        if (child2.type != JavaParser.Type.BOOLEAN && child2.type != JavaParser.Type.INT && child1.type != JavaParser.Type.FLOAT) {
+            printError(child2);
+            errorFlag = true;
+            return;
+        }
+        ctx.type = JavaParser.Type.BOOLEAN;
+        ctx.codes.addAll(child1.codes);
+        ctx.codes.addAll(child2.codes);
+        ctx.codes.add(new AssignmentIRTuple(GTE, ctx.place, child1.place, child2.place));
+    }
+
+    @Override
+    public void enterLteExpression(JavaParser.LteExpressionContext ctx) {
+        JavaParser.ExpressionContext child1 = (JavaParser.ExpressionContext) ctx.getChild(0);
+        JavaParser.ExpressionContext child2 = (JavaParser.ExpressionContext) ctx.getChild(2);
+
+        child1.place = getVar();
+        child2.place = getVar();
+
+    }
+
+
+    @Override
+    public void exitLteExpression(JavaParser.LteExpressionContext ctx) {
+        JavaParser.ExpressionContext child1 = (JavaParser.ExpressionContext) ctx.getChild(0);
+        JavaParser.ExpressionContext child2 = (JavaParser.ExpressionContext) ctx.getChild(2);
+        if (child1.type != JavaParser.Type.BOOLEAN && child1.type != JavaParser.Type.INT && child1.type != JavaParser.Type.FLOAT) {
+            printError(child1);
+            errorFlag = true;
+            return;
+        }
+        if (child2.type != JavaParser.Type.BOOLEAN && child2.type != JavaParser.Type.INT && child1.type != JavaParser.Type.FLOAT) {
+            printError(child2);
+            errorFlag = true;
+            return;
+        }
+        ctx.type = JavaParser.Type.BOOLEAN;
+        ctx.codes.addAll(child1.codes);
+        ctx.codes.addAll(child2.codes);
+        ctx.codes.add(new AssignmentIRTuple(LTE, ctx.place, child1.place, child2.place));
+    }
 
     @Override
     public void enterObjectInstantiationExpression(JavaParser.ObjectInstantiationExpressionContext ctx) {
@@ -951,6 +1083,63 @@ public class MyJavaListener extends JavaBaseListener {
                 ctx.codes.add(new FunctionCallIRTuple(getFunctionName(ctx.getChild(0).getText(),currentScope.classType), parampos, ctx.place));
             else
                 ctx.codes.add(new FunctionCallIRTuple(getFunctionName(ctx.getChild(0).getText(),currentScope.classType), "null", ctx.place));
+        } catch (Exception e) {
+            System.err.println(e);
+            printError(ctx);
+            errorFlag = true;
+            return;
+        }
+    }
+
+    @Override
+    public void enterMethodCallStatement(JavaParser.MethodCallStatementContext ctx) {
+
+        int child_count = ctx.getChildCount();
+
+        for (int i = 0; i < child_count; i++) {
+            if (ctx.getChild(i) instanceof JavaParser.ExpressionContext) {
+                JavaParser.ExpressionContext child = (JavaParser.ExpressionContext) ctx.getChild(i);
+                child.place = getVar();
+            }
+        }
+
+    }
+
+
+    @Override
+    public void exitMethodCallStatement(JavaParser.MethodCallStatementContext ctx) {
+        try {
+            MethodRecord methodRecord = (MethodRecord) currentScope.lookup(ctx.getChild(0).getText());
+
+            int child_count = ctx.getChildCount();
+            String parampos = getVar();
+            int paramNum = 1,j=0;
+            ctx.codes.add(new ParamIRTuple("$ra",0+"",parampos));
+            for (int i = 0; i < child_count; i++) {
+                //System.out.println(ctx.getChild(i).getClass().getSimpleName());
+                if (ctx.getChild(i) instanceof JavaParser.ExpressionContext) {
+
+                    JavaParser.ExpressionContext child = (JavaParser.ExpressionContext) ctx.getChild(i);
+                    if (methodRecord.getParamType().get(j++) != child.type) {
+                        printError(ctx);
+                        errorFlag = true;
+                        return;
+                    }
+                    ctx.codes.addAll(child.codes);
+                    ctx.codes.add(new ParamIRTuple(child.place, (paramNum++) + "", parampos));
+                }
+            }
+            if (j!=methodRecord.getParamCount()){
+                printError(ctx);
+                errorFlag = true;
+                return;
+            }
+
+            ctx.codes.add(new StoreStackIRTuple());
+            if (paramNum > 0)
+                ctx.codes.add(new FunctionCallIRTuple(getFunctionName(ctx.getChild(0).getText(),currentScope.classType), parampos, "null"));
+            else
+                ctx.codes.add(new FunctionCallIRTuple(getFunctionName(ctx.getChild(0).getText(),currentScope.classType), "null", "null"));
         } catch (Exception e) {
             System.err.println(e);
             printError(ctx);

@@ -28,6 +28,7 @@ public class FullProgramRegAlloc
     public void FullRegAlloc() throws Exception{
             Liveness lv = new Liveness(InstructionList,scopeMapping);
             lv.FindVariablesUsesDefs();
+            writer.write("\n.data\n\tnewline:\t.asciiz\t\"\\n\"\n");
             writer.write("\n.text\n\nmain:\n\n");
 
             for (int i = 0; i < BlocksList.size(); i++)
