@@ -1,4 +1,4 @@
-// Generated from /home/varun/IdeaProjects/Compiler_Design/LexerParser/src/Java.g4 by ANTLR 4.7
+// Generated from /media/shubham/GyanSangraha/Courses/CS335/Compiler_Design/LexerParser/src/Java.g4 by ANTLR 4.7
 package src;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -235,6 +235,18 @@ public interface JavaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitObjectAssignmentStatement(JavaParser.ObjectAssignmentStatementContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code methodCallStatement}
+	 * labeled alternative in {@link JavaParser#statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterMethodCallStatement(JavaParser.MethodCallStatementContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code methodCallStatement}
+	 * labeled alternative in {@link JavaParser#statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitMethodCallStatement(JavaParser.MethodCallStatementContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link JavaParser#ifBlock}.
 	 * @param ctx the parse tree

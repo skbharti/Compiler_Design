@@ -76,8 +76,10 @@ statement
 #variableAssignmentStatement
 |	Identifier LSB expression RSB (LSB expression RSB)* EQ expression ';'
 #arrayAssignmentStatement
-|   Identifier (REF Identifier)* EQ expression ';'
+|   Identifier REF Identifier (REF Identifier)* EQ expression ';'
 #objectAssignmentStatement
+|   Identifier (REF Identifier)* '(' (expression ( ',' expression )*)? ')' ';'
+#methodCallStatement
 ;
 
 ifBlock
@@ -96,10 +98,10 @@ expression
 :   Identifier LSB expression RSB ( LSB expression RSB )*
 # arrayAccessExpression
 
-|  Identifier '(' expression ( ',' expression )* ')'
+|  Identifier '(' (expression ( ',' expression )*)? ')'
 # methodCallExpression
 
-|  Identifier REF Identifier( REF Identifier)* '(' expression ( ',' expression )* ')'
+|  Identifier REF Identifier( REF Identifier)* '(' (expression ( ',' expression )*)? ')'
 # objectMethodCallExpression
 
 |  Identifier REF Identifier( REF Identifier)*

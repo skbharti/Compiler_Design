@@ -16,6 +16,7 @@ class ABC{
         c1 = new CDE();
         b = c1.a;
         println(b);
+        c1.foo();
     }}
 
 }
