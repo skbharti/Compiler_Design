@@ -27,6 +27,7 @@ public class Scope {
         this.parentScope = parentScope;
         this.scopeType = scopeType;
         this.scopeName = getScopeName();
+        insertVariable(MyParser.thisVar, JavaParser.Type.INT);
         MyParser.scopeMapping.put(this.scopeName,this);
     }
 
@@ -35,6 +36,7 @@ public class Scope {
         this.scopeType = scopeType;
         this.scopeName = getScopeName();
         this.classType = classType;
+        insertVariable(MyParser.thisVar, JavaParser.Type.INT);
         MyParser.scopeMapping.put(this.scopeName,this);
     }
 
@@ -84,8 +86,7 @@ public class Scope {
     }
 
     public void insertVariable(String name, JavaParser.Type variableType) {
-        if (symbolTable.containsKey(name)) {
-
+        if (symbolTable.containsKey(name) && !name.equals(MyParser.thisVar)) {
             System.err.println("Symbol table can't contain two same name variable."+name);
             System.exit(1);
         }

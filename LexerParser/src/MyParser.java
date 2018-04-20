@@ -19,11 +19,13 @@ public class MyParser {
     public static HashMap<String, Scope> scopeMapping = new HashMap<>();
     public static Scope globalScope = new Scope(null, Scope.GLOBAL);
     public static Scope currentScope = globalScope;
+    public static final String thisVar="this";
     public static GlobalRecord globalRecord = new GlobalRecord();
 
     public static void main(String args[]) throws Exception {
         FileInputStream fileInputStream = new FileInputStream(INPUT_FILE);
         JavaLexer lexer = new JavaLexer(new ANTLRInputStream(fileInputStream));
+        globalScope.insertVariable(thisVar, JavaParser.Type.INT);
         writer = new BufferedWriter(new FileWriter("mips.s"));
         CommonTokenStream tokenStream = new CommonTokenStream(lexer);
         JavaParser parser = new JavaParser(tokenStream);

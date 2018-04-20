@@ -40,6 +40,8 @@ public class CodeGen {
 
         if (q instanceof StoreStackIRTuple)
             storeStack();
+        else if (q instanceof ObjectAssignmentIRTuple)
+            assignObject((ObjectAssignmentIRTuple)q);
         else if (q instanceof ExitIRTuple)
             exit();
         else if (q instanceof AssignmentIRTuple)
@@ -78,12 +80,22 @@ public class CodeGen {
     private void referObject(ObjectReferenceIRTuple instr) throws Exception{
         String offset = instr.getArg0();
         ArgumentVariable place = new ArgumentVariable(instr.getArg1());
+        if (currentScope.symbolTable.containsKey(offset) && instr.getOpcode().equals("true")){
+            ArgumentVariable off = new ArgumentVariable(instr.getArg0());
+            writer.write("lw "+place.getValue(curAddTable)+", 0("+off.getValue(curAddTable)+")\n");
+            return;
+        }
         writer.write("lw "+place.getValue(curAddTable)+", "+offset+"($sp)\n");
     }
     private void exit() throws IOException {
         writer.write(HelperFunctions.printExitCode());
     }
 
+    private void assignObject(ObjectAssignmentIRTuple instr) throws Exception{
+        ArgumentVariable place = new ArgumentVariable(instr.getResult());
+        String offset = instr.getArg0();
+        writer.write("sw "+place.getValue(curAddTable)+", "+offset+"($sp)\n");
+    }
     private void storeStack() throws IOException {
         for (String key : curAddTable.keySet()) {
             writer.write("sw " + ArgumentVariable.getRegName(curAddTable.get(key).getReg()) + ", " + Tables.getStackPointer(key, currentScope) + "($sp)\n");

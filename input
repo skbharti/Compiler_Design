@@ -13,10 +13,9 @@ class ABC{
     {{
         CDE c1;
         int b;
-        c1 = new CDE();
-        b = c1.a;
+        b = 108;
         println(b);
-        c1.foo();
+
     }}
 
 }
